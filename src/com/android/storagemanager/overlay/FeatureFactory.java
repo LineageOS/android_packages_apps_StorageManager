@@ -64,6 +64,11 @@ public abstract class FeatureFactory {
      */
     public abstract DeletionHelperFeatureProvider getDeletionHelperFeatureProvider();
 
+    /**
+     * Returns a provider which provides a periodic storage management job.
+     */
+    public abstract StorageManagementJobProvider getStorageManagementJobProvider();
+
     public static class FactoryNotFoundException extends RuntimeException {
         public FactoryNotFoundException(Throwable throwable) {
             super("Unable to create factory. Did you misconfigure Proguard?", throwable);
