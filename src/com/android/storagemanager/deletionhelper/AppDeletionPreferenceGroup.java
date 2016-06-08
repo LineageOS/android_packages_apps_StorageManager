@@ -61,6 +61,7 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
             addPreference(preference);
             preference.setChecked(mBackend.isChecked(packageName));
             preference.setOrder(i);
+            preference.updateSummary();
         }
         cache.removeCachedPrefs();
         updateText();

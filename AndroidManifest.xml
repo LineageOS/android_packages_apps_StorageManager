@@ -28,7 +28,8 @@
 
     <application android:label="@string/app_name"
         android:theme="@style/StorageManager"
-        android:allowBackup="false">
+        android:allowBackup="false"
+        android:supportsRtl="true">
         <!--  Initial Page -->
         <activity android:name="DeletionHelperActivity"
                   android:label="@string/deletion_helper_title"

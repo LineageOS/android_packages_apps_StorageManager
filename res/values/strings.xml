@@ -23,7 +23,7 @@
     <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
     <string name="deletion_helper_title">Free up space</string>
     <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
-    <string name="deletion_helper_app_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Last used <xliff:g id="days" example="67">%2$d</xliff:g> days ago</string>
+    <string name="deletion_helper_app_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • <xliff:g id="days" example="67">%2$d</xliff:g> days ago</string>
     <!-- Summary of how much storage an app is using when it has never been used before. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary_never_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Never used before</string>
     <!-- Summary of how much storage an app is using when its last use is unknown. [CHAR LIMIT=NONE]-->
