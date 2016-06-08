@@ -17,17 +17,13 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.text.format.Formatter;
-import android.widget.TextView;
+
 import com.android.storagemanager.deletionhelper.DeletionType;
+import com.android.storagemanager.R;
 
 /**
  * Preference to handle the deletion of various data types in the Deletion Helper.
@@ -42,6 +38,7 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
 
     public DeletionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLayoutResource(R.layout.deletion_preference);
         setOnPreferenceChangeListener(this);
     }
 
