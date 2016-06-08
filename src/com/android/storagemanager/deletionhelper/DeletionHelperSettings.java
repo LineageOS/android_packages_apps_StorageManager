@@ -27,6 +27,9 @@ import android.widget.Button;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
 
+import com.android.storagemanager.overlay.FeatureFactory;
+import com.android.storagemanager.overlay.DeletionHelperFeatureProvider;
+
 import java.util.HashSet;
 
 /**
@@ -37,13 +40,17 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         View.OnClickListener {
     private static final String APPS_KEY = "apps_group";
     private static final String KEY_DOWNLOADS_PREFERENCE = "delete_downloads";
+    private static final String KEY_PHOTOS_VIDEOS_PREFERENCE = "delete_photos";
     private static final int DOWNLOADS_LOADER_ID = 1;
 
     private AppDeletionPreferenceGroup mApps;
     private AppDeletionType mAppBackend;
     private DownloadsDeletionPreferenceGroup mDownloadsPreference;
     private DownloadsDeletionType mDownloadsDeletion;
+    private PhotosDeletionPreference mPhotoPreference;
+    private DeletionType mPhotoVideoDeletion;
     private Button mCancel, mFree;
+    private DeletionHelperFeatureProvider mProvider;
 
     public static DeletionHelperSettings newInstance() {
         return new DeletionHelperSettings();
@@ -64,6 +71,12 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         mAppBackend.registerView(mApps);
         mAppBackend.registerFreeableChangedListener(this);
         mApps.setDeletionType(mAppBackend);
+
+        mPhotoPreference = (PhotosDeletionPreference) findPreference(KEY_PHOTOS_VIDEOS_PREFERENCE);
+        mProvider = FeatureFactory.getFactory(getActivity()).getDeletionHelperFeatureProvider();
+        if (mProvider != null) {
+            mPhotoVideoDeletion = mProvider.createPhotoVideoDeletionType(getContext());
+        }
     }
 
     @Override
@@ -77,6 +90,14 @@ public class DeletionHelperSettings extends PreferenceFragment implements
             activity.requestPermissions(
                     new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},
                     0);
+        }
+
+        if (mProvider == null) {
+            getPreferenceScreen().removePreference(mPhotoPreference);
+            mPhotoPreference = null;
+        } else {
+            mPhotoPreference.registerFreeableChangedListener(this);
+            mPhotoPreference.registerDeletionService(mPhotoVideoDeletion);
         }
         mDownloadsPreference =
                 (DownloadsDeletionPreferenceGroup) findPreference(KEY_DOWNLOADS_PREFERENCE);
@@ -96,6 +117,10 @@ public class DeletionHelperSettings extends PreferenceFragment implements
                 Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             getLoaderManager().initLoader(DOWNLOADS_LOADER_ID, new Bundle(), mDownloadsDeletion);
         }
+
+        if (mPhotoVideoDeletion != null) {
+            mPhotoVideoDeletion.onResume();
+        }
     }
 
 
@@ -104,6 +129,10 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         super.onPause();
         mAppBackend.onPause();
         mDownloadsDeletion.onPause();
+
+        if (mPhotoVideoDeletion != null) {
+            mPhotoVideoDeletion.onPause();
+        }
     }
 
     @Override
@@ -122,6 +151,12 @@ public class DeletionHelperSettings extends PreferenceFragment implements
      * Clears out the selected apps and data from the device and closes the fragment.
      */
     protected void clearData() {
+        // This should be fine as long as there is only one extra deletion feature.
+        // In the future, this should be done in an async queue in order to not
+        // interfere with the simultaneous PackageDeletionTask.
+        if (mPhotoPreference != null && mPhotoPreference.isChecked()) {
+            mPhotoVideoDeletion.clearFreeableData(getActivity());
+        }
         mDownloadsDeletion.clearFreeableData(getActivity());
         mAppBackend.clearFreeableData(getActivity());
         getActivity().onBackPressed();
@@ -174,6 +209,9 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     private long getTotalFreeableSpace() {
         long freeableSpace = 0;
         freeableSpace += mAppBackend.getTotalAppsFreeableSpace(false);
+        if (mPhotoPreference != null) {
+            freeableSpace += mPhotoPreference.getFreeableBytes();
+        }
         freeableSpace += mDownloadsDeletion.getFreeableBytes();
         return freeableSpace;
     }

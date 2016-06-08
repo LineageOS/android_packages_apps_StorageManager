@@ -14,19 +14,6 @@
      limitations under the License.
 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/deletion_helper_title">
-
-    <com.android.storagemanager.deletionhelper.PhotosDeletionPreference
-        android:key="delete_photos"
-        android:icon="@drawable/ic_photos_24"/>
-
-    <com.android.storagemanager.deletionhelper.DownloadsDeletionPreferenceGroup
-        android:key="delete_downloads"
-        android:icon="@drawable/ic_keyboard_arrow_down_black_32"/>
-
-    <com.android.storagemanager.deletionhelper.AppDeletionPreferenceGroup
-        android:key="apps_group"
-        android:icon="@drawable/ic_keyboard_arrow_down_black_32"/>
-
-</PreferenceScreen>
+<resources>
+    <string name="config_featureFactory" translatable="false">com.android.storagemanager.overlay.FeatureFactoryImpl</string>
+</resources>
