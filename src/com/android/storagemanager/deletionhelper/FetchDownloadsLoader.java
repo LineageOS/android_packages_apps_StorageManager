@@ -18,6 +18,7 @@ package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
 import android.support.annotation.VisibleForTesting;
+import android.text.format.DateUtils;
 import com.android.storagemanager.utils.AsyncLoader;
 
 import java.io.File;
@@ -27,12 +28,13 @@ import java.util.ArrayList;
  * FetchDownloadsLoader is an asynchronous task which returns files in the Downloads
  * directory which have not been modified in longer than 90 days.
  */
-public class FetchDownloadsLoader extends
-        AsyncLoader<FetchDownloadsLoader.DownloadsResult> {
+public class FetchDownloadsLoader extends AsyncLoader<FetchDownloadsLoader.DownloadsResult> {
+    private static final long MINIMUM_AGE = 30 * DateUtils.DAY_IN_MILLIS;
     private File mDirectory;
 
     /**
      * Sets up a FetchDownloadsLoader in any directory.
+     *
      * @param directory The directory to look into.
      */
     public FetchDownloadsLoader(Context context, File directory) {
@@ -41,7 +43,8 @@ public class FetchDownloadsLoader extends
     }
 
     @Override
-    protected void onDiscardResult(DownloadsResult result) {}
+    protected void onDiscardResult(DownloadsResult result) {
+    }
 
     @Override
     public DownloadsResult loadInBackground() {
@@ -54,12 +57,18 @@ public class FetchDownloadsLoader extends
     }
 
     private static DownloadsResult collectFiles(File dir, DownloadsResult result) {
+        final long last_modified_threshold = System.currentTimeMillis() - MINIMUM_AGE;
         File downloadFiles[] = dir.listFiles();
         if (downloadFiles != null && downloadFiles.length > 0) {
             for (File currentFile : downloadFiles) {
                 if (currentFile.isDirectory()) {
                     collectFiles(currentFile, result);
                 } else {
+                    // Skip files that have been modified too recently.
+                    if (last_modified_threshold < currentFile.lastModified()) {
+                        continue;
+                    }
+
                     if (currentFile.lastModified() < result.youngestLastModified) {
                         result.youngestLastModified = currentFile.lastModified();
                     }
