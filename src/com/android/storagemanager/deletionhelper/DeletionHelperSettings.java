@@ -24,6 +24,8 @@ import android.support.v14.preference.PreferenceFragment;
 import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
 
@@ -170,7 +172,9 @@ public class DeletionHelperSettings extends PreferenceFragment implements
             // The 0 is a placeholder for an optional result code.
             dialog.setTargetFragment(this, 0);
             dialog.show(getFragmentManager(), ConfirmDeletionDialog.TAG);
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_HELPER_CLEAR);
         } else {
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_HELPER_CANCEL);
             getActivity().onBackPressed();
         }
     }
