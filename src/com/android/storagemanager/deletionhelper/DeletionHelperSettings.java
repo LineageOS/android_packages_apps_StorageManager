@@ -161,12 +161,11 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         }
         mDownloadsDeletion.clearFreeableData(getActivity());
         mAppBackend.clearFreeableData(getActivity());
-        getActivity().onBackPressed();
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == mFree.getId()) {
+        if (v.getId() == R.id.next_button) {
             ConfirmDeletionDialog dialog =
                     ConfirmDeletionDialog.newInstance(getTotalFreeableSpace());
             // The 0 is a placeholder for an optional result code.
@@ -175,7 +174,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
             MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_HELPER_CLEAR);
         } else {
             MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_HELPER_CANCEL);
-            getActivity().onBackPressed();
+            getActivity().finish();
         }
     }
 

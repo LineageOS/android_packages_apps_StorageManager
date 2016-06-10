@@ -16,6 +16,7 @@
 
 package com.android.storagemanager.deletionhelper;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -35,6 +36,8 @@ public class ConfirmDeletionDialog extends DialogFragment implements
     public static final String TAG = "ConfirmDeletionDialog";
     private static final String ARG_TOTAL_SPACE = "total_freeable";
 
+    private long mFreeableBytes;
+
     public static ConfirmDeletionDialog newInstance(long freeableBytes) {
         Bundle args = new Bundle(1);
         args.putLong(ARG_TOTAL_SPACE, freeableBytes);
@@ -48,12 +51,12 @@ public class ConfirmDeletionDialog extends DialogFragment implements
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Bundle args = getArguments();
-        long totalFreeableSpace = args.getLong(ARG_TOTAL_SPACE);
+        mFreeableBytes = args.getLong(ARG_TOTAL_SPACE);
 
         final Context context = getContext();
         return new AlertDialog.Builder(context)
                 .setMessage(context.getString(R.string.deletion_helper_clear_dialog_message,
-                        Formatter.formatFileSize(context, totalFreeableSpace)))
+                        Formatter.formatFileSize(context, mFreeableBytes)))
                 .setPositiveButton(R.string.deletion_helper_clear_dialog_remove, this)
                 .setNegativeButton(android.R.string.cancel, this)
                 .create();
@@ -66,8 +69,17 @@ public class ConfirmDeletionDialog extends DialogFragment implements
                 ((DeletionHelperSettings) getTargetFragment()).clearData();
                 MetricsLogger.action(getContext(),
                         MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CONFIRM);
+                if (StorageManagerUpsellDialog.shouldShow(getContext())) {
+                    StorageManagerUpsellDialog upsellDialog =
+                            StorageManagerUpsellDialog.newInstance(mFreeableBytes);
+                    upsellDialog.show(getFragmentManager(), StorageManagerUpsellDialog.TAG);
+                } else {
+                    Activity activity = getActivity();
+                    if (activity != null) {
+                        activity.finish();
+                    }
+                }
                 break;
-
             case DialogInterface.BUTTON_NEGATIVE:
                 MetricsLogger.action(getContext(),
                         MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CANCEL);
@@ -75,11 +87,5 @@ public class ConfirmDeletionDialog extends DialogFragment implements
             default:
                 break;
         }
-    }
-
-    @Override
-    public void onCancel(DialogInterface dialog) {
-        MetricsLogger.action(getContext(),
-                MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CANCEL);
     }
 }
