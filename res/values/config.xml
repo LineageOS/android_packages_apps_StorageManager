@@ -16,4 +16,7 @@
 
 <resources>
     <string name="config_featureFactory" translatable="false">com.android.storagemanager.overlay.FeatureFactoryImpl</string>
+
+    <!-- Whether the automatic storage management job should be scheduled. -->
+    <bool name="enable_automatic_storage_management">false</bool>
 </resources>
