@@ -24,4 +24,9 @@ public class FeatureFactoryImpl extends FeatureFactory {
     public DeletionHelperFeatureProvider getDeletionHelperFeatureProvider() {
         return null;
     }
+
+    @Override
+    public StorageManagementJobProvider getStorageManagementJobProvider() {
+        return null;
+    }
 }
