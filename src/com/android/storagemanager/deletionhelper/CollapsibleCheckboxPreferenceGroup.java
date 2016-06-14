@@ -25,6 +25,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Checkable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.storagemanager.R;
@@ -44,6 +45,7 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
 
     public CollapsibleCheckboxPreferenceGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setLayoutResource(R.layout.deletion_preference);
         setWidgetLayoutResource(R.layout.preference_widget_checkbox);
     }
 
@@ -58,13 +60,10 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
             checkbox.setOnClickListener(this);
         }
 
-        final TextView titleView = (TextView) holder.findViewById(android.R.id.title);
-        if (titleView != null) {
-            Context context = getContext();
-            TypedValue value = new TypedValue();
-            context.getTheme().resolveAttribute(android.R.attr.colorAccent, value, true);
-            titleView.setTextColor(context.getColor(value.resourceId));
-        }
+        // CollapsibleCheckboxPreferenceGroup considers expansion to be its "longer-term
+        // (activation) state."
+        final ImageView imageView = (ImageView) holder.findViewById(android.R.id.icon);
+        imageView.setActivated(!mCollapsed);
     }
 
     @Override
@@ -120,21 +119,8 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         }
 
         mCollapsed = isCollapsed;
-        if (isCollapsed) {
-            hideDropdownPreferences();
-        } else {
-            showDropdownPreferences();
-        }
-    }
-
-    private void showDropdownPreferences() {
-        setAllPreferencesVisibility(true);
-        setIcon(R.drawable.ic_keyboard_arrow_down_black_32);
-    }
-
-    private void hideDropdownPreferences() {
-        setAllPreferencesVisibility(false);
-        setIcon(R.drawable.ic_keyboard_arrow_up_black_32);
+        setAllPreferencesVisibility(!isCollapsed);
+        notifyChanged();
     }
 
     private void setAllPreferencesVisibility(boolean visible) {
