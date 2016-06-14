@@ -23,10 +23,10 @@
 
     <com.android.storagemanager.deletionhelper.DownloadsDeletionPreferenceGroup
         android:key="delete_downloads"
-        android:icon="@drawable/ic_keyboard_arrow_down_black_32"/>
+        android:icon="@drawable/ic_keyboard_arrow_24"/>
 
     <com.android.storagemanager.deletionhelper.AppDeletionPreferenceGroup
         android:key="apps_group"
-        android:icon="@drawable/ic_keyboard_arrow_down_black_32"/>
+        android:icon="@drawable/ic_keyboard_arrow_24"/>
 
 </PreferenceScreen>
