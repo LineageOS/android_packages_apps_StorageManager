@@ -26,6 +26,7 @@ import org.junit.runners.JUnit4;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
@@ -46,8 +47,8 @@ public class FetchDownloadsLoaderTest {
 
     @Test
     public void testFilesInDirectory() throws Exception {
-        temporaryFolder.newFile();
-        temporaryFolder.newFile();
+        makeClearableFile();
+        makeClearableFile();
 
         DownloadsResult result =
                 FetchDownloadsLoader.collectFiles(temporaryFolder.getRoot());
@@ -61,6 +62,7 @@ public class FetchDownloadsLoaderTest {
         File tempDir = temporaryFolder.newFolder();
 
         File testFile = File.createTempFile("test", null, tempDir);
+        testFile.setLastModified(0);
         testFile.deleteOnExit();
         DownloadsResult result =
                 FetchDownloadsLoader.collectFiles(temporaryFolder.getRoot());
@@ -75,11 +77,15 @@ public class FetchDownloadsLoaderTest {
         FileWriter fileWriter = new FileWriter(first);
         fileWriter.write("test");
         fileWriter.close();
+        // Writing to the file changes the last modified, so we need to reset it to have it be
+        // counted.
+        first.setLastModified(0);
 
         File second = temporaryFolder.newFile();
         fileWriter = new FileWriter(second);
         fileWriter.write("test2");
         fileWriter.close();
+        second.setLastModified(0);
 
         DownloadsResult result =
                 FetchDownloadsLoader.collectFiles(temporaryFolder.getRoot());
@@ -87,4 +93,24 @@ public class FetchDownloadsLoaderTest {
         assertEquals(9, result.totalSize);
         assertEquals(2, result.files.size());
     }
+
+    @Test
+    public void testNewFilesDontCount() throws Exception {
+        // Create an ignored file because its last modified is too new.
+        temporaryFolder.newFile();
+        makeClearableFile();
+
+        DownloadsResult result =
+                FetchDownloadsLoader.collectFiles(temporaryFolder.getRoot());
+        assertNotNull(result);
+        assertEquals(0, result.totalSize);
+        assertEquals(1, result.files.size());
+    }
+
+    private File makeClearableFile() throws IOException {
+        File clearableFile = temporaryFolder.newFile();
+        clearableFile.setLastModified(0);
+        return clearableFile;
+    }
+
 }
