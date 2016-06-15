@@ -19,9 +19,12 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.support.v7.preference.Preference;
 import android.util.AttributeSet;
 import android.text.format.Formatter;
 
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.R;
 
 /**
@@ -49,5 +52,12 @@ public class PhotosDeletionPreference extends DeletionPreference {
     public void onFreeableChanged(int items, long bytes) {
         super.onFreeableChanged(items, bytes);
         updatePreferenceText(items, bytes);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        boolean checked = (boolean) newValue;
+        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_PHOTOS, checked);
+        return super.onPreferenceChange(preference, newValue);
     }
 }

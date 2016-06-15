@@ -21,6 +21,9 @@ import android.support.v7.preference.Preference;
 import android.text.format.DateUtils;
 import android.text.format.Formatter;
 import android.util.AttributeSet;
+import android.view.View;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.PreferenceListCache;
 import com.android.storagemanager.R;
 
@@ -90,6 +93,8 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
                 p.setOnPreferenceChangeListener(this);
             }
             maybeUpdateListener(mDeletionType.getFiles().size(), mDeletionType.getFreeableBytes());
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_DOWNLOADS,
+                    checked);
             return true;
         }
 
@@ -100,6 +105,12 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
         return true;
     }
 
+    @Override
+    public void onClick() {
+        super.onClick();
+        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_DOWNLOADS_COLLAPSED,
+                isCollapsed());
+    }
 
     private void updatePreferenceText(int itemCount, long bytes, long mostRecent) {
         Context context = getContext();
