@@ -23,6 +23,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.format.Formatter;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.R;
 
 /**
@@ -53,12 +55,31 @@ public class ConfirmDeletionDialog extends DialogFragment implements
                 .setMessage(context.getString(R.string.deletion_helper_clear_dialog_message,
                         Formatter.formatFileSize(context, totalFreeableSpace)))
                 .setPositiveButton(R.string.deletion_helper_clear_dialog_remove, this)
-                .setNegativeButton(android.R.string.cancel, null)
+                .setNegativeButton(android.R.string.cancel, this)
                 .create();
     }
 
     @Override
     public void onClick(DialogInterface dialog, int which) {
-        ((DeletionHelperSettings) getTargetFragment()).clearData();
+        switch (which) {
+            case DialogInterface.BUTTON_POSITIVE:
+                ((DeletionHelperSettings) getTargetFragment()).clearData();
+                MetricsLogger.action(getContext(),
+                        MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CONFIRM);
+                break;
+
+            case DialogInterface.BUTTON_NEGATIVE:
+                MetricsLogger.action(getContext(),
+                        MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CANCEL);
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialog) {
+        MetricsLogger.action(getContext(),
+                MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CANCEL);
     }
 }

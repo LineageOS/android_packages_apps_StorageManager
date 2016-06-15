@@ -20,6 +20,9 @@ import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.text.format.Formatter;
 import android.util.AttributeSet;
+import android.view.View;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
 import com.android.storagemanager.PreferenceListCache;
 import com.android.storagemanager.R;
@@ -78,14 +81,24 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
                 p.setOnPreferenceChangeListener(this);
             }
             updateText();
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_ALL_APPS,
+                    isChecked);
             return true;
         }
 
         // If a single preference changed, we need to toggle just itself.
         AppDeletionPreference p = (AppDeletionPreference) preference;
         mBackend.setChecked(p.getPackageName(), isChecked);
+        logAppToggle(isChecked, p.getPackageName());
         updateText();
         return true;
+    }
+
+    @Override
+    public void onClick() {
+        super.onClick();
+        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_APPS_COLLAPSED,
+                isCollapsed());
     }
 
     /**
@@ -105,5 +118,15 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
                 Formatter.formatFileSize(app,
                         mBackend.getTotalAppsFreeableSpace(true)),
                 AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD));
+    }
+
+    private void logAppToggle(boolean checked, String packageName) {
+        if (checked) {
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_APP_ON,
+                    packageName);
+        } else {
+            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_APP_OFF,
+                    packageName);
+        }
     }
 }

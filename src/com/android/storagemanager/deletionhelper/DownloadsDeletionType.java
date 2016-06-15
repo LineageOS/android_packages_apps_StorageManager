@@ -24,6 +24,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.ArrayMap;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
 
 import java.io.File;
@@ -73,10 +75,15 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
             AsyncTask.execute(new Runnable() {
                 @Override
                 public void run() {
+                    boolean succeeded = true;
                     for (Map.Entry<File, Boolean> entry : mFiles.entrySet()) {
                         if (entry.getValue()) {
-                            entry.getKey().delete();
+                            succeeded = succeeded && entry.getKey().delete();
                         }
+                    }
+                    if (!succeeded) {
+                        MetricsLogger.action(activity,
+                                MetricsEvent.ACTION_DELETION_HELPER_DOWNLOADS_DELETION_FAIL);
                     }
                 }
             });
