@@ -21,6 +21,8 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.ArraySet;
 import android.util.Log;
+import com.android.internal.logging.MetricsLogger;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
 
 import java.util.ArrayList;
@@ -97,6 +99,8 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
                     @Override
                     public void onError() {
                         Log.e(TAG, "An error occurred while uninstalling packages.");
+                        MetricsLogger.action(activity,
+                                MetricsEvent.ACTION_DELETION_HELPER_APPS_DELETION_FAIL);
                     }
                 });
 
