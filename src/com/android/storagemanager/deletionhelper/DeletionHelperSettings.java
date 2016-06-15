@@ -92,7 +92,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
                     0);
         }
 
-        if (mProvider == null) {
+        if (mProvider == null || mPhotoVideoDeletion == null) {
             getPreferenceScreen().removePreference(mPhotoPreference);
             mPhotoPreference = null;
         } else {
