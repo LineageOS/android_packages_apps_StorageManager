@@ -14,35 +14,34 @@
      limitations under the License.
 -->
 
+<!-- Layout for a preference_app which is nested inside of a collapsible preference group. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd">
+    android:paddingStart="72dp"
+    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd" >
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@android:id/icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="32dp"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:minHeight="72dp"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:gravity="top"
-        android:columnCount="3"
-        android:duplicateParentState="true">
-
-        <ImageView
-            android:id="@android:id/icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:scaleType="fitXY"
-            android:layout_marginEnd="16dip"
-            android:contentDescription="@null"
-            android:duplicateParentState="true" />
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <TextView
             android:id="@android:id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@android:id/icon"
             android:singleLine="true"
@@ -52,37 +51,19 @@
             android:textAlignment="viewStart"
             android:duplicateParentState="true" />
 
-        <TextView
-            android:id="@android:id/summary"
-            android:layout_width="wrap_content"
+        <TextView android:id="@android:id/summary"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@android:id/title"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="6dip"
-            android:gravity="end"
-            android:singleLine="true"
-            android:ellipsize="marquee"
-            android:textAppearance="@android:style/TextAppearance.Material.Subhead"
+            android:textAppearance="@android:style/TextAppearance.Material.Body1"
             android:textColor="?android:attr/textColorSecondary"
-            android:duplicateParentState="true" />
+            android:maxLines="4" />
+    </LinearLayout>
 
-        <CheckBox
-            android:id="@android:id/checkbox"
+    <LinearLayout android:id="@android:id/widget_frame"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:background="@null"
-            android:visibility="gone"/>
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical" />
 
-        <FrameLayout
-            android:id="@android:id/widget_frame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@android:id/icon"
-            android:layout_below="@android:id/title"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="fill_horizontal|top"
-            android:duplicateParentState="true" />
-
-    </RelativeLayout>
 </LinearLayout>
+
