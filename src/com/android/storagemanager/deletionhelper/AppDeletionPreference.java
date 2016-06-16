@@ -42,7 +42,7 @@ public class AppDeletionPreference extends CheckBoxPreference {
         mEntry = item;
         mContext = context;
         setLayoutResource(R.layout.preference_app);
-        setWidgetLayoutResource(R.layout.widget_text_views);
+        setWidgetLayoutResource(R.layout.preference_widget_checkbox);
         setIcon(item.icon);
         setTitle(item.label);
     }
@@ -54,8 +54,7 @@ public class AppDeletionPreference extends CheckBoxPreference {
                 (CheckBox) holder.findViewById(com.android.internal.R.id.checkbox);
         checkboxWidget.setVisibility(View.VISIBLE);
 
-        TextView summary = (TextView) holder.findViewById(R.id.widget_text1);
-        updateSummaryText(summary);
+        holder.setDividerAllowedAbove(false);
     }
 
     /**
@@ -65,7 +64,7 @@ public class AppDeletionPreference extends CheckBoxPreference {
         return mEntry.label;
     }
 
-    private void updateSummaryText(TextView summary) {
+    public void updateSummary() {
         if (mEntry.extraInfo == null) return;
         if (mEntry.size == ApplicationsState.SIZE_UNKNOWN ||
                 mEntry.size == ApplicationsState.SIZE_INVALID) {
@@ -75,13 +74,13 @@ public class AppDeletionPreference extends CheckBoxPreference {
         UsageStatsState extraData = (UsageStatsState) mEntry.extraInfo;
         String fileSize = Formatter.formatFileSize(mContext, mEntry.size);
         if (extraData.daysSinceLastUse == AppStateUsageStatsBridge.NEVER_USED) {
-            summary.setText(mContext.getString(R.string.deletion_helper_app_summary_never_used,
+            setSummary(mContext.getString(R.string.deletion_helper_app_summary_never_used,
                     fileSize));
         } else if (extraData.daysSinceLastUse == AppStateUsageStatsBridge.UNKNOWN_LAST_USE) {
-            summary.setText(mContext.getString(R.string.deletion_helper_app_summary_unknown_used,
+            setSummary(mContext.getString(R.string.deletion_helper_app_summary_unknown_used,
                     fileSize));
         } else {
-            summary.setText(mContext.getString(R.string.deletion_helper_app_summary,
+            setSummary(mContext.getString(R.string.deletion_helper_app_summary,
                     fileSize,
                     extraData.daysSinceLastUse));
         }
