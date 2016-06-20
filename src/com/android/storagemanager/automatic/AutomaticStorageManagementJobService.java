@@ -19,7 +19,6 @@ package com.android.storagemanager.automatic;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
@@ -42,21 +41,22 @@ public class AutomaticStorageManagementJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters args) {
-        boolean isEnabled =
-                Settings.Secure.getInt(getContentResolver(),
-                        Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 0) != 0;
-        if (!isEnabled) {
-            return false;
-        }
-
         StorageManager manager = getSystemService(StorageManager.class);
         VolumeInfo internalVolume = manager.findVolumeById(VolumeInfo.ID_PRIVATE_INTERNAL);
-
         final File dataPath = internalVolume.getPath();
         if (!volumeNeedsManagement(dataPath)) {
             Log.i(TAG, "Skipping automatic storage management.");
             return false;
         }
+
+        boolean isEnabled =
+                Settings.Secure.getInt(getContentResolver(),
+                        Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 0) != 0;
+        if (!isEnabled) {
+            NotificationController.maybeShowNotification(getApplicationContext());
+            return false;
+        }
+
         mProvider = FeatureFactory.getFactory(this).getStorageManagementJobProvider();
         if (mProvider != null) {
             return mProvider.onStartJob(this, args, getDaysToRetain());

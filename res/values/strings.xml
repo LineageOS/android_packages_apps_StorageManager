@@ -78,4 +78,13 @@
 
     <!-- Automatic storage management service label. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_service_label">Automatic Storage Management Service</string>
+
+    <!-- Notification title for the low storage notification. [CHAR LIMIT=40]-->
+    <string name="automatic_storage_manager_notification_title">Your phone is low on space</string>
+    <!-- Notification body for the low storage notification. [CHAR LIMIT=NONE] -->
+    <string name="automatic_storage_manager_notification_summary">Let Storage Manager free up space by automatically removing backed up photos and videos.</string>
+    <!-- Action to dismiss the low storage notification. [CHAR LIMIT=40]-->
+    <string name="automatic_storage_manager_cancel_button">No thanks</string>
+    <!-- Action to turn on ASM in the low storage notification. [CHAR LIMIT=40]-->
+    <string name="automatic_storage_manager_activate_button">Turn on</string>
 </resources>
