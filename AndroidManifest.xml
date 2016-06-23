@@ -57,6 +57,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".automatic.NotificationController"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.storagemanager.automatic.DISMISS" />
+                <action android:name="com.android.storagemanager.automatic.ACTIVATE" />
+                <action android:name="com.android.storagemanager.automatic.NO_THANKS" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
