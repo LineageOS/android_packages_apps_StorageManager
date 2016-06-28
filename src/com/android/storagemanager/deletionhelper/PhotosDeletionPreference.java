@@ -20,9 +20,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 import android.text.format.Formatter;
 
+import android.view.View;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.R;
@@ -32,6 +34,7 @@ import com.android.storagemanager.R;
  */
 public class PhotosDeletionPreference extends DeletionPreference {
     public static final int DAYS_TO_KEEP = 30;
+    private View mSummary;
 
     public PhotosDeletionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -50,8 +53,15 @@ public class PhotosDeletionPreference extends DeletionPreference {
 
     @Override
     public void onFreeableChanged(int items, long bytes) {
-        super.onFreeableChanged(items, bytes);
-        updatePreferenceText(items, bytes);
+        // Because these operations may cause UI churn, we need to ensure they run on the main
+        // thread.
+        mSummary.post(new Runnable() {
+            @Override
+            public void run() {
+                PhotosDeletionPreference.super.onFreeableChanged(items, bytes);
+                updatePreferenceText(items, bytes);
+            }
+        });
     }
 
     @Override
@@ -59,5 +69,11 @@ public class PhotosDeletionPreference extends DeletionPreference {
         boolean checked = (boolean) newValue;
         MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_PHOTOS, checked);
         return super.onPreferenceChange(preference, newValue);
+    }
+
+    @Override
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        mSummary = holder.findViewById(com.android.internal.R.id.summary);
     }
 }
