@@ -22,11 +22,9 @@ import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Checkable;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.storagemanager.R;
 
@@ -55,9 +53,12 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         View checkbox = holder.findViewById(com.android.internal.R.id.checkbox);
         if (checkbox != null && checkbox instanceof Checkable) {
             ((Checkable) checkbox).setChecked(mChecked);
-            checkbox.setClickable(true);
-            checkbox.setFocusable(true);
-            checkbox.setOnClickListener(this);
+
+            // Expand the touch target by making the parent the touch target.
+            View parent = (View) checkbox.getParent();
+            parent.setClickable(true);
+            parent.setFocusable(true);
+            parent.setOnClickListener(this);
         }
 
         // CollapsibleCheckboxPreferenceGroup considers expansion to be its "longer-term
