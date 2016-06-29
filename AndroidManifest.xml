@@ -38,7 +38,7 @@
                   android:label="@string/deletion_helper_title"
                   android:launchMode="singleTask">
             <intent-filter>
-                <action android:name="android.settings.DELETION_HELPER_SETTINGS" />
+                <action android:name="android.os.storage.action.MANAGE_STORAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
