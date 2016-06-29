@@ -93,4 +93,7 @@
 
     <string name="deletion_helper_photos_loading_title">Photos &amp; videos</string>
     <string name="deletion_helper_photos_loading_summary">Finding items…</string>
+
+    <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
+    <string name="help_uri_deletion_helper" translatable="false"></string>
 </resources>
