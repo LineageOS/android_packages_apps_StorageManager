@@ -42,7 +42,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     private PackageManager mPm;
     public static final long NEVER_USED = -1;
     public static final long UNKNOWN_LAST_USE = -2;
-    public static final long UNUSED_DAYS_DELETION_THRESHOLD = 60;
+    public static final long UNUSED_DAYS_DELETION_THRESHOLD = 90;
 
     public AppStateUsageStatsBridge(Context context, ApplicationsState appState,
             Callback callback) {
