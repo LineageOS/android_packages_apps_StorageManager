@@ -58,7 +58,7 @@ public class DownloadsFilePreference extends CheckBoxPreference {
 
         if (other instanceof DownloadsFilePreference) {
             DownloadsFilePreference preference = (DownloadsFilePreference) other;
-            return Long.compare(getFile().length(), preference.getFile().length());
+            return Long.compare(preference.getFile().length(), getFile().length());
         } else {
             // If a non-DownloadsFilePreference appears, consider ourselves to be greater.
             // This means if a non-DownloadsFilePreference sneaks into a DownloadsPreferenceGroup
