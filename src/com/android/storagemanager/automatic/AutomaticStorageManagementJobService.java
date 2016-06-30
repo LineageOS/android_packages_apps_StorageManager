@@ -46,6 +46,9 @@ public class AutomaticStorageManagementJobService extends JobService {
         final File dataPath = internalVolume.getPath();
         if (!volumeNeedsManagement(dataPath)) {
             Log.i(TAG, "Skipping automatic storage management.");
+            Settings.Secure.putLong(getContentResolver(),
+                    Settings.Secure.AUTOMATIC_STORAGE_MANAGER_LAST_RUN,
+                    System.currentTimeMillis());
             return false;
         }
 
