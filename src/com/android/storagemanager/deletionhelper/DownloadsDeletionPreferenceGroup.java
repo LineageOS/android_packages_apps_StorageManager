@@ -83,6 +83,11 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
             setOnPreferenceChangeListener(this);
         }
 
+        // If we have no deletion type, we have no files to toggle.
+        if (mDeletionType == null) {
+            return true;
+        }
+
         // If the group checkbox changed, we need to toggle every child preference.
         if (preference == this) {
             for (int i = 0; i < getPreferenceCount(); i++) {

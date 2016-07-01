@@ -73,6 +73,12 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean isChecked = (boolean) newValue;
+
+        // If we have no AppDeletionType, we have no apps to toggle.
+        if (mBackend == null) {
+            return true;
+        }
+
         if (preference == this) {
             for (int i = 0; i < getPreferenceCount(); i++) {
                 AppDeletionPreference p = (AppDeletionPreference) getPreference(i);
