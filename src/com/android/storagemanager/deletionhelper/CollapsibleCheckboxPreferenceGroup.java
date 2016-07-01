@@ -17,6 +17,8 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceViewHolder;
@@ -114,6 +116,30 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         }
     }
 
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        final Parcelable superState = super.onSaveInstanceState();
+
+        final SavedState myState = new SavedState(superState);
+        myState.checked = isChecked();
+        myState.collapsed = isCollapsed();
+        return myState;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        // Only restore the state if it is valid and our saved state.
+        if (state == null || !SavedState.class.equals(state.getClass())) {
+            super.onRestoreInstanceState(state);
+            return;
+        }
+
+        SavedState myState = (SavedState) state;
+        super.onRestoreInstanceState(myState.getSuperState());
+        setChecked(myState.checked);
+        setCollapse(myState.collapsed);
+    }
+
     private void setCollapse(boolean isCollapsed) {
         if (mCollapsed == isCollapsed) {
             return;
@@ -129,5 +155,38 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
             Preference p = getPreference(i);
             p.setVisible(visible);
         }
+    }
+
+    private static class SavedState extends BaseSavedState {
+        boolean checked;
+        boolean collapsed;
+
+        public SavedState(Parcel source) {
+            super(source);
+            checked = source.readInt() != 0;
+            collapsed = source.readInt() != 0;
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeInt(checked ? 1 : 0);
+            dest.writeInt(collapsed ? 1 : 0);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR =
+                new Parcelable.Creator<SavedState>() {
+                    public SavedState createFromParcel(Parcel in) {
+                        return new SavedState(in);
+                    }
+
+                    public SavedState[] newArray(int size) {
+                        return new SavedState[size];
+                    }
+                };
     }
 }
