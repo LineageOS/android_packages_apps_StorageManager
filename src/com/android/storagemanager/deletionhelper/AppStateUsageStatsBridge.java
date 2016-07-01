@@ -22,6 +22,7 @@ import android.content.pm.ApplicationInfo;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.SystemProperties;
 import android.util.Log;
 import com.android.storagemanager.deletionhelper.AppStateBaseBridge;
 import com.android.storagemanager.deletionhelper.AppStateBaseBridge.Callback;
@@ -38,6 +39,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     private static final String TAG = "AppStateUsageStatsBridge";
+
+    private static final String DEBUG_APP_UNUSED_OVERRIDE = "debug.asm.app_unused_limit";
+
     private UsageStatsManager mUsageStatsManager;
     private PackageManager mPm;
     public static final long NEVER_USED = -1;
@@ -107,9 +111,12 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
      * usage is unknown, it is skipped.
      */
     public static final AppFilter FILTER_USAGE_STATS = new AppFilter() {
+        private long mUnusedDaysThreshold;
 
         @Override
         public void init() {
+            mUnusedDaysThreshold = SystemProperties.getLong(DEBUG_APP_UNUSED_OVERRIDE,
+                    UNUSED_DAYS_DELETION_THRESHOLD);
         }
 
         @Override
@@ -126,7 +133,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
 
             UsageStatsState state = (UsageStatsState) extraInfo;
             long mostRecentUse = Math.max(state.daysSinceFirstInstall, state.daysSinceLastUse);
-            return mostRecentUse >= UNUSED_DAYS_DELETION_THRESHOLD || mostRecentUse == NEVER_USED;
+            return mostRecentUse >= mUnusedDaysThreshold || mostRecentUse == NEVER_USED;
         }
 
         private boolean isBundled(AppEntry info) {
