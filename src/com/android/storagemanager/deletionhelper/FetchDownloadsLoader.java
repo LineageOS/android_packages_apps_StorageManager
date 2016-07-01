@@ -17,6 +17,7 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
+import android.os.SystemProperties;
 import android.support.annotation.VisibleForTesting;
 import android.text.format.DateUtils;
 import com.android.storagemanager.utils.AsyncLoader;
@@ -29,7 +30,8 @@ import java.util.ArrayList;
  * directory which have not been modified in longer than 90 days.
  */
 public class FetchDownloadsLoader extends AsyncLoader<FetchDownloadsLoader.DownloadsResult> {
-    private static final long MINIMUM_AGE = 30 * DateUtils.DAY_IN_MILLIS;
+    private static final String DEBUG_FILE_AGE_OVERRIDE = "debug.asm.file_age_limit";
+    private static final int MINIMUM_AGE_DAYS = 30;
     private File mDirectory;
 
     /**
@@ -57,7 +59,9 @@ public class FetchDownloadsLoader extends AsyncLoader<FetchDownloadsLoader.Downl
     }
 
     private static DownloadsResult collectFiles(File dir, DownloadsResult result) {
-        final long last_modified_threshold = System.currentTimeMillis() - MINIMUM_AGE;
+        int minimumAgeDays = SystemProperties.getInt(DEBUG_FILE_AGE_OVERRIDE, MINIMUM_AGE_DAYS);
+        final long last_modified_threshold = System.currentTimeMillis() -
+                minimumAgeDays * DateUtils.DAY_IN_MILLIS;
         File downloadFiles[] = dir.listFiles();
         if (downloadFiles != null && downloadFiles.length > 0) {
             for (File currentFile : downloadFiles) {
