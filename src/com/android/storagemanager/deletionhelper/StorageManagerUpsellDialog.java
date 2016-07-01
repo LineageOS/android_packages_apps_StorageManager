@@ -64,9 +64,9 @@ public class StorageManagerUpsellDialog extends DialogFragment
 
         final Context context = getContext();
         return new AlertDialog.Builder(context)
-                .setTitle(context.getString(R.string.deletion_helper_upsell_title,
+                .setTitle(context.getString(R.string.deletion_helper_upsell_title))
+                .setMessage(context.getString(R.string.deletion_helper_upsell_summary,
                         Formatter.formatFileSize(context, freedBytes)))
-                .setMessage(context.getString(R.string.deletion_helper_upsell_summary))
                 .setPositiveButton(R.string.deletion_helper_upsell_activate, this)
                 .setNegativeButton(R.string.deletion_helper_upsell_cancel, this)
                 .create();

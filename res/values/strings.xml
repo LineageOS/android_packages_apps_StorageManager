@@ -21,7 +21,7 @@
     <!-- Storage setting. Menu option for using the deletion helper. [CHAR LIMIT=30] -->
     <string name="storage_menu_free">Free up space</string>
     <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
-    <string name="deletion_helper_title">Free up space</string>
+    <string name="deletion_helper_title">Choose items to remove</string>
     <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • <xliff:g id="days" example="67">%2$d</xliff:g> days ago</string>
     <!-- Summary of how much storage an app is using when it has never been used before. [CHAR LIMIT=NONE]-->
@@ -53,9 +53,9 @@
     <string name="deletion_helper_clear_dialog_remove">Remove</string>
 
     <!-- Title for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
-    <string name="deletion_helper_upsell_title"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> now free. Manage storage automatically?</string>
+    <string name="deletion_helper_upsell_title">Manage storage automatically?</string>
     <!-- Summary for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
-    <string name="deletion_helper_upsell_summary">Let Storage manager automatically free up space by removing backed up content from your device?</string>
+    <string name="deletion_helper_upsell_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> now free. Let Storage manager automatically free up space by removing backed up content from your device?</string>
     <!-- Button to delay turning on the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
     <string name="deletion_helper_upsell_cancel">No thanks</string>
     <!-- Button to activate the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
@@ -82,7 +82,7 @@
     <!-- Notification title for the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_notification_title">Your phone is low on space</string>
     <!-- Notification body for the low storage notification. [CHAR LIMIT=NONE] -->
-    <string name="automatic_storage_manager_notification_summary">Let Storage Manager free up space by automatically removing backed up photos and videos.</string>
+    <string name="automatic_storage_manager_notification_summary">Let Storage Manager free up space by automatically removing old photos and videos when your phone starts to get full again.</string>
     <!-- Action to dismiss the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_cancel_button">No thanks</string>
     <!-- Action to turn on ASM in the low storage notification. [CHAR LIMIT=40]-->
