@@ -69,6 +69,11 @@ public abstract class FeatureFactory {
      */
     public abstract StorageManagementJobProvider getStorageManagementJobProvider();
 
+    /**
+     * Returns a provider which provides a periodic downloads backup job.
+     */
+    public abstract DownloadsBackupJobProvider getDownloadsBackupJobProvider();
+
     public static class FactoryNotFoundException extends RuntimeException {
         public FactoryNotFoundException(Throwable throwable) {
             super("Unable to create factory. Did you misconfigure Proguard?", throwable);
