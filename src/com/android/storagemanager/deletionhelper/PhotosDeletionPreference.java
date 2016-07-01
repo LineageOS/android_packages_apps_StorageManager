@@ -19,6 +19,7 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
@@ -34,7 +35,6 @@ import com.android.storagemanager.R;
  */
 public class PhotosDeletionPreference extends DeletionPreference {
     public static final int DAYS_TO_KEEP = 30;
-    private View mSummary;
 
     public PhotosDeletionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -55,7 +55,7 @@ public class PhotosDeletionPreference extends DeletionPreference {
     public void onFreeableChanged(int items, long bytes) {
         // Because these operations may cause UI churn, we need to ensure they run on the main
         // thread.
-        mSummary.post(new Runnable() {
+        new Handler(getContext().getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
                 PhotosDeletionPreference.super.onFreeableChanged(items, bytes);
@@ -74,6 +74,5 @@ public class PhotosDeletionPreference extends DeletionPreference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        mSummary = holder.findViewById(com.android.internal.R.id.summary);
     }
 }
