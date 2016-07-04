@@ -27,7 +27,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settingslib.HelpUtils;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
