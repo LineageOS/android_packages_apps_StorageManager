@@ -22,6 +22,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemProperties;
 import android.text.format.DateUtils;
 
 /**
@@ -32,6 +33,7 @@ import android.text.format.DateUtils;
 public class AutomaticStorageBroadcastReceiver extends BroadcastReceiver {
     private static final int AUTOMATIC_STORAGE_JOB_ID = 0;
     private static final long PERIOD = DateUtils.DAY_IN_MILLIS;
+    private static final String DEBUG_PERIOD_FLAG = "debug.asm.period";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -39,10 +41,11 @@ public class AutomaticStorageBroadcastReceiver extends BroadcastReceiver {
                 (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         ComponentName component = new ComponentName(context,
                 AutomaticStorageManagementJobService.class);
+        long periodicOverride = SystemProperties.getLong(DEBUG_PERIOD_FLAG, PERIOD);
         JobInfo job = new JobInfo.Builder(AUTOMATIC_STORAGE_JOB_ID, component)
                 .setRequiresCharging(true)
                 .setRequiresDeviceIdle(true)
-                .setPeriodic(PERIOD)
+                .setPeriodic(periodicOverride)
                 .build();
         jobScheduler.schedule(job);
     }
