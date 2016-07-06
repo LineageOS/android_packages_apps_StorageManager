@@ -96,4 +96,7 @@
 
     <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
     <string name="help_uri_deletion_helper" translatable="false"></string>
+
+    <!-- Downloads backup service label. [CHAR LIMIT=40]-->
+    <string name="downloads_backup_service_label">Downloads Backup Service</string>
 </resources>
