@@ -33,7 +33,7 @@ import com.android.settingslib.applications.ApplicationsState.AppEntry;
  * Preference item for an app with a switch to signify if it should be uninstalled.
  * This shows the name and icon of the app along with the days since its last use.
  */
-public class AppDeletionPreference extends CheckBoxPreference {
+public class AppDeletionPreference extends NestedCheckboxPreference {
     private AppEntry mEntry;
     private Context mContext;
 
@@ -41,8 +41,6 @@ public class AppDeletionPreference extends CheckBoxPreference {
         super(context);
         mEntry = item;
         mContext = context;
-        setLayoutResource(R.layout.preference_app);
-        setWidgetLayoutResource(R.layout.preference_widget_checkbox);
         setIcon(item.icon);
         setTitle(item.label);
     }
@@ -50,10 +48,6 @@ public class AppDeletionPreference extends CheckBoxPreference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        CheckBox checkboxWidget =
-                (CheckBox) holder.findViewById(com.android.internal.R.id.checkbox);
-        checkboxWidget.setVisibility(View.VISIBLE);
-
         holder.setDividerAllowedAbove(false);
     }
 

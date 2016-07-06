@@ -122,12 +122,8 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
         setTitle(context.getString(R.string.deletion_helper_downloads_title, itemCount));
         // If there are no files to clear, show the empty text instead.
         if (itemCount != 0) {
-            setSummary(context.getString(R.string.deletion_helper_downloads_summary,
-                    Formatter.formatFileSize(context, bytes),
-                    DateUtils.getRelativeTimeSpanString(mostRecent,
-                            System.currentTimeMillis(),
-                            DateUtils.DAY_IN_MILLIS,
-                            DateUtils.FORMAT_ABBREV_RELATIVE)));
+            setSummary(context.getString(R.string.deletion_helper_downloads_category_summary,
+                    Formatter.formatFileSize(context, bytes)));
         } else {
             setSummary(context.getString(R.string.deletion_helper_downloads_summary_empty,
                     Formatter.formatFileSize(context, bytes)));
