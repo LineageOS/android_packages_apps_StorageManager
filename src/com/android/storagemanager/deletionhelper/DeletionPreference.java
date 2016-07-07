@@ -31,7 +31,6 @@ import com.android.storagemanager.R;
 public abstract class DeletionPreference extends CheckBoxPreference implements
         DeletionType.FreeableChangedListener, OnPreferenceChangeListener {
     private DeletionType.FreeableChangedListener mListener;
-    private boolean mChecked;
     private long mFreeableBytes;
     private int mFreeableItems;
     private DeletionType mDeletionService;
@@ -47,7 +46,7 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
      * @return The number of bytes.
      */
     public long getFreeableBytes() {
-        return mChecked ? mFreeableBytes : 0;
+        return isChecked() ? mFreeableBytes : 0;
     }
 
     /**
@@ -86,7 +85,7 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        mChecked = (boolean) newValue;
+        setChecked((boolean) newValue);
         maybeUpdateListener();
         return true;
     }
