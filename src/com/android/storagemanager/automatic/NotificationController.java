@@ -53,6 +53,13 @@ public class NotificationController extends BroadcastReceiver {
     public static final String INTENT_ACTION_NO_THANKS =
             "com.android.storagemanager.automatic.NO_THANKS";
 
+
+    /**
+     * Intent action for if the user explicitly hits "No thanks" on the notification.
+     */
+    private static final String INTENT_ACTION_DEBUG_NOTIFICATION =
+            "com.android.storagemanager.automatic.DEBUG_SHOW_NOTIFICATION";
+
     /**
      * Intent extra for the notification id.
      */
@@ -81,6 +88,9 @@ public class NotificationController extends BroadcastReceiver {
             case INTENT_ACTION_DISMISS:
                 delayNextNotification(context, DISMISS_DELAY);
                 break;
+            case INTENT_ACTION_DEBUG_NOTIFICATION:
+                showNotification(context);
+                return;
         }
         cancelNotification(context, intent);
     }
