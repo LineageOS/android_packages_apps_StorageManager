@@ -40,6 +40,7 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
         super(context, attrs);
         setLayoutResource(R.layout.deletion_preference);
         setOnPreferenceChangeListener(this);
+        setPersistent(false);
     }
 
     /**
