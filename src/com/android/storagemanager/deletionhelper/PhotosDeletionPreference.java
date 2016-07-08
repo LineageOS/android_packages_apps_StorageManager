@@ -35,10 +35,13 @@ import com.android.storagemanager.R;
  */
 public class PhotosDeletionPreference extends DeletionPreference {
     public static final int DAYS_TO_KEEP = 30;
+    private boolean mLoaded;
 
     public PhotosDeletionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         updatePreferenceText(0, 0);
+        setTitle(R.string.deletion_helper_photos_loading_title);
+        setSummary(R.string.deletion_helper_photos_loading_summary);
     }
 
     /**
@@ -53,6 +56,7 @@ public class PhotosDeletionPreference extends DeletionPreference {
 
     @Override
     public void onFreeableChanged(int items, long bytes) {
+        mLoaded = true;
         // Because these operations may cause UI churn, we need to ensure they run on the main
         // thread.
         new Handler(getContext().getMainLooper()).post(new Runnable() {
@@ -74,5 +78,12 @@ public class PhotosDeletionPreference extends DeletionPreference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
+        holder.findViewById(R.id.progress_bar).setVisibility(mLoaded ? View.GONE : View.VISIBLE);
+
+        holder.findViewById(com.android.internal.R.id.icon)
+                .setVisibility(mLoaded ? View.VISIBLE : View.GONE);
+
+        holder.findViewById(com.android.internal.R.id.checkbox)
+                .setVisibility(mLoaded ? View.VISIBLE : View.GONE);
     }
 }
