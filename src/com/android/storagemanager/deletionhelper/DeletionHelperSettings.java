@@ -35,6 +35,8 @@ import com.android.storagemanager.R;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.DeletionHelperFeatureProvider;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -105,9 +107,15 @@ public class DeletionHelperSettings extends PreferenceFragment implements
             mPhotoPreference.registerFreeableChangedListener(this);
             mPhotoPreference.registerDeletionService(mPhotoVideoDeletion);
         }
+
+        String[] uncheckedFiles = null;
+        if (savedInstanceState != null) {
+            uncheckedFiles = savedInstanceState.getStringArray(
+                            DownloadsDeletionType.EXTRA_UNCHECKED_DOWNLOADS);
+        }
         mDownloadsPreference =
                 (DownloadsDeletionPreferenceGroup) findPreference(KEY_DOWNLOADS_PREFERENCE);
-        mDownloadsDeletion = new DownloadsDeletionType(getActivity());
+        mDownloadsDeletion = new DownloadsDeletionType(getActivity(), uncheckedFiles);
         mDownloadsPreference.registerFreeableChangedListener(this);
         mDownloadsPreference.registerDeletionService(mDownloadsDeletion);
         updateFreeButtonText();
@@ -145,6 +153,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mAppBackend.onSaveInstanceStateBundle(outState);
+        mDownloadsDeletion.onSaveInstanceStateBundle(outState);
     }
 
     @Override

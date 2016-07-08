@@ -45,6 +45,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
 
     public DownloadsDeletionPreferenceGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setChecked(true);
         setOrderingAsAdded(false);
         setOnPreferenceChangeListener(this);
     }
@@ -144,7 +145,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
                     (DownloadsFilePreference) cache.getCachedPreference(file.getPath());
             if (filePreference == null) {
                 filePreference = new DownloadsFilePreference(getContext(), file);
-                filePreference.setChecked(isChecked());
+                filePreference.setChecked(mDeletionType.isChecked(file));
                 filePreference.setOnPreferenceChangeListener(this);
             }
             addPreference(filePreference);

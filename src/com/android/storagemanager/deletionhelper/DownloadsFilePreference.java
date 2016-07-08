@@ -36,7 +36,6 @@ public class DownloadsFilePreference extends NestedCheckboxPreference {
     public DownloadsFilePreference(Context context, File file) {
         super(context);
         mFile = file;
-        setChecked(false);
         setKey(mFile.getPath());
         setTitle(file.getName());
         setSummary(context.getString(R.string.deletion_helper_downloads_file_summary,
@@ -44,6 +43,10 @@ public class DownloadsFilePreference extends NestedCheckboxPreference {
                 DateUtils.formatDateTime(context,
                         mFile.lastModified(),DateUtils.FORMAT_SHOW_DATE)));
         setIcon(context.getContentResolver().getTypeDrawable(getMimeType()));
+
+        // We turn off persistence because we need the file preferences to reset their check when
+        // you return to the view.
+        setPersistent(false);
     }
 
     public File getFile() {

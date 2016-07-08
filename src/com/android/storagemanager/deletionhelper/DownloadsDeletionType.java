@@ -23,13 +23,13 @@ import android.content.Loader;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.ArrayMap;
+import android.util.ArraySet;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
 
 import java.io.File;
-import java.util.Map;
+import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -37,15 +37,21 @@ import java.util.Set;
  * {@link DownloadsDeletionPreferenceGroup}.
  */
 public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<DownloadsResult> {
+    public static final String EXTRA_UNCHECKED_DOWNLOADS = "uncheckedFiles";
     private long mBytes;
     private long mMostRecent;
     private FreeableChangedListener mListener;
     private Context mContext;
-    private ArrayMap<File, Boolean> mFiles;
+    private ArraySet<File> mFiles;
+    private ArraySet<String> mUncheckedFiles;
 
-    public DownloadsDeletionType(Context context) {
+    public DownloadsDeletionType(Context context, String[] uncheckedFiles) {
         mContext = context;
-        mFiles = new ArrayMap<>();
+        mFiles = new ArraySet<>();
+        mUncheckedFiles = new ArraySet<>();
+        if (uncheckedFiles != null) {
+            Collections.addAll(mUncheckedFiles, uncheckedFiles);
+        }
     }
 
     @Override
@@ -66,7 +72,8 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
 
     @Override
     public void onSaveInstanceStateBundle(Bundle savedInstanceState) {
-
+        savedInstanceState.putStringArray(EXTRA_UNCHECKED_DOWNLOADS,
+                mUncheckedFiles.toArray(new String[mUncheckedFiles.size()]));
     }
 
     @Override
@@ -76,11 +83,12 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
                 @Override
                 public void run() {
                     boolean succeeded = true;
-                    for (Map.Entry<File, Boolean> entry : mFiles.entrySet()) {
-                        if (entry.getValue()) {
-                            succeeded = succeeded && entry.getKey().delete();
+                    for (File entry : mFiles) {
+                        if (isChecked(entry)) {
+                            succeeded = succeeded && entry.delete();
                         }
                     }
+
                     if (!succeeded) {
                         MetricsLogger.action(activity,
                                 MetricsEvent.ACTION_DELETION_HELPER_DOWNLOADS_DELETION_FAIL);
@@ -100,10 +108,7 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
     public void onLoadFinished(Loader<DownloadsResult> loader, DownloadsResult data) {
         mMostRecent = data.youngestLastModified;
         for (File file : data.files) {
-            if (mFiles.containsKey(file)) {
-                continue;
-            }
-            mFiles.put(file, false);
+            mFiles.add(file);
         }
         mBytes = data.totalSize;
         maybeUpdateListener();
@@ -128,14 +133,18 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
         if (mFiles == null) {
             return null;
         }
-        return mFiles.keySet();
+        return mFiles;
     }
 
     /**
      * Toggle if a file should be deleted when the service is asked to clear files.
      */
     public void toggleFile(File file, boolean checked) {
-        mFiles.put(file, checked);
+        if (checked) {
+            mUncheckedFiles.remove(file.getPath());
+        } else {
+            mUncheckedFiles.add(file.getPath());
+        }
     }
 
     /**
@@ -143,12 +152,20 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
      */
     public long getFreeableBytes() {
         long freedBytes = 0;
-        for (Map.Entry<File, Boolean> entry : mFiles.entrySet()) {
-            if (entry.getValue()) {
-                freedBytes += entry.getKey().length();
+        for (File file : mFiles) {
+            if (isChecked(file)) {
+                freedBytes += file.length();
             }
         }
         return freedBytes;
+    }
+
+    /**
+     * Return if a given file is checked for deletion.
+     * @param file The file to check.
+     */
+    public boolean isChecked(File file) {
+        return !mUncheckedFiles.contains(file.getPath());
     }
 
     private void maybeUpdateListener() {
