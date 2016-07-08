@@ -145,7 +145,10 @@ public class DeletionHelperSettings extends PreferenceFragment implements
 
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
-        // Get the total bytes freeable and then do the thing!
+        // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
+        // there is stuff to free and we can enable it. If it is zero, though, we still need to get
+        // getTotalFreeableSpace to check all deletion types.
+        mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace() != 0);
         updateFreeButtonText();
     }
 
@@ -202,6 +205,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         mFree = activity.getNextButton();
         mFree.setText(R.string.storage_menu_free);
         mFree.setOnClickListener(this);
+        mFree.setEnabled(false);
     }
 
     private void updateFreeButtonText() {
