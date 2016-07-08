@@ -19,6 +19,8 @@ package com.android.storagemanager.automatic;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
+import android.os.BatteryManager;
+import android.os.PowerManager;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
@@ -41,6 +43,15 @@ public class AutomaticStorageManagementJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters args) {
+        // We need to double-check the precondition shere because they are not enforced for a
+        // periodic job.
+        if (!preconditionsFulfilled()) {
+            // By telling the system to re-schedule the job, it will attempt to execute again at a
+            // later idle window -- possibly one where we are charging.
+            jobFinished(args, true);
+            return false;
+        }
+
         StorageManager manager = getSystemService(StorageManager.class);
         VolumeInfo internalVolume = manager.findVolumeById(VolumeInfo.ID_PRIVATE_INTERNAL);
         final File dataPath = internalVolume.getPath();
@@ -49,6 +60,7 @@ public class AutomaticStorageManagementJobService extends JobService {
             Settings.Secure.putLong(getContentResolver(),
                     Settings.Secure.AUTOMATIC_STORAGE_MANAGER_LAST_RUN,
                     System.currentTimeMillis());
+            jobFinished(args, false);
             return false;
         }
 
@@ -57,6 +69,7 @@ public class AutomaticStorageManagementJobService extends JobService {
                         Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 0) != 0;
         if (!isEnabled) {
             NotificationController.maybeShowNotification(getApplicationContext());
+            jobFinished(args, false);
             return false;
         }
 
@@ -65,6 +78,7 @@ public class AutomaticStorageManagementJobService extends JobService {
             return mProvider.onStartJob(this, args, getDaysToRetain());
         }
 
+        jobFinished(args, false);
         return false;
     }
 
@@ -86,5 +100,21 @@ public class AutomaticStorageManagementJobService extends JobService {
     private boolean volumeNeedsManagement(final File dataPath) {
         long lowStorageThreshold = (dataPath.getTotalSpace() * DEFAULT_LOW_FREE_PERCENT) / 100;
         return dataPath.getFreeSpace() < lowStorageThreshold;
+    }
+
+    private boolean preconditionsFulfilled() {
+        boolean isCharging = false;
+        BatteryManager batteryManager = (BatteryManager) getSystemService(Context.BATTERY_SERVICE);
+        if (batteryManager != null) {
+            isCharging = batteryManager.isCharging();
+        }
+
+        boolean isIdle = false;
+        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        if (powerManager != null) {
+            isIdle = powerManager.isDeviceIdleMode();
+        }
+
+        return isCharging && isIdle;
     }
 }
