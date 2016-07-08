@@ -22,10 +22,13 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
 import android.text.format.Formatter;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import com.android.settingslib.HelpUtils;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
 
@@ -85,6 +88,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initializeButtons();
+        setHasOptionsMenu(true);
 
         Activity activity = getActivity();
         if (activity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -190,6 +194,15 @@ public class DeletionHelperSettings extends PreferenceFragment implements
                 getLoaderManager().initLoader(DOWNLOADS_LOADER_ID, new Bundle(),
                         mDownloadsDeletion);
             }
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        Activity activity = getActivity();
+        String mHelpUri = getResources().getString(R.string.help_uri_deletion_helper);
+        if (mHelpUri != null && activity != null) {
+            HelpUtils.prepareHelpMenuItem(activity, menu, mHelpUri, getClass().getName());
         }
     }
 
