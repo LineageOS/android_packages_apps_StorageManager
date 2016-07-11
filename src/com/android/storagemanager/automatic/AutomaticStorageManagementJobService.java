@@ -19,8 +19,6 @@ package com.android.storagemanager.automatic;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
-import android.os.BatteryManager;
-import android.os.PowerManager;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
@@ -103,18 +101,7 @@ public class AutomaticStorageManagementJobService extends JobService {
     }
 
     private boolean preconditionsFulfilled() {
-        boolean isCharging = false;
-        BatteryManager batteryManager = (BatteryManager) getSystemService(Context.BATTERY_SERVICE);
-        if (batteryManager != null) {
-            isCharging = batteryManager.isCharging();
-        }
-
-        boolean isIdle = false;
-        PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        if (powerManager != null) {
-            isIdle = powerManager.isDeviceIdleMode();
-        }
-
-        return isCharging && isIdle;
+        Context context = getApplicationContext();
+        return JobPreconditions.isCharging(context) && JobPreconditions.isIdle(context);
     }
 }
