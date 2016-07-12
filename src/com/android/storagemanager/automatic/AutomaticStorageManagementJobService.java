@@ -101,7 +101,10 @@ public class AutomaticStorageManagementJobService extends JobService {
     }
 
     private boolean preconditionsFulfilled() {
+        // NOTE: We don't check the idle state here because this job should be running in idle
+        // maintenance windows. During the idle maintenance window, the device is -technically- not
+        // idle. For more information, see PowerManager.isDeviceIdleMode().
         Context context = getApplicationContext();
-        return JobPreconditions.isCharging(context) && JobPreconditions.isIdle(context);
+        return JobPreconditions.isCharging(context);
     }
 }
