@@ -31,6 +31,7 @@
     <uses-sdk android:minSdkVersion="24" />
 
     <application android:label="@string/app_name"
+        android:icon="@mipmap/ic_storage_manager_48px"
         android:theme="@style/StorageManager"
         android:allowBackup="false"
         android:supportsRtl="true">
