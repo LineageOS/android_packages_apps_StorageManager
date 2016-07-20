@@ -100,7 +100,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         }
 
         if (pi == null) {
-            return NEVER_USED;
+            return UNKNOWN_LAST_USE;
         }
 
         return (TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - pi.firstInstallTime));
@@ -132,6 +132,13 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
             }
 
             UsageStatsState state = (UsageStatsState) extraInfo;
+
+            // If we are missing information, let's be conservative and not show it.
+            if (state.daysSinceFirstInstall == UNKNOWN_LAST_USE
+                    || state.daysSinceLastUse == UNKNOWN_LAST_USE) {
+                return false;
+            }
+
             long mostRecentUse = Math.max(state.daysSinceFirstInstall, state.daysSinceLastUse);
             return mostRecentUse >= mUnusedDaysThreshold || mostRecentUse == NEVER_USED;
         }
