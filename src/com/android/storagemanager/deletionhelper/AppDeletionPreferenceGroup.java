@@ -45,6 +45,7 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     public AppDeletionPreferenceGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOnPreferenceChangeListener(this);
+        updateText();
     }
 
     @Override
@@ -126,13 +127,16 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     }
 
     private void updateText() {
-        // Do this on preference change and when rebuilt.
+        int eligibleApps = 0;
+        long freeableBytes = 0;
+        if (mBackend != null) {
+            eligibleApps = mBackend.getEligibleApps();
+            freeableBytes = mBackend.getTotalAppsFreeableSpace(true);
+        }
         Context app = getContext();
-        setTitle(app.getString(R.string.deletion_helper_apps_group_title,
-                mBackend.getEligibleApps()));
+        setTitle(app.getString(R.string.deletion_helper_apps_group_title, eligibleApps));
         setSummary(app.getString(R.string.deletion_helper_apps_group_summary,
-                Formatter.formatFileSize(app,
-                        mBackend.getTotalAppsFreeableSpace(true)),
+                Formatter.formatFileSize(app, freeableBytes),
                 AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD));
     }
 
