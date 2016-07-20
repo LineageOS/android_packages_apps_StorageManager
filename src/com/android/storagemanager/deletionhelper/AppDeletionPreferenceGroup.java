@@ -24,6 +24,7 @@ import android.view.View;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
+import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
 import com.android.storagemanager.PreferenceListCache;
 import com.android.storagemanager.R;
 
@@ -49,9 +50,17 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     @Override
     public void onAppRebuild(List<ApplicationsState.AppEntry> apps) {
         int entryCount = apps.size();
+        int currentUserId = getContext().getUserId();
         PreferenceListCache cache = new PreferenceListCache(this);
         for (int i = 0; i < entryCount; i++) {
             ApplicationsState.AppEntry entry = apps.get(i);
+
+            // If it's a different user's app, skip it.
+            UsageStatsState extraData = (UsageStatsState) entry.extraInfo;
+            if (extraData.userId != currentUserId) {
+                continue;
+            }
+
             final String packageName = entry.label;
             AppDeletionPreference preference =
                     (AppDeletionPreference) cache.getCachedPreference(packageName);
