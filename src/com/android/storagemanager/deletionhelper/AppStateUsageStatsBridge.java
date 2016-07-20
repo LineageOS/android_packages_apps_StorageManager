@@ -85,7 +85,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         }
         long lastUsed = stats.getLastTimeUsed();
         // Sometimes, a usage is recorded without a time and we don't know when the use was.
-        if (lastUsed == 0) {
+        if (lastUsed <= 0) {
             return UNKNOWN_LAST_USE;
         }
         return TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - lastUsed);
