@@ -118,6 +118,19 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
 
     @Override
     public void onRebuildComplete(ArrayList<ApplicationsState.AppEntry> apps) {
+        if (apps == null) {
+            return;
+        }
+        mAppEntries = apps;
+        for (ApplicationsState.AppEntry app : mAppEntries) {
+            synchronized (app) {
+                mState.ensureIcon(app);
+            }
+        }
+        if (mAppListener != null) {
+            mAppListener.onAppRebuild(mAppEntries);
+        }
+        maybeNotifyListener();
     }
 
     @Override
@@ -210,20 +223,8 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
     }
 
     private void rebuild() {
-        final ArrayList<ApplicationsState.AppEntry> apps =
-                mSession.rebuild(AppStateUsageStatsBridge.FILTER_USAGE_STATS,
-                        ApplicationsState.SIZE_COMPARATOR);
-        if (apps == null) return;
-        mAppEntries = apps;
-        for (ApplicationsState.AppEntry app : mAppEntries) {
-            synchronized (app) {
-                mState.ensureIcon(app);
-            }
-        }
-        if (mAppListener != null) {
-            mAppListener.onAppRebuild(mAppEntries);
-        }
-        maybeNotifyListener();
+        mSession.rebuild(AppStateUsageStatsBridge.FILTER_USAGE_STATS,
+                ApplicationsState.SIZE_COMPARATOR);
     }
 
     private void maybeNotifyListener() {
