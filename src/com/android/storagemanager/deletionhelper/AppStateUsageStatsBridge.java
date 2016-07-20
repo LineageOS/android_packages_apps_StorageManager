@@ -23,6 +23,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.SystemProperties;
+import android.os.UserHandle;
 import android.util.Log;
 import com.android.storagemanager.deletionhelper.AppStateBaseBridge;
 import com.android.storagemanager.deletionhelper.AppStateBaseBridge.Callback;
@@ -66,7 +67,8 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         for (AppEntry entry : apps) {
             UsageStats usageStats = map.get(entry.info.packageName);
             entry.extraInfo = new UsageStatsState(getDaysSinceLastUse(usageStats),
-                    getDaysSinceInstalled(entry.info.packageName));
+                    getDaysSinceInstalled(entry.info.packageName),
+                    UserHandle.getUserId(entry.info.uid));
         }
     }
 
@@ -76,7 +78,8 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
                 System.currentTimeMillis());
         UsageStats usageStats = map.get(app.info.packageName);
         app.extraInfo = new UsageStatsState(getDaysSinceLastUse(usageStats),
-                getDaysSinceInstalled(app.info.packageName));
+                getDaysSinceInstalled(app.info.packageName),
+                UserHandle.getUserId(app.info.uid));
     }
 
     private long getDaysSinceLastUse(UsageStats stats) {
@@ -158,10 +161,12 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     public static class UsageStatsState {
         public long daysSinceLastUse;
         public long daysSinceFirstInstall;
+        public int userId;
 
-        public UsageStatsState(long daysSinceLastUse, long daysSinceFirstInstall) {
+        public UsageStatsState(long daysSinceLastUse, long daysSinceFirstInstall, int userId) {
             this.daysSinceLastUse = daysSinceLastUse;
             this.daysSinceFirstInstall = daysSinceFirstInstall;
+            this.userId = userId;
         }
     }
 }
