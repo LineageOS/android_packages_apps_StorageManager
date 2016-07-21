@@ -16,6 +16,7 @@
 
 package com.android.storagemanager.overlay;
 
+import android.app.job.JobParameters;
 import android.content.Context;
 
 /**
@@ -26,11 +27,11 @@ public interface DownloadsBackupJobProvider {
      * Starts asynchronous task to backup the Downloads folder.
      * @return If the job needs to process work on a separate thread.
      */
-    boolean onStartJob(Context context);
+    boolean onStartJob(Context context, JobParameters jobParameters);
 
     /**
      * Stops the execution of the task.
      * @return If the job should be rescheduled.
      */
-    boolean onStopJob(Context context);
+    boolean onStopJob(Context context, JobParameters jobParameters);
 }
