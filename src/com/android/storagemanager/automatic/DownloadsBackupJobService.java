@@ -60,10 +60,15 @@ public class DownloadsBackupJobService extends JobService {
         Context context = getApplicationContext();
         boolean isNetworkMetered = JobPreconditions.isNetworkMetered(context);
         boolean isWifiConnected = JobPreconditions.isWifiConnected(context);
+        boolean allowMeteredNetwork = Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOWNLOADS_BACKUP_ALLOW_METERED, 0) != 0;
+        boolean isNetworkConditionMet = (!isNetworkMetered && isWifiConnected) ||
+                allowMeteredNetwork;
         boolean isCharging = JobPreconditions.isCharging(context);
-        boolean isIdle = JobPreconditions.isIdle(context);
-
-        return !isNetworkMetered && isWifiConnected && isCharging && isIdle;
+        boolean allowBackupWhenNotCharging = Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOWNLOADS_BACKUP_CHARGING_ONLY, 1) != 1;
+        boolean isChargingConditionMet = isCharging || allowBackupWhenNotCharging;
+        return isNetworkConditionMet && isChargingConditionMet;
     }
 
     public boolean isBackupEnabled() {

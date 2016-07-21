@@ -23,6 +23,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.SystemProperties;
+import android.provider.Settings;
 import android.text.format.DateUtils;
 
 /**
@@ -32,11 +33,13 @@ import android.text.format.DateUtils;
  */
 public class AutomaticStorageBroadcastReceiver extends BroadcastReceiver {
     private static final int AUTOMATIC_STORAGE_JOB_ID = 0;
+    public static final int DOWNLOADS_BACKUP_JOB_ID = 1;
     private static final long PERIOD = DateUtils.DAY_IN_MILLIS;
     private static final String DEBUG_PERIOD_FLAG = "debug.asm.period";
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        // Automatic deletion service
         JobScheduler jobScheduler =
                 (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
         ComponentName component = new ComponentName(context,
@@ -48,5 +51,24 @@ public class AutomaticStorageBroadcastReceiver extends BroadcastReceiver {
                 .setPeriodic(periodicOverride)
                 .build();
         jobScheduler.schedule(job);
+
+        // Downloads backup
+        int requiredNetworkType = JobInfo.NETWORK_TYPE_UNMETERED;
+        if (Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOWNLOADS_BACKUP_ALLOW_METERED, 0) != 0) {
+            requiredNetworkType = JobInfo.NETWORK_TYPE_ANY;
+        }
+        boolean requiresCharging = Settings.Secure.getInt(context.getContentResolver(),
+                Settings.Secure.DOWNLOADS_BACKUP_CHARGING_ONLY, 1) == 1;
+        ComponentName downloadsBackupComponent = new ComponentName(context,
+                DownloadsBackupJobService.class);
+        JobInfo downloadsBackupJob =
+                new JobInfo.Builder(DOWNLOADS_BACKUP_JOB_ID, downloadsBackupComponent)
+                        .setRequiredNetworkType(requiredNetworkType)
+                        .setRequiresCharging(requiresCharging)
+                        .setRequiresDeviceIdle(true)
+                        .setPeriodic(periodicOverride)
+                        .build();
+        jobScheduler.schedule(downloadsBackupJob);
     }
 }
