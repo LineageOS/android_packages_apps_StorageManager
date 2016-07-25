@@ -32,10 +32,10 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"Usuń <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> z urządzenia."</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"Usuń <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> danych z urządzenia."</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Usuń"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Zarządzać miejscem automatycznie?"</string>
-    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Zwolniono <xliff:g id="USED">%1$s</xliff:g>. Czy menedżer miejsca ma automatycznie zwolnić miejsce, usuwając z urządzenia treści, dla których została utworzona kopia zapasowa?"</string>
+    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Zwolniono <xliff:g id="USED">%1$s</xliff:g> miejsca. Czy Menedżer miejsca ma automatycznie zwolnić miejsce, usuwając z urządzenia treści, dla których została utworzona kopia zapasowa?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Nie, dziękuję"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Włącz"</string>
     <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"Aplikacje (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -43,7 +43,7 @@
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automatyczne"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Ręczne"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Zwolnij miejsce teraz"</string>
-    <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Automatyczne zarządzanie przechowywaniem"</string>
+    <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Automatyczne zarządzanie miejscem"</string>
     <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"W telefonie jest mało miejsca"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Pozwól Menedżerowi miejsca automatycznie zwolnić miejsce przez usunięcie starych zdjęć i filmów, gdy telefon znów zacznie się zapełniać."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Nie, dziękuję"</string>
