@@ -52,23 +52,6 @@ public class AutomaticStorageBroadcastReceiver extends BroadcastReceiver {
                 .build();
         jobScheduler.schedule(job);
 
-        // Downloads backup
-        int requiredNetworkType = JobInfo.NETWORK_TYPE_UNMETERED;
-        if (Settings.Secure.getInt(context.getContentResolver(),
-                Settings.Secure.DOWNLOADS_BACKUP_ALLOW_METERED, 0) != 0) {
-            requiredNetworkType = JobInfo.NETWORK_TYPE_ANY;
-        }
-        boolean requiresCharging = Settings.Secure.getInt(context.getContentResolver(),
-                Settings.Secure.DOWNLOADS_BACKUP_CHARGING_ONLY, 1) == 1;
-        ComponentName downloadsBackupComponent = new ComponentName(context,
-                DownloadsBackupJobService.class);
-        JobInfo downloadsBackupJob =
-                new JobInfo.Builder(DOWNLOADS_BACKUP_JOB_ID, downloadsBackupComponent)
-                        .setRequiredNetworkType(requiredNetworkType)
-                        .setRequiresCharging(requiresCharging)
-                        .setRequiresDeviceIdle(true)
-                        .setPeriodic(periodicOverride)
-                        .build();
-        jobScheduler.schedule(downloadsBackupJob);
+        // TODO: Re-add the Downloads job.
     }
 }
