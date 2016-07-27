@@ -19,12 +19,14 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.ImageView;
 
@@ -86,7 +88,16 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
     // The checkbox view click handler.
     @Override
     public void onClick(View v) {
+        super.onClick();
         setChecked(!isChecked());
+
+        // We need to find the CheckBox in the parent view that we are using as a touch target.
+        // If we don't update it before onClick finishes, the accessibility gives invalid
+        // responses.
+        ViewGroup parent = (ViewGroup) v;
+        View child =  parent.findViewById(com.android.internal.R.id.checkbox);
+        Checkable checkable = (Checkable) child;
+        checkable.setChecked(mChecked);
     }
 
     /**
@@ -114,6 +125,13 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
             notifyDependencyChange(shouldDisableDependents());
             notifyChanged();
         }
+    }
+
+    @Override
+    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfoCompat info) {
+        super.onInitializeAccessibilityNodeInfo(info);
+        info.setCheckable(true);
+        info.setChecked(isChecked());
     }
 
     @Override
