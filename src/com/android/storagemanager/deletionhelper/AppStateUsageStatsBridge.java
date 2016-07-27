@@ -45,8 +45,8 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
 
     private UsageStatsManager mUsageStatsManager;
     private PackageManager mPm;
-    public static final long NEVER_USED = -1;
-    public static final long UNKNOWN_LAST_USE = -2;
+    public static final long NEVER_USED = Long.MAX_VALUE;
+    public static final long UNKNOWN_LAST_USE = -1;
     public static final long UNUSED_DAYS_DELETION_THRESHOLD = 90;
 
     public AppStateUsageStatsBridge(Context context, ApplicationsState appState,
@@ -142,8 +142,10 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
                 return false;
             }
 
-            long mostRecentUse = Math.max(state.daysSinceFirstInstall, state.daysSinceLastUse);
-            return mostRecentUse >= mUnusedDaysThreshold || mostRecentUse == NEVER_USED;
+            // If the app has never been used, daysSinceLastUse is Long.MAX_VALUE, so the first
+            // install is always the most recent use.
+            long mostRecentUse = Math.min(state.daysSinceFirstInstall, state.daysSinceLastUse);
+            return mostRecentUse >= mUnusedDaysThreshold;
         }
 
         private boolean isBundled(AppEntry info) {
