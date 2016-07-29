@@ -42,7 +42,7 @@ public class DownloadsBackupJobService extends JobService {
         mJobProvider = FeatureFactory.getFactory(this).getDownloadsBackupJobProvider();
 
         if (mJobProvider != null) {
-            return mJobProvider.onStartJob(this);
+            return mJobProvider.onStartJob(this, jobParameters);
         }
 
         return false;
@@ -51,7 +51,7 @@ public class DownloadsBackupJobService extends JobService {
     @Override
     public boolean onStopJob(JobParameters jobParameters) {
         if (mJobProvider != null) {
-            return mJobProvider.onStopJob(this);
+            return mJobProvider.onStopJob(this, jobParameters);
         }
         return true;
     }
