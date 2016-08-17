@@ -19,6 +19,7 @@ package com.android.storagemanager.automatic;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
 import android.content.Context;
+import android.content.Intent;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
@@ -66,7 +67,9 @@ public class AutomaticStorageManagementJobService extends JobService {
                 Settings.Secure.getInt(getContentResolver(),
                         Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 0) != 0;
         if (!isEnabled) {
-            NotificationController.maybeShowNotification(getApplicationContext());
+            Intent maybeShowNotificationIntent =
+                    new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION);
+            getApplicationContext().sendBroadcast(maybeShowNotificationIntent);
             jobFinished(args, false);
             return false;
         }
