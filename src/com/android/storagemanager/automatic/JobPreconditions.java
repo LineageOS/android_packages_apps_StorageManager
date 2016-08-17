@@ -30,7 +30,7 @@ public class JobPreconditions {
             for (Network network : connectivityManager.getAllNetworks()) {
                 NetworkInfo networkInfo = connectivityManager.getNetworkInfo(network);
                 if (networkInfo.getType() == ConnectivityManager.TYPE_WIFI
-                        && NetworkInfo.State.CONNECTED.equals(networkInfo.getState())) {
+                        && networkInfo.isConnected()) {
                     return true;
                 }
             }
