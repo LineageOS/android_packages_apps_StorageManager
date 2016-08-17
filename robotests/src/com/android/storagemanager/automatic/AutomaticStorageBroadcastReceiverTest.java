@@ -39,7 +39,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest="vendor/unbundled_google/packages/StorageManagerGoogle/AndroidManifest.xml",
+@Config(manifest="packages/apps/StorageManager/AndroidManifest.xml",
         sdk=23)
 public class AutomaticStorageBroadcastReceiverTest {
     @Mock private Context mMockContext;
