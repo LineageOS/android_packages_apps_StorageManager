@@ -20,12 +20,11 @@ import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.text.format.Formatter;
 import android.util.AttributeSet;
-import android.view.View;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
 import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
-import com.android.storagemanager.PreferenceListCache;
+import com.android.storagemanager.utils.PreferenceListCache;
 import com.android.storagemanager.R;
 
 import java.util.List;

@@ -20,6 +20,7 @@ import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.content.Context;
 import android.content.Intent;
+import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,8 +40,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest="packages/apps/StorageManager/AndroidManifest.xml",
-        sdk=23)
+@Config(manifest= TestingConstants.MANIFEST, sdk=23)
 public class AutomaticStorageBroadcastReceiverTest {
     @Mock private Context mMockContext;
     @Mock private JobScheduler mJobScheduler;

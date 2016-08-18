@@ -27,6 +27,7 @@ import android.os.storage.VolumeInfo;
 import android.provider.Settings;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
+import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,8 +52,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest="packages/apps/StorageManager/AndroidManifest.xml",
-        sdk=23)
+@Config(manifest= TestingConstants.MANIFEST, sdk=23)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private StorageManager mStorageManager;
