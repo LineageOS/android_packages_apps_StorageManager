@@ -62,7 +62,10 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
                 continue;
             }
 
-            final String packageName = entry.label;
+            final String packageName;
+            synchronized (entry) {
+                packageName = entry.info.packageName;
+            }
             AppDeletionPreference preference =
                     (AppDeletionPreference) cache.getCachedPreference(packageName);
             if (preference == null) {
