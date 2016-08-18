@@ -83,10 +83,12 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
     public void clearFreeableData(Activity activity) {
         ArraySet<String> apps = new ArraySet<>();
         for (ApplicationsState.AppEntry entry : mAppEntries) {
-            if (mCheckedApplications.contains(entry.label)) {
-                synchronized (entry) {
-                    apps.add(entry.info.packageName);
-                }
+            final String packageName;
+            synchronized (entry) {
+                packageName = entry.info.packageName;
+            }
+            if (mCheckedApplications.contains(packageName)) {
+                apps.add(packageName);
             }
         }
         // TODO: If needed, add an action on the callback.
@@ -192,10 +194,14 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
         if (mAppEntries != null) {
             for (int i = 0; i < mAppEntries.size(); i++) {
                 final ApplicationsState.AppEntry entry = mAppEntries.get(i);
-                long entrySize = mAppEntries.get(i).size;
+                long entrySize = entry.size;
+                final String packageName;
+                synchronized (entry) {
+                    packageName = entry.info.packageName;
+                }
                 // If the entrySize is negative, it is either an unknown size or an error occurred.
                 if ((countUnchecked ||
-                        mCheckedApplications.contains(entry.label)) && entrySize > 0) {
+                        mCheckedApplications.contains(packageName)) && entrySize > 0) {
                     freeableSpace += entrySize;
                 }
             }
