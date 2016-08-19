@@ -53,6 +53,11 @@ public class NotificationController extends BroadcastReceiver {
     public static final String INTENT_ACTION_NO_THANKS =
             "com.android.storagemanager.automatic.NO_THANKS";
 
+    /**
+     * Intent action to maybe show the ASM upsell notification.
+     */
+    public static final String INTENT_ACTION_SHOW_NOTIFICATION =
+            "com.android.storagemanager.automatic.show_notification";
 
     /**
      * Intent action for if the user explicitly hits "No thanks" on the notification.
@@ -74,6 +79,9 @@ public class NotificationController extends BroadcastReceiver {
     private static final long MAXIMUM_SHOWN_COUNT = 4;
     private static final int NOTIFICATION_ID = 0;
 
+    // Keeps the time for test purposes.
+    private Clock mClock;
+
     @Override
     public void onReceive(Context context, Intent intent) {
         switch (intent.getAction()) {
@@ -88,6 +96,9 @@ public class NotificationController extends BroadcastReceiver {
             case INTENT_ACTION_DISMISS:
                 delayNextNotification(context, DISMISS_DELAY);
                 break;
+            case INTENT_ACTION_SHOW_NOTIFICATION:
+                maybeShowNotification(context);
+                return;
             case INTENT_ACTION_DEBUG_NOTIFICATION:
                 showNotification(context);
                 return;
@@ -96,31 +107,39 @@ public class NotificationController extends BroadcastReceiver {
     }
 
     /**
+     * Sets a time provider for the controller.
+     * @param clock The time provider.
+     */
+    protected void setClock(Clock clock) {
+        mClock = clock;
+    }
+
+    /**
      * If the conditions for showing the activation notification are met, show the activation
      * notification.
      * @param context Context to use for getting resources and to display the notification.
      */
-    public static void maybeShowNotification(Context context) {
+    private void maybeShowNotification(Context context) {
         if (shouldShowNotification(context)) {
             showNotification(context);
         }
     }
 
-    private static boolean shouldShowNotification(Context context) {
+    private boolean shouldShowNotification(Context context) {
         SharedPreferences sp = context.getSharedPreferences(
                 SHARED_PREFERENCES_NAME,
                 Context.MODE_PRIVATE);
         int timesShown = sp.getInt(NOTIFICATION_SHOWN_COUNT, 0);
-        if (timesShown > MAXIMUM_SHOWN_COUNT) {
+        if (timesShown >= MAXIMUM_SHOWN_COUNT) {
             return false;
         }
 
         long nextTimeToShow = sp.getLong(NOTIFICATION_NEXT_SHOW_TIME, 0);
 
-        return System.currentTimeMillis() > nextTimeToShow;
+        return getCurrentTime() >= nextTimeToShow;
     }
 
-    private static void showNotification(Context context) {
+    private void showNotification(Context context) {
         Resources res = context.getResources();
         Intent noThanksIntent = new Intent(INTENT_ACTION_NO_THANKS);
         noThanksIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
@@ -186,7 +205,27 @@ public class NotificationController extends BroadcastReceiver {
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putLong(NOTIFICATION_NEXT_SHOW_TIME,
-                System.currentTimeMillis() + timeInMillis);
+                getCurrentTime() + timeInMillis);
         editor.apply();
+    }
+
+    private long getCurrentTime() {
+        if (mClock == null) {
+            mClock = new Clock();
+        }
+
+        return mClock.currentTimeMillis();
+    }
+
+    /**
+     * Clock provides the current time.
+     */
+    protected static class Clock {
+        /**
+         * Returns the current time in milliseconds.
+         */
+        public long currentTimeMillis() {
+            return System.currentTimeMillis();
+        }
     }
 }
