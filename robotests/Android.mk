@@ -12,13 +12,12 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_JAVA_LIBRARIES := \
     junit4-target \
-    platform-robolectric-prebuilt
+    platform-robolectric-prebuilt \
+    sdk_vcurrent
 
-LOCAL_APK_LIBRARIES = StorageManager
+# TODO: Remove the use of LOCAL_INSTRUMENTATION_FOR and use a different build flag.
+LOCAL_INSTRUMENTATION_FOR := StorageManager
 LOCAL_MODULE := StorageManagerRoboTests
-
-# TODO: Remove when this target builds with checkbuild
-LOCAL_DONT_CHECK_MODULE := true
 
 LOCAL_MODULE_TAGS := optional
 
@@ -30,9 +29,6 @@ include $(BUILD_STATIC_JAVA_LIBRARY)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := RunStorageManagerRoboTests
-
-# TODO: Remove when this target builds with checkbuild
-LOCAL_DONT_CHECK_MODULE := true
 
 LOCAL_SDK_VERSION := current
 
