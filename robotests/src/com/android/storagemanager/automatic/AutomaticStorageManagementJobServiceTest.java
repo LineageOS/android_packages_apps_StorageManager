@@ -16,11 +16,11 @@
 
 package com.android.storagemanager.automatic;
 
-import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.job.JobParameters;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.os.BatteryManager;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
@@ -39,12 +39,12 @@ import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
 
 import java.io.File;
+import java.util.List;
 
 import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertEquals;
 import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -118,7 +118,17 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testStartJobTriesUpsellWhenASMDisabled() {
         assertFalse(mJobService.onStartJob(mJobParameters));
         assertJobFinished(false);
-        verify(mNotificationManager).notify(eq(0), any(Notification.class));
+        mApplication.runBackgroundTasks();
+
+        List<Intent> broadcastedIntents = mApplication.getBroadcastIntents();
+        assertEquals(1, broadcastedIntents.size());
+
+        Intent lastIntent = broadcastedIntents.get(0);
+        assertEquals(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION,
+                lastIntent.getAction());
+        assertEquals(NotificationController.class.getCanonicalName(),
+                lastIntent.getComponent().getClassName());
+
         assertStorageManagerJobDidNotRun();
     }
 
