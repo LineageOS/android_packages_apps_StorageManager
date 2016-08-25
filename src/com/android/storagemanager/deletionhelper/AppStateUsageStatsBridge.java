@@ -42,12 +42,15 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     private static final String TAG = "AppStateUsageStatsBridge";
 
     private static final String DEBUG_APP_UNUSED_OVERRIDE = "debug.asm.app_unused_limit";
-
-    private UsageStatsManager mUsageStatsManager;
-    private PackageManager mPm;
     public static final long NEVER_USED = Long.MAX_VALUE;
     public static final long UNKNOWN_LAST_USE = -1;
     public static final long UNUSED_DAYS_DELETION_THRESHOLD = 90;
+
+    private UsageStatsManager mUsageStatsManager;
+    private PackageManager mPm;
+    // This clock is used to provide the time. By default, it uses the system clock, but can be
+    // replaced for test purposes.
+    protected Clock mClock;
 
     public AppStateUsageStatsBridge(Context context, ApplicationsState appState,
             Callback callback) {
@@ -55,6 +58,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         mUsageStatsManager =
                 (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
         mPm = context.getPackageManager();
+        mClock = new Clock();
     }
 
     @Override
@@ -63,7 +67,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         if (apps == null) return;
 
         final Map<String, UsageStats> map = mUsageStatsManager.queryAndAggregateUsageStats(0,
-                System.currentTimeMillis());
+                mClock.getCurrentTime());
         for (AppEntry entry : apps) {
             UsageStats usageStats = map.get(entry.info.packageName);
             entry.extraInfo = new UsageStatsState(getDaysSinceLastUse(usageStats),
@@ -75,7 +79,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     @Override
     protected void updateExtraInfo(AppEntry app, String pkg, int uid) {
         Map<String, UsageStats> map = mUsageStatsManager.queryAndAggregateUsageStats(0,
-                System.currentTimeMillis());
+                mClock.getCurrentTime());
         UsageStats usageStats = map.get(app.info.packageName);
         app.extraInfo = new UsageStatsState(getDaysSinceLastUse(usageStats),
                 getDaysSinceInstalled(app.info.packageName),
@@ -91,7 +95,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         if (lastUsed <= 0) {
             return UNKNOWN_LAST_USE;
         }
-        return TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - lastUsed);
+        return TimeUnit.MILLISECONDS.toDays(mClock.getCurrentTime() - lastUsed);
     }
 
     private long getDaysSinceInstalled(String packageName) {
@@ -106,7 +110,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
             return UNKNOWN_LAST_USE;
         }
 
-        return (TimeUnit.MILLISECONDS.toDays(System.currentTimeMillis() - pi.firstInstallTime));
+        return (TimeUnit.MILLISECONDS.toDays(mClock.getCurrentTime() - pi.firstInstallTime));
     }
 
     /**
@@ -169,6 +173,15 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
             this.daysSinceLastUse = daysSinceLastUse;
             this.daysSinceFirstInstall = daysSinceFirstInstall;
             this.userId = userId;
+        }
+    }
+
+    /**
+     * Clock provides the current time.
+     */
+    static class Clock {
+        public long getCurrentTime() {
+            return System.currentTimeMillis();
         }
     }
 }
