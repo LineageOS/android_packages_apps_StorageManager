@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import com.android.storagemanager.automatic.NotificationController;
+import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,8 +41,7 @@ import static org.mockito.Mockito.*;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest="packages/apps/StorageManager/AndroidManifest.xml",
-        sdk=23)
+@Config(manifest=TestingConstants.MANIFEST, sdk=23)
 public class NotificationControllerTest {
     @Mock
     private NotificationManager mNotificationManager;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.storagemanager;
+package com.android.storagemanager.utils;
 
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
