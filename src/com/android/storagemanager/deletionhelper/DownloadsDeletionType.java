@@ -137,9 +137,9 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
     }
 
     /**
-     * Toggle if a file should be deleted when the service is asked to clear files.
+     * Set if a file should be deleted when the service is asked to clear files.
      */
-    public void toggleFile(File file, boolean checked) {
+    public void setFileChecked(File file, boolean checked) {
         if (checked) {
             mUncheckedFiles.remove(file.getPath());
         } else {
