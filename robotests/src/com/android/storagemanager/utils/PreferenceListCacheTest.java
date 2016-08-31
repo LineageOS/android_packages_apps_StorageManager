@@ -19,6 +19,7 @@ package com.android.storagemanager.utils;
 import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
+import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,7 +40,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest="packages/apps/StorageManager/AndroidManifest.xml", sdk=23)
+@Config(manifest= TestingConstants.MANIFEST, sdk=23)
 public class PreferenceListCacheTest {
     @Mock private PreferenceScreen mGroup;
     private PreferenceListCache mCache;
