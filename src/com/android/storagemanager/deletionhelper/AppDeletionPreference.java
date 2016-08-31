@@ -55,7 +55,9 @@ public class AppDeletionPreference extends NestedCheckboxPreference {
      * Returns the package name for the app that these preference represents.
      */
     public String getPackageName() {
-        return mEntry.label;
+        synchronized(mEntry) {
+            return mEntry.info.packageName;
+        }
     }
 
     public void updateSummary() {
