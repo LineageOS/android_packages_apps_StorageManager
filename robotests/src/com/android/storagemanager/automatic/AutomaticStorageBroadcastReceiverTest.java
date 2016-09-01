@@ -40,7 +40,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest= TestingConstants.MANIFEST, sdk=23)
+@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class AutomaticStorageBroadcastReceiverTest {
     @Mock private Context mMockContext;
     @Mock private JobScheduler mJobScheduler;

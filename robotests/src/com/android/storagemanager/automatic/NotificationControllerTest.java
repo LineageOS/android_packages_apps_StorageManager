@@ -39,9 +39,8 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;
 
-
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=23)
+@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class NotificationControllerTest {
     @Mock
     private NotificationManager mNotificationManager;
