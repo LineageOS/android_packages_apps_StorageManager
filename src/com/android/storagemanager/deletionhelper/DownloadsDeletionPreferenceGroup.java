@@ -92,7 +92,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
             for (int i = 0; i < getPreferenceCount(); i++) {
                 DownloadsFilePreference p = (DownloadsFilePreference) getPreference(i);
                 p.setOnPreferenceChangeListener(null);
-                mDeletionType.toggleFile(p.getFile(), checked);
+                mDeletionType.setFileChecked(p.getFile(), checked);
                 p.setChecked(checked);
                 p.setOnPreferenceChangeListener(this);
             }
@@ -104,7 +104,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
 
         // If a single DownloadFilePreference changed, we need to toggle just itself.
         DownloadsFilePreference p = (DownloadsFilePreference) preference;
-        mDeletionType.toggleFile(p.getFile(), checked);
+        mDeletionType.setFileChecked(p.getFile(), checked);
         maybeUpdateListener(mDeletionType.getFiles().size(), mDeletionType.getFreeableBytes());
         return true;
     }
