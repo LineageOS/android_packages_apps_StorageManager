@@ -35,7 +35,7 @@ import org.robolectric.shadows.ShadowApplication;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=23)
+@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class AppDeletionPreferenceTest {
     private static final String TEST_PACKAGE_LABEL = "App";
     private static final String TEST_PACKAGE_NAME = "com.package.mcpackageface";

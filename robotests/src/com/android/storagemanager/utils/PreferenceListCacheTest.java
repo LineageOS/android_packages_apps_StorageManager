@@ -40,7 +40,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest= TestingConstants.MANIFEST, sdk=23)
+@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class PreferenceListCacheTest {
     @Mock private PreferenceScreen mGroup;
     private PreferenceListCache mCache;

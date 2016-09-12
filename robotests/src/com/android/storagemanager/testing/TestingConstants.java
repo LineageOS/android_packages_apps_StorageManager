@@ -26,6 +26,8 @@ public class TestingConstants {
      */
     public static final String MANIFEST = "packages/apps/StorageManager/AndroidManifest.xml";
 
+    public static final int SDK_VERSION = 23;
+
     // Do not instantiate this test class.
     private TestingConstants() {}
 
