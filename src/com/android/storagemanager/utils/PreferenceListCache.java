@@ -39,8 +39,10 @@ public class PreferenceListCache {
         final int N = group.getPreferenceCount();
         for (int i = 0; i < N; i++) {
             Preference p = group.getPreference(i);
-            if (TextUtils.isEmpty(p.getKey())) {
-                continue;
+            String key = p.getKey();
+            if (TextUtils.isEmpty(key) || mCache.containsKey(key)) {
+                throw new IllegalArgumentException(
+                        "Invalid key encountered in preference group " + group.getKey());
             }
             mCache.put(p.getKey(), p);
         }

@@ -32,6 +32,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
@@ -113,6 +115,28 @@ public class PreferenceListCacheTest {
         verify(mGroup).removePreference(eq(first));
         verify(mGroup).removePreference(eq(second));
         verify(mGroup).removePreference(eq(third));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testKeyCollisionThrows() {
+        Preference first = createPreference("first");
+        Preference second = createPreference("first");
+        Preference third = createPreference("first");
+        Preference[] preferences = new Preference[] {first, second, third};
+        setupMockPreferenceGroup(preferences);
+        when(mGroup.getKey()).thenReturn("Group");
+
+        mCache = new PreferenceListCache(mGroup);
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void testEmptyKeyThrows() {
+        Preference first = createPreference("");
+        Preference[] preferences = new Preference[] {first};
+        setupMockPreferenceGroup(preferences);
+        when(mGroup.getKey()).thenReturn("Group");
+
+        mCache = new PreferenceListCache(mGroup);
     }
 
     private Preference createPreference(String key) {
