@@ -45,6 +45,15 @@
             </intent-filter>
         </activity>
 
+        <!-- Warning for activating the storage manager. -->
+        <activity android:name=".automatic.WarningDialogActivity"
+                  android:excludeFromRecents="true"
+                  android:label=""
+                  android:noHistory="true"
+                  android:taskAffinity=".WarningDialogActivity"
+                  android:theme="@style/TransparentDialog">
+        </activity>
+
         <!-- Automatic storage management tasks. -->
         <service
             android:name=".automatic.AutomaticStorageManagementJobService"
