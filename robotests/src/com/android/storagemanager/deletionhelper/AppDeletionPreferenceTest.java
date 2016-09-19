@@ -32,7 +32,7 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
-import static org.junit.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
@@ -62,9 +62,9 @@ public class AppDeletionPreferenceTest {
         AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
         preference.updateSummary();
 
-        assertEquals(TEST_PACKAGE_NAME, preference.getPackageName());
-        assertEquals(TEST_PACKAGE_LABEL, preference.getTitle());
-        assertEquals("1.00KB • 30 days ago", preference.getSummary().toString());
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • 30 days ago");
     }
 
     @Test
@@ -74,9 +74,9 @@ public class AppDeletionPreferenceTest {
         AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
         preference.updateSummary();
 
-        assertEquals(TEST_PACKAGE_NAME, preference.getPackageName());
-        assertEquals(TEST_PACKAGE_LABEL, preference.getTitle());
-        assertEquals("1.00KB • Never used before", preference.getSummary().toString());
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • Never used before");
     }
 
     @Test
@@ -86,9 +86,10 @@ public class AppDeletionPreferenceTest {
         AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
         preference.updateSummary();
 
-        assertEquals(TEST_PACKAGE_NAME, preference.getPackageName());
-        assertEquals(TEST_PACKAGE_LABEL, preference.getTitle());
-        assertEquals("1.00KB • Not sure when last used", preference.getSummary().toString());
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString())
+                .isEqualTo("1.00KB • Not sure when last used");
     }
 
     @Test
@@ -98,8 +99,8 @@ public class AppDeletionPreferenceTest {
         AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
         preference.updateSummary();
 
-        assertEquals(TEST_PACKAGE_NAME, preference.getPackageName());
-        assertEquals(TEST_PACKAGE_LABEL, preference.getTitle());
-        assertEquals("100B • 30 days ago", preference.getSummary().toString());
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("100B • 30 days ago");
     }
 }

@@ -36,8 +36,7 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
@@ -72,7 +71,7 @@ public class JobPreconditionsTest {
     public void testNoNetworks() {
         hookUpMocks();
 
-        assertFalse(JobPreconditions.isWifiConnected(mContext));
+        assertThat(JobPreconditions.isWifiConnected(mContext)).isFalse();
     }
 
     @Test
@@ -84,22 +83,22 @@ public class JobPreconditionsTest {
         when(mWifiNetworkInfo.isConnected()).thenReturn(true);
         hookUpMocks();
 
-        assertTrue(JobPreconditions.isWifiConnected(mContext));
-        assertFalse(JobPreconditions.isNetworkMetered(mContext));
+        assertThat(JobPreconditions.isWifiConnected(mContext)).isTrue();
+        assertThat(JobPreconditions.isNetworkMetered(mContext)).isFalse();
     }
 
     @Test
     public void testBatteryConnected() {
         when(mBatteryManager.isCharging()).thenReturn(true);
 
-        assertTrue(JobPreconditions.isCharging(mContext));
+        assertThat(JobPreconditions.isCharging(mContext)).isTrue();
     }
 
     @Test
     public void testBatteryDisconnected() {
         when(mBatteryManager.isCharging()).thenReturn(false);
 
-        assertFalse(JobPreconditions.isCharging(mContext));
+        assertThat(JobPreconditions.isCharging(mContext)).isFalse();
     }
 
     // TODO(b/31224380): Checking if a network is metered relies on a hidden API which we cannot

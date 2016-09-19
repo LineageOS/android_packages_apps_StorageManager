@@ -34,7 +34,7 @@ import org.robolectric.shadows.ShadowApplication;
 
 import java.util.concurrent.TimeUnit;
 
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;
@@ -135,8 +135,8 @@ public class NotificationControllerTest {
     public void testActivateStorageManagerIntent() throws Exception {
         mController.onReceive(mContext,
                 new Intent(NotificationController.INTENT_ACTION_ACTIVATE_ASM));
-        assertEquals(1, Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED));
+        assertThat(Settings.Secure.getInt(mContext.getContentResolver(),
+                Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED)).isEqualTo(1);
     }
 
     private Intent getNotificationIntent(String action, int id) {

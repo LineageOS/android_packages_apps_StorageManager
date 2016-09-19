@@ -41,10 +41,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
 import static org.mockito.Mockito.mock;
@@ -102,10 +99,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(0, stats.daysSinceFirstInstall);
-        assertEquals(AppStateUsageStatsBridge.NEVER_USED, stats.daysSinceLastUse);
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(0);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.NEVER_USED);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isFalse();
     }
 
     @Test
@@ -116,10 +113,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(90, stats.daysSinceFirstInstall);
-        assertEquals(AppStateUsageStatsBridge.NEVER_USED, stats.daysSinceLastUse);
-        assertTrue(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(90);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.NEVER_USED);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isTrue();
     }
 
     @Test
@@ -131,10 +128,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(90, stats.daysSinceFirstInstall);
-        assertEquals(AppStateUsageStatsBridge.UNKNOWN_LAST_USE, stats.daysSinceLastUse);
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(90);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.UNKNOWN_LAST_USE);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isFalse();
     }
 
     @Test
@@ -146,10 +143,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(200, stats.daysSinceFirstInstall);
-        assertEquals(1, stats.daysSinceLastUse);
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(1);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isFalse();
     }
 
     @Test
@@ -161,10 +158,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(200, stats.daysSinceFirstInstall);
-        assertEquals(199, stats.daysSinceLastUse);
-        assertTrue(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(199);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isTrue();
     }
 
     @Test
@@ -177,10 +174,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(200, stats.daysSinceFirstInstall);
-        assertEquals(200, stats.daysSinceLastUse);
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(200);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isFalse();
     }
 
     @Test
@@ -193,10 +190,10 @@ public class AppStateUsageStatsBridgeTest {
         mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
         UsageStatsState stats = (UsageStatsState) app.extraInfo;
 
-        assertNotNull(app.extraInfo);
-        assertEquals(200, stats.daysSinceFirstInstall);
-        assertEquals(200, stats.daysSinceLastUse);
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app));
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(200);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isFalse();
     }
 
     @Test
@@ -217,9 +214,9 @@ public class AppStateUsageStatsBridgeTest {
 
         mBridge.loadAllExtraInfo();
 
-        assertTrue(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(clearable));
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(tooNewtoDelete));
-        assertFalse(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(systemApp));
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(clearable)).isTrue();
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(tooNewtoDelete)).isFalse();
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(systemApp)).isFalse();
     }
 
     private ApplicationsState.AppEntry addPackageToPackageManager(String packageName,

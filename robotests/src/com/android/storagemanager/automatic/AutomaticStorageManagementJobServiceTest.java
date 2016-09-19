@@ -42,8 +42,7 @@ import org.robolectric.util.ReflectionHelpers;
 import java.io.File;
 import java.util.List;
 
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.spy;
@@ -105,29 +104,29 @@ public class AutomaticStorageManagementJobServiceTest {
     @Test
     public void testJobRequiresCharging() {
         when(mBatteryManager.isCharging()).thenReturn(false);
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         // The job should report that it needs to be retried, if not charging.
         assertJobFinished(true);
 
         when(mBatteryManager.isCharging()).thenReturn(true);
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertJobFinished(false);
     }
 
     @Test
     public void testStartJobTriesUpsellWhenASMDisabled() {
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertJobFinished(false);
         mApplication.runBackgroundTasks();
 
         List<Intent> broadcastedIntents = mApplication.getBroadcastIntents();
-        assertEquals(1, broadcastedIntents.size());
+        assertThat(broadcastedIntents.size()).isEqualTo(1);
 
         Intent lastIntent = broadcastedIntents.get(0);
-        assertEquals(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION,
-                lastIntent.getAction());
-        assertEquals(NotificationController.class.getCanonicalName(),
-                lastIntent.getComponent().getClassName());
+        assertThat(lastIntent.getAction())
+                .isEqualTo(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION);
+        assertThat(lastIntent.getComponent().getClassName())
+                .isEqualTo(NotificationController.class.getCanonicalName());
 
         assertStorageManagerJobDidNotRun();
     }
@@ -135,7 +134,7 @@ public class AutomaticStorageManagementJobServiceTest {
     @Test
     public void testASMJobRunsWithValidConditions() {
         activateASM();
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }
 
@@ -143,7 +142,7 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testJobDoesntRunIfStorageNotFull() {
         activateASM();
         when(mFile.getFreeSpace()).thenReturn(100L);
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
     }
 
@@ -151,11 +150,11 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testJobOnlyRunsIfFreeStorageIsUnder15Percent() {
         activateASM();
         when(mFile.getFreeSpace()).thenReturn(15L);
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
 
         when(mFile.getFreeSpace()).thenReturn(14L);
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }
 
@@ -165,7 +164,7 @@ public class AutomaticStorageManagementJobServiceTest {
         Settings.Secure.putInt(resolver, Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN,
                 30);
         activateASM();
-        assertFalse(mJobService.onStartJob(mJobParameters));
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan(30);
     }
 

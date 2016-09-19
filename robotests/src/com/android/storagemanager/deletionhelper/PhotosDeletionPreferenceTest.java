@@ -33,7 +33,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
-import static org.junit.Assert.assertEquals;
+import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
@@ -59,15 +59,16 @@ public class PhotosDeletionPreferenceTest {
 
     @Test
     public void testConstructor() {
-        assertEquals(0, mPreference.getFreeableBytes());
+        assertThat(mPreference.getFreeableBytes()).isEqualTo(0);
     }
 
     @Test
     public void testItemVisibilityBeforeLoaded() {
         mPreference.onBindViewHolder(mHolder);
-        assertEquals(View.VISIBLE, mHolder.findViewById(R.id.progress_bar).getVisibility());
-        assertEquals(View.GONE, mHolder.findViewById(android.R.id.icon).getVisibility());
-        assertEquals(View.GONE, mHolder.findViewById(android.R.id.checkbox).getVisibility());
+        assertThat(mHolder.findViewById(R.id.progress_bar).getVisibility()).isEqualTo(View.VISIBLE);
+        assertThat(mHolder.findViewById(android.R.id.icon).getVisibility()).isEqualTo(View.GONE);
+        assertThat(mHolder.findViewById(android.R.id.checkbox).getVisibility())
+                .isEqualTo(View.GONE);
     }
 
     @Test
@@ -78,9 +79,10 @@ public class PhotosDeletionPreferenceTest {
         mPreference.onBindViewHolder(mHolder);
 
         // After onFreeableChanged is called, we're no longer loading.
-        assertEquals(View.GONE, mHolder.findViewById(R.id.progress_bar).getVisibility());
-        assertEquals(View.VISIBLE, mHolder.findViewById(android.R.id.icon).getVisibility());
-        assertEquals(View.VISIBLE, mHolder.findViewById(android.R.id.checkbox).getVisibility());
+        assertThat(mHolder.findViewById(R.id.progress_bar).getVisibility()).isEqualTo(View.GONE);
+        assertThat(mHolder.findViewById(android.R.id.icon).getVisibility()).isEqualTo(View.VISIBLE);
+        assertThat(mHolder.findViewById(android.R.id.checkbox).getVisibility())
+                .isEqualTo(View.VISIBLE);
     }
 
     @Test
@@ -90,7 +92,7 @@ public class PhotosDeletionPreferenceTest {
         Robolectric.flushForegroundThreadScheduler();
         mPreference.onBindViewHolder(mHolder);
 
-        assertEquals("Photos & videos (10)", mPreference.getTitle());
-        assertEquals("1.00KB • Older than 30 days", mPreference.getSummary().toString());
+        assertThat(mPreference.getTitle()).isEqualTo("Photos & videos (10)");
+        assertThat(mPreference.getSummary().toString()).isEqualTo("1.00KB • Older than 30 days");
     }
 }

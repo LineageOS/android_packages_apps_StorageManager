@@ -33,9 +33,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -62,8 +60,8 @@ public class DownloadsDeletionTypeTest {
         filePaths[1] = temp2.getPath();
         mDeletion = new DownloadsDeletionType(RuntimeEnvironment.application, filePaths);
 
-        assertFalse(mDeletion.isChecked(temp));
-        assertFalse(mDeletion.isChecked(temp2));
+        assertThat(mDeletion.isChecked(temp)).isFalse();
+        assertThat(mDeletion.isChecked(temp2)).isFalse();
     }
 
     @Test
@@ -77,8 +75,8 @@ public class DownloadsDeletionTypeTest {
         mDeletion.onLoadFinished(null, result);
         Set<File> fileSet = mDeletion.getFiles();
 
-        assertTrue(fileSet.contains(temp));
-        assertTrue(fileSet.contains(temp2));
+        assertThat(fileSet.contains(temp)).isTrue();
+        assertThat(fileSet.contains(temp2)).isTrue();
     }
 
     @Test
@@ -90,13 +88,13 @@ public class DownloadsDeletionTypeTest {
         mDeletion.onLoadFinished(null, result);
 
         // Downloads files are default checked.
-        assertTrue(mDeletion.isChecked(temp));
+        assertThat(mDeletion.isChecked(temp)).isTrue();
         mDeletion.setFileChecked(temp, false);
 
-        assertFalse(mDeletion.isChecked(temp));
+        assertThat(mDeletion.isChecked(temp)).isFalse();
         mDeletion.setFileChecked(temp, true);
 
-        assertTrue(mDeletion.isChecked(temp));
+        assertThat(mDeletion.isChecked(temp)).isTrue();
     }
 
     @Test
@@ -111,11 +109,11 @@ public class DownloadsDeletionTypeTest {
         mDeletion.onLoadFinished(null, result);
 
         // Downloads files are default checked.
-        assertTrue(mDeletion.isChecked(temp));
-        assertEquals(4, mDeletion.getFreeableBytes());
+        assertThat(mDeletion.isChecked(temp)).isTrue();
+        assertThat(mDeletion.getFreeableBytes()).isEqualTo(4);
 
         mDeletion.setFileChecked(temp, false);
-        assertEquals(0, mDeletion.getFreeableBytes());
+        assertThat(mDeletion.getFreeableBytes()).isEqualTo(0);
     }
 
     @Test
@@ -133,8 +131,8 @@ public class DownloadsDeletionTypeTest {
         mDeletion = new DownloadsDeletionType(RuntimeEnvironment.application,
                 savedBundle.getStringArray(DownloadsDeletionType.EXTRA_UNCHECKED_DOWNLOADS));
 
-        assertFalse(mDeletion.isChecked(temp));
-        assertTrue(mDeletion.isChecked(temp2));
+        assertThat(mDeletion.isChecked(temp)).isFalse();
+        assertThat(mDeletion.isChecked(temp2)).isTrue();
     }
 
     @Test

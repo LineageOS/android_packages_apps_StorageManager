@@ -32,8 +32,7 @@ import org.robolectric.annotation.Config;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -67,15 +66,15 @@ public class AutomaticStorageBroadcastReceiverTest {
         // Ensure that the jobs are the ones we expect.
         List<JobInfo> capturedJobs = jobCaptor.getAllValues();
         JobInfo asmJob = capturedJobs.get(0);
-        assertEquals(AutomaticStorageManagementJobService.class.getName(),
-                asmJob.getService().getClassName());
-        assertTrue(asmJob.isRequireCharging());
-        assertTrue(asmJob.isRequireDeviceIdle());
+        assertThat(asmJob.getService().getClassName())
+                .isEqualTo(AutomaticStorageManagementJobService.class.getName());
+        assertThat(asmJob.isRequireCharging()).isTrue();
+        assertThat(asmJob.isRequireDeviceIdle()).isTrue();
 
         JobInfo downloadsJob = capturedJobs.get(1);
-        assertEquals(DownloadsBackupJobService.class.getName(),
-                downloadsJob.getService().getClassName());
-        assertTrue(downloadsJob.isRequireCharging());
-        assertTrue(downloadsJob.isRequireDeviceIdle());
+        assertThat(downloadsJob.getService().getClassName())
+                .isEqualTo(DownloadsBackupJobService.class.getName());
+        assertThat(downloadsJob.isRequireCharging()).isTrue();
+        assertThat(downloadsJob.isRequireDeviceIdle()).isTrue();
     }
 }
