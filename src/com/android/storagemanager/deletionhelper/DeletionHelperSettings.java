@@ -231,8 +231,12 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     }
 
     private void updateFreeButtonText() {
-        mFree.setText(String.format(getActivity().getString(R.string.deletion_helper_free_button),
-                Formatter.formatFileSize(getActivity(), getTotalFreeableSpace())));
+        Activity activity = getActivity();
+        if (activity == null) {
+            return;
+        }
+        mFree.setText(String.format(activity.getString(R.string.deletion_helper_free_button),
+                Formatter.formatFileSize(activity, getTotalFreeableSpace())));
     }
 
     private long getTotalFreeableSpace() {
