@@ -53,12 +53,17 @@ public class NotificationController extends BroadcastReceiver {
     public static final String INTENT_ACTION_NO_THANKS =
             "com.android.storagemanager.automatic.NO_THANKS";
 
-
     /**
-     * Intent action for if the user explicitly hits "No thanks" on the notification.
+     * Intent action for forcefully showing the notification, even if the conditions are not valid.
      */
     private static final String INTENT_ACTION_DEBUG_NOTIFICATION =
             "com.android.storagemanager.automatic.DEBUG_SHOW_NOTIFICATION";
+
+    /**
+     * Intent action for if the user taps on the notification.
+     */
+    private static final String INTENT_ACTION_TAP =
+            "com.android.storagemanager.automatic.SHOW_SETTINGS";
 
     /**
      * Intent extra for the notification id.
@@ -91,6 +96,11 @@ public class NotificationController extends BroadcastReceiver {
             case INTENT_ACTION_DEBUG_NOTIFICATION:
                 showNotification(context);
                 return;
+            case INTENT_ACTION_TAP:
+                Intent storageIntent = new Intent(Settings.ACTION_STORAGE_MANAGER_SETTINGS);
+                storageIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(storageIntent);
+                break;
         }
         cancelNotification(context, intent);
     }
@@ -143,6 +153,11 @@ public class NotificationController extends BroadcastReceiver {
                 new Intent(INTENT_ACTION_DISMISS),
                 PendingIntent.FLAG_ONE_SHOT);
 
+        Intent contentIntent = new Intent(INTENT_ACTION_TAP);
+        contentIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
+        PendingIntent tapIntent = PendingIntent.getBroadcast(context, 0,  contentIntent,
+                PendingIntent.FLAG_ONE_SHOT);
+
         Notification.Builder builder = new Notification.Builder(context)
                 .setSmallIcon(R.drawable.ic_settings_24dp)
                 .setContentTitle(
@@ -153,6 +168,7 @@ public class NotificationController extends BroadcastReceiver {
                         res.getString(R.string.automatic_storage_manager_notification_summary)))
                 .addAction(cancelAction.build())
                 .addAction(activateAutomaticAction.build())
+                .setContentIntent(tapIntent)
                 .setDeleteIntent(deleteIntent);
 
         NotificationManager manager =
