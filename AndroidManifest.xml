@@ -68,7 +68,9 @@
                 <action android:name="com.android.storagemanager.automatic.DISMISS" />
                 <action android:name="com.android.storagemanager.automatic.ACTIVATE" />
                 <action android:name="com.android.storagemanager.automatic.NO_THANKS" />
-                <action android:name="com.android.storagemanager.automatic.DEBUG_SHOW_NOTIFICATION" />
+                <action android:name="com.android.storagemanager.automatic.SHOW_NOTIFICATION" />
+                <action android:name="com.android.storagemanager.automatic.DEBUG_SHOW_NOTIFICATION"/>
+                <action android:name="com.android.storagemanager.automatic.SHOW_SETTINGS" />
             </intent-filter>
         </receiver>
 
