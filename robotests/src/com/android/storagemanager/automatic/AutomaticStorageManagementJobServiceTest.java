@@ -25,6 +25,7 @@ import android.os.BatteryManager;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
+import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
 import com.android.storagemanager.testing.TestingConstants;
@@ -40,11 +41,13 @@ import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.eq;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
@@ -54,15 +57,16 @@ import static org.mockito.Mockito.when;
 @Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
-    @Mock private StorageManager mStorageManager;
     @Mock private NotificationManager mNotificationManager;
     @Mock private VolumeInfo mVolumeInfo;
     @Mock private File mFile;
     @Mock private JobParameters mJobParameters;
     @Mock private StorageManagementJobProvider mStorageManagementJobProvider;
     @Mock private FeatureFactory mFeatureFactory;
+    @Mock private StorageVolumeProvider mStorageVolumeProvider;
     private AutomaticStorageManagementJobService mJobService;
     private ShadowApplication mApplication;
+    private List<VolumeInfo> mVolumes;
 
     @Before
     public void setUp() {
@@ -75,15 +79,18 @@ public class AutomaticStorageManagementJobServiceTest {
         // 2. We have a completely full device.
         // 3. ASM is disabled.
         when(mBatteryManager.isCharging()).thenReturn(true);
-        when(mStorageManager.findVolumeById(VolumeInfo.ID_PRIVATE_INTERNAL))
-                .thenReturn(mVolumeInfo);
+        mVolumes = new ArrayList<>();
         when(mVolumeInfo.getPath()).thenReturn(mFile);
+        when(mVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
+        when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIMARY_PHYSICAL);
         when(mFile.getTotalSpace()).thenReturn(100L);
         when(mFile.getFreeSpace()).thenReturn(0L);
+        mVolumes.add(mVolumeInfo);
+        when(mStorageVolumeProvider.getPrimaryStorageSize()).thenReturn(100L);
+        when(mStorageVolumeProvider.getVolumes()).thenReturn(mVolumes);
 
         mApplication = ShadowApplication.getInstance();
         mApplication.setSystemService(Context.BATTERY_SERVICE, mBatteryManager);
-        mApplication.setSystemService(Context.STORAGE_SERVICE, mStorageManager);
         mApplication.setSystemService(Context.NOTIFICATION_SERVICE, mNotificationManager);
 
         // This is a hack-y injection of our own FeatureFactory.
@@ -99,6 +106,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
         // And we can't forget to initialize the actual job service.
         mJobService = spy(Robolectric.setupService(AutomaticStorageManagementJobService.class));
+        mJobService.setStorageVolumeProvider(mStorageVolumeProvider);
     }
 
     @Test
@@ -166,6 +174,53 @@ public class AutomaticStorageManagementJobServiceTest {
         activateASM();
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan(30);
+    }
+
+    @Test
+    public void testNonPrivateDrivesIgnoredForFreeSpaceCalculation() {
+        File notPrivate = mock(File.class);
+        VolumeInfo nonPrivateVolume = mock(VolumeInfo.class);
+        when(nonPrivateVolume.getPath()).thenReturn(notPrivate);
+        when(nonPrivateVolume.getType()).thenReturn(VolumeInfo.TYPE_PUBLIC);
+        when(notPrivate.getTotalSpace()).thenReturn(100L);
+        when(notPrivate.getFreeSpace()).thenReturn(0L);
+        mVolumes.add(nonPrivateVolume);
+        activateASM();
+        when(mFile.getFreeSpace()).thenReturn(15L);
+
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
+        assertStorageManagerJobDidNotRun();
+    }
+
+    @Test
+    public void testMultiplePrivateVolumesCountedForASMActivationThrsehold() {
+        File privateVolume = mock(File.class);
+        VolumeInfo privateVolumeInfo = mock(VolumeInfo.class);
+        when(privateVolumeInfo.getPath()).thenReturn(privateVolume);
+        when(privateVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
+        when(privateVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIVATE_INTERNAL);
+        when(privateVolume.getTotalSpace()).thenReturn(100L);
+        when(privateVolume.getFreeSpace()).thenReturn(0L);
+        mVolumes.add(privateVolumeInfo);
+        activateASM();
+        when(mFile.getFreeSpace()).thenReturn(15L);
+
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
+        assertStorageManagerJobRan();
+    }
+
+    @Test
+    public void testPrimaryPrivateStorageDefersToStorageManager() {
+        // The Storage Manager has a more accurate calculation for the UUID_PRIVATE_INTERNAL
+        // volume, so we don't use the getTotalSpace() method to find it.
+        // If the job accidentally uses the getTotalSpace(), it will run the job accidentally.
+        when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIVATE_INTERNAL);
+        when(mFile.getTotalSpace()).thenReturn(1000L);
+        when(mFile.getFreeSpace()).thenReturn(15L);
+        activateASM();
+
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
+        assertStorageManagerJobDidNotRun();
     }
 
     private void assertJobFinished(boolean retryNeeded) {
