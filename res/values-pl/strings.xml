@@ -51,4 +51,6 @@
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Zdjęcia i filmy"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Wyszukuję elementy…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> zostanie usunięte z urządzenia"</string>
+    <!-- no translation found for automatic_storage_manager_activation_warning (7657017408180001078) -->
+    <skip />
 </resources>
