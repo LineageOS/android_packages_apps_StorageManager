@@ -51,6 +51,5 @@
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"ഫോട്ടോകളും വീഡിയോകളും"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"ഇനങ്ങൾ കണ്ടെത്തുന്നു…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> നീക്കംചെയ്യപ്പെടും"</string>
-    <!-- no translation found for automatic_storage_manager_activation_warning (7657017408180001078) -->
-    <skip />
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"നിങ്ങളുടെ സ്റ്റോറേജ് ഇപ്പോൾ മാനേജുചെയ്യുന്നത് സ്റ്റോറേജ് ​​മാനേജരാണ്"</string>
 </resources>

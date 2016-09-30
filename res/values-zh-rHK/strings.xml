@@ -51,6 +51,5 @@
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"相片和影片"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"正在尋找項目…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"系統將會從您的裝置移除 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 儲存空間"</string>
-    <!-- no translation found for automatic_storage_manager_activation_warning (7657017408180001078) -->
-    <skip />
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"您的儲存空間即將由儲存空間管理員管理"</string>
 </resources>
