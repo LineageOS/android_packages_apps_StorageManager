@@ -78,8 +78,27 @@ public class NotificationControllerTest {
                     new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
             verify(mNotificationManager, times(i)).notify(anyInt(), any(Notification.class));
             mController.onReceive(mContext,
-                    getNotificationIntent(NotificationController.INTENT_ACTION_DISMISS, 1));
+                    getNotificationIntent(NotificationController.INTENT_ACTION_NO_THANKS, 1));
             verify(mNotificationManager, times(i)).cancel(1);
+            mClock.time += TimeUnit.DAYS.toMillis(91);
+        }
+
+        // The next time should show nothing.
+        mController.onReceive(mContext,
+                new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
+        verifyZeroInteractions(mNotificationManager);
+    }
+
+    @Test
+    public void testNotificationNotShownIfDismissedTooManyTimes() {
+        // Show the notification 9 times.
+        for (int i = 0; i < 9; i++) {
+            mController.onReceive(mContext,
+                    new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
+            verify(mNotificationManager, times(i + 1)).notify(anyInt(), any(Notification.class));
+            mController.onReceive(mContext,
+                    getNotificationIntent(NotificationController.INTENT_ACTION_DISMISS, 1));
+            verify(mNotificationManager, times(i + 1)).cancel(1);
             mClock.time += TimeUnit.DAYS.toMillis(15);
         }
 
