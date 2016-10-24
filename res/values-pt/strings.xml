@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"Remova <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> do seu dispositivo."</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"Um total de <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> será removido do seu dispositivo"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Remover"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Gerenciar armazenamento automaticamente?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> grátis a partir de agora. Permitir que o gerenciador de armazenamento libere espaço automaticamente, removendo conteúdo do seu dispositivo salvo em backup?"</string>
@@ -40,8 +40,8 @@
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Ativar"</string>
     <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"Apps (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
     <string name="deletion_helper_apps_group_summary" msgid="3466154404460006085">"<xliff:g id="USED">%1$s</xliff:g> • Usado(s) pela última vez <xliff:g id="DAYS">%2$d</xliff:g> dias atrás"</string>
-    <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automáticas"</string>
-    <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Manual"</string>
+    <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Modo automático"</string>
+    <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Modo manual"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Espaço livre no momento"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Serviço automático de gerenciamento de armazenamento"</string>
     <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Seu smartphone está com pouco espaço"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ativar"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotos e vídeos"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Encontrando itens…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Um total de <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> será removido do seu dispositivo"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Seu armazenamento está sendo controlado pelo gerenciador de armazenamento"</string>
 </resources>

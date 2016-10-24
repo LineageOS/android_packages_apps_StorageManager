@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"మీ పరికరం నుండి <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>ని తీసివేయండి."</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> మీ పరికరం నుండి తీసివేయబడుతుంది"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"తీసివేయి"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"నిల్వను స్వయంచాలకంగా నిర్వహించాలా?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"ఇప్పుడు <xliff:g id="USED">%1$s</xliff:g> స్థలం ఖాళీగా ఉంది. మీ పరికరం నుండి బ్యాకప్ చేసిన కంటెంట్‌ను తీసివేయడం ద్వారా స్వయంచాలకంగా స్థలాన్ని ఖాళీ చేయడానికి నిల్వ నిర్వాహికిని అనుమతించాలా?"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ఆన్ చేయి"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"ఫోటోలు &amp; వీడియోలు"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"అంశాలను కనుగొంటోంది…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> మీ పరికరం నుండి తీసివేయబడుతుంది"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"మీ నిల్వ ఇప్పుడు నిల్వ నిర్వాహికి ద్వారా నిర్వహించబడుతోంది"</string>
 </resources>

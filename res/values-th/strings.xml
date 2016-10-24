@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"ใช้ไป <xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g> วัน"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"นำ <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ออกจากอุปกรณ์ของคุณ"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"ระบบจะนำ <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ออกจากอุปกรณ์"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"นำออก"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"จัดการพื้นที่เก็บข้อมูลโดยอัตโนมัติไหม"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"เพิ่มพื้นที่ว่าง <xliff:g id="USED">%1$s</xliff:g> แล้ว ให้ตัวจัดการพื้นที่เก็บข้อมูลเพิ่มพื้นที่ว่างโดยอัตโนมัติโดยนำเนื้อหาที่สำรองไว้ออกจากอุปกรณ์ไหม"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"เปิด"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"รูปภาพและวิดีโอ"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"กำลังหารายการ…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"ระบบจะนำ <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ออกจากอุปกรณ์"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"ตัวจัดการพื้นที่เก็บข้อมูลกำลังจัดการพื้นที่เก็บข้อมูลของคุณ"</string>
 </resources>
