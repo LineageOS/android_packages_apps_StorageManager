@@ -181,7 +181,8 @@ public class NotificationController extends BroadcastReceiver {
                 .addAction(cancelAction.build())
                 .addAction(activateAutomaticAction.build())
                 .setContentIntent(tapIntent)
-                .setDeleteIntent(deleteIntent);
+                .setDeleteIntent(deleteIntent)
+                .setLocalOnly(true);
 
         NotificationManager manager =
                 ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
