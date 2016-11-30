@@ -26,6 +26,7 @@ import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
@@ -156,6 +157,16 @@ public class NotificationControllerTest {
                 new Intent(NotificationController.INTENT_ACTION_ACTIVATE_ASM));
         assertThat(Settings.Secure.getInt(mContext.getContentResolver(),
                 Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED)).isEqualTo(1);
+    }
+
+    @Test
+    public void testNotificationIsLocalOnly(){
+        ArgumentCaptor<Notification> captor = ArgumentCaptor.forClass(Notification.class);
+        mController.onReceive(mContext,
+                new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
+        verify(mNotificationManager).notify(anyInt(), captor.capture());
+        assertThat(captor.getValue().flags & Notification.FLAG_LOCAL_ONLY)
+                .isEqualTo(Notification.FLAG_LOCAL_ONLY);
     }
 
     private Intent getNotificationIntent(String action, int id) {
