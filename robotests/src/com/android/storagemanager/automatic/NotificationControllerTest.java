@@ -100,7 +100,7 @@ public class NotificationControllerTest {
             mController.onReceive(mContext,
                     getNotificationIntent(NotificationController.INTENT_ACTION_DISMISS, 1));
             verify(mNotificationManager, times(i + 1)).cancel(1);
-            mClock.time += TimeUnit.DAYS.toMillis(15);
+            mClock.time += TimeUnit.DAYS.toMillis(14);
         }
 
         // The next time should show nothing.
@@ -123,8 +123,8 @@ public class NotificationControllerTest {
                 new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
         verifyZeroInteractions(mNotificationManager);
 
-        // The notification should show against after 15 days.
-        mClock.time = TimeUnit.DAYS.toMillis(15);
+        // The notification should show against after 14 days.
+        mClock.time = TimeUnit.DAYS.toMillis(14);
         mController.onReceive(mContext,
                 new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION));
         verify(mNotificationManager, times(2)).notify(anyInt(), any(Notification.class));
