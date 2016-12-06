@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"Qurilmadan <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> joy o‘chirib tashlang."</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"Qurilmangizdan <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> joy o‘chirib tashlanadi"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Olib tashlash"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Xotira avtomatik boshqarilsinmi?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Hozirda <xliff:g id="USED">%1$s</xliff:g> joy bor. Joy bo‘shatish maqsadida xotira boshqaruviga qurilmangizdan zaxiralangan kontentlarni avtomatik ravishda o‘chirib tashlashga ruxsat berilsinmi?"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ha"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Surat va videolar"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Suratlar topilmoqda…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Qurilmangizdan <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> joy o‘chirib tashlanadi"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Xotirangiz hozirda xotira boshqaruvi tomonidan boshqarilmoqda"</string>
 </resources>

@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"លុប <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ចេញពីឧបករណ៍របស់អ្នក"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> នឹងត្រូវលុបចេញពីឧបករណ៍របស់អ្នក"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"លុបចេញ"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"គ្រប់គ្រងទំហំផ្ទុកដោយស្វ័យប្រវត្តិឬ?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"ឥឡូវនេះអាចប្រើបាន <xliff:g id="USED">%1$s</xliff:g> ។ អនុញ្ញាតឲ្យកម្មវិធីគ្រប់គ្រងទំហំផ្ទុកបង្កើនទំហំផ្ទុកដោយស្វ័យប្រវត្តិដោយធ្វើការលុបមាតិកាដែលបានបម្រុងទុកចេញពីឧបករណ៍របស់អ្នកដែរទេ?"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"បើក"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"រូបថត និងវីដេអូ"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"កំពុងរកធាតុ…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> នឹងត្រូវលុបចេញពីឧបករណ៍របស់អ្នក"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"នៅពេលនេះទំហំផ្ទុករបស់អ្នកត្រូវបានគ្រប់គ្រងដោយកម្មវិធីគ្រប់គ្រងទំហំផ្ទុក"</string>
 </resources>

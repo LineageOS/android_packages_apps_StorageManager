@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"Kendu <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> gailutik."</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kenduko dira gailutik"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Kendu"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Memoria automatikoki kudeatzea nahi duzu?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> daude libre. Memoria-kudeatzaileak babeskopia duen edukia kentzea nahi duzu, automatikoki tokia egiteko?"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Aktibatu"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Argazkiak eta bideoak"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Elementuak bilatzen…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kenduko dira gailutik"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Biltegi-kudeatzailea ari da biltegia kudeatzen"</string>
 </resources>

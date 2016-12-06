@@ -32,7 +32,7 @@
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g> 天"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="921129346098616363">"从您的设备中移除 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 内容。"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"系统将从您的设备中移除 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 的内容"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"移除"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"要让系统自动管理存储空间吗？"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"已释放 <xliff:g id="USED">%1$s</xliff:g>。要让存储空间管理器从您的设备中移除已备份的内容，从而自动释放存储空间吗？"</string>
@@ -50,4 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"开启"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"照片和视频"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"正在查找内容…"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"系统将从您的设备中移除 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 的内容"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"您的存储空间目前是由存储空间管理器管理"</string>
 </resources>

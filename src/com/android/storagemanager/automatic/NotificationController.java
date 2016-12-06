@@ -24,9 +24,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.SystemProperties;
 import android.provider.Settings;
 
 import com.android.storagemanager.R;
+import com.android.storagemanager.automatic.WarningDialogActivity;
+import com.android.storagemanager.overlay.FeatureFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -53,12 +56,17 @@ public class NotificationController extends BroadcastReceiver {
     public static final String INTENT_ACTION_NO_THANKS =
             "com.android.storagemanager.automatic.NO_THANKS";
 
-
     /**
-     * Intent action for if the user explicitly hits "No thanks" on the notification.
+     * Intent action for forcefully showing the notification, even if the conditions are not valid.
      */
     private static final String INTENT_ACTION_DEBUG_NOTIFICATION =
             "com.android.storagemanager.automatic.DEBUG_SHOW_NOTIFICATION";
+
+    /**
+     * Intent action for if the user taps on the notification.
+     */
+    private static final String INTENT_ACTION_TAP =
+            "com.android.storagemanager.automatic.SHOW_SETTINGS";
 
     /**
      * Intent extra for the notification id.
@@ -68,10 +76,13 @@ public class NotificationController extends BroadcastReceiver {
     private static final String SHARED_PREFERENCES_NAME = "NotificationController";
     private static final String NOTIFICATION_NEXT_SHOW_TIME = "notification_next_show_time";
     private static final String NOTIFICATION_SHOWN_COUNT = "notification_shown_count";
+    private static final String NOTIFICATION_DISMISS_COUNT = "notification_dismiss_count";
+    private static final String STORAGE_MANAGER_PROPERTY = "ro.storage_manager.enabled";
 
     private static final long DISMISS_DELAY = TimeUnit.DAYS.toMillis(15);
     private static final long NO_THANKS_DELAY = TimeUnit.DAYS.toMillis(90);
     private static final long MAXIMUM_SHOWN_COUNT = 4;
+    private static final long MAXIMUM_DISMISS_COUNT = 9;
     private static final int NOTIFICATION_ID = 0;
 
     @Override
@@ -81,6 +92,11 @@ public class NotificationController extends BroadcastReceiver {
                 Settings.Secure.putInt(context.getContentResolver(),
                         Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED,
                         1);
+                // Provide a warning if storage manager is not defaulted on.
+                if (!SystemProperties.getBoolean(STORAGE_MANAGER_PROPERTY, false)) {
+                    Intent warningIntent = new Intent(context, WarningDialogActivity.class);
+                    context.startActivity(warningIntent);
+                }
                 break;
             case INTENT_ACTION_NO_THANKS:
                 delayNextNotification(context, NO_THANKS_DELAY);
@@ -91,6 +107,11 @@ public class NotificationController extends BroadcastReceiver {
             case INTENT_ACTION_DEBUG_NOTIFICATION:
                 showNotification(context);
                 return;
+            case INTENT_ACTION_TAP:
+                Intent storageIntent = new Intent(Settings.ACTION_STORAGE_MANAGER_SETTINGS);
+                storageIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(storageIntent);
+                break;
         }
         cancelNotification(context, intent);
     }
@@ -111,7 +132,8 @@ public class NotificationController extends BroadcastReceiver {
                 SHARED_PREFERENCES_NAME,
                 Context.MODE_PRIVATE);
         int timesShown = sp.getInt(NOTIFICATION_SHOWN_COUNT, 0);
-        if (timesShown > MAXIMUM_SHOWN_COUNT) {
+        int timesDismissed = sp.getInt(NOTIFICATION_DISMISS_COUNT, 0);
+        if (timesShown >= MAXIMUM_SHOWN_COUNT || timesDismissed >= MAXIMUM_DISMISS_COUNT) {
             return false;
         }
 
@@ -140,7 +162,12 @@ public class NotificationController extends BroadcastReceiver {
         Intent dismissIntent = new Intent(INTENT_ACTION_DISMISS);
         dismissIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
         PendingIntent deleteIntent = PendingIntent.getBroadcast(context, 0,
-                new Intent(INTENT_ACTION_DISMISS),
+                dismissIntent,
+                PendingIntent.FLAG_ONE_SHOT);
+
+        Intent contentIntent = new Intent(INTENT_ACTION_TAP);
+        contentIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
+        PendingIntent tapIntent = PendingIntent.getBroadcast(context, 0,  contentIntent,
                 PendingIntent.FLAG_ONE_SHOT);
 
         Notification.Builder builder = new Notification.Builder(context)
@@ -153,6 +180,7 @@ public class NotificationController extends BroadcastReceiver {
                         res.getString(R.string.automatic_storage_manager_notification_summary)))
                 .addAction(cancelAction.build())
                 .addAction(activateAutomaticAction.build())
+                .setContentIntent(tapIntent)
                 .setDeleteIntent(deleteIntent);
 
         NotificationManager manager =
@@ -161,6 +189,12 @@ public class NotificationController extends BroadcastReceiver {
     }
 
     private void cancelNotification(Context context, Intent intent) {
+        if (intent.getAction() == INTENT_ACTION_DISMISS) {
+            incrementNotificationDismissedCount(context);
+        } else {
+            incrementNotificationShownCount(context);
+        }
+
         int id = intent.getIntExtra(INTENT_EXTRA_ID, -1);
         if (id == -1) {
             return;
@@ -168,8 +202,6 @@ public class NotificationController extends BroadcastReceiver {
         NotificationManager manager = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
         manager.cancel(id);
-
-        incrementNotificationShownCount(context);
     }
 
     private void incrementNotificationShownCount(Context context) {
@@ -178,6 +210,15 @@ public class NotificationController extends BroadcastReceiver {
         SharedPreferences.Editor editor = sp.edit();
         int shownCount = sp.getInt(NotificationController.NOTIFICATION_SHOWN_COUNT, 0) + 1;
         editor.putInt(NotificationController.NOTIFICATION_SHOWN_COUNT, shownCount);
+        editor.apply();
+    }
+
+    private void incrementNotificationDismissedCount(Context context) {
+        SharedPreferences sp = context.getSharedPreferences(SHARED_PREFERENCES_NAME,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        int dismissCount = sp.getInt(NOTIFICATION_DISMISS_COUNT, 0) + 1;
+        editor.putInt(NOTIFICATION_DISMISS_COUNT, dismissCount);
         editor.apply();
     }
 
