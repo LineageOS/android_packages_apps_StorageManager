@@ -80,7 +80,8 @@ public class ConfirmDeletionDialog extends DialogFragment implements
                 ((DeletionHelperSettings) getTargetFragment()).clearData();
                 MetricsLogger.action(getContext(),
                         MetricsEvent.ACTION_DELETION_HELPER_REMOVE_CONFIRM);
-                if (StorageManagerUpsellDialog.shouldShow(getContext())) {
+                if (StorageManagerUpsellDialog.shouldShow(
+                        getContext(), System.currentTimeMillis())) {
                     StorageManagerUpsellDialog upsellDialog =
                             StorageManagerUpsellDialog.newInstance(mFreeableBytes);
                     upsellDialog.show(getFragmentManager(), StorageManagerUpsellDialog.TAG);
