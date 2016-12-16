@@ -74,8 +74,6 @@
                   android:enabled="@bool/enable_automatic_storage_management">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <!-- This is required on HTC devices to support their "quickboot" feature -->
-                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
 
