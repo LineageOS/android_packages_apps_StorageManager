@@ -17,12 +17,14 @@
 package com.android.storagemanager;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge;
 import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
 
 /**
@@ -30,9 +32,10 @@ import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
  * have not been recently used.
  */
 public class DeletionHelperActivity extends Activity implements ButtonBarProvider {
+
     private ViewGroup mButtonBar;
     private Button mNextButton, mSkipButton;
-    private Fragment f;
+    private DeletionHelperSettings mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +45,9 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         // If we are not returning from an existing activity, create a new fragment.
         if (savedInstanceState == null) {
             FragmentManager manager = getFragmentManager();
-            f = DeletionHelperSettings.newInstance();
-            FragmentTransaction transaction = manager.beginTransaction();
-            transaction.replace(R.id.main_content, f);
-            transaction.commit();
+            mFragment =
+                    DeletionHelperSettings.newInstance(AppStateUsageStatsBridge.NORMAL_THRESHOLD);
+            manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
         }
 
         mButtonBar = (ViewGroup) findViewById(R.id.button_bar);
@@ -57,7 +59,36 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
     public void onRequestPermissionsResult(int requestCode, String permissions[],
             int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        f.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        mFragment.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.deletion_helper_settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Note: This menu allows us to change the threshold and is only temporary until the UI/UX
+        // is finalized.
+        // TODO(b/34395589): This needs to be changed once the UX for this is reworked.
+        FragmentManager manager = getFragmentManager();
+        switch (item.getItemId()) {
+            case R.id.no_threshold:
+                mFragment =
+                        DeletionHelperSettings.newInstance(AppStateUsageStatsBridge.NO_THRESHOLD);
+                manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
+                return true;
+            case R.id.default_threshold:
+                mFragment =
+                        DeletionHelperSettings.newInstance(
+                                AppStateUsageStatsBridge.NORMAL_THRESHOLD);
+                manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

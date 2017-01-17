@@ -131,15 +131,20 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     private void updateText() {
         int eligibleApps = 0;
         long freeableBytes = 0;
+        long deletionThreshold = AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD;
         if (mBackend != null) {
             eligibleApps = mBackend.getEligibleApps();
             freeableBytes = mBackend.getTotalAppsFreeableSpace(true);
+            deletionThreshold = mBackend.getDeletionThreshold();
         }
+
         Context app = getContext();
         setTitle(app.getString(R.string.deletion_helper_apps_group_title, eligibleApps));
-        setSummary(app.getString(R.string.deletion_helper_apps_group_summary,
-                Formatter.formatFileSize(app, freeableBytes),
-                AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD));
+        setSummary(
+                app.getString(
+                        R.string.deletion_helper_apps_group_summary,
+                        Formatter.formatFileSize(app, freeableBytes),
+                        deletionThreshold));
     }
 
     private void logAppToggle(boolean checked, String packageName) {

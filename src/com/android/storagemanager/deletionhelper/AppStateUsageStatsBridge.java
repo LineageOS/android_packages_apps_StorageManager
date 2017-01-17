@@ -46,6 +46,9 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     public static final long UNKNOWN_LAST_USE = -1;
     public static final long UNUSED_DAYS_DELETION_THRESHOLD = 90;
     private static final long DAYS_IN_A_TYPICAL_YEAR = 365;
+    public static final long MIN_DELETION_THRESHOLD = Long.MIN_VALUE;
+    public static final int NORMAL_THRESHOLD = 0;
+    public static final int NO_THRESHOLD = 1;
 
     private UsageStatsManager mUsageStatsManager;
     private PackageManager mPm;
@@ -123,53 +126,75 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
         return mUsageStatsManager.queryAndAggregateUsageStats(now, startTime);
     }
 
+    private static boolean isBundled(AppEntry info) {
+        return (info.info.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
+    }
+
+    private static boolean isPersistentProcess(AppEntry info) {
+        return (info.info.flags & ApplicationInfo.FLAG_PERSISTENT) != 0;
+    }
+
+    private static boolean isExtraInfoValid(Object extraInfo, long unusedDaysThreshold) {
+        if (extraInfo == null || !(extraInfo instanceof UsageStatsState)) {
+            return false;
+        }
+
+        UsageStatsState state = (UsageStatsState) extraInfo;
+
+        // If we are missing information, let's be conservative and not show it.
+        if (state.daysSinceFirstInstall == UNKNOWN_LAST_USE
+                || state.daysSinceLastUse == UNKNOWN_LAST_USE) {
+            Log.w(TAG, "Missing information. Skipping app");
+            return false;
+        }
+
+        // If the app has never been used, daysSinceLastUse is Long.MAX_VALUE, so the first
+        // install is always the most recent use.
+        long mostRecentUse = Math.min(state.daysSinceFirstInstall, state.daysSinceLastUse);
+        return mostRecentUse >= unusedDaysThreshold;
+    }
+
+    public static final AppFilter FILTER_NO_THRESHOLD =
+            new AppFilter() {
+                @Override
+                public void init() {}
+
+                @Override
+                public boolean filterApp(AppEntry info) {
+                    if (info == null) {
+                        return false;
+                    }
+                    return isExtraInfoValid(info.extraInfo, MIN_DELETION_THRESHOLD)
+                            && !isBundled(info)
+                            && !isPersistentProcess(info);
+                }
+            };
+
     /**
      * Filters only non-system apps which haven't been used in the last 60 days. If an app's last
      * usage is unknown, it is skipped.
      */
-    public static final AppFilter FILTER_USAGE_STATS = new AppFilter() {
-        private long mUnusedDaysThreshold;
+    public static final AppFilter FILTER_USAGE_STATS =
+            new AppFilter() {
+                private long mUnusedDaysThreshold;
 
-        @Override
-        public void init() {
-            mUnusedDaysThreshold = SystemProperties.getLong(DEBUG_APP_UNUSED_OVERRIDE,
-                    UNUSED_DAYS_DELETION_THRESHOLD);
-        }
+                @Override
+                public void init() {
+                    mUnusedDaysThreshold =
+                            SystemProperties.getLong(
+                                    DEBUG_APP_UNUSED_OVERRIDE, UNUSED_DAYS_DELETION_THRESHOLD);
+                }
 
-        @Override
-        public boolean filterApp(AppEntry info) {
-            if (info == null) return false;
-            return isExtraInfoValid(info.extraInfo) && !isBundled(info)
-                    && !isPersistentProcess(info);
-        }
-
-        private boolean isExtraInfoValid(Object extraInfo) {
-            if (extraInfo == null || !(extraInfo instanceof UsageStatsState)) {
-                return false;
-            }
-
-            UsageStatsState state = (UsageStatsState) extraInfo;
-
-            // If we are missing information, let's be conservative and not show it.
-            if (state.daysSinceFirstInstall == UNKNOWN_LAST_USE
-                    || state.daysSinceLastUse == UNKNOWN_LAST_USE) {
-                return false;
-            }
-
-            // If the app has never been used, daysSinceLastUse is Long.MAX_VALUE, so the first
-            // install is always the most recent use.
-            long mostRecentUse = Math.min(state.daysSinceFirstInstall, state.daysSinceLastUse);
-            return mostRecentUse >= mUnusedDaysThreshold;
-        }
-
-        private boolean isBundled(AppEntry info) {
-            return (info.info.flags & ApplicationInfo.FLAG_SYSTEM) != 0;
-        }
-
-        private boolean isPersistentProcess(AppEntry info) {
-            return (info.info.flags & ApplicationInfo.FLAG_PERSISTENT) != 0;
-        }
-    };
+                @Override
+                public boolean filterApp(AppEntry info) {
+                    if (info == null) {
+                        return false;
+                    }
+                    return isExtraInfoValid(info.extraInfo, mUnusedDaysThreshold)
+                            && !isBundled(info)
+                            && !isPersistentProcess(info);
+                }
+            };
 
     /**
      * UsageStatsState contains the days since the last use and first install of a given app.

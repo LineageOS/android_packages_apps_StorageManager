@@ -50,8 +50,12 @@ import static org.mockito.Mockito.when;
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest=TestingConstants.MANIFEST, sdk=23)
 public class AppStateUsageStatsBridgeTest {
+
+    public static final String PACKAGE_SYSTEM = "package.system";
     private static final long STARTING_TIME = TimeUnit.DAYS.toMillis(1000);
     private static final String PACKAGE_NAME = "package.mcpackageface";
+    public static final String PACKAGE_CLEARABLE = "package.clearable";
+    public static final String PACKAGE_TOO_NEW_TO_DELETE = "package.tooNewToDelete";
 
     @Mock private ApplicationsState mState;
     @Mock private ApplicationsState.Session mSession;
@@ -92,7 +96,7 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testAppInstalledSameDayNeverUsedIsInvalid() {
+    public void test_appInstalledSameDayNeverUsed_isInvalid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(1000));
 
@@ -106,7 +110,21 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testUnusedAppIsValid() {
+    public void test_noThresholdFilter_appInstalledSameDayNeverUsed_isValid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(1000));
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(0);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.NEVER_USED);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isTrue();
+    }
+
+    @Test
+    public void test_unusedApp_isValid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(910));
 
@@ -120,7 +138,21 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testUnknownLastUseIsFilteredOut() {
+    public void test_noThresholdFilter_unusedApp_isValid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(910));
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(90);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.NEVER_USED);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isTrue();
+    }
+
+    @Test
+    public void test_unknownLastUse_isFilteredOut() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(910));
         registerLastUse(PACKAGE_NAME, -1);
@@ -135,7 +167,22 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testOldAppRecentlyUsedIsNotValid() {
+    public void test_noThresholdFilter_unknownLastUse_isFilteredOut() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(910));
+        registerLastUse(PACKAGE_NAME, -1);
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(90);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.UNKNOWN_LAST_USE);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isFalse();
+    }
+
+    @Test
+    public void test_oldAppRecentlyUsed_isNotValid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
         registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(999));
@@ -150,7 +197,22 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testOldUnusedAppIsValid() {
+    public void test_noThresholdFilter_oldAppRecentlyUsed_isValid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(999));
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(1);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isTrue();
+    }
+
+    @Test
+    public void test_oldUnusedApp_isValid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
         registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(801));
@@ -165,7 +227,22 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testSystemAppsAreInvalid() {
+    public void test_noThresholdFilter_oldUnusedApp_isValid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(801));
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(199);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isTrue();
+    }
+
+    @Test
+    public void test_systemApps_areInvalid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
         registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
@@ -181,7 +258,23 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testPersistentProcessAppsAreInvalid() {
+    public void test_noThresholdFilter_systemApps_areInvalid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        app.info.flags = ApplicationInfo.FLAG_SYSTEM;
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(200);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isFalse();
+    }
+
+    @Test
+    public void test_persistentProcessApps_areInvalid() {
         ApplicationsState.AppEntry app =
                 addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
         registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
@@ -197,26 +290,77 @@ public class AppStateUsageStatsBridgeTest {
     }
 
     @Test
-    public void testMultipleAppsProcessCorrectly() {
+    public void test_noThresholdFilter_persistentProcessApps_areInvalid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        app.info.flags = ApplicationInfo.FLAG_PERSISTENT;
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(200);
+        assertThat(stats.daysSinceLastUse).isEqualTo(200);
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(app)).isFalse();
+    }
+
+    @Test
+    public void test_multipleApps_processCorrectly() {
         ApplicationsState.AppEntry clearable =
-                addPackageToPackageManager("package.clearable", TimeUnit.DAYS.toMillis(800));
-        registerLastUse("package.clearable", TimeUnit.DAYS.toMillis(800));
+                addPackageToPackageManager(PACKAGE_CLEARABLE, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_CLEARABLE, TimeUnit.DAYS.toMillis(800));
         mApps.add(clearable);
         ApplicationsState.AppEntry tooNewtoDelete =
-                addPackageToPackageManager("package.tooNewToDelete", TimeUnit.DAYS.toMillis(1000));
-        registerLastUse("package.tooNewToDelete", TimeUnit.DAYS.toMillis(1000));
+                addPackageToPackageManager(PACKAGE_TOO_NEW_TO_DELETE, TimeUnit.DAYS.toMillis(1000));
+        registerLastUse(PACKAGE_TOO_NEW_TO_DELETE, TimeUnit.DAYS.toMillis(1000));
         mApps.add(tooNewtoDelete);
         ApplicationsState.AppEntry systemApp =
-                addPackageToPackageManager("package.system", TimeUnit.DAYS.toMillis(800));
-        registerLastUse("package.system", TimeUnit.DAYS.toMillis(800));
+                addPackageToPackageManager(PACKAGE_SYSTEM, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_SYSTEM, TimeUnit.DAYS.toMillis(800));
         systemApp.info.flags = ApplicationInfo.FLAG_SYSTEM;
         mApps.add(systemApp);
+        ApplicationsState.AppEntry persistentApp =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        persistentApp.info.flags = ApplicationInfo.FLAG_PERSISTENT;
+        mApps.add(persistentApp);
 
         mBridge.loadAllExtraInfo();
 
         assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(clearable)).isTrue();
         assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(tooNewtoDelete)).isFalse();
         assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(systemApp)).isFalse();
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(persistentApp)).isFalse();
+    }
+
+    @Test
+    public void test_noThresholdFilter_ignoresUsageForFiltering() {
+        ApplicationsState.AppEntry clearable =
+                addPackageToPackageManager(PACKAGE_CLEARABLE, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_CLEARABLE, TimeUnit.DAYS.toMillis(800));
+        mApps.add(clearable);
+        ApplicationsState.AppEntry tooNewtoDelete =
+                addPackageToPackageManager(PACKAGE_TOO_NEW_TO_DELETE, TimeUnit.DAYS.toMillis(1000));
+        registerLastUse(PACKAGE_TOO_NEW_TO_DELETE, TimeUnit.DAYS.toMillis(1000));
+        mApps.add(tooNewtoDelete);
+        ApplicationsState.AppEntry systemApp =
+                addPackageToPackageManager(PACKAGE_SYSTEM, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_SYSTEM, TimeUnit.DAYS.toMillis(800));
+        systemApp.info.flags = ApplicationInfo.FLAG_SYSTEM;
+        mApps.add(systemApp);
+        ApplicationsState.AppEntry persistentApp =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(800));
+        persistentApp.info.flags = ApplicationInfo.FLAG_PERSISTENT;
+        mApps.add(persistentApp);
+
+        mBridge.loadAllExtraInfo();
+
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(clearable)).isTrue();
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(tooNewtoDelete)).isTrue();
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(systemApp)).isFalse();
+        assertThat(AppStateUsageStatsBridge.FILTER_NO_THRESHOLD.filterApp(persistentApp)).isFalse();
     }
 
     @Test

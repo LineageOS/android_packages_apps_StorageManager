@@ -25,6 +25,7 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
 
+import com.android.settingslib.applications.ApplicationsState.AppFilter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -45,8 +46,11 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
     private ApplicationsState.Session mSession;
     private HashSet<String> mCheckedApplications;
     private AppStateUsageStatsBridge mDataUsageBridge;
+    private int mThresholdType;
 
-    public AppDeletionType(Application app, HashSet<String> checkedApplications) {
+    public AppDeletionType(
+            Application app, HashSet<String> checkedApplications, int thresholdType) {
+        mThresholdType = thresholdType;
         mState = ApplicationsState.getInstance(app);
         mSession = mState.newSession(this);
         if (checkedApplications != null) {
@@ -229,13 +233,34 @@ public class AppDeletionType implements DeletionType, ApplicationsState.Callback
     }
 
     private void rebuild() {
-        mSession.rebuild(AppStateUsageStatsBridge.FILTER_USAGE_STATS,
-                ApplicationsState.SIZE_COMPARATOR);
+        final AppFilter filter;
+        switch (mThresholdType) {
+            case AppStateUsageStatsBridge.NO_THRESHOLD:
+                filter = AppStateUsageStatsBridge.FILTER_NO_THRESHOLD;
+                break;
+            case AppStateUsageStatsBridge.NORMAL_THRESHOLD:
+            default:
+                filter = AppStateUsageStatsBridge.FILTER_USAGE_STATS;
+        }
+        mSession.rebuild(filter, ApplicationsState.SIZE_COMPARATOR);
+
     }
 
     private void maybeNotifyListener() {
         if (mListener != null) {
             mListener.onFreeableChanged(mAppEntries.size(), getTotalAppsFreeableSpace(true));
+        }
+    }
+
+    public long getDeletionThreshold() {
+        switch (mThresholdType) {
+            case AppStateUsageStatsBridge.NO_THRESHOLD:
+                // The threshold is actually Long.MIN_VALUE but we don't want to display that to
+                // the user.
+                return 0;
+            case AppStateUsageStatsBridge.NORMAL_THRESHOLD:
+            default:
+                return AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD;
         }
     }
 

@@ -97,6 +97,11 @@
     <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
     <string name="help_uri_deletion_helper" translatable="false"></string>
 
+    <!-- Temporary string to allow users to select no threshold for deletion helper -->
+    <string name="deletion_helper_no_threshold" translatable="false">No threshold</string>
+    <!-- Temporary string to allow users to select default threshold for deletion helper -->
+    <string name="deletion_helper_default_threshold" translatable="false">Default threshold</string>
+
     <!-- Downloads backup service label. [CHAR LIMIT=40]-->
     <string name="downloads_backup_service_label">Downloads Backup Service</string>
 
