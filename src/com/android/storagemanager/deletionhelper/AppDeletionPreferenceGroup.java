@@ -22,7 +22,7 @@ import android.text.format.Formatter;
 import android.util.AttributeSet;
 import android.view.View;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settingslib.applications.ApplicationsState;
 import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
 import com.android.storagemanager.PreferenceListCache;
