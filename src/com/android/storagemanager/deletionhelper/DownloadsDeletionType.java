@@ -25,7 +25,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.ArraySet;
 import com.android.internal.logging.MetricsLogger;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
 
 import java.io.File;
