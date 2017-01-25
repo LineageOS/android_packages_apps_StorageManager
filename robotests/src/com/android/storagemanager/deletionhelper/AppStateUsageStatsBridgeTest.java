@@ -219,6 +219,22 @@ public class AppStateUsageStatsBridgeTest {
         assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(systemApp)).isFalse();
     }
 
+    @Test
+    public void testAppUsedOverOneYearAgoIsValid() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(600));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(1000 - 366));
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+        UsageStatsState stats = (UsageStatsState) app.extraInfo;
+
+        assertThat(app.extraInfo).isNotNull();
+        assertThat(stats.daysSinceFirstInstall).isEqualTo(400);
+        assertThat(stats.daysSinceLastUse).isEqualTo(AppStateUsageStatsBridge.NEVER_USED);
+        assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isTrue();
+    }
+
+
     private ApplicationsState.AppEntry addPackageToPackageManager(String packageName,
             long installTime) {
         PackageInfo testPackage = new PackageInfo();

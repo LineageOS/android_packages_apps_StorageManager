@@ -26,11 +26,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowApplication;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -76,7 +74,7 @@ public class AppDeletionPreferenceTest {
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
         assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
-        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • Never used before");
+        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • Not used in last year");
     }
 
     @Test
