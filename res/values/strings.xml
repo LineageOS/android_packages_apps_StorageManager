@@ -24,8 +24,8 @@
     <string name="deletion_helper_title">Choose items to remove</string>
     <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • <xliff:g id="days" example="67">%2$d</xliff:g> days ago</string>
-    <!-- Summary of how much storage an app is using when it has never been used before. [CHAR LIMIT=NONE]-->
-    <string name="deletion_helper_app_summary_never_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Never used before</string>
+    <!-- Summary of how much storage an app is using when it has not been used in the last year. [CHAR LIMIT=NONE]-->
+    <string name="deletion_helper_app_summary_never_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Not used in last year</string>
     <!-- Summary of how much storage an app is using when its last use is unknown. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary_unknown_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Not sure when last used</string>
     <!-- Button which clears out storage in the deletion helper. [CHAR LIMIT=60]-->
