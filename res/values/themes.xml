@@ -15,10 +15,7 @@
 -->
 
 <resources>
-    <style name="Theme.SettingsBase" parent="@android:style/Theme.Material.Settings">
-        <item name="android:colorPrimary">@color/primary_color</item>
-        <item name="android:colorAccent">@color/accent_color</item>
-    </style>
+    <style name="Theme.SettingsBase" parent="@android:style/Theme.DeviceDefault.Settings" />
 
     <style name="PreferenceTheme" parent="Theme.SettingsBase">
         <item name="@android:preferenceStyle">@style/Preference</item>
