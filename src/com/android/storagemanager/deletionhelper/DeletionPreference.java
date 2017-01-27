@@ -20,9 +20,10 @@ import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 
-import com.android.storagemanager.deletionhelper.DeletionType;
+import android.widget.TextView;
 import com.android.storagemanager.R;
 
 /**
@@ -34,6 +35,7 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
     private long mFreeableBytes;
     private int mFreeableItems;
     private DeletionType mDeletionService;
+    private TextView mSummary;
 
     public DeletionPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -85,8 +87,15 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
     }
 
     @Override
+    public void onBindViewHolder(PreferenceViewHolder holder) {
+        super.onBindViewHolder(holder);
+        mSummary = (TextView) holder.findViewById(android.R.id.summary);
+    }
+
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         setChecked((boolean) newValue);
+        mSummary.setActivated((boolean) newValue);
         maybeUpdateListener();
         return true;
     }

@@ -32,8 +32,13 @@ import static com.google.common.truth.Truth.assertThat;
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class AppDeletionPreferenceTest {
+
     private static final String TEST_PACKAGE_LABEL = "App";
     private static final String TEST_PACKAGE_NAME = "com.package.mcpackageface";
+    public static final long KILOBYTE = 1024L;
+    public static final long HUNDRED_BYTES = 100L;
+    public static final String KB_STRING = "1.00KB";
+    public static final String HUNDRED_BYTE_STRING = "100B";
     private Context mContext;
 
     @Before
@@ -50,7 +55,7 @@ public class AppDeletionPreferenceTest {
                         .setDaysSinceLastUse(30)
                         .setdaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
-                        .setSize(1024L)
+                        .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
                         .build();
         AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
@@ -58,7 +63,8 @@ public class AppDeletionPreferenceTest {
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
         assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
-        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • 30 days ago");
+        assertThat(preference.getSummary().toString()).isEqualTo("30 days ago");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
     }
 
     @Test
@@ -69,7 +75,7 @@ public class AppDeletionPreferenceTest {
                         .setDaysSinceLastUse(AppsAsyncLoader.NEVER_USED)
                         .setdaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
-                        .setSize(1024L)
+                        .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
                         .build();
         AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
@@ -77,7 +83,8 @@ public class AppDeletionPreferenceTest {
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
         assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
-        assertThat(preference.getSummary().toString()).isEqualTo("1.00KB • Not used in last year");
+        assertThat(preference.getSummary().toString()).isEqualTo("Not used in last year");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
     }
 
     @Test
@@ -88,7 +95,7 @@ public class AppDeletionPreferenceTest {
                         .setDaysSinceLastUse(AppsAsyncLoader.UNKNOWN_LAST_USE)
                         .setdaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
-                        .setSize(1024L)
+                        .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
                         .build();
 
@@ -97,8 +104,8 @@ public class AppDeletionPreferenceTest {
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
         assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
-        assertThat(preference.getSummary().toString())
-                .isEqualTo("1.00KB • Not sure when last used");
+        assertThat(preference.getSummary().toString()).isEqualTo("Not sure when last used");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
     }
 
     @Test
@@ -109,7 +116,7 @@ public class AppDeletionPreferenceTest {
                         .setDaysSinceLastUse(30)
                         .setdaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
-                        .setSize(100L)
+                        .setSize(HUNDRED_BYTES)
                         .setLabel(TEST_PACKAGE_LABEL)
                         .build();
 
@@ -118,6 +125,7 @@ public class AppDeletionPreferenceTest {
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
         assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
-        assertThat(preference.getSummary().toString()).isEqualTo("100B • 30 days ago");
+        assertThat(preference.getSummary().toString()).isEqualTo("30 days ago");
+        assertThat(preference.getItemSize()).isEqualTo(HUNDRED_BYTE_STRING);
     }
 }

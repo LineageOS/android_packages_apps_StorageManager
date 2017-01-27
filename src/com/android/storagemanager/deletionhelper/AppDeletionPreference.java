@@ -16,15 +16,14 @@ package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
 import android.support.v7.preference.PreferenceViewHolder;
-import android.text.format.Formatter;
 import com.android.storagemanager.R;
 import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
 
 /**
- * Preference item for an app with a switch to signify if it should be uninstalled.
- * This shows the name and icon of the app along with the days since its last use.
+ * Preference item for an app with a switch to signify if it should be uninstalled. This shows the
+ * name and icon of the app along with the days since its last use.
  */
-public class AppDeletionPreference extends NestedCheckboxPreference {
+public class AppDeletionPreference extends NestedDeletionPreference {
     private PackageInfo mApp;
     private Context mContext;
 
@@ -34,6 +33,7 @@ public class AppDeletionPreference extends NestedCheckboxPreference {
         mContext = context;
         setIcon(item.icon);
         setTitle(item.label);
+        setItemSize(mApp.size);
     }
 
     @Override
@@ -51,18 +51,14 @@ public class AppDeletionPreference extends NestedCheckboxPreference {
 
     public void updateSummary() {
         if (mApp == null) return;
-
-        String fileSize = Formatter.formatFileSize(mContext, mApp.size);
         if (mApp.daysSinceLastUse == AppsAsyncLoader.NEVER_USED) {
-            setSummary(mContext.getString(R.string.deletion_helper_app_summary_never_used,
-                    fileSize));
+            setSummary(mContext.getString(R.string.deletion_helper_app_summary_never_used));
         } else if (mApp.daysSinceLastUse == AppsAsyncLoader.UNKNOWN_LAST_USE) {
-            setSummary(mContext.getString(R.string.deletion_helper_app_summary_unknown_used,
-                    fileSize));
+            setSummary(mContext.getString(R.string.deletion_helper_app_summary_unknown_used));
         } else {
             setSummary(
                     mContext.getString(
-                            R.string.deletion_helper_app_summary, fileSize, mApp.daysSinceLastUse));
+                            R.string.deletion_helper_app_summary, mApp.daysSinceLastUse));
         }
     }
 

@@ -22,15 +22,14 @@ import android.text.format.DateUtils;
 import android.text.format.Formatter;
 import android.webkit.MimeTypeMap;
 import com.android.storagemanager.R;
-import com.android.storagemanager.utils.IconUtils;
 
 import java.io.File;
 
 /**
- * DownloadsFilePreference is a preference representing a file in the Downloads folder
- * with a checkbox that represents if the file should be deleted.
+ * DownloadsFilePreference is a preference representing a file in the Downloads folder with a
+ * checkbox that represents if the file should be deleted.
  */
-public class DownloadsFilePreference extends NestedCheckboxPreference {
+public class DownloadsFilePreference extends NestedDeletionPreference {
     private File mFile;
 
     public DownloadsFilePreference(Context context, File file) {

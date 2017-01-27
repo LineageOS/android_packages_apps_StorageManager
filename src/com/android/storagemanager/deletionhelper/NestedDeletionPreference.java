@@ -19,18 +19,32 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.support.v7.preference.CheckBoxPreference;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.text.format.Formatter;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
+import com.android.storagemanager.R;
 
 /**
- * NestedCheckboxPreference is a CheckBoxPreference which is nested in to align with a
- * {@link CollapsibleCheckboxPreferenceGroup}.
+ * NestedCheckboxPreference is a CheckBoxPreference which is nested in to align with a {@link
+ * CollapsibleCheckboxPreferenceGroup}.
  */
-public class NestedCheckboxPreference extends CheckBoxPreference {
-    public NestedCheckboxPreference(Context context) {
+public class NestedDeletionPreference extends CheckBoxPreference {
+    private TextView mSummary;
+    private TextView mSize;
+    private long mAppSize;
+
+    public NestedDeletionPreference(Context context) {
         super(context);
         setLayoutResource(com.android.storagemanager.R.layout.preference_nested);
         setWidgetLayoutResource(com.android.storagemanager.R.layout.preference_widget_checkbox);
+    }
+
+    @Override
+    protected void onClick() {
+        super.onClick();
+        mSummary.setActivated(isChecked());
+        mSize.setActivated(isChecked());
     }
 
     @Override
@@ -39,6 +53,19 @@ public class NestedCheckboxPreference extends CheckBoxPreference {
         CheckBox checkboxWidget =
                 (CheckBox) holder.findViewById(com.android.internal.R.id.checkbox);
         checkboxWidget.setVisibility(View.VISIBLE);
+        mSummary = (TextView) holder.findViewById(android.R.id.summary);
+        mSize = (TextView) holder.findViewById(R.id.deletion_type_size);
+        mSummary.setActivated(checkboxWidget.isChecked());
+        mSize.setActivated(checkboxWidget.isChecked());
+        mSize.setText(getItemSize());
+    }
+
+    void setItemSize(long itemSize) {
+        mAppSize = itemSize;
+    }
+
+    public String getItemSize() {
+        return Formatter.formatFileSize(getContext(), mAppSize);
     }
 
 }

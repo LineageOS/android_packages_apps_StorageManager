@@ -27,7 +27,6 @@ import com.android.storagemanager.R;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
@@ -93,6 +92,6 @@ public class PhotosDeletionPreferenceTest {
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.getTitle()).isEqualTo("Photos & videos (10)");
-        assertThat(mPreference.getSummary().toString()).isEqualTo("1.00KB • Older than 30 days");
+        assertThat(mPreference.getSummary().toString()).isEqualTo("1.00KB");
     }
 }

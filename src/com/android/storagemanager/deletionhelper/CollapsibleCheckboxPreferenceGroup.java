@@ -30,6 +30,7 @@ import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.ImageView;
 
+import android.widget.TextView;
 import com.android.storagemanager.R;
 
 /**
@@ -40,6 +41,7 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         View.OnClickListener {
     private boolean mCollapsed;
     private boolean mChecked;
+    private TextView mTextView;
 
     public CollapsibleCheckboxPreferenceGroup(Context context) {
         this(context, null);
@@ -55,6 +57,7 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
         View checkbox = holder.findViewById(com.android.internal.R.id.checkbox);
+        mTextView = (TextView) holder.findViewById(android.R.id.summary);
         if (checkbox != null && checkbox instanceof Checkable) {
             ((Checkable) checkbox).setChecked(mChecked);
 
@@ -69,6 +72,7 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         // (activation) state."
         final ImageView imageView = (ImageView) holder.findViewById(android.R.id.icon);
         imageView.setActivated(!mCollapsed);
+        mTextView.setActivated(mChecked);
     }
 
     @Override
@@ -98,6 +102,9 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         View child =  parent.findViewById(com.android.internal.R.id.checkbox);
         Checkable checkable = (Checkable) child;
         checkable.setChecked(mChecked);
+        // Causes text color change when activated to differentiate selected elements from
+        // unselected elements.
+        mTextView.setActivated(mChecked);
     }
 
     /**
