@@ -123,7 +123,7 @@ public class AppStateUsageStatsBridge extends AppStateBaseBridge {
     private Map<String, UsageStats> getAggregatedUsageStats() {
         long now = mClock.getCurrentTime();
         long startTime = now - DateUtils.YEAR_IN_MILLIS;
-        return mUsageStatsManager.queryAndAggregateUsageStats(now, startTime);
+        return mUsageStatsManager.queryAndAggregateUsageStats(startTime, now);
     }
 
     private static boolean isBundled(AppEntry info) {
