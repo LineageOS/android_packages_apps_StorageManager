@@ -15,31 +15,22 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
-import android.support.v7.preference.CheckBoxPreference;
-import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.text.format.Formatter;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Switch;
-import android.widget.TextView;
-import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
 import com.android.storagemanager.R;
-
-import com.android.settingslib.applications.ApplicationsState;
-import com.android.settingslib.applications.ApplicationsState.AppEntry;
+import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
 
 /**
  * Preference item for an app with a switch to signify if it should be uninstalled.
  * This shows the name and icon of the app along with the days since its last use.
  */
 public class AppDeletionPreference extends NestedCheckboxPreference {
-    private AppEntry mEntry;
+    private PackageInfo mApp;
     private Context mContext;
 
-    public AppDeletionPreference(Context context, AppEntry item) {
+    public AppDeletionPreference(Context context, PackageInfo item) {
         super(context);
-        mEntry = item;
+        mApp = item;
         mContext = context;
         setIcon(item.icon);
         setTitle(item.label);
@@ -55,30 +46,23 @@ public class AppDeletionPreference extends NestedCheckboxPreference {
      * Returns the package name for the app that these preference represents.
      */
     public String getPackageName() {
-        synchronized(mEntry) {
-            return mEntry.info.packageName;
-        }
+        return mApp.packageName;
     }
 
     public void updateSummary() {
-        if (mEntry.extraInfo == null) return;
-        if (mEntry.size == ApplicationsState.SIZE_UNKNOWN ||
-                mEntry.size == ApplicationsState.SIZE_INVALID) {
-            return;
-        }
+        if (mApp == null) return;
 
-        UsageStatsState extraData = (UsageStatsState) mEntry.extraInfo;
-        String fileSize = Formatter.formatFileSize(mContext, mEntry.size);
-        if (extraData.daysSinceLastUse == AppStateUsageStatsBridge.NEVER_USED) {
+        String fileSize = Formatter.formatFileSize(mContext, mApp.size);
+        if (mApp.daysSinceLastUse == AppsAsyncLoader.NEVER_USED) {
             setSummary(mContext.getString(R.string.deletion_helper_app_summary_never_used,
                     fileSize));
-        } else if (extraData.daysSinceLastUse == AppStateUsageStatsBridge.UNKNOWN_LAST_USE) {
+        } else if (mApp.daysSinceLastUse == AppsAsyncLoader.UNKNOWN_LAST_USE) {
             setSummary(mContext.getString(R.string.deletion_helper_app_summary_unknown_used,
                     fileSize));
         } else {
-            setSummary(mContext.getString(R.string.deletion_helper_app_summary,
-                    fileSize,
-                    extraData.daysSinceLastUse));
+            setSummary(
+                    mContext.getString(
+                            R.string.deletion_helper_app_summary, fileSize, mApp.daysSinceLastUse));
         }
     }
 

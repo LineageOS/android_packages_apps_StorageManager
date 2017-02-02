@@ -31,10 +31,8 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settingslib.HelpUtils;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
-
-import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.DeletionHelperFeatureProvider;
-
+import com.android.storagemanager.overlay.FeatureFactory;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -74,8 +72,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.deletion_helper_list);
-        mThresholdType =
-                getArguments().getInt(THRESHOLD_KEY, AppStateUsageStatsBridge.NORMAL_THRESHOLD);
+        mThresholdType = getArguments().getInt(THRESHOLD_KEY, AppsAsyncLoader.NORMAL_THRESHOLD);
         mApps = (AppDeletionPreferenceGroup) findPreference(APPS_KEY);
         mPhotoPreference = (PhotosDeletionPreference) findPreference(KEY_PHOTOS_VIDEOS_PREFERENCE);
         mProvider = FeatureFactory.getFactory(getActivity()).getDeletionHelperFeatureProvider();
@@ -90,9 +87,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
                     (HashSet<String>) savedInstanceState.getSerializable(
                             AppDeletionType.EXTRA_CHECKED_SET);
         }
-        mAppBackend =
-                new AppDeletionType(
-                        getActivity().getApplication(), checkedApplications, mThresholdType);
+        mAppBackend = new AppDeletionType(this, checkedApplications, mThresholdType);
         mAppBackend.registerView(mApps);
         mAppBackend.registerFreeableChangedListener(this);
         mApps.setDeletionType(mAppBackend);

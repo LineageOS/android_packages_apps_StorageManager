@@ -22,11 +22,8 @@ import android.text.format.Formatter;
 import android.util.AttributeSet;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.settingslib.applications.ApplicationsState;
-import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
-import com.android.storagemanager.utils.PreferenceListCache;
 import com.android.storagemanager.R;
-
+import com.android.storagemanager.utils.PreferenceListCache;
 import java.util.List;
 
 /**
@@ -48,27 +45,22 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     }
 
     @Override
-    public void onAppRebuild(List<ApplicationsState.AppEntry> apps) {
-        int entryCount = apps.size();
+    public void onAppRebuild(List<AppsAsyncLoader.PackageInfo> apps) {
+        int appCount = apps.size();
         int currentUserId = getContext().getUserId();
         PreferenceListCache cache = new PreferenceListCache(this);
-        for (int i = 0; i < entryCount; i++) {
-            ApplicationsState.AppEntry entry = apps.get(i);
+        for (int i = 0; i < appCount; i++) {
+            AppsAsyncLoader.PackageInfo app = apps.get(i);
 
-            // If it's a different user's app, skip it.
-            UsageStatsState extraData = (UsageStatsState) entry.extraInfo;
-            if (extraData.userId != currentUserId) {
+            if (app.userId != currentUserId) {
                 continue;
             }
 
-            final String packageName;
-            synchronized (entry) {
-                packageName = entry.info.packageName;
-            }
+            final String packageName = app.packageName;
             AppDeletionPreference preference =
                     (AppDeletionPreference) cache.getCachedPreference(packageName);
             if (preference == null) {
-                preference = new AppDeletionPreference(getContext(), entry);
+                preference = new AppDeletionPreference(getContext(), app);
                 preference.setKey(packageName);
                 preference.setOnPreferenceChangeListener(this);
             }
@@ -131,7 +123,7 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
     private void updateText() {
         int eligibleApps = 0;
         long freeableBytes = 0;
-        long deletionThreshold = AppStateUsageStatsBridge.UNUSED_DAYS_DELETION_THRESHOLD;
+        long deletionThreshold = AppsAsyncLoader.UNUSED_DAYS_DELETION_THRESHOLD;
         if (mBackend != null) {
             eligibleApps = mBackend.getEligibleApps();
             freeableBytes = mBackend.getTotalAppsFreeableSpace(true);
