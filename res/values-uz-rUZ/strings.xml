@@ -26,7 +26,7 @@
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> joy bo‘shatish"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Surat va videolar (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
     <string name="deletion_helper_photos_summary" msgid="2636724338009030470">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> kun oldin"</string>
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Yuklanishlar (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Yuklanmalar (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
