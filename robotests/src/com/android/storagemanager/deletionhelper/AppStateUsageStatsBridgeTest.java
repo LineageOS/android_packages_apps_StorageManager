@@ -28,6 +28,7 @@ import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageS
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
@@ -44,7 +45,9 @@ import java.util.concurrent.TimeUnit;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
@@ -378,6 +381,20 @@ public class AppStateUsageStatsBridgeTest {
         assertThat(AppStateUsageStatsBridge.FILTER_USAGE_STATS.filterApp(app)).isTrue();
     }
 
+    @Test
+    public void testStartEndIsBeforeEndTimeInQuery() {
+        ApplicationsState.AppEntry app =
+                addPackageToPackageManager(PACKAGE_NAME, TimeUnit.DAYS.toMillis(600));
+        registerLastUse(PACKAGE_NAME, TimeUnit.DAYS.toMillis(1000 - 366));
+        ArgumentCaptor<Long> startTimeCaptor = ArgumentCaptor.forClass(Long.class);
+        ArgumentCaptor<Long> endTimeCaptor = ArgumentCaptor.forClass(Long.class);
+
+        mBridge.updateExtraInfo(app, PACKAGE_NAME, 0);
+
+        verify(mUsageStatsManager, atLeastOnce())
+                .queryAndAggregateUsageStats(startTimeCaptor.capture(), endTimeCaptor.capture());
+        assertThat(startTimeCaptor.getValue()).isLessThan(endTimeCaptor.getValue());
+    }
 
     private ApplicationsState.AppEntry addPackageToPackageManager(String packageName,
             long installTime) {
