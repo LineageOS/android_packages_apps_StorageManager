@@ -17,14 +17,11 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import com.android.settingslib.applications.ApplicationsState.AppEntry;
-import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge.UsageStatsState;
+import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
 import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
@@ -37,27 +34,26 @@ import static com.google.common.truth.Truth.assertThat;
 public class AppDeletionPreferenceTest {
     private static final String TEST_PACKAGE_LABEL = "App";
     private static final String TEST_PACKAGE_NAME = "com.package.mcpackageface";
-    @Mock private AppEntry mEntry;
-    @Mock private ApplicationInfo mInfo;
     private Context mContext;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mContext = RuntimeEnvironment.application;
-
-        // Initialize the entry.
-        mEntry.extraInfo = new UsageStatsState(30, 30, 0);
-        mEntry.icon = null;
-        mEntry.label = "App";
-        mEntry.size = 1024L;
-        mEntry.info = mInfo;
-        mInfo.packageName = TEST_PACKAGE_NAME;
     }
 
     @Test
     public void testPreferenceSummary() {
-        AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
+        // Initialize the entry.
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(30)
+                        .setdaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(1024L)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
         preference.updateSummary();
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
@@ -67,9 +63,16 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testNeverUsedPreferenceSummary() {
-        mEntry.extraInfo = new UsageStatsState(AppStateUsageStatsBridge.NEVER_USED, 30, 0);
-
-        AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
+        // Initialize the entry.
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(AppsAsyncLoader.NEVER_USED)
+                        .setdaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(1024L)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
         preference.updateSummary();
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
@@ -79,9 +82,17 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testUnknownLastUsePreferenceSummary() {
-        mEntry.extraInfo = new UsageStatsState(AppStateUsageStatsBridge.UNKNOWN_LAST_USE, 30, 0);
+        // Initialize the entry.
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(AppsAsyncLoader.UNKNOWN_LAST_USE)
+                        .setdaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(1024L)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
 
-        AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
         preference.updateSummary();
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
@@ -92,9 +103,17 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testSizeSummary() {
-        mEntry.size = 100L;
+        // Initialize the entry.
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(30)
+                        .setdaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(100L)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
 
-        AppDeletionPreference preference = new AppDeletionPreference(mContext, mEntry);
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
         preference.updateSummary();
 
         assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);

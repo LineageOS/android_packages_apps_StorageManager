@@ -24,7 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.android.storagemanager.deletionhelper.AppStateUsageStatsBridge;
+import com.android.storagemanager.deletionhelper.AppsAsyncLoader;
 import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
 
 /**
@@ -45,8 +45,7 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         // If we are not returning from an existing activity, create a new fragment.
         if (savedInstanceState == null) {
             FragmentManager manager = getFragmentManager();
-            mFragment =
-                    DeletionHelperSettings.newInstance(AppStateUsageStatsBridge.NORMAL_THRESHOLD);
+            mFragment = DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD);
             manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
         }
 
@@ -77,14 +76,11 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         FragmentManager manager = getFragmentManager();
         switch (item.getItemId()) {
             case R.id.no_threshold:
-                mFragment =
-                        DeletionHelperSettings.newInstance(AppStateUsageStatsBridge.NO_THRESHOLD);
+                mFragment = DeletionHelperSettings.newInstance(AppsAsyncLoader.NO_THRESHOLD);
                 manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
                 return true;
             case R.id.default_threshold:
-                mFragment =
-                        DeletionHelperSettings.newInstance(
-                                AppStateUsageStatsBridge.NORMAL_THRESHOLD);
+                mFragment = DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD);
                 manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
             default:
                 return super.onOptionsItemSelected(item);
