@@ -62,14 +62,6 @@
             android:enabled="@bool/enable_automatic_storage_management"
             android:exported="false"/>
 
-        <!-- Downloads backup tasks. -->
-        <service
-            android:name=".automatic.DownloadsBackupJobService"
-            android:label="@string/downloads_backup_service_label"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:enabled="@bool/enable_downloads_backup"
-            android:exported="false"/>
-
         <receiver android:name=".automatic.AutomaticStorageBroadcastReceiver"
                   android:enabled="@bool/enable_automatic_storage_management">
             <intent-filter>

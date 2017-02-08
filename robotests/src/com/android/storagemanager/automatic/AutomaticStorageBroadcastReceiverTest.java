@@ -60,7 +60,7 @@ public class AutomaticStorageBroadcastReceiverTest {
 
         // Verify that the JobScheduler scheduled two jobs.
         ArgumentCaptor<JobInfo> jobCaptor = ArgumentCaptor.forClass(JobInfo.class);
-        verify(mJobScheduler, times(2)).schedule(jobCaptor.capture());
+        verify(mJobScheduler, times(1)).schedule(jobCaptor.capture());
         verifyNoMoreInteractions(mJobScheduler);
 
         // Ensure that the jobs are the ones we expect.
@@ -70,11 +70,5 @@ public class AutomaticStorageBroadcastReceiverTest {
                 .isEqualTo(AutomaticStorageManagementJobService.class.getName());
         assertThat(asmJob.isRequireCharging()).isTrue();
         assertThat(asmJob.isRequireDeviceIdle()).isTrue();
-
-        JobInfo downloadsJob = capturedJobs.get(1);
-        assertThat(downloadsJob.getService().getClassName())
-                .isEqualTo(DownloadsBackupJobService.class.getName());
-        assertThat(downloadsJob.isRequireCharging()).isTrue();
-        assertThat(downloadsJob.isRequireDeviceIdle()).isTrue();
     }
 }

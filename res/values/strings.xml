@@ -102,9 +102,6 @@
     <!-- Temporary string to allow users to select default threshold for deletion helper -->
     <string name="deletion_helper_default_threshold" translatable="false">Default threshold</string>
 
-    <!-- Downloads backup service label. [CHAR LIMIT=40]-->
-    <string name="downloads_backup_service_label">Downloads Backup Service</string>
-
     <!-- Message to warn the user before clearing space in the deletion helper for the first time. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_clear_dialog_message_first_time"><xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> will be removed from your device</string>
 

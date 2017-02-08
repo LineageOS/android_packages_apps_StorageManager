@@ -29,9 +29,4 @@ public class FeatureFactoryImpl extends FeatureFactory {
     public StorageManagementJobProvider getStorageManagementJobProvider() {
         return null;
     }
-
-    @Override
-    public DownloadsBackupJobProvider getDownloadsBackupJobProvider() {
-        return null;
-    }
 }
