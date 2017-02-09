@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"បង្កើតទំហំផ្ទុក"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"ជ្រើសធាតុដែលត្រូវលុប"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> ថ្ងៃមុន"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • មិនបាន​ប្រើ​កាលពី​ឆ្នាំមុន"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • មិនច្បាស់ថាបានប្រើចុងក្រោយនៅពេលណាទេ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"បង្កើនទំហំផ្ទុក <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"រូបថត និងវីដេអូ (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"បើក"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"រូបថត និងវីដេអូ"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"កំពុងរកធាតុ…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"សេវាកម្ម​បម្រុង​ទុក​ការ​ទាញយក"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> នឹងត្រូវលុបចេញពីឧបករណ៍របស់អ្នក"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"នៅពេលនេះទំហំផ្ទុករបស់អ្នកត្រូវបានគ្រប់គ្រងដោយកម្មវិធីគ្រប់គ្រងទំហំផ្ទុក"</string>
 </resources>

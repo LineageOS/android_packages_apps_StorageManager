@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"Yer boşaldın"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"Silmək üçün elementləri seçin"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> gün əvvəl"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • Keçən il istifadə olunmayıb"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Son istifadə vaxtı dəqiq deyil"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> yer boşaldın"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Foto və videolar (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Aktiv edin"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Foto və videolar"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Elementlər tapılır…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"Yedəkləmə Xidmətini endirir"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> cihazınızdan silinəcək"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Yaddaşınız indi yaddaş meneceri tərəfindən idarə olunur"</string>
 </resources>

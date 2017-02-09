@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"ഇടം സൃഷ്ടിക്കുക"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"നീക്കംചെയ്യേണ്ട ഇനങ്ങൾ തിരഞ്ഞെടുക്കുക"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> ദിവസങ്ങൾക്ക് മുമ്പ്"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • കഴിഞ്ഞ വർഷം ഉപയോഗിച്ചിട്ടില്ല"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • അവസാനം ഉപയോഗിച്ചത് എപ്പോഴെന്ന് ഓർമ്മയില്ല"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> ഇടം സൃഷ്ടിക്കുക"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"ഫോട്ടോകളും വീഡിയോകളും (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ഓണാക്കുക"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"ഫോട്ടോകളും വീഡിയോകളും"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"ഇനങ്ങൾ കണ്ടെത്തുന്നു…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"ഡൗൺലോഡ് ബാക്കപ്പ് സേവനം"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> നീക്കംചെയ്യപ്പെടും"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"നിങ്ങളുടെ സ്റ്റോറേജ് ഇപ്പോൾ മാനേജുചെയ്യുന്നത് സ്റ്റോറേജ് ​​മാനേജരാണ്"</string>
 </resources>
