@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"기기 여유 공간 확보"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"삭제할 항목 선택"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g>일 전"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • 지난해 사용되지 않음"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • 마지막 사용일이 확실하지 않음"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> 확보"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"사진 및 동영상(<xliff:g id="NUM_ITEMS">%1$d</xliff:g>개)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"사용"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"사진 및 동영상"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"항목을 찾는 중…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"백업 서비스 다운로드"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"기기에서 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>가 삭제됩니다."</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"현재 저장용량 관리자가 저장용량을 관리하고 있습니다."</string>
 </resources>

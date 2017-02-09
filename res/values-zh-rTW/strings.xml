@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"釋出空間"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"選擇要移除的項目"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> 天前"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • 過去一年未曾使用"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • 上次使用時間不明"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"釋出 <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"相片和影片 (<xliff:g id="NUM_ITEMS">%1$d</xliff:g> 個)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"開啟"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"相片和影片"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"正在尋找項目…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"下載內容備份服務"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"系統將從你的裝置中移除 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 的資料"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"你的儲存空間目前是由儲存空間管理員管理"</string>
 </resources>

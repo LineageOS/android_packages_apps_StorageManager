@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"Багтаамж нэмэгдүүлэх"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"Устгах зүйлс сонгоно уу"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> өдрийн өмнө"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • Өнгөрсөн жилд ашиглаагүй"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Сүүлд хэзээ ашигласан нь тодорхойгүй"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g>-н багтаамж гаргах"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Зураг, видео (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Асаах"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Зураг, видео"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Зүйлсийг хайж байна..."</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"Татаж авсан файлыг нөөцлөх үйлчилгээ"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>-г таны төхөөрөмжөөс устгах болно"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Таны санг одоо сангийн менежер удирдаж байна"</string>
 </resources>

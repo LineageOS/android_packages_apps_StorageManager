@@ -21,8 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"空き容量を増やす"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"削除するアイテムの選択"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> 日前"</string>
-    <!-- no translation found for deletion_helper_app_summary_never_used (20287691628145397) -->
-    <skip />
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • 過去 1 年間未使用"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • 最終使用日: 不明"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> を解放"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"写真と動画（<xliff:g id="NUM_ITEMS">%1$d</xliff:g> 件）"</string>
@@ -51,8 +50,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ON にする"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"写真と動画"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"アイテムを探しています…"</string>
-    <!-- no translation found for downloads_backup_service_label (2174014984102140824) -->
-    <skip />
+    <string name="downloads_backup_service_label" msgid="2174014984102140824">"ダウンロード バックアップ サービス"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"端末から <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> を削除します"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"お使いのストレージの管理はストレージ マネージャが行うようになりました"</string>
 </resources>
