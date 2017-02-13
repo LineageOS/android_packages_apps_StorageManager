@@ -50,7 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ativar"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotos e vídeos"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Encontrando itens…"</string>
-    <string name="downloads_backup_service_label" msgid="2174014984102140824">"Serviço de backup de downloads"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Um total de <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> será removido do seu dispositivo"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Seu armazenamento está sendo controlado pelo gerenciador de armazenamento"</string>
 </resources>

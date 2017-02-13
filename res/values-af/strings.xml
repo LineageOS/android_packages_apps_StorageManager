@@ -50,7 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Skakel aan"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Foto\'s en video\'s"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Vind tans items …"</string>
-    <string name="downloads_backup_service_label" msgid="2174014984102140824">"Rugsteundiens vir aflaaie"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> sal van jou toestel af verwyder word"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Jou berging word nou deur die bergingbestuurder bestuur"</string>
 </resources>

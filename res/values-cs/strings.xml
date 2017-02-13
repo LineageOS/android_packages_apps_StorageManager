@@ -50,7 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Zapnout"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotky a videa"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Hledání položek…"</string>
-    <string name="downloads_backup_service_label" msgid="2174014984102140824">"Služba zálohování staženého obsahu"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Ze zařízení bude odstraněno <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> dat"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Úložiště je nyní spravováno správcem úložiště."</string>
 </resources>

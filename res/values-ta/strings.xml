@@ -50,7 +50,6 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"இயக்கு"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"படங்கள் &amp; வீடியோக்கள்"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"கோப்புகளைக் கண்டறிகிறது…"</string>
-    <string name="downloads_backup_service_label" msgid="2174014984102140824">"பதிவிறக்கங்களுக்கான காப்புப் பிரதி சேவை"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"சாதனத்திலிருந்து <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> அகற்றப்படும்"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"உங்கள் சேமிப்பகம் இப்போது சேமிப்பக நிர்வாகியால் நிர்வகிக்கப்படுகிறது"</string>
 </resources>
