@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,17 +20,24 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 /**
- * IconUtils is a utility class for getting file icons. It is strongly based upon the DocumentsUI
- * implementation of IconUtils, but tailored for the Deletion Helper use-case.
+ * IconProvider is a class for getting file icons. It is strongly based upon the DocumentsUI
+ * implementation of IconUtils, but tailored for the Deletion Helper use-case. Useful for testing.
  */
-public class IconUtils {
+public class IconProvider {
+    private Context mContext;
+
+    public IconProvider(Context context) {
+        mContext = context;
+    }
+
     /**
      * Returns an icon which represents a file with the given MIME type.
-     * @param context Context to get drawable icons with.
+     *
      * @param mimeType The MIME type of the file.
      * @return
      */
-    public static Drawable loadMimeIcon(Context context, String mimeType) {
-        return context.getContentResolver().getTypeDrawable(mimeType);
+    public Drawable loadMimeIcon(String mimeType) {
+        return mContext.getContentResolver().getTypeDrawable(mimeType);
     }
+
 }

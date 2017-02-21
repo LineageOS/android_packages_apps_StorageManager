@@ -31,7 +31,7 @@ import java.util.ArrayList;
  */
 public class FetchDownloadsLoader extends AsyncLoader<FetchDownloadsLoader.DownloadsResult> {
     private static final String DEBUG_FILE_AGE_OVERRIDE = "debug.asm.file_age_limit";
-    private static final int MINIMUM_AGE_DAYS = 30;
+    private static final int MINIMUM_AGE_DAYS = 0;
     private File mDirectory;
 
     /**

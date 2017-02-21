@@ -19,10 +19,8 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.text.format.DateUtils;
-import android.text.format.Formatter;
 import android.webkit.MimeTypeMap;
-import com.android.storagemanager.R;
-
+import com.android.storagemanager.utils.IconProvider;
 import java.io.File;
 
 /**
@@ -32,16 +30,16 @@ import java.io.File;
 public class DownloadsFilePreference extends NestedDeletionPreference {
     private File mFile;
 
-    public DownloadsFilePreference(Context context, File file) {
+    public DownloadsFilePreference(Context context, File file, IconProvider iconProvider) {
         super(context);
         mFile = file;
         setKey(mFile.getPath());
         setTitle(file.getName());
-        setSummary(context.getString(R.string.deletion_helper_downloads_file_summary,
-                Formatter.formatFileSize(getContext(), file.length()),
-                DateUtils.formatDateTime(context,
-                        mFile.lastModified(),DateUtils.FORMAT_SHOW_DATE)));
-        setIcon(context.getContentResolver().getTypeDrawable(getMimeType()));
+        setItemSize(file.length());
+        setSummary(
+                DateUtils.formatDateTime(
+                        context, mFile.lastModified(), DateUtils.FORMAT_SHOW_DATE));
+        setIcon(iconProvider.loadMimeIcon(getMimeType()));
 
         // We turn off persistence because we need the file preferences to reset their check when
         // you return to the view.

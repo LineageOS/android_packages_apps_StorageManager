@@ -22,6 +22,7 @@ import android.text.format.Formatter;
 import android.util.AttributeSet;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.storagemanager.utils.IconProvider;
 import com.android.storagemanager.utils.PreferenceListCache;
 import com.android.storagemanager.R;
 
@@ -138,11 +139,13 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
     private void updateFiles() {
         PreferenceListCache cache = new PreferenceListCache(this);
         Set<File> files = mDeletionType.getFiles();
+        Context context = getContext();
+        IconProvider iconProvider = new IconProvider(context);
         for (File file : files) {
             DownloadsFilePreference filePreference =
                     (DownloadsFilePreference) cache.getCachedPreference(file.getPath());
             if (filePreference == null) {
-                filePreference = new DownloadsFilePreference(getContext(), file);
+                filePreference = new DownloadsFilePreference(context, file, iconProvider);
                 filePreference.setChecked(mDeletionType.isChecked(file));
                 filePreference.setOnPreferenceChangeListener(this);
             }
