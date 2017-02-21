@@ -26,10 +26,9 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.SystemProperties;
 import android.provider.Settings;
+import android.support.annotation.VisibleForTesting;
 
 import com.android.storagemanager.R;
-import com.android.storagemanager.automatic.WarningDialogActivity;
-import com.android.storagemanager.overlay.FeatureFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -164,7 +163,7 @@ public class NotificationController extends BroadcastReceiver {
 
     private void showNotification(Context context) {
         Resources res = context.getResources();
-        Intent noThanksIntent = new Intent(INTENT_ACTION_NO_THANKS);
+        Intent noThanksIntent = getBaseIntent(context, INTENT_ACTION_NO_THANKS);
         noThanksIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
         Notification.Action.Builder cancelAction = new Notification.Action.Builder(null,
                 res.getString(R.string.automatic_storage_manager_cancel_button),
@@ -172,20 +171,20 @@ public class NotificationController extends BroadcastReceiver {
                         PendingIntent.FLAG_UPDATE_CURRENT));
 
 
-        Intent activateIntent = new Intent(INTENT_ACTION_ACTIVATE_ASM);
+        Intent activateIntent = getBaseIntent(context, INTENT_ACTION_ACTIVATE_ASM);
         activateIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
         Notification.Action.Builder activateAutomaticAction = new Notification.Action.Builder(null,
                 res.getString(R.string.automatic_storage_manager_activate_button),
                 PendingIntent.getBroadcast(context, 0, activateIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT));
 
-        Intent dismissIntent = new Intent(INTENT_ACTION_DISMISS);
+        Intent dismissIntent = getBaseIntent(context, INTENT_ACTION_DISMISS);
         dismissIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
         PendingIntent deleteIntent = PendingIntent.getBroadcast(context, 0,
                 dismissIntent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        Intent contentIntent = new Intent(INTENT_ACTION_TAP);
+        Intent contentIntent = getBaseIntent(context, INTENT_ACTION_TAP);
         contentIntent.putExtra(INTENT_EXTRA_ID, NOTIFICATION_ID);
         PendingIntent tapIntent = PendingIntent.getBroadcast(context, 0,  contentIntent,
                 PendingIntent.FLAG_ONE_SHOT);
@@ -258,6 +257,11 @@ public class NotificationController extends BroadcastReceiver {
         }
 
         return mClock.currentTimeMillis();
+    }
+
+    @VisibleForTesting
+    Intent getBaseIntent(Context context, String action) {
+        return new Intent(context, NotificationController.class).setAction(action);
     }
 
     /**

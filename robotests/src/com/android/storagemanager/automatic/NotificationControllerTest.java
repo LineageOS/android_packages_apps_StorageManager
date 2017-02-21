@@ -21,7 +21,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
-import com.android.storagemanager.automatic.NotificationController;
 import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
@@ -167,6 +166,17 @@ public class NotificationControllerTest {
         verify(mNotificationManager).notify(anyInt(), captor.capture());
         assertThat(captor.getValue().flags & Notification.FLAG_LOCAL_ONLY)
                 .isEqualTo(Notification.FLAG_LOCAL_ONLY);
+    }
+
+    @Test
+    public void testIntentFromNotificationAreExplicit() {
+        Intent baseIntent =
+                mController.getBaseIntent(mContext, NotificationController.INTENT_ACTION_DISMISS);
+
+        assertThat(baseIntent.getComponent().getPackageName())
+                .isEqualTo("com.android.storagemanager");
+        assertThat(baseIntent.getComponent().getClassName())
+                .isEqualTo("com.android.storagemanager.automatic.NotificationController");
     }
 
     private Intent getNotificationIntent(String action, int id) {
