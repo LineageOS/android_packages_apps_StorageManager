@@ -23,8 +23,8 @@
     <string name="deletion_helper_app_summary" msgid="4904590040180275237">"<xliff:g id="DAYS">%1$d</xliff:g> kun oldin"</string>
     <!-- no translation found for deletion_helper_app_summary_item_size (3770886184921427886) -->
     <skip />
-    <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"O‘tgan yilda ishlatilmagan"</string>
-    <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Oxirgi marta qachon sarflangani noaniq"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"O‘tgan yili ishlatilmagan"</string>
+    <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Oxirgi marta qachon ishlatilgani noaniq"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> joy bo‘shatish"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Surat va videolar (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
@@ -32,7 +32,6 @@
     <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Yuklanmalar (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
-    <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
     <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"Qurilmangizdan <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> joy o‘chirib tashlanadi"</string>
