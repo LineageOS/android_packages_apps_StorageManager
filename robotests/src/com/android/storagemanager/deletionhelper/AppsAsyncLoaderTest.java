@@ -304,7 +304,7 @@ public class AppsAsyncLoaderTest {
         AppsAsyncLoader.PackageInfo app =
                 new AppsAsyncLoader.PackageInfo.Builder()
                         .setDaysSinceLastUse(lastUse)
-                        .setdaysSinceFirstInstall(installTime)
+                        .setDaysSinceFirstInstall(installTime)
                         .setPackageName(packageName)
                         .setLabel("")
                         .build();

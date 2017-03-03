@@ -191,7 +191,7 @@ public class AppDeletionType
 
     private void maybeNotifyListener() {
         if (mListener != null) {
-            mListener.onFreeableChanged(mApps.size(), getTotalAppsFreeableSpace(true));
+            mListener.onFreeableChanged(mApps.size(), getTotalAppsFreeableSpace(false));
         }
     }
 

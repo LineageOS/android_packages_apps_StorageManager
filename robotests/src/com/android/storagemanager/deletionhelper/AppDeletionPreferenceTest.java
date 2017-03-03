@@ -53,7 +53,7 @@ public class AppDeletionPreferenceTest {
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(30)
-                        .setdaysSinceFirstInstall(30)
+                        .setDaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
                         .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
@@ -73,7 +73,7 @@ public class AppDeletionPreferenceTest {
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(AppsAsyncLoader.NEVER_USED)
-                        .setdaysSinceFirstInstall(30)
+                        .setDaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
                         .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
@@ -93,7 +93,7 @@ public class AppDeletionPreferenceTest {
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(AppsAsyncLoader.UNKNOWN_LAST_USE)
-                        .setdaysSinceFirstInstall(30)
+                        .setDaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
                         .setSize(KILOBYTE)
                         .setLabel(TEST_PACKAGE_LABEL)
@@ -114,7 +114,7 @@ public class AppDeletionPreferenceTest {
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(30)
-                        .setdaysSinceFirstInstall(30)
+                        .setDaysSinceFirstInstall(30)
                         .setPackageName(TEST_PACKAGE_NAME)
                         .setSize(HUNDRED_BYTES)
                         .setLabel(TEST_PACKAGE_LABEL)

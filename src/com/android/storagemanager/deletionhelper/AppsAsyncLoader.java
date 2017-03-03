@@ -113,7 +113,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
             PackageInfo extraInfo =
                     new PackageInfo.Builder()
                             .setDaysSinceLastUse(getDaysSinceLastUse(usageStats))
-                            .setdaysSinceFirstInstall(getDaysSinceInstalled(app.packageName))
+                            .setDaysSinceFirstInstall(getDaysSinceInstalled(app.packageName))
                             .setUserId(UserHandle.getUserId(app.uid))
                             .setPackageName(app.packageName)
                             .setSize(appSpace.getTotalBytes())
@@ -386,7 +386,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
                 return this;
             }
 
-            public Builder setdaysSinceFirstInstall(long daysSinceFirstInstall) {
+            public Builder setDaysSinceFirstInstall(long daysSinceFirstInstall) {
                 this.mDaysSinceFirstInstall = daysSinceFirstInstall;
                 return this;
             }
