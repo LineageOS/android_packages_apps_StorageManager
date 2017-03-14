@@ -94,6 +94,10 @@ public class AppDeletionType
 
     @Override
     public void clearFreeableData(Activity activity) {
+        if (mApps == null) {
+            return;
+        }
+
         ArraySet<String> apps = new ArraySet<>();
         for (PackageInfo app : mApps) {
             final String packageName = app.packageName;

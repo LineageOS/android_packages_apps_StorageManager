@@ -89,4 +89,9 @@ public class AppDeletionTypeTest {
 
         verify(mFragment).onFreeableChanged(eq(1), eq(1000L));
     }
+
+    @Test
+    public void dontCrashWhenClearingAndAppsArentLoaded() {
+        mDeletion.clearFreeableData(mFragment.getActivity());
+    }
 }
