@@ -17,14 +17,19 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.preference.Preference;
 import android.text.format.Formatter;
 import android.util.AttributeSet;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.storagemanager.R;
 import com.android.storagemanager.utils.IconProvider;
 import com.android.storagemanager.utils.PreferenceListCache;
-import com.android.storagemanager.R;
 
 import java.io.File;
 import java.util.Set;
@@ -37,13 +42,19 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
         implements DeletionType.FreeableChangedListener, Preference.OnPreferenceChangeListener {
     private DownloadsDeletionType mDeletionType;
     private DeletionType.FreeableChangedListener mListener;
+    private IconProvider mIconProvider; // Purely for test.
 
     public DownloadsDeletionPreferenceGroup(Context context) {
-        this(context, null);
+        super(context);
+        init();
     }
 
     public DownloadsDeletionPreferenceGroup(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
+    }
+
+    private void init() {
         setChecked(true);
         setOrderingAsAdded(false);
         setOnPreferenceChangeListener(this);
@@ -117,6 +128,11 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
                 isCollapsed());
     }
 
+    @VisibleForTesting
+    void injectIconProvider(IconProvider iconProvider) {
+        mIconProvider = iconProvider;
+    }
+
     private void updatePreferenceText(int itemCount, long bytes, long mostRecent) {
         Context context = getContext();
         setTitle(context.getString(R.string.deletion_helper_downloads_title, itemCount));
@@ -140,7 +156,9 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
         PreferenceListCache cache = new PreferenceListCache(this);
         Set<File> files = mDeletionType.getFiles();
         Context context = getContext();
-        IconProvider iconProvider = new IconProvider(context);
+        Resources res = context.getResources();
+        IconProvider iconProvider =
+                mIconProvider == null ? new IconProvider(context) : mIconProvider;
         for (File file : files) {
             DownloadsFilePreference filePreference =
                     (DownloadsFilePreference) cache.getCachedPreference(file.getPath());
@@ -148,6 +166,10 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
                 filePreference = new DownloadsFilePreference(context, file, iconProvider);
                 filePreference.setChecked(mDeletionType.isChecked(file));
                 filePreference.setOnPreferenceChangeListener(this);
+                Bitmap thumbnail = mDeletionType.getCachedThumbnail(file);
+                if (thumbnail != null) {
+                    filePreference.setIcon(new BitmapDrawable(res, thumbnail));
+                }
             }
             addPreference(filePreference);
         }

@@ -18,6 +18,9 @@ package com.android.storagemanager.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.webkit.MimeTypeMap;
+
+import java.io.File;
 
 /**
  * IconProvider is a class for getting file icons. It is strongly based upon the DocumentsUI
@@ -38,6 +41,25 @@ public class IconProvider {
      */
     public Drawable loadMimeIcon(String mimeType) {
         return mContext.getContentResolver().getTypeDrawable(mimeType);
+    }
+
+    public static String getMimeType(File file) {
+        String name = file.getName();
+        final int lastDot = name.lastIndexOf('.');
+        if (lastDot >= 0) {
+            final String extension = name.substring(lastDot + 1);
+            final String mimeType =
+                    MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension.toLowerCase());
+            if (mimeType != null) {
+                return mimeType;
+            }
+        }
+        return "application/octet-stream";
+    }
+
+    public static boolean isImageType(File file) {
+        String mimeType = getMimeType(file);
+        return mimeType.startsWith("image/");
     }
 
 }

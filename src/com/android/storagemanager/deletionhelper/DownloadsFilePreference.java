@@ -19,8 +19,9 @@ package com.android.storagemanager.deletionhelper;
 import android.content.Context;
 import android.support.v7.preference.Preference;
 import android.text.format.DateUtils;
-import android.webkit.MimeTypeMap;
+
 import com.android.storagemanager.utils.IconProvider;
+
 import java.io.File;
 
 /**
@@ -39,7 +40,7 @@ public class DownloadsFilePreference extends NestedDeletionPreference {
         setSummary(
                 DateUtils.formatDateTime(
                         context, mFile.lastModified(), DateUtils.FORMAT_SHOW_DATE));
-        setIcon(iconProvider.loadMimeIcon(getMimeType()));
+        setIcon(iconProvider.loadMimeIcon(IconProvider.getMimeType(mFile)));
 
         // We turn off persistence because we need the file preferences to reset their check when
         // you return to the view.
@@ -65,19 +66,5 @@ public class DownloadsFilePreference extends NestedDeletionPreference {
             // then the DownloadsFilePreference will appear higher.
             return 1;
         }
-    }
-
-    private String getMimeType() {
-        String name = getFile().getName();
-        final int lastDot = name.lastIndexOf('.');
-        if (lastDot >= 0) {
-            final String extension = name.substring(lastDot + 1);
-            final String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension(
-                    extension.toLowerCase());
-            if (mimeType != null) {
-                return mimeType;
-            }
-        }
-        return "application/octet-stream";
     }
 }

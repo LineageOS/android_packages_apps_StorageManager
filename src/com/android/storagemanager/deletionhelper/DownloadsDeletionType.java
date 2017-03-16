@@ -20,16 +20,20 @@ import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Loader;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.util.ArraySet;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -44,6 +48,7 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
     private Context mContext;
     private ArraySet<File> mFiles;
     private ArraySet<String> mUncheckedFiles;
+    private HashMap<File, Bitmap> mThumbnails;
 
     public DownloadsDeletionType(Context context, String[] uncheckedFiles) {
         mContext = context;
@@ -111,6 +116,7 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
             mFiles.add(file);
         }
         mBytes = data.totalSize;
+        mThumbnails = data.thumbnails;
         maybeUpdateListener();
     }
 
@@ -160,8 +166,17 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
         return freedBytes;
     }
 
+    /** Returns a thumbnail for a given file, if it exists. If it does not exist, returns null. */
+    public @Nullable Bitmap getCachedThumbnail(File imageFile) {
+        if (mThumbnails == null) {
+            return null;
+        }
+        return mThumbnails.get(imageFile);
+    }
+
     /**
      * Return if a given file is checked for deletion.
+     *
      * @param file The file to check.
      */
     public boolean isChecked(File file) {
