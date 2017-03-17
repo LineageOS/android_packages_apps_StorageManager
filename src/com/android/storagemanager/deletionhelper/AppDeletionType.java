@@ -166,16 +166,6 @@ public class AppDeletionType
     }
 
     /**
-     * Returns a number of eligible, clearable apps.
-     */
-    public int getEligibleApps() {
-        if (mApps == null) {
-            return 0;
-        }
-        return mApps.size();
-    }
-
-    /**
      * Returns if a given package is slated for deletion.
      * @param packageName The name of the package to check.
      */
