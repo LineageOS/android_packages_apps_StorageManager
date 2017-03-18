@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"आता <xliff:g id="USED">%1$s</xliff:g> मोकळे आहे. संचय व्यवस्‍थापकास आपल्या डिव्हाइस वरून बॅक अप घेतलेली सामग्री काढून स्वयंचलितपणे स्थान मोकळे करू द्यायचे?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"नाही धन्यवाद"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"चालू करा"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"(<xliff:g id="NUM_ITEMS">%1$d</xliff:g>) अॅप्स"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"स्वयंचलित"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"आयटम शोधत आहे..."</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"आपल्या डिव्हाइसमधून <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> काढले जाईल"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"आपला संचय आता संचय व्यवस्थापक व्यवस्थापित करीत आहे"</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>

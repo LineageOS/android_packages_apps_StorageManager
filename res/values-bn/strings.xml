@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> এখন খালি হয়েছে। সঞ্চয়স্থানের পরিচালককে আপনার ডিভাইস থেকে স্বয়ংক্রিয়ভাবে ব্যাক আপ নেওয়া সামগ্রীকে সরানোর দ্বারা সঞ্চয়স্থান খালি করার অনুমতি দেবেন?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"না থাক"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"চালু করুন"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"(<xliff:g id="NUM_ITEMS">%1$d</xliff:g>টি) অ্যাপ্স"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"স্বয়ংক্রিয়"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"আইটেমগুলি খোঁজা হচ্ছে…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"আপনার ডিভাইস থেকে <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> সরানো হবে"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"আপনার সঞ্চয়স্থান এখন সঞ্চয়স্থান পরিচালকের দ্বারা পরিচালিত হচ্ছে"</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>

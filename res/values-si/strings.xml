@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> දැන් නිදහස්ය. ඔබේ උපාංගය වෙතින් උපස්ථ කළ අන්තර්ගතය ඉවත් කිරීමෙන් ස්වයංක්‍රියව ඉඩ නිදහස් කර ගැනීමට ගබඩා කළමනාකරුට ඉඩ දෙන්නද?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"එපා ස්තූතියි"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"ක්‍රියාත්මක කරන්න"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"යෙදුම් (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"ස්වයංක්‍රිය"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"අයිතම සොයා ගනිමින්..."</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ඔබේ උපාංගයෙන් ඉවත් කරනු ඇත"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"ඔබේ ගබඩාව දැන් ගබඩා කළමනාකරු විසින් පාලනය කරනු ලැබේ"</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>

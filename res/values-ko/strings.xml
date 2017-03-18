@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"이제 <xliff:g id="USED">%1$s</xliff:g>의 여유 공간이 확보되었습니다. 저장용량 관리자가 백업된 콘텐츠를 기기에서 삭제하여 공간을 자동으로 확보하도록 하시겠습니까?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"아니요"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"사용"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"앱(<xliff:g id="NUM_ITEMS">%1$d</xliff:g>개)"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"자동"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"항목을 찾는 중…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"기기에서 <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>가 삭제됩니다."</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"현재 저장용량 관리자가 저장용량을 관리하고 있습니다."</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>

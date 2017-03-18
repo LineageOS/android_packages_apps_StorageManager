@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Вызвалена <xliff:g id="USED">%1$s</xliff:g>. Дазволіць Менеджару сховішча аўтаматычна вызваляць месца, выдаляючы змесціва, для якога створаны рэзервовыя копіі, з вашай прылады?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Не, дзякуй"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Уключыць"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"Праграмы (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Аўтаматычна"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Ідзе пошук элементаў…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> будзе выдалена з вашай прылады"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Ваша сховішча зараз знаходзіцца пад кіраваннем менеджара сховішча"</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>

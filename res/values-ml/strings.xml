@@ -40,7 +40,8 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> ഇടം ഇപ്പോഴുണ്ട്. ബാക്കപ്പെടുത്ത ഉള്ളടക്കം സ്വയമേവ നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് നീക്കംചെയ്തുകൊണ്ട് ഇടം സൃഷ്ടിക്കാൻ സ്റ്റോറേജ് മാനേജറെ അനുവദിക്കണോ?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"വേണ്ട, നന്ദി"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"ഓണാക്കുക"</string>
-    <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"ആപ്‌സ് (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
+    <skip />
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"സ്വയമേവ"</string>
@@ -55,4 +56,6 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"ഇനങ്ങൾ കണ്ടെത്തുന്നു…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"നിങ്ങളുടെ ഉപകരണത്തിൽ നിന്ന് <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> നീക്കംചെയ്യപ്പെടും"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"നിങ്ങളുടെ സ്റ്റോറേജ് ഇപ്പോൾ മാനേജുചെയ്യുന്നത് സ്റ്റോറേജ് ​​മാനേജരാണ്"</string>
+    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <skip />
 </resources>
