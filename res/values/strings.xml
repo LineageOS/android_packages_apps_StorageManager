@@ -34,13 +34,13 @@
     <string name="deletion_helper_free_button">Free up <xliff:g id="freeable" example="1.2GB">%1$s</xliff:g></string>
 
     <!-- Preference group title for the photos and videos deletion service. [CHAR LIMIT=40]-->
-    <string name="deletion_helper_photos_title">Backed up photos &amp; videos</string>
+    <string name="deletion_helper_photos_title">Photos &amp; videos (<xliff:g id="num_items">%1$d</xliff:g>)</string>
 
     <!-- Summary of how much backed up storage that photos and videos service can clear from the local device. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_photos_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
 
     <!-- Preference title for the downloads deletion service. [CHAR LIMIT=40]-->
-    <string name="deletion_helper_downloads_title">Downloads</string>
+    <string name="deletion_helper_downloads_title">Downloads (<xliff:g id="numItems" example="67">%1$d</xliff:g>)</string>
 
     <!-- Summary of how much stale data can be cleared from the local download folder. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_downloads_category_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
@@ -90,7 +90,7 @@
     <!-- Action to turn on ASM in the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_activate_button">Turn on</string>
 
-    <string name="deletion_helper_photos_loading_title">Backed up photos &amp; videos</string>
+    <string name="deletion_helper_photos_loading_title">Photos &amp; videos</string>
     <string name="deletion_helper_photos_loading_summary">Finding items…</string>
 
     <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
@@ -107,12 +107,6 @@
     <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
 
-    <!-- Title to show in the ActionBar when there are no items to remove [CHAR LIMIT=30] -->
-    <string name="empty_state_title">Nothing to remove</string>
-
-    <!-- String which is clickable that removes the time threshold on items allowing the user to delete more things [CHAR LIMIT=NONE] -->
-    <string name="empty_state_review_items_link">Review recent items</string>
-
     <!-- Empty state summary for the Deletion Helper [CHAR LIMIT=NONE]-->
-    <string name="empty_state_summary">There aren\'t any older files to remove. To make space, remove recent photos, videos, and apps.</string>
+    <string name="empty_state_summary">There aren\'t any backed up files or infrequently used apps to remove. Try reviewing all of your apps to make space.</string>
 </resources>

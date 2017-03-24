@@ -50,7 +50,7 @@ public class PhotosDeletionPreference extends DeletionPreference {
      */
     public void updatePreferenceText(int items, long bytes) {
         Context context = getContext();
-        setTitle(context.getString(R.string.deletion_helper_photos_title));
+        setTitle(context.getString(R.string.deletion_helper_photos_title, items));
         setSummary(
                 context.getString(
                         R.string.deletion_helper_photos_summary,
