@@ -119,7 +119,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
 
     private void updatePreferenceText(int itemCount, long bytes, long mostRecent) {
         Context context = getContext();
-        setTitle(context.getString(R.string.deletion_helper_downloads_title, itemCount));
+        setTitle(context.getString(R.string.deletion_helper_downloads_title));
         // If there are no files to clear, show the empty text instead.
         if (itemCount != 0) {
             setSummary(context.getString(R.string.deletion_helper_downloads_category_summary,
