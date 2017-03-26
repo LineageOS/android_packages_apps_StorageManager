@@ -91,7 +91,7 @@ public class PhotosDeletionPreferenceTest {
         Robolectric.flushForegroundThreadScheduler();
         mPreference.onBindViewHolder(mHolder);
 
-        assertThat(mPreference.getTitle()).isEqualTo("Photos & videos (10)");
+        assertThat(mPreference.getTitle()).isEqualTo("Backed up photos & videos");
         assertThat(mPreference.getSummary().toString()).isEqualTo("1.00KB");
     }
 }
