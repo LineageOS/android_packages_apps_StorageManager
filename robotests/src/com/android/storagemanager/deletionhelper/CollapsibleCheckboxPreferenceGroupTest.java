@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -20,7 +20,6 @@ import android.content.Context;
 import android.support.v7.preference.PreferenceViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import com.android.storagemanager.testing.TestingConstants;
 import com.android.storagemanager.R;
@@ -35,36 +34,31 @@ import org.robolectric.annotation.Config;
 import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
-public class PhotosDeletionPreferenceTest {
+@Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
+public class CollapsibleCheckboxPreferenceGroupTest {
+
     private Context mContext;
     private PreferenceViewHolder mHolder;
-    private PhotosDeletionPreference mPreference;
+    private CollapsibleCheckboxPreferenceGroup mPreference;
 
     @Before
     public void setUp() throws Exception {
         mContext = RuntimeEnvironment.application;
-        mPreference = new PhotosDeletionPreference(mContext, null);
+        mPreference = new CollapsibleCheckboxPreferenceGroup(mContext, null);
 
         // Inflate the preference and the widget.
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        final View view = inflater.inflate(mPreference.getLayoutResource(),
-                new LinearLayout(mContext), false);
-        inflater.inflate(mPreference.getWidgetLayoutResource(),
-                (ViewGroup) view.findViewById(android.R.id.widget_frame));
+        final View view =
+                inflater.inflate(
+                        mPreference.getLayoutResource(), new LinearLayout(mContext), false);
 
         mHolder = PreferenceViewHolder.createInstanceForTests(view);
     }
 
     @Test
-    public void testConstructor() {
-        assertThat(mPreference.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY))
-                .isEqualTo(0);
-    }
-
-    @Test
     public void testItemVisibilityBeforeLoaded() {
         mPreference.onBindViewHolder(mHolder);
+
         assertThat(mHolder.findViewById(R.id.progress_bar).getVisibility()).isEqualTo(View.VISIBLE);
         assertThat(mHolder.findViewById(android.R.id.icon).getVisibility()).isEqualTo(View.GONE);
         assertThat(mHolder.findViewById(android.R.id.widget_frame).getVisibility())
@@ -73,7 +67,7 @@ public class PhotosDeletionPreferenceTest {
 
     @Test
     public void testItemVisibilityAfterLoaded() {
-        mPreference.onFreeableChanged(0, 0);
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(100L);
         Robolectric.flushBackgroundThreadScheduler();
         Robolectric.flushForegroundThreadScheduler();
         mPreference.onBindViewHolder(mHolder);
@@ -81,40 +75,21 @@ public class PhotosDeletionPreferenceTest {
         // After onFreeableChanged is called, we're no longer loading.
         assertThat(mHolder.findViewById(R.id.progress_bar).getVisibility()).isEqualTo(View.GONE);
         assertThat(mHolder.findViewById(android.R.id.icon).getVisibility()).isEqualTo(View.GONE);
-        assertThat(mHolder.findViewById(android.R.id.checkbox).getVisibility())
+        assertThat(mHolder.findViewById(android.R.id.widget_frame).getVisibility())
                 .isEqualTo(View.VISIBLE);
     }
 
-    @Test
-    public void testTitleAndSummaryAfterLoaded() {
-        mPreference.onFreeableChanged(10, 1024L);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
-        mPreference.onBindViewHolder(mHolder);
-
-        assertThat(mPreference.getTitle()).isEqualTo("Backed up photos & videos");
-        assertThat(mPreference.getSummary().toString()).isEqualTo("1.00KB");
-    }
-
-    @Test
-    public void testDisabledIfNothingToClear() {
-        mPreference.onFreeableChanged(0, 0);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+    public void loadCompleteUpdate_disablesWhenNothingToDelete() {
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(0);
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.isEnabled()).isFalse();
     }
 
-    @Test
-    public void testGetFreeableBytes() {
-        mPreference.onFreeableChanged(100, 1024L);
-        Robolectric.flushBackgroundThreadScheduler();
-        Robolectric.flushForegroundThreadScheduler();
+    public void loadCompleteUpdate_enabledWhenDeletableContentFound() {
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(100L);
+        mPreference.onBindViewHolder(mHolder);
 
-        assertThat(mPreference.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY))
-                .isEqualTo(0);
-        assertThat(mPreference.getFreeableBytes(DeletionHelperSettings.COUNT_UNCHECKED))
-                .isEqualTo(1024L);
+        assertThat(mPreference.isEnabled()).isTrue();
     }
 }

@@ -153,13 +153,11 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
         }
     }
 
-    /**
-     * Returns the number of bytes that would be cleared if the deletion tasks runs.
-     */
-    public long getFreeableBytes() {
+    /** Returns the number of bytes that would be cleared if the deletion tasks runs. */
+    public long getFreeableBytes(boolean countUnchecked) {
         long freedBytes = 0;
         for (File file : mFiles) {
-            if (isChecked(file)) {
+            if (isChecked(file) || countUnchecked) {
                 freedBytes += file.length();
             }
         }

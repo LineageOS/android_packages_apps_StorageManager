@@ -36,7 +36,7 @@
         android:allowBackup="false"
         android:supportsRtl="true">
         <!--  Initial Page -->
-        <activity android:name="DeletionHelperActivity"
+        <activity android:name=".deletionhelper.DeletionHelperActivity"
                   android:label="@string/deletion_helper_title"
                   android:launchMode="singleTask">
             <intent-filter>

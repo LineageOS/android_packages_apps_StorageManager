@@ -51,6 +51,7 @@ public class PhotosDeletionPreference extends DeletionPreference {
     public void updatePreferenceText(int items, long bytes) {
         Context context = getContext();
         setTitle(context.getString(R.string.deletion_helper_photos_title));
+        mLoaded = true;
         setSummary(
                 context.getString(
                         R.string.deletion_helper_photos_summary,
@@ -65,7 +66,6 @@ public class PhotosDeletionPreference extends DeletionPreference {
 
     @Override
     public void onFreeableChanged(int items, long bytes) {
-        mLoaded = true;
         // Because these operations may cause UI churn, we need to ensure they run on the main
         // thread.
         new Handler(getContext().getMainLooper()).post(new Runnable() {
@@ -87,12 +87,10 @@ public class PhotosDeletionPreference extends DeletionPreference {
     @Override
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
-        holder.findViewById(R.id.progress_bar).setVisibility(mLoaded ? View.GONE : View.VISIBLE);
+        holder.findViewById(com.android.internal.R.id.icon).setVisibility(View.GONE);
+    }
 
-        holder.findViewById(com.android.internal.R.id.icon)
-                .setVisibility(mLoaded ? View.VISIBLE : View.GONE);
-
-        holder.findViewById(com.android.internal.R.id.checkbox)
-                .setVisibility(mLoaded ? View.VISIBLE : View.GONE);
+    public boolean isLoaded() {
+        return mLoaded;
     }
 }

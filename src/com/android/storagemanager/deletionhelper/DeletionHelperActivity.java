@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.storagemanager;
+package com.android.storagemanager.deletionhelper;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -22,10 +22,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import com.android.storagemanager.deletionhelper.AppsAsyncLoader;
-import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
+import com.android.storagemanager.ButtonBarProvider;
+import com.android.storagemanager.R;
 
 /**
  * The DeletionHelperActivity is an activity for deleting apps, photos, and downloaded files which
@@ -44,6 +45,7 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
 
         // If we are not returning from an existing activity, create a new fragment.
         if (savedInstanceState == null) {
+            setIsEmptyState(false /* isEmptyState */);
             FragmentManager manager = getFragmentManager();
             mFragment = DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD);
             manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
@@ -80,11 +82,19 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
                 manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
                 return true;
             case R.id.default_threshold:
+                setIsEmptyState(false /* isEmptyState */);
                 mFragment = DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD);
                 manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    void setIsEmptyState(boolean isEmptyState) {
+        findViewById(R.id.main_content).setVisibility(isEmptyState ? View.GONE : View.VISIBLE);
+        findViewById(R.id.empty_state).setVisibility(isEmptyState ? View.VISIBLE : View.GONE);
+        findViewById(R.id.button_bar).setVisibility(isEmptyState ? View.GONE : View.VISIBLE);
+        setTitle(isEmptyState ? R.string.empty_state_title : R.string.deletion_helper_title);
     }
 
     @Override
