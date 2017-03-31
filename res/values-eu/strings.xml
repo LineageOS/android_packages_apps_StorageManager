@@ -26,10 +26,12 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Ez da erabili azken urte honetan"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Ez dakigu ziur noiz erabili zen azkenekoz"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Libratu <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Argazkiak eta bideoak (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
+    <skip />
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Deskargak (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
+    <skip />
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,8 +42,7 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> daude libre. Memoria-kudeatzaileak babeskopia duen edukia kentzea nahi duzu, automatikoki tokia egiteko?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Ez, eskerrik asko"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Aktibatu"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Gutxitan erabiltzen diren aplikazioak"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automatikoa"</string>
@@ -52,10 +53,15 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Telefonoa berriro betetzen hasten denean, utzi memoria-kudeatzaileari argazki eta bideo zaharrak automatikoki kentzen tokia egiteko."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Ez, eskerrik asko"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Aktibatu"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Argazkiak eta bideoak"</string>
+    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
+    <skip />
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Elementuak bilatzen…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kenduko dira gailutik"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Biltegi-kudeatzailea ari da biltegia kudeatzen"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <!-- no translation found for empty_state_title (4033285438176545309) -->
+    <skip />
+    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
+    <skip />
+    <!-- no translation found for empty_state_summary (8439893007424243790) -->
     <skip />
 </resources>

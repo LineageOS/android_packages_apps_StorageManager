@@ -26,10 +26,12 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Nepoužitá za posledný rok"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Nie je známe, kedy bola naposledy použitá"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Uvoľniť <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Fotky a videá (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
+    <skip />
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Stiahnuté položky (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
+    <skip />
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,8 +42,7 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Uvoľnili ste <xliff:g id="USED">%1$s</xliff:g>. Povoliť Správcovi úložiska automaticky uvoľňovať miesto odstraňovaním zálohovaného obsahu z vášho zariadenia?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Nie, ďakujem"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Zapnúť"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Zriedkavo používané aplikácie"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automaticky"</string>
@@ -52,10 +53,15 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Povoľte Správcovi úložiska uvoľňovať miesto automatickým odstraňovaním starých fotiek a videí, keď sa váš telefón začne znova zaplňovať."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Nie, ďakujem"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Zapnúť"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotky a videá"</string>
+    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
+    <skip />
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Vyhľadávajú sa položky…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Zo zariadenia sa odstráni <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> dát"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Vaše úložisko odteraz riadi správca úložiska"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
+    <!-- no translation found for empty_state_title (4033285438176545309) -->
+    <skip />
+    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
+    <skip />
+    <!-- no translation found for empty_state_summary (8439893007424243790) -->
     <skip />
 </resources>
