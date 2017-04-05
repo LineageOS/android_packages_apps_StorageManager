@@ -21,13 +21,13 @@ import android.app.job.JobService;
 import android.content.Context;
 import android.os.BatteryManager;
 import android.os.storage.StorageManager;
-import android.os.storage.VolumeInfo;
 import android.provider.Settings;
 import android.util.Log;
+import com.android.settingslib.deviceinfo.PrivateStorageInfo;
+import com.android.settingslib.deviceinfo.StorageManagerVolumeProvider;
+import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
-
-import java.io.File;
 
 /**
  * {@link JobService} class to start automatic storage clearing jobs to free up space. The job only
@@ -39,6 +39,7 @@ public class AutomaticStorageManagementJobService extends JobService {
     private static final long DEFAULT_LOW_FREE_PERCENT = 15;
 
     private StorageManagementJobProvider mProvider;
+    private StorageVolumeProvider mVolumeProvider;
 
     @Override
     public boolean onStartJob(JobParameters args) {
@@ -51,10 +52,7 @@ public class AutomaticStorageManagementJobService extends JobService {
             return false;
         }
 
-        StorageManager manager = getSystemService(StorageManager.class);
-        VolumeInfo internalVolume = manager.findVolumeById(VolumeInfo.ID_PRIVATE_INTERNAL);
-        final File dataPath = internalVolume.getPath();
-        if (!volumeNeedsManagement(dataPath)) {
+        if (!volumeNeedsManagement()) {
             Log.i(TAG, "Skipping automatic storage management.");
             Settings.Secure.putLong(getContentResolver(),
                     Settings.Secure.AUTOMATIC_STORAGE_MANAGER_LAST_RUN,
@@ -90,15 +88,26 @@ public class AutomaticStorageManagementJobService extends JobService {
         return false;
     }
 
+    void setStorageVolumeProvider(StorageVolumeProvider storageProvider) {
+        mVolumeProvider = storageProvider;
+    }
+
     private int getDaysToRetain() {
         return Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN,
                 Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN_DEFAULT);
     }
 
-    private boolean volumeNeedsManagement(final File dataPath) {
-        long lowStorageThreshold = (dataPath.getTotalSpace() * DEFAULT_LOW_FREE_PERCENT) / 100;
-        return dataPath.getFreeSpace() < lowStorageThreshold;
+    private boolean volumeNeedsManagement() {
+        if (mVolumeProvider == null) {
+            mVolumeProvider = new StorageManagerVolumeProvider(
+                    getSystemService(StorageManager.class));
+        }
+
+        PrivateStorageInfo info = PrivateStorageInfo.getPrivateStorageInfo(mVolumeProvider);
+
+        long lowStorageThreshold = (info.totalBytes * DEFAULT_LOW_FREE_PERCENT) / 100;
+        return info.freeBytes < lowStorageThreshold;
     }
 
     private boolean preconditionsFulfilled() {

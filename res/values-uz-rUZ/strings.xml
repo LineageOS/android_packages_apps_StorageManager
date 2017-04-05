@@ -21,12 +21,12 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"Joy bo‘shatish"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"O‘chirib tashlash uchun belgilang"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> kun oldin"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • Bundan oldin sarflanmagan"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • O‘tkan yilda ishlatilmagan"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Oxirgi marta qachon sarflangani noaniq"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> joy bo‘shatish"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Surat va videolar (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
     <string name="deletion_helper_photos_summary" msgid="2636724338009030470">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> kun oldin"</string>
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Yuklanishlar (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Yuklanmalar (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <string name="deletion_helper_downloads_file_summary" msgid="2610952169093565355">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$s</xliff:g>"</string>

@@ -16,12 +16,12 @@
 
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name" msgid="963247385700831716">"Gestione memoria"</string>
+    <string name="app_name" msgid="963247385700831716">"Gestione archiviazione"</string>
     <string name="cancel" msgid="7021218262867558825">"Annulla"</string>
     <string name="storage_menu_free" msgid="1878247401436882778">"Libera spazio"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"Scegli cosa rimuovere"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> giorni fa"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • Mai utilizzata prima"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • Non usata nell\'ultimo anno"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Data ultimo utilizzo sconosciuta"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Libera fino a <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Foto e video (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -35,7 +35,7 @@
     <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"Verranno rimossi <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> dal dispositivo"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Rimuovi"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Gestire automaticamente lo spazio di archiviazione?"</string>
-    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> liberi. Vuoi consentire a Gestione memoria di liberare spazio automaticamente rimuovendo dal dispositivo i contenuti di cui hai eseguito il backup?"</string>
+    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> liberi. Vuoi consentire a Gestione archiviazione di liberare spazio automaticamente rimuovendo dal dispositivo i contenuti di cui hai eseguito il backup?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"No grazie"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Attiva"</string>
     <string name="deletion_helper_apps_group_title" msgid="6554321362396920050">"App (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
@@ -45,11 +45,11 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Libera spazio ora"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Servizio Automatic Storage Management"</string>
     <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Spazio sul telefono in esaurimento"</string>
-    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Consenti a Gestione memoria di liberare spazio rimuovendo automaticamente vecchi video e foto quando lo spazio sul telefono ricomincia a scarseggiare."</string>
+    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Consenti a Gestione archiviazione di liberare spazio rimuovendo automaticamente vecchi video e foto quando lo spazio sul telefono ricomincia a scarseggiare."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"No grazie"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Attiva"</string>
     <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Foto e video"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Ricerca di elementi…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Verranno rimossi <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> dal dispositivo"</string>
-    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Il tuo spazio di archiviazione è ora gestito dalla Gestione memoria"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Il tuo spazio di archiviazione è ora gestito da Gestione archiviazione"</string>
 </resources>

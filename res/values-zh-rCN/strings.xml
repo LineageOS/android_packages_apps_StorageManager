@@ -21,7 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"释放空间"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"选择要移除的内容"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> 天前使用过"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • 从未使用过"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • 过去一年未曾使用"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • 不确定上次使用时间"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"释放 <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"照片和视频（<xliff:g id="NUM_ITEMS">%1$d</xliff:g> 项）"</string>

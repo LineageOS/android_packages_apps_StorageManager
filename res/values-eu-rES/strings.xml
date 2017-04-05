@@ -21,9 +21,9 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"Egin tokia"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"Aukeratu kendu beharrekoak"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • Duela <xliff:g id="DAYS">%2$d</xliff:g> egun"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • Ez da erabili inoiz"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • Ez da erabili azken urte honetan"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Ez dakigu ziur noiz erabili zen azkenekoz"</string>
-    <string name="deletion_helper_free_button" msgid="1760529213407548661">"Hustu <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
+    <string name="deletion_helper_free_button" msgid="1760529213407548661">"Libratu <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Argazkiak eta bideoak (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
     <string name="deletion_helper_photos_summary" msgid="2636724338009030470">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> egunetik gorakoak"</string>
     <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Deskargak (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>

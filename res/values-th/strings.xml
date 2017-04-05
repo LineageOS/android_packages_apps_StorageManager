@@ -21,7 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"เพิ่มพื้นที่ว่าง"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"เลือกรายการที่จะนำออก"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"ใช้ไป <xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> วันที่ผ่านมา"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"ใช้ไป <xliff:g id="USED">%1$s</xliff:g> • ไม่เคยใช้มาก่อน"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • ไม่ได้ใช้ในปีที่ผ่านมา"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"ใช้ไป <xliff:g id="USED">%1$s</xliff:g> • ไม่ทราบว่าใช้ล่าสุดเมื่อใด"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"เพิ่มพื้นที่ว่าง <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"รูปภาพและวิดีโอ (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>

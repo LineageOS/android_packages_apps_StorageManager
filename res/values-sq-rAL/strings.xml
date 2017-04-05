@@ -21,7 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"Liro hapësirën"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"Zgjidh artikujt që do të heqësh"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> ditë më parë"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • Nuk është përdorur asnjëherë më parë"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • Nuk është përdorur në vitin e fundit"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • Nuk jam i sigurt kur është përdorur së fundi"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Liro <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Fotografitë dhe videot (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>

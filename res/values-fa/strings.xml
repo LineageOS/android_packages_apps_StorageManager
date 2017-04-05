@@ -21,7 +21,7 @@
     <string name="storage_menu_free" msgid="1878247401436882778">"آزاد کردن فضا"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"انتخاب موارد جهت حذف کردن"</string>
     <string name="deletion_helper_app_summary" msgid="1923023368736447552">"<xliff:g id="USED">%1$s</xliff:g> • <xliff:g id="DAYS">%2$d</xliff:g> روز قبل"</string>
-    <string name="deletion_helper_app_summary_never_used" msgid="7461207117653761032">"<xliff:g id="USED">%1$s</xliff:g> • هرگز قبلاً استفاده نشده است"</string>
+    <string name="deletion_helper_app_summary_never_used" msgid="20287691628145397">"<xliff:g id="USED">%1$s</xliff:g> • در طول سال گذشته استفاده نشده است"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="257918462233851162">"<xliff:g id="USED">%1$s</xliff:g> • آخرین استفاده مشخص نیست"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"آزاد کردن <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="8694284659307845664">"عکس و ویدئو (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>

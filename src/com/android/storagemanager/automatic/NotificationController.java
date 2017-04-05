@@ -79,7 +79,7 @@ public class NotificationController extends BroadcastReceiver {
     private static final String NOTIFICATION_DISMISS_COUNT = "notification_dismiss_count";
     private static final String STORAGE_MANAGER_PROPERTY = "ro.storage_manager.enabled";
 
-    private static final long DISMISS_DELAY = TimeUnit.DAYS.toMillis(15);
+    private static final long DISMISS_DELAY = TimeUnit.DAYS.toMillis(14);
     private static final long NO_THANKS_DELAY = TimeUnit.DAYS.toMillis(90);
     private static final long MAXIMUM_SHOWN_COUNT = 4;
     private static final long MAXIMUM_DISMISS_COUNT = 9;
@@ -181,7 +181,8 @@ public class NotificationController extends BroadcastReceiver {
                 .addAction(cancelAction.build())
                 .addAction(activateAutomaticAction.build())
                 .setContentIntent(tapIntent)
-                .setDeleteIntent(deleteIntent);
+                .setDeleteIntent(deleteIntent)
+                .setLocalOnly(true);
 
         NotificationManager manager =
                 ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
