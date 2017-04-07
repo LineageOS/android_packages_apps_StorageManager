@@ -53,7 +53,7 @@ public class PhotosDeletionPreferenceTest {
         inflater.inflate(mPreference.getWidgetLayoutResource(),
                 (ViewGroup) view.findViewById(android.R.id.widget_frame));
 
-        mHolder = new PreferenceViewHolder(view);
+        mHolder = PreferenceViewHolder.createInstanceForTests(view);
     }
 
     @Test
