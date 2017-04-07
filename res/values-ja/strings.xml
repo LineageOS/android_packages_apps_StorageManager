@@ -26,12 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"過去 1 年間未使用"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"最終使用日は不明"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> を解放"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"写真と動画のバックアップ"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30日間"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ダウンロード"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -53,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ストレージ マネージャは、お使いのスマートフォンで空き容量が再び少なくなり始めると、古い写真や動画を自動的に削除して空き容量を増やします。"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"表示しない"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ON にする"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"写真と動画のバックアップ"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"アイテムを探しています…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"端末から <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> を削除します"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"お使いのストレージの管理はストレージ マネージャが行うようになりました"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"削除できるものがない場合"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"最近のアイテムを確認"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"削除できる古いファイルはありません。空き容量を確保するため、最近の写真、動画、アプリを削除してください。"</string>
 </resources>

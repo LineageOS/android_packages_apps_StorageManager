@@ -26,12 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Ekki notað undanfarið ár"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Óvíst hvenær notað"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Losa <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Afritaðar myndir og myndskeið"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Eldri en 30 daga"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Niðurhal"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -53,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Leyfðu geymslustjórnun að losa sjálfkrafa um pláss með því að fjarlægja gamlar myndir og myndskeið úr símanum þegar geymslan fyllist aftur."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Nei, takk"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Kveikja"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Afritaðar myndir og myndskeið"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Finnur atriði…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> verða fjarlægð úr tækinu"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Geymslurýminu þínu er nú stjórnað af geymslustjórnun"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Ekkert til að fjarlægja"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Skoða nýleg atriði"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Ekki er hægt að fjarlægja neinar eldri skrár. Fjarlægðu nýlegar myndir, myndskeið og forrit til að mynda geymslupláss."</string>
 </resources>

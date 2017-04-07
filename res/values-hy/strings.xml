@@ -26,12 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Անցյալ տարի չի օգտագործվել"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Հայտնի չէ, թե վերջին անգամ երբ է օգտագործվել"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Ազատել <xliff:g id="FREEABLE">%1$s</xliff:g> տարածք"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Պահուստավորված լուսանկարներ և տեսանյութեր"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 օրից հին"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Ներբեռնումներ"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -53,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Թույլ տալ Հիշողության կառավարիչին տեղ ազատել՝ ավտոմատ կերպով ջնջելով հին լուսանկարները և տեսանյութերը, երբ հեռախոսը նորից լցվի:"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Ոչ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Միացնել"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Պահուստավորված լուսանկարներ և տեսանյութեր"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Տարրերի որոնում…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Ձեր սարքից կհեռացվի <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Ձեր սարքի հիշողությունն այժմ կառավարվում է հիշողության կառավարիչի կողմից"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Հեռացնելու համար տարրեր չկան"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Դիտել վերջին տարրերը"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Չկան ավելի հին ֆայլեր, որոնք հնարավոր է հեռացնել: Տեղ ազատելու համար հեռացրեք վերջին լուսանկարները, տեսանյութերը և հավելվածները:"</string>
 </resources>
