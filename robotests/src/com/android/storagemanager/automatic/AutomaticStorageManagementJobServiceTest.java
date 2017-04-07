@@ -18,6 +18,7 @@ package com.android.storagemanager.automatic;
 
 import android.app.NotificationManager;
 import android.app.job.JobParameters;
+import android.app.usage.StorageStatsManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -83,11 +84,14 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mVolumeInfo.getPath()).thenReturn(mFile);
         when(mVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
         when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIMARY_PHYSICAL);
-        when(mFile.getTotalSpace()).thenReturn(100L);
-        when(mFile.getFreeSpace()).thenReturn(0L);
+        when(mVolumeInfo.isMountedReadable()).thenReturn(true);
         mVolumes.add(mVolumeInfo);
         when(mStorageVolumeProvider.getPrimaryStorageSize()).thenReturn(100L);
         when(mStorageVolumeProvider.getVolumes()).thenReturn(mVolumes);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(0L);
+        when(mStorageVolumeProvider.getTotalBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(100L);
 
         mApplication = ShadowApplication.getInstance();
         mApplication.setSystemService(Context.BATTERY_SERVICE, mBatteryManager);
@@ -149,7 +153,8 @@ public class AutomaticStorageManagementJobServiceTest {
     @Test
     public void testJobDoesntRunIfStorageNotFull() {
         activateASM();
-        when(mFile.getFreeSpace()).thenReturn(100L);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(100L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
     }
@@ -157,11 +162,13 @@ public class AutomaticStorageManagementJobServiceTest {
     @Test
     public void testJobOnlyRunsIfFreeStorageIsUnder15Percent() {
         activateASM();
-        when(mFile.getFreeSpace()).thenReturn(15L);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(15L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
 
-        when(mFile.getFreeSpace()).thenReturn(14L);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(14L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }
@@ -182,11 +189,16 @@ public class AutomaticStorageManagementJobServiceTest {
         VolumeInfo nonPrivateVolume = mock(VolumeInfo.class);
         when(nonPrivateVolume.getPath()).thenReturn(notPrivate);
         when(nonPrivateVolume.getType()).thenReturn(VolumeInfo.TYPE_PUBLIC);
-        when(notPrivate.getTotalSpace()).thenReturn(100L);
-        when(notPrivate.getFreeSpace()).thenReturn(0L);
         mVolumes.add(nonPrivateVolume);
+        when(mStorageVolumeProvider.getFreeBytes(
+                        any(StorageStatsManager.class), eq(nonPrivateVolume)))
+                .thenReturn(0L);
+        when(mStorageVolumeProvider.getTotalBytes(
+                        any(StorageStatsManager.class), eq(nonPrivateVolume)))
+                .thenReturn(100L);
         activateASM();
-        when(mFile.getFreeSpace()).thenReturn(15L);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(15L);
 
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
@@ -198,29 +210,21 @@ public class AutomaticStorageManagementJobServiceTest {
         VolumeInfo privateVolumeInfo = mock(VolumeInfo.class);
         when(privateVolumeInfo.getPath()).thenReturn(privateVolume);
         when(privateVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
+        when(privateVolumeInfo.isMountedReadable()).thenReturn(true);
         when(privateVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIVATE_INTERNAL);
-        when(privateVolume.getTotalSpace()).thenReturn(100L);
-        when(privateVolume.getFreeSpace()).thenReturn(0L);
+        when(mStorageVolumeProvider.getFreeBytes(
+                        any(StorageStatsManager.class), eq(privateVolumeInfo)))
+                .thenReturn(0L);
+        when(mStorageVolumeProvider.getTotalBytes(
+                        any(StorageStatsManager.class), eq(privateVolumeInfo)))
+                .thenReturn(100L);
         mVolumes.add(privateVolumeInfo);
         activateASM();
-        when(mFile.getFreeSpace()).thenReturn(15L);
+        when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
+                .thenReturn(15L);
 
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
-    }
-
-    @Test
-    public void testPrimaryPrivateStorageDefersToStorageManager() {
-        // The Storage Manager has a more accurate calculation for the UUID_PRIVATE_INTERNAL
-        // volume, so we don't use the getTotalSpace() method to find it.
-        // If the job accidentally uses the getTotalSpace(), it will run the job accidentally.
-        when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIVATE_INTERNAL);
-        when(mFile.getTotalSpace()).thenReturn(1000L);
-        when(mFile.getFreeSpace()).thenReturn(15L);
-        activateASM();
-
-        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
-        assertStorageManagerJobDidNotRun();
     }
 
     private void assertJobFinished(boolean retryNeeded) {
