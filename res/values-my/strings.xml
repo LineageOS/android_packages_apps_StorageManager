@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"ယခင်နှစ်အတွင်း အသုံးမပြုခဲ့ပါ"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"နောက်ဆုံးအသုံးပြုခဲ့ချိန် မသေချာပါ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> နေရာလွတ် ပြုလုပ်ပါ"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"မိတ္တူကူးထားသော ဓာတ်ပုံနှင့် ဗီဒီယိုများ"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"ရက်ပေါင်း ၃၀ ထက် ကျော်နေပါပြီ"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ဒေါင်းလုဒ်များ"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"သင့်ဖုန်းသိုလှောင်ခန်းနေရာ ပြည့်လာသည့်အခါ ဓာတ်ပုံနှင့် ဗီဒီယိုအဟောင်းများကို အလိုအလျောက် ဖယ်ရှားရန်အတွက် သိုလှောင်ခန်း စီမံခန့်ခွဲမှုစနစ်ကို အသုံးပြုပါ။"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"မလိုပါ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ဖွင့်ရန်"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"မိတ္တူကူးထားသော ဓာတ်ပုံနှင့် ဗီဒီယိုများ"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"အကြောင်းအရာများကို ရှာနေသည်…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ကို သင့်စက်ပစ္စည်းမှ ဖယ်ရှားပါမည်"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"သင့်သိုလှောင်မှုကို သိုလှောင်မှုမန်နေဂျာက လက်ရှိစီမံခန့်ခွဲနေပါသည်"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"ဖယ်ရှားစရာ မရှိပါ"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"မကြာသေးမီက ဖွင့်ခဲ့သည့် အရာများကို ပြန်လည်သုံးသပ်ပါ"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"ဖယ်ရှားစရာ ဖိုင်အဟောင်း တစ်ခုမျှမရှိပါ။ နေရာလွတ်ရရှိစေရန် မကြာသေးမီက ဓာတ်ပုံ၊ ဗီဒီယို နှင့် အက်ပ်များကို ဖယ်ရှားပါ။"</string>
 </resources>

@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"கடந்த ஆண்டில் பயன்படுத்தவில்லை"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"கடைசியாகப் பயன்படுத்தியது எப்போது என்று தெரியவில்லை"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> இடத்தைக் காலியாக்கு"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"காப்புபிரதியெடுத்த படங்கள் &amp; வீடியோக்கள்"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 நாட்களுக்கு மேலாக உள்ள படங்கள்"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"பதிவிறக்கங்கள்"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"மொபைலின் சேமிப்பகம் நிரம்பத் தொடங்கியதும், பழைய படங்களையும் வீடியோக்களையும் தானாகவே அகற்றி இடத்தைக் காலியாக்க, சேமிப்பக நிர்வாகியை அனுமதிக்கவும்."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"வேண்டாம்"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"இயக்கு"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"காப்புப் பிரதி எடுத்த படங்களும் வீடியோக்களும்"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"கோப்புகளைக் கண்டறிகிறது…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"சாதனத்திலிருந்து <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> அகற்றப்படும்"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"உங்கள் சேமிப்பகம் இப்போது சேமிப்பக நிர்வாகியால் நிர்வகிக்கப்படுகிறது"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"அகற்றுவதற்கு எதுவுமில்லை"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"சமீபத்தியவற்றைச் சரிபார்க்கவும்"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"அகற்றுவதற்கு, பழைய கோப்புகள் எதுவுமில்லை. இடத்தை உருவாக்க, சமீபத்திய படங்கள், வீடியோக்கள், பயன்பாடுகள் ஆகியவற்றை அகற்றவும்."</string>
 </resources>

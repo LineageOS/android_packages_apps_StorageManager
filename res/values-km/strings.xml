@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"មិនបាន​ប្រើ​កាលពី​ឆ្នាំមុន"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"មិន​ប្រាកដថា​បានប្រើ​ចុងក្រោយ​នៅពេល​ណា​ទេ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"បង្កើនទំហំផ្ទុក <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"រូបថត និងវីដេអូដែលបានបម្រុងទុក"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"លើស​ពី 30 ថ្ងៃ"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ការទាញយក"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"អនុញ្ញាតឲ្យកម្មវិធីគ្រប់គ្រងទំហំផ្ទុកបង្កើនទំហំផ្ទុកដោយស្វ័យប្រវត្តិដោយធ្វើការលុបរូបថត និងវីដេអូចាស់ៗ នៅពេលដែលទំហំផ្ទុកក្នុងទូរស័ព្ទរបស់អ្នកជិតពេញម្តងទៀត។"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"ទេ អរគុណ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"បើក"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"រូបថត និងវីដេអូដែលបានបម្រុងទុក"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"កំពុងរកធាតុ…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> នឹងត្រូវលុបចេញពីឧបករណ៍របស់អ្នក"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"នៅពេលនេះទំហំផ្ទុករបស់អ្នកត្រូវបានគ្រប់គ្រងដោយកម្មវិធីគ្រប់គ្រងទំហំផ្ទុក"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"មិនមានអ្វីដែលត្រូវលុបទេ"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"ពិនិត្យ​មើល​ធាតុថ្មីៗ"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"មិនមាន​ឯកសារចាស់​ជាងនេះ​ដែល​ត្រូវលុបចេញនោះទេ។ ដើម្បី​បង្កើន​ទំហំផ្ទុក សូម​លុប​រូបថត វីដេអូ និងកម្មវិធីថ្មីៗ។"</string>
 </resources>

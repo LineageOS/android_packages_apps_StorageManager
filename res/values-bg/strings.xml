@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Не е използвано през последната година"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Няма данни за последното използване"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Освобождаване на <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Снимки и видеоклипове с резервно копие"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"На повече от 30 дни"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Изтегляния"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Разрешете на мениджъра на хранилището да освобождава място, като автоматично премахва старите снимки и видеоклипове, когато телефонът ви започне да се препълва отново."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Не, благодаря"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Включване"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Снимки и видеоклипове, за които е създадено резервно копие"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Търсят се елементи…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"От устройството ви ще бъдат премахнати данни с размер от <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Хранилището ви вече се управлява от съответния мениджър"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Няма нищо за премахване"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Преглед на скорошните елементи"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Няма по-стари файлове, които да изтриете. За да освободите място, премахнете скорошни снимки, видеоклипове и приложения."</string>
 </resources>

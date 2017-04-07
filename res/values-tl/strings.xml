@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Hindi nagamit sa nakalipas na taon"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Hindi sigurado kung kailan huling ginamit"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Magbakante ng <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Mga naka-back up na larawan at video"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Mahigit 30 araw na ang tagal"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Mga Download"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Hayaang magbakante ng espasyo ang Storage Manager sa pamamagitan ng awtomatikong pag-aalis ng mga lumang larawan at video kapag nagsimulang mapuno muli ang iyong telepono."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Hindi, salamat na lang"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"I-on"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Mga naka-back up na larawan at video"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Naghahanap ng mga item…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ang maaalis sa iyong device"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Pinamamahalaan na ngayon ng storage manager ang iyong storage"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Walang maaaring alisin"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Suriin ang mga kamakailang item"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Walang lumang file na maaaring alisin. Upang magbakante ng espasyo, mag-alis ng mga kamakailang larawan, video, at app."</string>
 </resources>

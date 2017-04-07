@@ -26,14 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Non utilisée au cours de la dernière année"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Dernière utilisation inconnue"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Libérer <xliff:g id="FREEABLE">%1$s</xliff:g> d\'espace"</string>
-    <!-- no translation found for deletion_helper_photos_title (2602723121486729972) -->
-    <skip />
-    <!-- no translation found for deletion_helper_photos_age_summary (1820871709448371984) -->
-    <skip />
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Photos et vidéos sauvegardées"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Datées de plus de 30 jours"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <!-- no translation found for deletion_helper_downloads_title (8002058095019254694) -->
-    <skip />
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Téléchargements"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -55,15 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Autorisez le gestionnaire d\'espace de stockage à libérer de l\'espace en supprimant automatiquement les photos et vidéos les plus anciennes lorsque votre téléphone commence à être de nouveau saturé."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Non merci"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Activer"</string>
-    <!-- no translation found for deletion_helper_photos_loading_title (2768067991066779772) -->
-    <skip />
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Photos et vidéos sauvegardées"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Recherche de fichiers…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> d\'espace sera libéré de votre appareil"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Votre espace de stockage est maintenant géré par le gestionnaire de stockage"</string>
-    <!-- no translation found for empty_state_title (4033285438176545309) -->
-    <skip />
-    <!-- no translation found for empty_state_review_items_link (8411186441239304545) -->
-    <skip />
-    <!-- no translation found for empty_state_summary (8439893007424243790) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Rien à supprimer"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Passer en revue les articles récents"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Il n\'y a pas de fichiers anciens à supprimer. Pour faire de la place, supprimez des photos, des vidéos et des applications récentes."</string>
 </resources>
