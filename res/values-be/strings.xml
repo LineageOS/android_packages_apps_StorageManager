@@ -26,10 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Не выкарыстоўвалася ў мінулым годзе"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Час апошняга выкарыстання невядомы"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Вызваліць <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Фота і відэа (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Рэзервовыя копіі фота і відэа"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Старэйшыя за 30 дзён"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Спампоўкі (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Спампоўкі"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,8 +41,7 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Вызвалена <xliff:g id="USED">%1$s</xliff:g>. Дазволіць Менеджару сховішча аўтаматычна вызваляць месца, выдаляючы змесціва, для якога створаны рэзервовыя копіі, з вашай прылады?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Не, дзякуй"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Уключыць"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Праграмы, якія выкарыстоўваюцца нячаста"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Аўтаматычна"</string>
@@ -52,10 +52,11 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Дазвольце Менеджару сховішча вызваляць месца, аўтаматычна выдаляючы старыя фота і відэа, калі ваш тэлефон пачынае запаўняцца зноў."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Не, дзякуй"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Уключыць"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Фота і відэа"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Рэзервовыя копіі фота і відэа"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Ідзе пошук элементаў…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> будзе выдалена з вашай прылады"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Ваша сховішча зараз знаходзіцца пад кіраваннем менеджара сховішча"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Няма чаго выдаляць"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Праглядзець нядаўнія элементы"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Няма старэйшых файлаў для выдалення. Каб вызваліць месца, выдаліце нядаўнія фота, відэа і праграмы."</string>
 </resources>
