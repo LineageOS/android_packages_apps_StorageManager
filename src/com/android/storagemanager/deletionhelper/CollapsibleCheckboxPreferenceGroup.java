@@ -28,9 +28,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
-import android.widget.ImageView;
 
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.storagemanager.R;
 
 /**
@@ -42,6 +44,9 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
     private boolean mCollapsed;
     private boolean mChecked;
     private TextView mTextView;
+    private ProgressBar mProgressBar;
+    private View mWidget;
+    private boolean mLoaded;
 
     public CollapsibleCheckboxPreferenceGroup(Context context) {
         this(context, null);
@@ -58,6 +63,8 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
         super.onBindViewHolder(holder);
         View checkbox = holder.findViewById(com.android.internal.R.id.checkbox);
         mTextView = (TextView) holder.findViewById(android.R.id.summary);
+        // Ensures that the color of the text is consistent with the checkbox having a tick or not
+        mTextView.setActivated(mChecked);
         if (checkbox != null && checkbox instanceof Checkable) {
             ((Checkable) checkbox).setChecked(mChecked);
 
@@ -67,12 +74,15 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
             parent.setFocusable(true);
             parent.setOnClickListener(this);
         }
+        mProgressBar = (ProgressBar) holder.findViewById(R.id.progress_bar);
+        mProgressBar.setVisibility(mLoaded ? View.GONE : View.VISIBLE);
+        mWidget = holder.findViewById(android.R.id.widget_frame);
+        mWidget.setVisibility(mLoaded ? View.VISIBLE : View.GONE);
 
         // CollapsibleCheckboxPreferenceGroup considers expansion to be its "longer-term
         // (activation) state."
         final ImageView imageView = (ImageView) holder.findViewById(android.R.id.icon);
         imageView.setActivated(!mCollapsed);
-        mTextView.setActivated(mChecked);
     }
 
     @Override
@@ -213,5 +223,20 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
                         return new SavedState[size];
                     }
                 };
+    }
+
+    @VisibleForTesting
+    void switchSpinnerToCheckboxOrDisablePreference(long freeableBytes) {
+        mLoaded = true;
+        setEnabled(freeableBytes != 0);
+        if (!isEnabled()) {
+            setChecked(false);
+        }
+        if (mProgressBar != null) {
+            mProgressBar.setVisibility(View.GONE);
+        }
+        if (mWidget != null) {
+            mWidget.setVisibility(View.VISIBLE);
+        }
     }
 }
