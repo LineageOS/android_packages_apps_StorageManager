@@ -117,6 +117,9 @@ public class DeletionHelperSettings extends PreferenceFragment
             mPhotoPreference.registerFreeableChangedListener(this);
             mPhotoPreference.registerDeletionService(mPhotoVideoDeletion);
             mDeletableContentList.add(mPhotoVideoDeletion);
+        } else {
+            getPreferenceScreen().removePreference(mPhotoPreference);
+            mPhotoPreference.setEnabled(false);
         }
 
         String[] uncheckedFiles = null;
@@ -208,9 +211,7 @@ public class DeletionHelperSettings extends PreferenceFragment
         }
     }
 
-    /**
-     * Clears out the selected apps and data from the device and closes the fragment.
-     */
+    /** Clears out the selected apps and data from the device and closes the fragment. */
     protected void clearData() {
         // This should be fine as long as there is only one extra deletion feature.
         // In the future, this should be done in an async queue in order to not
