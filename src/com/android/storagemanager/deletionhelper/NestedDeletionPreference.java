@@ -30,7 +30,6 @@ import com.android.storagemanager.R;
  * CollapsibleCheckboxPreferenceGroup}.
  */
 public class NestedDeletionPreference extends CheckBoxPreference {
-    private TextView mSummary;
     private TextView mSize;
     private long mAppSize;
 
@@ -43,7 +42,6 @@ public class NestedDeletionPreference extends CheckBoxPreference {
     @Override
     protected void onClick() {
         super.onClick();
-        mSummary.setActivated(isChecked());
         mSize.setActivated(isChecked());
     }
 
@@ -53,9 +51,7 @@ public class NestedDeletionPreference extends CheckBoxPreference {
         CheckBox checkboxWidget =
                 (CheckBox) holder.findViewById(com.android.internal.R.id.checkbox);
         checkboxWidget.setVisibility(View.VISIBLE);
-        mSummary = (TextView) holder.findViewById(android.R.id.summary);
         mSize = (TextView) holder.findViewById(R.id.deletion_type_size);
-        mSummary.setActivated(checkboxWidget.isChecked());
         mSize.setActivated(checkboxWidget.isChecked());
         mSize.setText(getItemSize());
     }
