@@ -18,6 +18,7 @@ package com.android.storagemanager.automatic;
 
 import android.os.Bundle;
 import android.os.Environment;
+import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
 import com.android.storagemanager.deletionhelper.DeletionType;
 import com.android.storagemanager.deletionhelper.DownloadsDeletionType;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
@@ -110,10 +111,12 @@ public class DownloadsDeletionTypeTest {
 
         // Downloads files are default checked.
         assertThat(mDeletion.isChecked(temp)).isTrue();
-        assertThat(mDeletion.getFreeableBytes()).isEqualTo(4);
+        assertThat(mDeletion.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY))
+                .isEqualTo(4);
 
         mDeletion.setFileChecked(temp, false);
-        assertThat(mDeletion.getFreeableBytes()).isEqualTo(0);
+        assertThat(mDeletion.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY))
+                .isEqualTo(0);
     }
 
     @Test

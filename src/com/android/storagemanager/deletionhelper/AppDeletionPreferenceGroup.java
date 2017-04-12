@@ -124,10 +124,11 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
         long freeableBytes = 0;
         long deletionThreshold = AppsAsyncLoader.UNUSED_DAYS_DELETION_THRESHOLD;
         if (mBackend != null) {
-            freeableBytes = mBackend.getTotalAppsFreeableSpace(true);
+            freeableBytes =
+                    mBackend.getTotalAppsFreeableSpace(DeletionHelperSettings.COUNT_UNCHECKED);
             deletionThreshold = mBackend.getDeletionThreshold();
         }
-
+        switchSpinnerToCheckboxOrDisablePreference(freeableBytes);
         Context app = getContext();
         setTitle(app.getString(R.string.deletion_helper_apps_group_title));
         setSummary(
@@ -139,8 +140,8 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
 
     private void logAppToggle(boolean checked, String packageName) {
         if (checked) {
-            MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_APP_ON,
-                    packageName);
+            MetricsLogger.action(
+                    getContext(), MetricsEvent.ACTION_DELETION_SELECTION_APP_ON, packageName);
         } else {
             MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_APP_OFF,
                     packageName);

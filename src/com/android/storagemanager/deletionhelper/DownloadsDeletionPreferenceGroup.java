@@ -81,6 +81,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
     public void onFreeableChanged(int numItems, long freeableBytes) {
         updatePreferenceText(numItems, freeableBytes, mDeletionType.getMostRecentLastModified());
         maybeUpdateListener(numItems, freeableBytes);
+        switchSpinnerToCheckboxOrDisablePreference(freeableBytes);
         updateFiles();
     }
 
@@ -108,7 +109,9 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
                 p.setChecked(checked);
                 p.setOnPreferenceChangeListener(this);
             }
-            maybeUpdateListener(mDeletionType.getFiles().size(), mDeletionType.getFreeableBytes());
+            maybeUpdateListener(
+                    mDeletionType.getFiles().size(),
+                    mDeletionType.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY));
             MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_SELECTION_DOWNLOADS,
                     checked);
             return true;
@@ -117,15 +120,17 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
         // If a single DownloadFilePreference changed, we need to toggle just itself.
         DownloadsFilePreference p = (DownloadsFilePreference) preference;
         mDeletionType.setFileChecked(p.getFile(), checked);
-        maybeUpdateListener(mDeletionType.getFiles().size(), mDeletionType.getFreeableBytes());
+        maybeUpdateListener(
+                mDeletionType.getFiles().size(),
+                mDeletionType.getFreeableBytes(DeletionHelperSettings.COUNT_CHECKED_ONLY));
         return true;
     }
 
     @Override
     public void onClick() {
         super.onClick();
-        MetricsLogger.action(getContext(), MetricsEvent.ACTION_DELETION_DOWNLOADS_COLLAPSED,
-                isCollapsed());
+        MetricsLogger.action(
+                getContext(), MetricsEvent.ACTION_DELETION_DOWNLOADS_COLLAPSED, isCollapsed());
     }
 
     @VisibleForTesting

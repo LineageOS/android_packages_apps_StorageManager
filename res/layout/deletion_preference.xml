@@ -27,29 +27,6 @@
               android:clipToPadding="false">
 
     <LinearLayout
-        android:id="@+id/icon_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="start|center_vertical"
-        android:orientation="horizontal"
-        android:paddingEnd="32dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp">
-        <com.android.internal.widget.PreferenceImageView
-            android:id="@android:id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxWidth="24dp"
-            android:maxHeight="24dp" />
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:indeterminate="true"
-            android:visibility="gone" />
-    </LinearLayout>
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -64,6 +41,21 @@
                   android:textAppearance="?android:attr/textAppearanceListItem"
                   android:ellipsize="marquee" />
 
+        <LinearLayout
+            android:id="@+id/icon_frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="24dp">
+            <com.android.internal.widget.PreferenceImageView
+                android:id="@android:id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="24dp"
+                android:maxHeight="24dp" />
+        </LinearLayout>
+
         <TextView android:id="@android:id/summary"
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -77,13 +69,23 @@
 
     </LinearLayout>
 
-    <!-- Preference should place its actual preference widget here. -->
+
+    <!-- Preference should place its actual preference widget here. Show spinner when calculating size -->
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:padding="4dp"
+        android:gravity="end|center_vertical"
+        android:indeterminate="true"
+        android:visibility="gone" />
     <LinearLayout android:id="@android:id/widget_frame"
                   android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:gravity="end|center_vertical"
-                  android:paddingStart="16dp"
+                  android:orientation="vertical"
                   android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-                  android:orientation="vertical" />
+                  android:visibility="gone"/>
 
 </LinearLayout>

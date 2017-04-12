@@ -43,13 +43,18 @@ import java.util.List;
 public class DeletionHelperSettings extends PreferenceFragment implements
         DeletionType.FreeableChangedListener,
         View.OnClickListener {
+    public static final boolean COUNT_UNCHECKED = true;
+    public static final boolean COUNT_CHECKED_ONLY = false;
+
     protected static final String APPS_KEY = "apps_group";
     protected static final String KEY_DOWNLOADS_PREFERENCE = "delete_downloads";
     protected static final String KEY_PHOTOS_VIDEOS_PREFERENCE = "delete_photos";
+
     private static final String THRESHOLD_KEY = "threshold_key";
     private static final int DOWNLOADS_LOADER_ID = 1;
     private static final int NUM_DELETION_TYPES = 3;
 
+    private List<DeletionType> mDeletableContentList;
     private AppDeletionPreferenceGroup mApps;
     private AppDeletionType mAppBackend;
     private DownloadsDeletionPreferenceGroup mDownloadsPreference;
@@ -58,7 +63,6 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     private DeletionType mPhotoVideoDeletion;
     private Button mCancel, mFree;
     private DeletionHelperFeatureProvider mProvider;
-    private List<DeletionType> mDeletableContentList;
     private int mThresholdType;
 
     public static DeletionHelperSettings newInstance(int thresholdType) {
@@ -168,8 +172,26 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
         // there is stuff to free and we can enable it. If it is zero, though, we still need to get
         // getTotalFreeableSpace to check all deletion types.
-        mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace() != 0);
+        mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
         updateFreeButtonText();
+
+        // Transition to empty state if all types have reported nothing to delete has been found
+        if (allTypesDisabled()) {
+            startEmptyState();
+        }
+    }
+
+    private boolean allTypesDisabled() {
+        return !mApps.isEnabled()
+                && !mDownloadsPreference.isEnabled()
+                && !mPhotoPreference.isEnabled();
+    }
+
+    private void startEmptyState() {
+        if (getActivity() instanceof DeletionHelperActivity) {
+            DeletionHelperActivity activity = (DeletionHelperActivity) getActivity();
+            activity.setIsEmptyState(true /* isEmptyState */);
+        }
     }
 
     /**
@@ -192,7 +214,7 @@ public class DeletionHelperSettings extends PreferenceFragment implements
     public void onClick(View v) {
         if (v.getId() == R.id.next_button) {
             ConfirmDeletionDialog dialog =
-                    ConfirmDeletionDialog.newInstance(getTotalFreeableSpace());
+                    ConfirmDeletionDialog.newInstance(getTotalFreeableSpace(COUNT_CHECKED_ONLY));
             // The 0 is a placeholder for an optional result code.
             dialog.setTargetFragment(this, 0);
             dialog.show(getFragmentManager(), ConfirmDeletionDialog.TAG);
@@ -244,18 +266,21 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         if (activity == null) {
             return;
         }
-        mFree.setText(String.format(activity.getString(R.string.deletion_helper_free_button),
-                Formatter.formatFileSize(activity, getTotalFreeableSpace())));
+        mFree.setText(
+                String.format(
+                        activity.getString(R.string.deletion_helper_free_button),
+                        Formatter.formatFileSize(
+                                activity, getTotalFreeableSpace(COUNT_CHECKED_ONLY))));
     }
 
-    private long getTotalFreeableSpace() {
+    private long getTotalFreeableSpace(boolean countUnchecked) {
         long freeableSpace = 0;
-        freeableSpace += mAppBackend.getTotalAppsFreeableSpace(false);
+        freeableSpace += mAppBackend.getTotalAppsFreeableSpace(countUnchecked);
         if (mPhotoPreference != null) {
-            freeableSpace += mPhotoPreference.getFreeableBytes();
+            freeableSpace += mPhotoPreference.getFreeableBytes(countUnchecked);
         }
         if (mDownloadsPreference != null) {
-            freeableSpace += mDownloadsDeletion.getFreeableBytes();
+            freeableSpace += mDownloadsDeletion.getFreeableBytes(countUnchecked);
         }
         return freeableSpace;
     }
