@@ -25,6 +25,7 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.text.format.DateUtils;
+import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.Log;
 import com.android.settingslib.applications.PackageManagerWrapper;
@@ -38,6 +39,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 /**
  * AppsAsyncLoader is a Loader which loads app storage information and categories it by the app's
@@ -96,6 +99,8 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
         long startTime = now - DateUtils.YEAR_IN_MILLIS;
         final Map<String, UsageStats> map =
                 mUsageStatsManager.queryAndAggregateUsageStats(startTime, now);
+        final Map<String, UsageStats> alternateMap =
+                getLatestUsageStatsByPackageName(startTime, now);
 
         List<ApplicationInfo> applicationInfos =
                 mPackageManager.getInstalledApplicationsAsUser(0, mUserId);
@@ -109,6 +114,8 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
             }
 
             UsageStats usageStats = map.get(app.packageName);
+            UsageStats alternateUsageStats = alternateMap.get(app.packageName);
+            warnIfUsageStatsMismatch(usageStats, alternateUsageStats);
             AppStorageStats appSpace = mStatsManager.getStatsForUid(app.volumeUuid, app.uid);
             PackageInfo extraInfo =
                     new PackageInfo.Builder()
@@ -128,6 +135,51 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
         }
         stats.sort(PACKAGE_INFO_COMPARATOR);
         return stats;
+    }
+
+    private void warnIfUsageStatsMismatch(UsageStats primary, UsageStats alternate) {
+        long primaryLastUsed = primary != null ? primary.getLastTimeUsed() : 0;
+        long alternateLastUsed = alternate != null ? alternate.getLastTimeUsed() : 0;
+
+        if (primaryLastUsed != alternateLastUsed) {
+            Log.w(
+                    TAG,
+                    new StringBuilder("Usage stats mismatch for ")
+                            .append(primary.getPackageName())
+                            .append(" ")
+                            .append(primaryLastUsed)
+                            .append(" ")
+                            .append(alternateLastUsed)
+                            .toString());
+        }
+    }
+
+    private Map<String, UsageStats> getLatestUsageStatsByPackageName(long startTime, long endTime) {
+        List<UsageStats> usageStats =
+                mUsageStatsManager.queryUsageStats(
+                        UsageStatsManager.INTERVAL_YEARLY, startTime, endTime);
+        Map<String, List<UsageStats>> groupedByPackageName =
+                usageStats.stream().collect(Collectors.groupingBy(UsageStats::getPackageName));
+
+        ArrayMap<String, UsageStats> latestStatsByPackageName = new ArrayMap<>();
+        groupedByPackageName
+                .entrySet()
+                .stream()
+                .forEach(
+                        // Flattens the list of UsageStats to only have the latest by
+                        // getLastTimeUsed, retaining the package name as the key.
+                        (Map.Entry<String, List<UsageStats>> item) -> {
+                            latestStatsByPackageName.put(
+                                    item.getKey(),
+                                    Collections.max(
+                                            item.getValue(),
+                                            (UsageStats o1, UsageStats o2) ->
+                                                    Long.compare(
+                                                            o1.getLastTimeUsed(),
+                                                            o2.getLastTimeUsed())));
+                        });
+
+        return latestStatsByPackageName;
     }
 
     @Override
@@ -223,9 +275,9 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
                     if (info == null) {
                         return false;
                     }
-                    return isExtraInfoValid(info, MIN_DELETION_THRESHOLD)
-                            && !isBundled(info)
-                            && !isPersistentProcess(info);
+                    return !isBundled(info)
+                            && !isPersistentProcess(info)
+                            && isExtraInfoValid(info, MIN_DELETION_THRESHOLD);
                 }
             };
 
@@ -249,9 +301,9 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
                     if (info == null) {
                         return false;
                     }
-                    return isExtraInfoValid(info, mUnusedDaysThreshold)
-                            && !isBundled(info)
-                            && !isPersistentProcess(info);
+                    return !isBundled(info)
+                            && !isPersistentProcess(info)
+                            && isExtraInfoValid(info, mUnusedDaysThreshold);
                 }
             };
 
@@ -280,6 +332,9 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
         // If the app has never been used, daysSinceLastUse is Long.MAX_VALUE, so the first
         // install is always the most recent use.
         long mostRecentUse = Math.min(state.daysSinceFirstInstall, state.daysSinceLastUse);
+        if (mostRecentUse >= unusedDaysThreshold) {
+            Log.i(TAG, "Accepting " + state.packageName + " with a minimum of " + mostRecentUse);
+        }
         return mostRecentUse >= unusedDaysThreshold;
     }
 
