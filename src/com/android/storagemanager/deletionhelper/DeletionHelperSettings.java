@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.PreferenceScreen;
 import android.text.format.Formatter;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,9 +41,8 @@ import java.util.List;
 /**
  * Settings screen for the deletion helper, which manually removes data which is not recently used.
  */
-public class DeletionHelperSettings extends PreferenceFragment implements
-        DeletionType.FreeableChangedListener,
-        View.OnClickListener {
+public class DeletionHelperSettings extends PreferenceFragment
+        implements DeletionType.FreeableChangedListener, View.OnClickListener {
     public static final boolean COUNT_UNCHECKED = true;
     public static final boolean COUNT_CHECKED_ONLY = false;
 
@@ -131,9 +131,23 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         mDownloadsPreference.registerFreeableChangedListener(this);
         mDownloadsPreference.registerDeletionService(mDownloadsDeletion);
         mDeletableContentList.add(mDownloadsDeletion);
-
+        if (isEmptyState()) {
+            setupEmptyState();
+        }
         mDeletableContentList.add(mAppBackend);
         updateFreeButtonText();
+    }
+
+    private void setupEmptyState() {
+        mDownloadsPreference.setChecked(false);
+        final PreferenceScreen screen = getPreferenceScreen();
+        screen.removePreference(mDownloadsPreference);
+        screen.removePreference(mApps);
+    }
+
+    private boolean isEmptyState() {
+        // We know we are in the empty state if our loader is not using a threshold.
+        return mThresholdType == AppsAsyncLoader.NO_THRESHOLD;
     }
 
     @Override
@@ -166,7 +180,6 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         }
     }
 
-
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
         // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
@@ -175,8 +188,9 @@ public class DeletionHelperSettings extends PreferenceFragment implements
         mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
         updateFreeButtonText();
 
-        // Transition to empty state if all types have reported nothing to delete has been found
-        if (allTypesDisabled()) {
+        // Transition to empty state if all types have reported there is nothing to delete. Skip
+        // the transition if we are already in no threshold mode
+        if (allTypesDisabled() && !isEmptyState()) {
             startEmptyState();
         }
     }
