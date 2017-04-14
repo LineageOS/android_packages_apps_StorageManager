@@ -13,14 +13,38 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/noitem_drawers_xxxhdpi"/>
-</LinearLayout>
+        <ImageView
+            android:layout_marginTop="128dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/noitem_drawers_xxxhdpi"/>
+
+        <TextView
+            android:id="@+id/empty_state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:text="@string/empty_state_summary"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <com.android.settingslib.widget.LinkTextView
+            android:id="@+id/all_items_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:textAlignment="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+    </LinearLayout>
+</ScrollView>
