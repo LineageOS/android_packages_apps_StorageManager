@@ -72,7 +72,7 @@ public class AppsAsyncLoaderTest {
     private ArrayList<ApplicationInfo> mInfo;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         // Set up our mock usage app service.
