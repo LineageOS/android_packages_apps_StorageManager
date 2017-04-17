@@ -34,6 +34,8 @@ import com.android.settingslib.applications.StorageStatsSource;
 import com.android.settingslib.applications.StorageStatsSource.AppStorageStats;
 import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
 import com.android.storagemanager.utils.AsyncLoader;
+
+import java.io.IOException;
 import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -117,7 +119,13 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
             UsageStats usageStats = map.get(app.packageName);
             UsageStats alternateUsageStats = alternateMap.get(app.packageName);
             warnIfUsageStatsMismatch(app.packageName, usageStats, alternateUsageStats);
-            AppStorageStats appSpace = mStatsManager.getStatsForUid(app.volumeUuid, app.uid);
+            final AppStorageStats appSpace;
+            try {
+                appSpace = mStatsManager.getStatsForUid(app.volumeUuid, app.uid);
+            } catch (IOException e) {
+                Log.w(TAG, e);
+                continue;
+            }
             PackageInfo extraInfo =
                     new PackageInfo.Builder()
                             .setDaysSinceLastUse(getDaysSinceLastUse(usageStats))
