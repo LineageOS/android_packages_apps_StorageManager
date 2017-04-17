@@ -24,6 +24,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.support.annotation.VisibleForTesting;
 import android.text.format.DateUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;
@@ -115,7 +116,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
 
             UsageStats usageStats = map.get(app.packageName);
             UsageStats alternateUsageStats = alternateMap.get(app.packageName);
-            warnIfUsageStatsMismatch(usageStats, alternateUsageStats);
+            warnIfUsageStatsMismatch(app.packageName, usageStats, alternateUsageStats);
             AppStorageStats appSpace = mStatsManager.getStatsForUid(app.volumeUuid, app.uid);
             PackageInfo extraInfo =
                     new PackageInfo.Builder()
@@ -137,7 +138,8 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
         return stats;
     }
 
-    private void warnIfUsageStatsMismatch(UsageStats primary, UsageStats alternate) {
+    @VisibleForTesting
+    void warnIfUsageStatsMismatch(String packageName, UsageStats primary, UsageStats alternate) {
         long primaryLastUsed = primary != null ? primary.getLastTimeUsed() : 0;
         long alternateLastUsed = alternate != null ? alternate.getLastTimeUsed() : 0;
 
@@ -145,7 +147,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
             Log.w(
                     TAG,
                     new StringBuilder("Usage stats mismatch for ")
-                            .append(primary.getPackageName())
+                            .append(packageName)
                             .append(" ")
                             .append(primaryLastUsed)
                             .append(" ")
