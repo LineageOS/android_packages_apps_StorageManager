@@ -299,6 +299,14 @@ public class AppsAsyncLoaderTest {
         assertThat(AppsAsyncLoader.FILTER_USAGE_STATS.filterApp(app)).isTrue();
     }
 
+    @Test
+    public void testNullMismatchDoesNotCrash() {
+        UsageStats usageStats = mock(UsageStats.class);
+        mLoader.warnIfUsageStatsMismatch(PACKAGE_NAME, null, usageStats);
+
+        // Does not crash
+    }
+
     private AppsAsyncLoader.PackageInfo createPackage(
             String packageName, long lastUse, long installTime) {
         AppsAsyncLoader.PackageInfo app =
