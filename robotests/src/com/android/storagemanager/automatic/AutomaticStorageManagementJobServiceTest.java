@@ -70,7 +70,7 @@ public class AutomaticStorageManagementJobServiceTest {
     private List<VolumeInfo> mVolumes;
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         when(mJobParameters.getJobId()).thenReturn(0);
@@ -151,7 +151,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testJobDoesntRunIfStorageNotFull() {
+    public void testJobDoesntRunIfStorageNotFull() throws Exception {
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(100L);
@@ -160,7 +160,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testJobOnlyRunsIfFreeStorageIsUnder15Percent() {
+    public void testJobOnlyRunsIfFreeStorageIsUnder15Percent() throws Exception {
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(any(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(15L);
@@ -184,7 +184,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testNonPrivateDrivesIgnoredForFreeSpaceCalculation() {
+    public void testNonPrivateDrivesIgnoredForFreeSpaceCalculation() throws Exception {
         File notPrivate = mock(File.class);
         VolumeInfo nonPrivateVolume = mock(VolumeInfo.class);
         when(nonPrivateVolume.getPath()).thenReturn(notPrivate);
@@ -205,7 +205,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testMultiplePrivateVolumesCountedForASMActivationThrsehold() {
+    public void testMultiplePrivateVolumesCountedForASMActivationThrsehold() throws Exception {
         File privateVolume = mock(File.class);
         VolumeInfo privateVolumeInfo = mock(VolumeInfo.class);
         when(privateVolumeInfo.getPath()).thenReturn(privateVolume);
