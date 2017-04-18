@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
@@ -191,28 +192,30 @@ public class NotificationController extends BroadcastReceiver {
         PendingIntent tapIntent = PendingIntent.getBroadcast(context, 0,  contentIntent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        makeNotificationChannel(context);
+        Notification.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            makeNotificationChannel(context);
+            builder = new Notification.Builder(context, CHANNEL_ID);
+        } else {
+            builder = new Notification.Builder(context);
+        }
 
-        Notification.Builder builder =
-                new Notification.Builder(context, CHANNEL_ID)
-                        .setSmallIcon(R.drawable.ic_settings_24dp)
-                        .setContentTitle(
-                                res.getString(
-                                        R.string.automatic_storage_manager_notification_title))
-                        .setContentText(
-                                res.getString(
-                                        R.string.automatic_storage_manager_notification_summary))
-                        .setStyle(
-                                new Notification.BigTextStyle()
-                                        .bigText(
-                                                res.getString(
-                                                        R.string
-                                                                .automatic_storage_manager_notification_summary)))
-                        .addAction(cancelAction.build())
-                        .addAction(activateAutomaticAction.build())
-                        .setContentIntent(tapIntent)
-                        .setDeleteIntent(deleteIntent)
-                        .setLocalOnly(true);
+        builder.setSmallIcon(R.drawable.ic_settings_24dp)
+                .setContentTitle(
+                        res.getString(R.string.automatic_storage_manager_notification_title))
+                .setContentText(
+                        res.getString(R.string.automatic_storage_manager_notification_summary))
+                .setStyle(
+                        new Notification.BigTextStyle()
+                                .bigText(
+                                        res.getString(
+                                                R.string
+                                                        .automatic_storage_manager_notification_summary)))
+                .addAction(cancelAction.build())
+                .addAction(activateAutomaticAction.build())
+                .setContentIntent(tapIntent)
+                .setDeleteIntent(deleteIntent)
+                .setLocalOnly(true);
 
         NotificationManager manager =
                 ((NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE));
