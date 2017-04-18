@@ -300,11 +300,38 @@ public class AppsAsyncLoaderTest {
     }
 
     @Test
-    public void testNullMismatchDoesNotCrash() {
-        UsageStats usageStats = mock(UsageStats.class);
-        mLoader.warnIfUsageStatsMismatch(PACKAGE_NAME, null, usageStats);
+    public void test_getGreaterUsageStats_primaryIsNull() {
+        UsageStats secondary = mock(UsageStats.class);
+        when(secondary.getLastTimeUsed()).thenReturn(1000L);
+        assertThat(mLoader.getGreaterUsageStats(PACKAGE_NAME, null, secondary))
+                .isEqualTo(secondary);
+    }
 
-        // Does not crash
+    @Test
+    public void test_getGreaterUsageStats_secondaryIsNull() {
+        UsageStats primary = mock(UsageStats.class);
+        when(primary.getLastTimeUsed()).thenReturn(1000L);
+        assertThat(mLoader.getGreaterUsageStats(PACKAGE_NAME, primary, null)).isEqualTo(primary);
+    }
+
+    @Test
+    public void test_getGreaterUsageStats_primaryIsGreater() {
+        UsageStats primary = mock(UsageStats.class);
+        when(primary.getLastTimeUsed()).thenReturn(1000L);
+        UsageStats secondary = mock(UsageStats.class);
+        when(secondary.getLastTimeUsed()).thenReturn(900L);
+        assertThat(mLoader.getGreaterUsageStats(PACKAGE_NAME, primary, secondary))
+                .isEqualTo(primary);
+    }
+
+    @Test
+    public void test_getGreaterUsageStats_secondaryIsGreater() {
+        UsageStats primary = mock(UsageStats.class);
+        when(primary.getLastTimeUsed()).thenReturn(900L);
+        UsageStats secondary = mock(UsageStats.class);
+        when(secondary.getLastTimeUsed()).thenReturn(1000L);
+        assertThat(mLoader.getGreaterUsageStats(PACKAGE_NAME, primary, secondary))
+                .isEqualTo(secondary);
     }
 
     private AppsAsyncLoader.PackageInfo createPackage(
