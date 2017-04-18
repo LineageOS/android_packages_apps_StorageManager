@@ -118,7 +118,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
 
             UsageStats usageStats = map.get(app.packageName);
             UsageStats alternateUsageStats = alternateMap.get(app.packageName);
-            warnIfUsageStatsMismatch(app.packageName, usageStats, alternateUsageStats);
+
             final AppStorageStats appSpace;
             try {
                 appSpace = mStatsManager.getStatsForUid(app.volumeUuid, app.uid);
@@ -126,9 +126,15 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
                 Log.w(TAG, e);
                 continue;
             }
+
             PackageInfo extraInfo =
                     new PackageInfo.Builder()
-                            .setDaysSinceLastUse(getDaysSinceLastUse(usageStats))
+                            .setDaysSinceLastUse(
+                                    getDaysSinceLastUse(
+                                            getGreaterUsageStats(
+                                                    app.packageName,
+                                                    usageStats,
+                                                    alternateUsageStats)))
                             .setDaysSinceFirstInstall(getDaysSinceInstalled(app.packageName))
                             .setUserId(UserHandle.getUserId(app.uid))
                             .setPackageName(app.packageName)
@@ -147,7 +153,7 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
     }
 
     @VisibleForTesting
-    void warnIfUsageStatsMismatch(String packageName, UsageStats primary, UsageStats alternate) {
+    UsageStats getGreaterUsageStats(String packageName, UsageStats primary, UsageStats alternate) {
         long primaryLastUsed = primary != null ? primary.getLastTimeUsed() : 0;
         long alternateLastUsed = alternate != null ? alternate.getLastTimeUsed() : 0;
 
@@ -162,6 +168,8 @@ public class AppsAsyncLoader extends AsyncLoader<List<PackageInfo>> {
                             .append(alternateLastUsed)
                             .toString());
         }
+
+        return (primaryLastUsed > alternateLastUsed) ? primary : alternate;
     }
 
     private Map<String, UsageStats> getLatestUsageStatsByPackageName(long startTime, long endTime) {
