@@ -90,7 +90,9 @@ public abstract class DeletionPreference extends CheckBoxPreference implements
         mFreeableItems = numItems;
         mFreeableBytes = freeableBytes;
         mLoaded = true;
-        setEnabled(mFreeableBytes != 0);
+        if (mDeletionService != null) {
+            setEnabled(!mDeletionService.isEmpty());
+        }
         if (!isEnabled()) {
             setChecked(false);
         }

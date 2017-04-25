@@ -193,15 +193,16 @@ public class DeletionHelperSettings extends PreferenceFragment
 
         // Transition to empty state if all types have reported there is nothing to delete. Skip
         // the transition if we are already in no threshold mode
-        if (allTypesDisabled() && !isEmptyState()) {
+        if (allTypesEmpty() && !isEmptyState()) {
             startEmptyState();
         }
     }
 
-    private boolean allTypesDisabled() {
-        return !mApps.isEnabled()
-                && !mDownloadsPreference.isEnabled()
-                && !mPhotoPreference.isEnabled();
+    private boolean allTypesEmpty() {
+
+        return mAppBackend.isEmpty()
+                && mDownloadsDeletion.isEmpty()
+                && (mPhotoVideoDeletion == null || mPhotoVideoDeletion.isEmpty());
     }
 
     private void startEmptyState() {

@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
 import com.android.storagemanager.deletionhelper.DeletionType;
+import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
 import com.android.storagemanager.deletionhelper.DownloadsDeletionType;
 import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
 import com.android.storagemanager.testing.TestingConstants;
@@ -159,4 +160,29 @@ public class DownloadsDeletionTypeTest {
         verify(mockListener).onFreeableChanged(eq(2), eq(101L));
     }
 
+    @Test
+    public void testLoadingState_initiallyIncomplete() {
+        // We should always be in the incomplete state when we start out
+        assertThat(mDeletion.getLoadingStatus()).isEqualTo(LoadingStatus.LOADING);
+    }
+
+    @Test
+    public void testLoadingState_completeEmptyOnNothingFound() {
+        // We should be in EMPTY if nothing was found
+        DownloadsResult result = new DownloadsResult();
+        mDeletion.onLoadFinished(null, result);
+        assertThat(mDeletion.isEmpty()).isTrue();
+    }
+
+    @Test
+    public void testLoadingState_completeOnDeletableContentFound() {
+        // We should be in COMPLETE if downloads were found
+        DownloadsResult result = new DownloadsResult();
+        File temp = new File(mDownloadsDirectory, "temp");
+        File temp2 = new File(mDownloadsDirectory, "temp2");
+        result.files.add(temp);
+        result.files.add(temp2);
+        mDeletion.onLoadFinished(null, result);
+        assertThat(mDeletion.isComplete()).isTrue();
+    }
 }
