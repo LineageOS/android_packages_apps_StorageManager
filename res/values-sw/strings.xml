@@ -56,7 +56,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Inatafuta vipengee..."</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Itaondoa <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kwenye kifaa chako"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Hifadhi yako sasa inasimamiwa na kidhibiti cha hifadhi"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"Hakuna vipengee vya kuondoa"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"Hakuna chochote cha kuondoa"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Kagua vipengee vya hivi majuzi"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Hakuna faili za zamani ambazo unaweza kuondoa. Ondoa programu, video na picha za hivi majuzi ili upate nafasi."</string>
 </resources>
