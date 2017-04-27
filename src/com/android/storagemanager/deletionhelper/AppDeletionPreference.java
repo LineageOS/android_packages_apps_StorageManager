@@ -16,8 +16,10 @@ package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
 import android.support.v7.preference.PreferenceViewHolder;
+import android.text.format.DateUtils;
 import com.android.storagemanager.R;
 import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Preference item for an app with a switch to signify if it should be uninstalled. This shows the
@@ -56,9 +58,18 @@ public class AppDeletionPreference extends NestedDeletionPreference {
         } else if (mApp.daysSinceLastUse == AppsAsyncLoader.UNKNOWN_LAST_USE) {
             setSummary(mContext.getString(R.string.deletion_helper_app_summary_unknown_used));
         } else {
-            setSummary(
-                    mContext.getString(
-                            R.string.deletion_helper_app_summary, mApp.daysSinceLastUse));
+            // Use the formatter for the "yesterday" and "today" cases.
+            if (mApp.daysSinceLastUse <= 1) {
+                final long now = System.currentTimeMillis();
+                final long lastUse = now - TimeUnit.DAYS.toMillis(mApp.daysSinceLastUse);
+                setSummary(
+                        DateUtils.getRelativeTimeSpanString(
+                                lastUse, now, DateUtils.DAY_IN_MILLIS, 0));
+            } else {
+                setSummary(
+                        mContext.getString(
+                                R.string.deletion_helper_app_summary, mApp.daysSinceLastUse));
+            }
         }
     }
 
