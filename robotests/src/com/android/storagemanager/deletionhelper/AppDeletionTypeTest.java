@@ -16,6 +16,7 @@
 
 package com.android.storagemanager.deletionhelper;
 
+import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
 import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,7 @@ import org.robolectric.annotation.Config;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 
@@ -93,5 +95,36 @@ public class AppDeletionTypeTest {
     @Test
     public void dontCrashWhenClearingAndAppsArentLoaded() {
         mDeletion.clearFreeableData(mFragment.getActivity());
+    }
+
+    @Test
+    public void testLoadingState_initiallyIncomplete() {
+        // We should always be in the incomplete state when we start out
+        assertThat(mDeletion.getLoadingStatus()).isEqualTo(LoadingStatus.LOADING);
+    }
+
+    @Test
+    public void testLoadingState_completeEmptyOnNothingFound() {
+        // We should be in EMPTY if nothing is found
+        List<AppsAsyncLoader.PackageInfo> apps = new ArrayList<>();
+        mDeletion.onLoadFinished(null, apps);
+        assertThat(mDeletion.isEmpty()).isTrue();
+    }
+
+    @Test
+    public void testLoadingState_completeOnDeletableContentFound() {
+        // We should be in COMPLETE if apps were found
+        List<AppsAsyncLoader.PackageInfo> apps = new ArrayList<>();
+        apps.add(
+                new AppsAsyncLoader.PackageInfo.Builder()
+                        .setDaysSinceLastUse(100)
+                        .setDaysSinceFirstInstall(101)
+                        .setUserId(0)
+                        .setPackageName(PACKAGE_NAME)
+                        .setSize(1000)
+                        .setFlags(0)
+                        .build());
+        mDeletion.onLoadFinished(null, apps);
+        assertThat(mDeletion.isComplete()).isTrue();
     }
 }
