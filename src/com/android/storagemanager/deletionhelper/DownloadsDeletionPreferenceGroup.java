@@ -81,7 +81,7 @@ public class DownloadsDeletionPreferenceGroup extends CollapsibleCheckboxPrefere
     public void onFreeableChanged(int numItems, long freeableBytes) {
         updatePreferenceText(numItems, freeableBytes, mDeletionType.getMostRecentLastModified());
         maybeUpdateListener(numItems, freeableBytes);
-        switchSpinnerToCheckboxOrDisablePreference(freeableBytes);
+        switchSpinnerToCheckboxOrDisablePreference(freeableBytes, mDeletionType.getLoadingStatus());
         updateFiles();
     }
 

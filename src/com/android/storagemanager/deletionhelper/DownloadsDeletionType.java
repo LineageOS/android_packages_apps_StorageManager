@@ -49,8 +49,10 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
     private ArraySet<File> mFiles;
     private ArraySet<String> mUncheckedFiles;
     private HashMap<File, Bitmap> mThumbnails;
+    private int mLoadingStatus;
 
     public DownloadsDeletionType(Context context, String[] uncheckedFiles) {
+        mLoadingStatus = LoadingStatus.LOADING;
         mContext = context;
         mFiles = new ArraySet<>();
         mUncheckedFiles = new ArraySet<>();
@@ -104,6 +106,21 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
     }
 
     @Override
+    public int getLoadingStatus() {
+        return mLoadingStatus;
+    }
+
+    @Override
+    public int getContentCount() {
+        return mFiles.size();
+    }
+
+    @Override
+    public void setLoadingStatus(@LoadingStatus int loadingStatus) {
+        mLoadingStatus = loadingStatus;
+    }
+
+    @Override
     public Loader<DownloadsResult> onCreateLoader(int id, Bundle args) {
         return new FetchDownloadsLoader(mContext,
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
@@ -117,6 +134,7 @@ public class DownloadsDeletionType implements DeletionType, LoaderCallbacks<Down
         }
         mBytes = data.totalSize;
         mThumbnails = data.thumbnails;
+        updateLoadingStatus();
         maybeUpdateListener();
     }
 

@@ -53,11 +53,13 @@ public class AppDeletionType
     private Context mContext;
     private int mThresholdType;
     private List<PackageInfo> mApps;
+    private int mLoadingStatus;
 
     public AppDeletionType(
             DeletionHelperSettings fragment,
             HashSet<String> checkedApplications,
             int thresholdType) {
+        mLoadingStatus = LoadingStatus.LOADING;
         mThresholdType = thresholdType;
         mContext = fragment.getContext();
         if (checkedApplications != null) {
@@ -204,6 +206,21 @@ public class AppDeletionType
     }
 
     @Override
+    public int getLoadingStatus() {
+        return mLoadingStatus;
+    }
+
+    @Override
+    public int getContentCount() {
+        return mApps.size();
+    }
+
+    @Override
+    public void setLoadingStatus(@LoadingStatus int loadingStatus) {
+        mLoadingStatus = loadingStatus;
+    }
+
+    @Override
     public Loader<List<PackageInfo>> onCreateLoader(int id, Bundle args) {
         return new AppsAsyncLoader.Builder(mContext)
                 .setUid(UserHandle.myUserId())
@@ -221,6 +238,7 @@ public class AppDeletionType
     @Override
     public void onLoadFinished(Loader<List<PackageInfo>> loader, List<PackageInfo> data) {
         mApps = data;
+        updateLoadingStatus();
         maybeNotifyListener();
         mAppListener.onAppRebuild(mApps);
     }
