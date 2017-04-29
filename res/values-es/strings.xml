@@ -56,7 +56,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Buscando elementos…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Se liberará un espacio de <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> en el dispositivo"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"El Administrador de Almacenamiento gestiona ahora el almacenamiento"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"No hay elementos para eliminar"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"No hay nada que eliminar"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Revisar elementos recientes"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"No hay archivos más antiguos que se puedan quitar. Para liberar espacio, quita aplicaciones, fotos y vídeos recientes."</string>
 </resources>
