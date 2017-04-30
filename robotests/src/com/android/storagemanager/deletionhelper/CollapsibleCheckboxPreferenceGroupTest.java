@@ -21,17 +21,21 @@ import android.support.v7.preference.PreferenceViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
 import com.android.storagemanager.testing.TestingConstants;
 import com.android.storagemanager.R;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
@@ -40,9 +44,11 @@ public class CollapsibleCheckboxPreferenceGroupTest {
     private Context mContext;
     private PreferenceViewHolder mHolder;
     private CollapsibleCheckboxPreferenceGroup mPreference;
+    @Mock private DeletionType mDeletionType;
 
     @Before
     public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
         mContext = RuntimeEnvironment.application;
         mPreference = new CollapsibleCheckboxPreferenceGroup(mContext, null);
 
@@ -67,7 +73,9 @@ public class CollapsibleCheckboxPreferenceGroupTest {
 
     @Test
     public void testItemVisibilityAfterLoaded() {
-        mPreference.switchSpinnerToCheckboxOrDisablePreference(100L);
+        when(mDeletionType.getLoadingStatus()).thenReturn(LoadingStatus.COMPLETE);
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(
+                100L, mDeletionType.getLoadingStatus());
         Robolectric.flushBackgroundThreadScheduler();
         Robolectric.flushForegroundThreadScheduler();
         mPreference.onBindViewHolder(mHolder);
@@ -80,14 +88,17 @@ public class CollapsibleCheckboxPreferenceGroupTest {
     }
 
     public void loadCompleteUpdate_disablesWhenNothingToDelete() {
-        mPreference.switchSpinnerToCheckboxOrDisablePreference(0);
+        when(mDeletionType.getLoadingStatus()).thenReturn(LoadingStatus.EMPTY);
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(0, mDeletionType.getLoadingStatus());
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.isEnabled()).isFalse();
     }
 
     public void loadCompleteUpdate_enabledWhenDeletableContentFound() {
-        mPreference.switchSpinnerToCheckboxOrDisablePreference(100L);
+        when(mDeletionType.getLoadingStatus()).thenReturn(LoadingStatus.COMPLETE);
+        mPreference.switchSpinnerToCheckboxOrDisablePreference(
+                100L, mDeletionType.getLoadingStatus());
         mPreference.onBindViewHolder(mHolder);
 
         assertThat(mPreference.isEnabled()).isTrue();

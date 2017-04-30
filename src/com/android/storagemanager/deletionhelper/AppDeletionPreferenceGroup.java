@@ -152,8 +152,8 @@ public class AppDeletionPreferenceGroup extends CollapsibleCheckboxPreferenceGro
             freeableBytes =
                     mBackend.getTotalAppsFreeableSpace(DeletionHelperSettings.COUNT_UNCHECKED);
             deletionThreshold = mBackend.getDeletionThreshold();
+            switchSpinnerToCheckboxOrDisablePreference(freeableBytes, mBackend.getLoadingStatus());
         }
-        switchSpinnerToCheckboxOrDisablePreference(freeableBytes);
         Context app = getContext();
         setTitle(app.getString(R.string.deletion_helper_apps_group_title));
         setSummary(
