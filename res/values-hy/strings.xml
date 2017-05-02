@@ -56,7 +56,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Տարրերի որոնում…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Ձեր սարքից կհեռացվի <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Ձեր սարքի հիշողությունն այժմ կառավարվում է հիշողության կառավարիչի կողմից"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"Հեռացնելու համար տարրեր չկան"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"Հեռացնելու բան չկա"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Դիտել վերջին տարրերը"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Չկան ավելի հին ֆայլեր, որոնք հնարավոր է հեռացնել: Տեղ ազատելու համար հեռացրեք վերջին լուսանկարները, տեսանյութերը և հավելվածները:"</string>
 </resources>
