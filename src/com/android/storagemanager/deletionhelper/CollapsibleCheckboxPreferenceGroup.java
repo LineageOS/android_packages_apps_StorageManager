@@ -34,6 +34,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.storagemanager.R;
+import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
 
 /**
  * CollapsibleCheckboxPreferenceGroup is a preference group that can be expanded or collapsed and
@@ -226,9 +227,9 @@ public class CollapsibleCheckboxPreferenceGroup extends PreferenceGroup implemen
     }
 
     @VisibleForTesting
-    void switchSpinnerToCheckboxOrDisablePreference(long freeableBytes) {
-        mLoaded = true;
-        setEnabled(freeableBytes != 0);
+    void switchSpinnerToCheckboxOrDisablePreference(long freeableBytes, int loadingStatus) {
+        mLoaded = loadingStatus != LoadingStatus.LOADING;
+        setEnabled(loadingStatus != LoadingStatus.EMPTY);
         if (!isEnabled()) {
             setChecked(false);
         }
