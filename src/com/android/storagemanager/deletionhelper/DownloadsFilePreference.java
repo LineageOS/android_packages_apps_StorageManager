@@ -58,8 +58,15 @@ public class DownloadsFilePreference extends NestedDeletionPreference {
         }
 
         if (other instanceof DownloadsFilePreference) {
-            DownloadsFilePreference preference = (DownloadsFilePreference) other;
-            return Long.compare(preference.getFile().length(), getFile().length());
+            File otherFile = ((DownloadsFilePreference) other).getFile();
+            File file = getFile();
+            // Note: The order is reversed in this comparison because we want the value to be less
+            // than 0 if we're bigger. Long.compare returns less than 0 if first < second.
+            int comparison = Long.compare(otherFile.length(), file.length());
+            if (comparison == 0) {
+                comparison = file.compareTo(otherFile);
+            }
+            return comparison;
         } else {
             // If a non-DownloadsFilePreference appears, consider ourselves to be greater.
             // This means if a non-DownloadsFilePreference sneaks into a DownloadsPreferenceGroup
