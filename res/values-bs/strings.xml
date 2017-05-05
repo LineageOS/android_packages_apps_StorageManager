@@ -57,6 +57,6 @@
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> će biti uklonjeno sa vašeg uređaja"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Vašom pohranom sada upravlja upravitelj pohrane"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Nema stavki za uklanjanje"</string>
-    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Pregledajte nedavne stavke"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Pregled nedavnih stavki"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Nema starijih fajlova za ukloniti. Da oslobodite prostor, uklonite nedavne fotografije, videozapise i aplikacije."</string>
 </resources>
