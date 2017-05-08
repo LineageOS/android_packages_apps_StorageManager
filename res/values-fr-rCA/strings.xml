@@ -57,6 +57,6 @@
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> d\'espace sera libéré de votre appareil"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Votre espace de stockage est maintenant géré par le gestionnaire de stockage"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Rien à supprimer"</string>
-    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Passer en revue les articles récents"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Passer en revue les éléments récents"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Il n\'y a pas de fichiers anciens à supprimer. Pour faire de la place, supprimez des photos, des vidéos et des applications récentes."</string>
 </resources>
