@@ -56,7 +56,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"جارٍ البحث عن…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"ستتم إزالة <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> من جهازك"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"تتم إدارة السعة التخزينية لجهازك الآن عن طريق مدير السعة التخزينية"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"ليست هناك أي عناصر لإزالتها"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"ما من عناصر للإزالة"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"مراجعة أحدث العناصر"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"ليست هناك أي ملفات قديمة لإزالتها. لتفريغ مساحة، يمكنك إزالة الصور ومقاطع الفيديو والتطبيقات الأخيرة."</string>
 </resources>
