@@ -25,10 +25,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.os.Build;
 import android.os.SystemProperties;
 import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
+import android.support.v4.os.BuildCompat;
 
 import com.android.storagemanager.R;
 
@@ -193,7 +193,10 @@ public class NotificationController extends BroadcastReceiver {
                 PendingIntent.FLAG_ONE_SHOT);
 
         Notification.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+        // We really should only have the path with the notification channel set. The other path is
+        // only for legacy Robolectric reasons -- Robolectric does not have the Notification
+        // builder with a channel id, so it crashes when it hits that code path.
+        if (BuildCompat.isAtLeastO()) {
             makeNotificationChannel(context);
             builder = new Notification.Builder(context, CHANNEL_ID);
         } else {
