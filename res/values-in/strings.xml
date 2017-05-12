@@ -58,5 +58,5 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Penyimpanan kini dikelola oleh pengelola penyimpanan"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Tidak ada item untuk dihapus"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Tinjau item saat ini"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"Tidak ada file yang lebih lama lainnya untuk dihapus. Untuk mengosongkan ruang, hapus foto, video, dan aplikasi terkini."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Tidak ada file lama lainnya untuk dihapus. Untuk mengosongkan ruang, hapus foto, video, dan aplikasi terkini."</string>
 </resources>
