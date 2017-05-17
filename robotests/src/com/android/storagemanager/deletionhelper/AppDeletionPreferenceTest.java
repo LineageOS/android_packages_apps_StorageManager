@@ -49,7 +49,6 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testPreferenceSummary() {
-        // Initialize the entry.
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(30)
@@ -68,8 +67,64 @@ public class AppDeletionPreferenceTest {
     }
 
     @Test
+    public void testTwoDayPreferenceSummary() {
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(2)
+                        .setDaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(KILOBYTE)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
+        preference.updateSummary();
+
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("2 days ago");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
+    }
+
+    @Test
+    public void testYesterdayPreferenceSummary() {
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(1)
+                        .setDaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(KILOBYTE)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
+        preference.updateSummary();
+
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("Yesterday");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
+    }
+
+    @Test
+    public void testTodayPreferenceSummary() {
+        PackageInfo app =
+                new PackageInfo.Builder()
+                        .setDaysSinceLastUse(0)
+                        .setDaysSinceFirstInstall(30)
+                        .setPackageName(TEST_PACKAGE_NAME)
+                        .setSize(KILOBYTE)
+                        .setLabel(TEST_PACKAGE_LABEL)
+                        .build();
+        AppDeletionPreference preference = new AppDeletionPreference(mContext, app);
+        preference.updateSummary();
+
+        assertThat(preference.getPackageName()).isEqualTo(TEST_PACKAGE_NAME);
+        assertThat(preference.getTitle()).isEqualTo(TEST_PACKAGE_LABEL);
+        assertThat(preference.getSummary().toString()).isEqualTo("Today");
+        assertThat(preference.getItemSize()).isEqualTo(KB_STRING);
+    }
+
+    @Test
     public void testNeverUsedPreferenceSummary() {
-        // Initialize the entry.
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(AppsAsyncLoader.NEVER_USED)
@@ -89,7 +144,6 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testUnknownLastUsePreferenceSummary() {
-        // Initialize the entry.
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(AppsAsyncLoader.UNKNOWN_LAST_USE)
@@ -110,7 +164,6 @@ public class AppDeletionPreferenceTest {
 
     @Test
     public void testSizeSummary() {
-        // Initialize the entry.
         PackageInfo app =
                 new PackageInfo.Builder()
                         .setDaysSinceLastUse(30)

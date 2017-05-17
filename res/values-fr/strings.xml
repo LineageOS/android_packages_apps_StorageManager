@@ -58,5 +58,5 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Votre espace de stockage est désormais géré par le gestionnaire d\'espace de stockage."</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Rien à supprimer"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Vérifier les éléments récents"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"Il n\'y a aucun fichier plus ancien à supprimer. Pour libérer de l\'espace, supprimez des photos, des vidéos et des applications récentes."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Il n\'y a aucun ancien fichier à supprimer. Pour libérer de l\'espace, supprimez des photos, des vidéos et des applications récentes."</string>
 </resources>
