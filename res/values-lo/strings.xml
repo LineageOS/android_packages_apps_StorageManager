@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"ຕັ້ງຄ່າເອງ"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"ສ້າງພື້ນທີ່ຫວ່າງດຽວນີ້"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"ບໍລິການການຈັດການພື້ນທີ່ຈັດເກັບຂໍ້ມູນອັດຕະໂນມັດ"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"ພື້ນທີ່ຈັດເກັບຂໍ້ມູນໂທລະສັບຂອງທ່ານເຫຼືອໜ້ອຍ"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"ພື້ນທີ່ຈັດເກັບຂໍ້ມູນໂທລະສັບຂອງທ່ານເຫຼືອໜ້ອຍ"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ໃຫ້ຕົວຈັດການບ່ອນຈັດເກັບຂໍ້ມູນສ້າງພື້ນທີ່ຫວ່າງອັດຕະໂນມັດໂດຍການລຶບຮູບ ແລະ ວິດີໂອເກົ່າອອກເມື່ອເປີດໂທລະສັບຂອງທ່ານເລີ່ມ ເພື່ອໃຊ້ໄດ້ເຕັມອີກຄັ້ງ."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"ບໍ່, ຂອບໃຈ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ເປີດ"</string>

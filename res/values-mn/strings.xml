@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Гар ажиллагаатай"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Багтаамжаа нэмэгдүүлнэ үү"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Автомат сангийн удирдлагын үйлчилгээ"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Таны утасны багтаамж бага байна"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Таны утасны багтаамж бага байна"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Таны утасны багтаамж дахин дүүрсэн тохиолдолд автоматаар хуучин зураг, видеог устгаж, багтаамж нэмэгдүүлэх зөвшөөрлийг Сангийн менежерт олгоно уу."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Үгүй, баярлалаа"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Асаах"</string>

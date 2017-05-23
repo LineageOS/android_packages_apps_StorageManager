@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"手動"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"立即釋放空間"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"自動儲存空間管理服務"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"手機的儲存空間不足"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"手機的儲存空間不足"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"當您的手機儲存空間再次即將用盡時，允許儲存空間管理員自動移除備份相片和影片，以釋放儲存空間。"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"不用了，多謝"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"開啟"</string>
