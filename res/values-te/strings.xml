@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"మాన్యువల్"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"ఇప్పుడు స్థలాన్ని ఖాళీ చేయి"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"స్వయంచాలక నిల్వ నిర్వహణ సేవ"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"మీ ఫోన్‌లో తక్కువ నిల్వ స్థలం ఉంది"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"మీ ఫోన్‌లో తక్కువ నిల్వ స్థలం ఉంది"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"మీ ఫోన్ నిల్వ మళ్లీ నిండిపోతున్నప్పుడు పాత ఫోటోలు మరియు వీడియోలను స్వయంచాలకంగా తీసివేయడం ద్వారా స్థలాన్ని ఖాళీ చేయడానికి నిల్వ నిర్వాహికిని అనుమతించండి."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"వద్దు, ధన్యవాదాలు"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ఆన్ చేయి"</string>

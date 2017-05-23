@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"व्यक्तिचलित"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"आता स्थान मोकळे करा"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"स्वयंचलित संचय व्यवस्थापन सेवा"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"आपल्या फोन वर स्थान कमी आहे"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"आपल्या फोन वर स्थान कमी आहे"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"आपला फोन पुन्हा भरणेे प्रारंभ होतो तेव्हा जुने फोटो आणि व्हिडिओ स्वयंचलितपणेे काढून संचय व्यवस्थापकास स्थान मोकळे करू द्या."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"नाही धन्यवाद"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"चालू करा"</string>
