@@ -48,7 +48,9 @@
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Μη αυτόματες"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Απελευθερώστε χώρο τώρα"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Υπηρεσία αυτόματης διαχείρ. αποθ. χώρου"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Απομένει λίγος χώρος στο τηλέφωνό σας"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Απομένει λίγος χώρος στο τηλέφωνό σας"</string>
+    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
+    <skip />
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Να επιτρέπεται στη Διαχείριση αποθηκευτικού χώρου να απελευθερώνει χώρο καταργώντας αυτόματα παλιές φωτογραφίες και βίντεο όταν το τηλέφωνό σας αρχίσει να γεμίζει ξανά."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Όχι, ευχαριστώ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ενεργοποίηση"</string>
