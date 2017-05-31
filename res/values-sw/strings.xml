@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Futa ili uongeze nafasi sasa"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Huduma ya Kudhibiti Hifadhi Kiotomatiki"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Simu yako haina nafasi ya kutosha"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Nafasi kwenye kompyuta kibao ni ndogo"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Ruhusu Kidhibiti cha Hifadhi kiongeze nafasi kwa kuondoa picha na video za zamani kiotomatiki simu yako inapokaribia kujaa tena."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Hapana, asante"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Washa"</string>

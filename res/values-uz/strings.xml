@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Joy bo‘shatish"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Xotirani avtomatik boshqarish xizmati"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Telefoningiz xotirasida kam joy qoldi"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Planshetingiz xotirasida kam joy qoldi"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Telefoningiz xotirasi yana to‘lishni boshlasa, xotira boshqaruviga joy bo‘shatish uchun eski surat va videolarni avtomatik ravishda o‘chirib tashlashga ruxsat bering."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Yo‘q, rahmat"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ha"</string>
