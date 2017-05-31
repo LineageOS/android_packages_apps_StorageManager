@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"បង្កើនទំហំផ្ទុកឥឡូវនេះ"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"សេវាកម្មគ្រប់គ្រងទំហំផ្ទុកដោយស្វ័យប្រវត្តិ"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"ទូរស័ព្ទរបស់អ្នកសល់ទំហំផ្ទុកតិច"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"ថេប្លេតរបស់អ្នកសល់ទំហំផ្ទុកតិច"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"អនុញ្ញាតឲ្យកម្មវិធីគ្រប់គ្រងទំហំផ្ទុកបង្កើនទំហំផ្ទុកដោយស្វ័យប្រវត្តិដោយធ្វើការលុបរូបថត និងវីដេអូចាស់ៗ នៅពេលដែលទំហំផ្ទុកក្នុងទូរស័ព្ទរបស់អ្នកជិតពេញម្តងទៀត។"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"ទេ អរគុណ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"បើក"</string>

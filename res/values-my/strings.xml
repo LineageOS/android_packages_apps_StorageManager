@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"ယခု နေရာလွတ်ပြုလုပ်ပါ"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"သိုလှောင်ခန်းအလိုအလျောက်စီမံခန့်ခွဲခြင်း"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"သင့်ဖုန်းနေရာလွတ် နည်းနေပါပြီ"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"သင်၏တက်ဘလက်တွင် နေရာလွတ် နည်းနေပါသည်"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"သင့်ဖုန်းသိုလှောင်ခန်းနေရာ ပြည့်လာသည့်အခါ ဓာတ်ပုံနှင့် ဗီဒီယိုအဟောင်းများကို အလိုအလျောက် ဖယ်ရှားရန်အတွက် သိုလှောင်ခန်း စီမံခန့်ခွဲမှုစနစ်ကို အသုံးပြုပါ။"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"မလိုပါ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ဖွင့်ရန်"</string>
