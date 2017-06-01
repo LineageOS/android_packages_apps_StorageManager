@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Kosongkan ruang sekarang"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Perkhidmatan Pengurusan Storan Automatik"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Telefon anda kekurangan ruang"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Tablet anda kekurangan ruang"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Benarkan Pengurus Storan mengosongkan ruang dengan mengalih keluar foto dan video lama secara automatik apabila telefon anda mula penuh lagi."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Tidak, terima kasih"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Hidupkan"</string>

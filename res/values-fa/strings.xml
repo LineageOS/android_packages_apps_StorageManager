@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"خالی کردن حافظه در این لحظه"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"سرویس مدیریت خودکار حافظه"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"فضای تلفنتان کم است"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"فضای خالی رایانه لوحی‌تان کم است"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"به «مدیریت حافظه» اجازه دهید با حذف خودکار عکس‌ها و ویدیوهای قدیمی در مواقعی که حافظه دستگاهتان پر است، فضا آزاد کند."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"نه سپاسگزارم"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"روشن کردن"</string>

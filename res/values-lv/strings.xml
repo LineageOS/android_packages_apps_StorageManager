@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Atbrīvot vietu tūlīt"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Automātiska krātuves pārvaldība"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Tālrunī ir maz brīvas vietas"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Jūsu planšetdatorā ir maz brīvas vietas"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Ļaujiet krātuves pārvaldniekam atbrīvot vietu krātuvē, automātiski noņemot vecos fotoattēlus un videoklipus, kad tālrunī pietrūkst vietas."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Nē, paldies"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Ieslēgt"</string>

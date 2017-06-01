@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"දැන් ඉඩ නිදහස් කර ගන්න"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"ස්වයංක්‍රිය ගබඞා කළමනාකරණ සේවය"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"ඔබගේ දුරකථනයේ ඉඩ අඩුය"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"ඔබගේ ටැබ්ලට් පරිගණකයෙහි ඉඩ අඩුය"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ඔබේ උපාංගය නැවත පිරෙන විට පැරණි ඡායාරූප සහ වීඩියෝ ස්වයංක්‍රියව ඉවත් කිරීමෙන් ඉඩ නිදහස් කර ගැනීමට ගබඩා කළමනාකරුට ඉඩ දෙන්න."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"එපා ස්තූතියි"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ක්‍රියාත්මක කරන්න"</string>
