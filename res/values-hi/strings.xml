@@ -49,8 +49,7 @@
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"स्थान अभी खाली करें"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"स्वचालित जगह प्रबंधन सेवा"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"आपके फ़ोन में जगह कम है"</string>
-    <!-- no translation found for automatic_storage_manager_notification_title (3150907918531844467) -->
-    <skip />
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"आपके टैबलेट में जगह कम है"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"जगह प्रबंधक को वापस पूरा स्थान प्राप्त करने के लिए अपना फ़ोन शुरू होने पर पुरानी फ़ोटो और वीडियो अपने आप निकालकर स्थान खाली करने दें."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"नहीं, धन्यवाद"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"चालू करें"</string>
