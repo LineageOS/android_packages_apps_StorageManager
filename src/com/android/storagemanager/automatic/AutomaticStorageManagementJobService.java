@@ -23,6 +23,8 @@ import android.content.Intent;
 import android.os.storage.StorageManager;
 import android.provider.Settings;
 import android.util.Log;
+
+import com.android.settingslib.Utils;
 import com.android.settingslib.deviceinfo.PrivateStorageInfo;
 import com.android.settingslib.deviceinfo.StorageManagerVolumeProvider;
 import com.android.settingslib.deviceinfo.StorageVolumeProvider;
@@ -43,6 +45,8 @@ public class AutomaticStorageManagementJobService extends JobService {
 
     @Override
     public boolean onStartJob(JobParameters args) {
+        Log.d("dhnishi", "" + getDaysToRetain());
+
         // We need to double-check the precondition shere because they are not enforced for a
         // periodic job.
         if (!preconditionsFulfilled()) {
@@ -97,9 +101,10 @@ public class AutomaticStorageManagementJobService extends JobService {
     }
 
     private int getDaysToRetain() {
-        return Settings.Secure.getInt(getContentResolver(),
+        return Settings.Secure.getInt(
+                getContentResolver(),
                 Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN,
-                Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN_DEFAULT);
+                Utils.getDefaultStorageManagerDaysToRetain(getResources()));
     }
 
     private boolean volumeNeedsManagement() {
