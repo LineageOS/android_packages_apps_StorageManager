@@ -22,6 +22,7 @@ import android.app.usage.StorageStatsManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.BatteryManager;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
@@ -111,6 +112,13 @@ public class AutomaticStorageManagementJobServiceTest {
         // And we can't forget to initialize the actual job service.
         mJobService = spy(Robolectric.setupService(AutomaticStorageManagementJobService.class));
         mJobService.setStorageVolumeProvider(mStorageVolumeProvider);
+
+        Resources fakeResources = mock(Resources.class);
+        when(fakeResources.getInteger(
+                        com.android.internal.R.integer.config_storageManagerDaystoRetainDefault))
+                .thenReturn(90);
+
+        when(mJobService.getResources()).thenReturn(fakeResources);
     }
 
     @Test
@@ -205,7 +213,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testMultiplePrivateVolumesCountedForASMActivationThrsehold() throws Exception {
+    public void testMultiplePrivateVolumesCountedForASMActivationThreshold() throws Exception {
         File privateVolume = mock(File.class);
         VolumeInfo privateVolumeInfo = mock(VolumeInfo.class);
         when(privateVolumeInfo.getPath()).thenReturn(privateVolume);
