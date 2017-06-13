@@ -20,11 +20,15 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,10 +42,12 @@ import com.android.storagemanager.R;
  * have not been recently used.
  */
 public class DeletionHelperActivity extends Activity implements ButtonBarProvider {
+    private static final int ENABLED = 1;
 
     private ViewGroup mButtonBar;
     private Button mNextButton, mSkipButton;
     private DeletionHelperSettings mFragment;
+    private boolean mIsShowingInterstitial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +94,12 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         findViewById(R.id.button_bar).setVisibility(isEmptyState ? View.GONE : View.VISIBLE);
         setTitle(isEmptyState ? R.string.empty_state_title : R.string.deletion_helper_title);
 
+        // We are giving the user the option to show all in the interstitial, so let's hide the
+        // overflow for this. (Also, the overflow's functions are busted while the empty view is
+        // showing, so this also works around this bug.)
+        mIsShowingInterstitial = shouldAnimate;
+        invalidateOptionsMenu();
+
         // Animate UI changes
         if (!shouldAnimate) {
             return;
@@ -124,6 +136,42 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
     @Override
     public Button getSkipButton() {
         return mSkipButton;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        final int isNonthresholdAvailable =
+                Settings.Global.getInt(
+                        getContentResolver(),
+                        Settings.Global.ENABLE_DELETION_HELPER_NO_THRESHOLD_TOGGLE,
+                        ENABLED);
+        if (isNonthresholdAvailable < ENABLED || mIsShowingInterstitial) {
+            return false;
+        }
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.deletion_helper_settings_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager manager = getFragmentManager();
+        int thresholdType;
+        switch (item.getItemId()) {
+            case R.id.no_threshold:
+                thresholdType = AppStateUsageStatsBridge.NO_THRESHOLD;
+                break;
+            case R.id.default_threshold:
+                thresholdType = AppStateUsageStatsBridge.NORMAL_THRESHOLD;
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        mFragment = DeletionHelperSettings.newInstance(thresholdType);
+        manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
+        return true;
     }
 
     private static class NoThresholdSpan extends ClickableSpan {
