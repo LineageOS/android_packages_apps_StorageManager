@@ -55,9 +55,12 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"চালু করুন"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"ব্যাকআপ নেওয়া ফটো এবং ভিডিওগুলি"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"আইটেমগুলি খোঁজা হচ্ছে…"</string>
+    <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"সমস্ত আইটেম দেখুন"</string>
+    <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"সাম্প্রতিক আইটেম লুকান"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"আপনার ডিভাইস থেকে <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> সরানো হবে"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"আপনার সঞ্চয়স্থান এখন সঞ্চয়স্থান পরিচালকের দ্বারা পরিচালিত হচ্ছে"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"সরানোর জন্য কিছু নেই"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"সাম্প্রতিক আইটেমগুলি পর্যালোচনা করুন"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"মুছে ফেলার জন্য কোনো পুরনো ফাইল নেই। জায়গা তৈরি করতে সাম্প্রতিক ফটো, ভিডিও এবং অ্যাপগুলি মুছুন।"</string>
+    <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g> অ্যাপটির জন্য <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> জায়গা লাগবে"</string>
 </resources>
