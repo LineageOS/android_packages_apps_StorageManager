@@ -62,5 +62,5 @@
     <string name="empty_state_title" msgid="4033285438176545309">"Niks om te verwyder nie"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Gaan onlangse items na"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Daar is nie enige ouer lêers om te verwyder nie. Verwyder onlangse foto\'s, video\'s en programme om spasie beskikbaar te maak."</string>
-    <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g> benodig <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> spasie"</string>
+    <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g> benodig <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> se spasie"</string>
 </resources>
