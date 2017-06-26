@@ -18,9 +18,13 @@ package com.android.storagemanager.deletionhelper;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.storage.StorageManager;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.format.Formatter;
 import android.view.Menu;
@@ -29,7 +33,9 @@ import android.view.View;
 import android.widget.Button;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.util.Preconditions;
 import com.android.settingslib.HelpUtils;
+import com.android.settingslib.applications.AppUtils;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
 import com.android.storagemanager.overlay.DeletionHelperFeatureProvider;
@@ -49,10 +55,12 @@ public class DeletionHelperSettings extends PreferenceFragment
     protected static final String APPS_KEY = "apps_group";
     protected static final String KEY_DOWNLOADS_PREFERENCE = "delete_downloads";
     protected static final String KEY_PHOTOS_VIDEOS_PREFERENCE = "delete_photos";
+    protected static final String KEY_GAUGE_PREFERENCE = "deletion_gauge";
 
     private static final String THRESHOLD_KEY = "threshold_key";
     private static final int DOWNLOADS_LOADER_ID = 1;
     private static final int NUM_DELETION_TYPES = 3;
+    private static final long UNSET = -1;
 
     private List<DeletionType> mDeletableContentList;
     private AppDeletionPreferenceGroup mApps;
@@ -60,6 +68,7 @@ public class DeletionHelperSettings extends PreferenceFragment
     private DownloadsDeletionPreferenceGroup mDownloadsPreference;
     private DownloadsDeletionType mDownloadsDeletion;
     private PhotosDeletionPreference mPhotoPreference;
+    private Preference mGaugePreference;
     private DeletionType mPhotoVideoDeletion;
     private Button mCancel, mFree;
     private DeletionHelperFeatureProvider mProvider;
@@ -97,6 +106,41 @@ public class DeletionHelperSettings extends PreferenceFragment
         mApps.setDeletionType(mAppBackend);
 
         mDeletableContentList = new ArrayList<>(NUM_DELETION_TYPES);
+
+        mGaugePreference = findPreference(KEY_GAUGE_PREFERENCE);
+        Activity activity = getActivity();
+        if (activity != null && mGaugePreference != null) {
+            Intent intent = activity.getIntent();
+            if (intent != null) {
+                CharSequence gaugeTitle =
+                        getGaugeString(getContext(), intent, activity.getCallingPackage());
+                if (gaugeTitle != null) {
+                    mGaugePreference.setTitle(gaugeTitle);
+                } else {
+                    getPreferenceScreen().removePreference(mGaugePreference);
+                }
+            }
+        }
+    }
+
+    protected static CharSequence getGaugeString(
+            Context context, Intent intent, String packageName) {
+        Preconditions.checkNotNull(intent);
+        long requestedBytes = intent.getLongExtra(StorageManager.EXTRA_REQUESTED_BYTES, UNSET);
+        if (requestedBytes > 0) {
+            CharSequence callerLabel =
+                    AppUtils.getApplicationLabel(context.getPackageManager(), packageName);
+            // I really hope this isn't the case, but I can't ignore the possibility that we cannot
+            // determine what app the referrer is.
+            if (callerLabel == null) {
+                return null;
+            }
+            return context.getString(
+                    R.string.app_requesting_space,
+                    callerLabel,
+                    Formatter.formatFileSize(context, requestedBytes));
+        }
+        return null;
     }
 
     @Override
