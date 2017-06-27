@@ -72,6 +72,8 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         mButtonBar = (ViewGroup) findViewById(R.id.button_bar);
         mNextButton = (Button) findViewById(R.id.next_button);
         mSkipButton = (Button) findViewById(R.id.skip_button);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -171,6 +173,12 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
 
         mFragment = DeletionHelperSettings.newInstance(thresholdType);
         manager.beginTransaction().replace(R.id.main_content, mFragment).commit();
+        return true;
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
         return true;
     }
 
