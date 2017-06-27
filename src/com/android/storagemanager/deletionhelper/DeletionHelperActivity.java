@@ -25,7 +25,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,6 +35,7 @@ import android.widget.TextView.BufferType;
 import com.android.settingslib.widget.LinkTextView;
 import com.android.storagemanager.ButtonBarProvider;
 import com.android.storagemanager.R;
+import com.android.storagemanager.utils.Utils;
 
 /**
  * The DeletionHelperActivity is an activity for deleting apps, photos, and downloaded files which
@@ -84,9 +84,6 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
     void setIsEmptyState(boolean isEmptyState) {
         final View emptyContent = findViewById(R.id.empty_state);
         final View mainContent = findViewById(R.id.main_content);
-        // Check if we need to animate now since we will modify visibility before the animation
-        // starts
-        final boolean shouldAnimate = isEmptyState && emptyContent.getVisibility() != View.VISIBLE;
 
         // Update UI
         mainContent.setVisibility(isEmptyState ? View.GONE : View.VISIBLE);
@@ -97,30 +94,22 @@ public class DeletionHelperActivity extends Activity implements ButtonBarProvide
         // We are giving the user the option to show all in the interstitial, so let's hide the
         // overflow for this. (Also, the overflow's functions are busted while the empty view is
         // showing, so this also works around this bug.)
-        mIsShowingInterstitial = shouldAnimate;
+        mIsShowingInterstitial = isEmptyState && emptyContent.getVisibility() != View.VISIBLE;
         invalidateOptionsMenu();
-
-        // Animate UI changes
-        if (!shouldAnimate) {
-            return;
-        }
-        animateToEmptyState();
     }
 
-    private void animateToEmptyState() {
-        View content = findViewById(R.id.empty_state);
+    public boolean isLoadingVisible() {
+        View loading_container = findViewById(R.id.loading_container);
+        if (loading_container != null) {
+            return loading_container.getVisibility() == View.VISIBLE;
+        }
+        return false;
+    }
 
-        // Animate the empty state in
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        final float oldX = content.getTranslationX();
-        content.setTranslationX(oldX + displayMetrics.widthPixels);
-        content.animate()
-                .translationX(oldX)
-                .withEndAction(
-                        () -> {
-                            content.setTranslationX(oldX);
-                        });
+    public void setLoading(View listView, boolean loading, boolean animate) {
+        View loading_container = findViewById(R.id.loading_container);
+        Utils.handleLoadingContainer(loading_container, listView, !loading, animate);
+        getButtonBar().setVisibility(loading ? View.GONE : View.VISIBLE);
     }
 
     @Override
