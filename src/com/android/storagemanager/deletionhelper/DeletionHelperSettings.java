@@ -27,9 +27,11 @@ import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.format.Formatter;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -73,6 +75,7 @@ public class DeletionHelperSettings extends PreferenceFragment
     private Button mCancel, mFree;
     private DeletionHelperFeatureProvider mProvider;
     private int mThresholdType;
+    private LoadingSpinnerController mLoadingController;
 
     public static DeletionHelperSettings newInstance(int thresholdType) {
         DeletionHelperSettings instance = new DeletionHelperSettings();
@@ -89,6 +92,7 @@ public class DeletionHelperSettings extends PreferenceFragment
         mApps = (AppDeletionPreferenceGroup) findPreference(APPS_KEY);
         mPhotoPreference = (PhotosDeletionPreference) findPreference(KEY_PHOTOS_VIDEOS_PREFERENCE);
         mProvider = FeatureFactory.getFactory(getActivity()).getDeletionHelperFeatureProvider();
+        mLoadingController = new LoadingSpinnerController((DeletionHelperActivity) getActivity());
         if (mProvider != null) {
             mPhotoVideoDeletion =
                     mProvider.createPhotoVideoDeletionType(getContext(), mThresholdType);
@@ -200,6 +204,9 @@ public class DeletionHelperSettings extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
+
+        mLoadingController.initializeLoading(getListView());
+
         for (int i = 0, size = mDeletableContentList.size(); i < size; i++) {
             mDeletableContentList.get(i).onResume();
         }
@@ -229,6 +236,10 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
+        if (bytesFreeable > 0 || allTypesEmpty()) {
+            mLoadingController.onCategoryLoad();
+        }
+
         // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
         // there is stuff to free and we can enable it. If it is zero, though, we still need to get
         // getTotalFreeableSpace to check all deletion types.
@@ -243,7 +254,6 @@ public class DeletionHelperSettings extends PreferenceFragment
     }
 
     private boolean allTypesEmpty() {
-
         return mAppBackend.isEmpty()
                 && mDownloadsDeletion.isEmpty()
                 && (mPhotoVideoDeletion == null || mPhotoVideoDeletion.isEmpty());
@@ -306,6 +316,13 @@ public class DeletionHelperSettings extends PreferenceFragment
         }
     }
 
+    @Override
+    public View onCreateView(
+            LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+        return view;
+    }
+
     private void initializeButtons() {
         ButtonBarProvider activity = (ButtonBarProvider) getActivity();
         activity.getButtonBar().setVisibility(View.VISIBLE);
@@ -344,4 +361,5 @@ public class DeletionHelperSettings extends PreferenceFragment
         }
         return freeableSpace;
     }
+
 }
