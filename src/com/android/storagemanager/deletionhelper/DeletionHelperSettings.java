@@ -236,7 +236,7 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
-        if (bytesFreeable > 0 || allTypesEmpty()) {
+        if (numItems > 0 || bytesFreeable > 0 || allTypesEmpty()) {
             mLoadingController.onCategoryLoad();
         }
 
