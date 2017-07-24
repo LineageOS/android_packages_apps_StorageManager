@@ -35,6 +35,7 @@
         android:theme="@style/StorageManager"
         android:allowBackup="false"
         android:supportsRtl="true">
+        <uses-library android:name="org.apache.http.legacy" />
         <!--  Initial Page -->
         <activity android:name=".deletionhelper.DeletionHelperActivity"
                   android:label="@string/deletion_helper_title"
