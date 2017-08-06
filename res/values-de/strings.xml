@@ -26,10 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Letztes Jahr nicht genutzt"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Letzte Nutzung unbekannt"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> freigeben"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Fotos und Videos (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Gesicherte Fotos und Videos"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Älter als 30 Tage"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Downloads (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Downloads"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,22 +41,23 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Zurzeit sind <xliff:g id="USED">%1$s</xliff:g> frei. Zulassen, dass der Speichermanager automatisch Speicherplatz freigibt, indem gesicherte Inhalte von deinem Gerät gelöscht werden?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Kein Interesse"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Aktivieren"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Selten verwendete Apps"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automatisch"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Manuell"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Jetzt Speicherplatz freigeben"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Verwaltungsdienst für autom. Speicher"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Verbleibender Speicher gering"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Verbleibender Speicher gering"</string>
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Verbleibender Speicher gering"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Der Speichermanager gibt Speicherplatz frei, indem alte Fotos und Videos automatisch gelöscht werden, sobald der Speicher deines Smartphones wieder voll ist."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Kein Interesse"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Aktivieren"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotos und Videos"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Gesicherte Fotos und Videos"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Elemente werden gesucht…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> werden von deinem Gerät entfernt"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Dein Speicher wird jetzt vom Speichermanager verwaltet"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Keine zu entfernenden Elemente"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Aktuelle Elemente prüfen"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Es sind keine älteren Dateien zum Entfernen vorhanden. Entferne aktuelle Fotos, Videos und Apps, um Speicherplatz freizugeben."</string>
 </resources>

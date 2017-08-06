@@ -26,10 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"मागील वर्षी वापरले नाही"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"अखेरचे कधी वापरले याची खात्री नाही"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> मोकळे करा"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"(<xliff:g id="NUM_ITEMS">%1$d</xliff:g>) फोटो आणि व्हिडिओ"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"फोटो आणि व्हिडिओंंचा बॅकअप घेतला"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 दिवसांपेक्षा अधिक जुने"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"डाउनलोड ( <xliff:g id="NUMITEMS">%1$d</xliff:g> )"</string>
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"डाउनलोड"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,22 +41,23 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"आता <xliff:g id="USED">%1$s</xliff:g> मोकळे आहे. संचय व्यवस्‍थापकास आपल्या डिव्हाइस वरून बॅक अप घेतलेली सामग्री काढून स्वयंचलितपणे स्थान मोकळे करू द्यायचे?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"नाही धन्यवाद"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"चालू करा"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"वारंवार न वापरले जाणारे अ‍ॅप्स"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"स्वयंचलित"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"व्यक्तिचलित"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"आता स्थान मोकळे करा"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"स्वयंचलित संचय व्यवस्थापन सेवा"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"आपल्या फोन वर स्थान कमी आहे"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"आपल्या फोन वर स्थान कमी आहे"</string>
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"तुमच्या टॅबलेटमध्ये जागा कमी आहे"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"आपला फोन पुन्हा भरणेे प्रारंभ होतो तेव्हा जुने फोटो आणि व्हिडिओ स्वयंचलितपणेे काढून संचय व्यवस्थापकास स्थान मोकळे करू द्या."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"नाही धन्यवाद"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"चालू करा"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"फोटो आणि व्हिडिओ"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"फोटो आणि व्हिडिओंंचा बॅकअप घेतला"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"आयटम शोधत आहे..."</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"आपल्या डिव्हाइसमधून <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> काढले जाईल"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"आपला संचय आता संचय व्यवस्थापक व्यवस्थापित करीत आहे"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"काढण्यासाठी काहीही नाही"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"अलीकडील आयटमचे पुनरावलोकन करा"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"काढण्यासाठी कोणत्याही जुन्या फायली नाहीत. जागा मोकळी करण्यासाठी, अलीकडील फोटो, व्हिडिओ आणि अ‍ॅप्स काढा."</string>
 </resources>

@@ -26,10 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Pole viimase aasta jooksul kasutatud"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Viimane kasutusaeg on teadmata"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Vabasta <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"Fotod ja videod (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Varundatud fotod ja videod"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Üle 30 päeva vana"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"Allalaadimised (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Allalaadimised"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -40,22 +41,23 @@
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> on nüüd vaba. Kas lubada salvestusruumi halduril automaatselt ruumi vabastada, eemaldades seadmest varundatud sisu?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Ei, tänan"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Lülita sisse"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Harva kasutatavad rakendused"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Automaatne"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Käsitsi"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Kohe ruumi vabastamine"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Automaatne salvestusruumi haldusteenus"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"Teie telefonis on vähe ruumi"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Teie telefonis on vähe ruumi"</string>
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Tahvelarvutis hakkab ruum otsa saama"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Lubage salvestusruumi halduril ruumi vabastada, eemaldades automaatselt vanad fotod ja videod, kui telefon hakkab taas täis saama."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"Ei, tänan"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"Lülita sisse"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"Fotod ja videod"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"Varundatud fotod ja videod"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Üksuste otsimine …"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> eemaldatakse teie seadmest"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Teie salvestusruumi haldab nüüd salvestusruumi haldur"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"Ei ole midagi eemaldada"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"Vaadake üle hiljutised üksused"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Eemaldamiseks ei ole ühtegi vanemat faili. Ruumi vabastamiseks eemaldage hiljutisi fotosid, videoid ja rakendusi."</string>
 </resources>

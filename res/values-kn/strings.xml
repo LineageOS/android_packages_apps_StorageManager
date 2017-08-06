@@ -26,10 +26,11 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"ಕಳೆದ ವರ್ಷ ಬಳಸಿಲ್ಲ"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"ಕೊನೆಯದಾಗಿ ಬಳಸಿದ್ದು ಯಾವಾಗ ಎಂಬುದು ಖಚಿತವಿಲ್ಲ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> ಮುಕ್ತಗೊಳಿಸಿ"</string>
-    <string name="deletion_helper_photos_title" msgid="8694284659307845664">"ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು (<xliff:g id="NUM_ITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ಬ್ಯಾಕ್‌ಅಪ್ ಮಾಡಿದ ಫೋಟೋಗಳು ಹಾಗೂ ವೀಡಿಯೊಗಳು"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 ದಿನಗಳಿಗಿಂತಲೂ ಹಳೆಯದು"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
-    <string name="deletion_helper_downloads_title" msgid="2976599380628177756">"ಡೌನ್‌ಲೋಡ್‌ಗಳು (<xliff:g id="NUMITEMS">%1$d</xliff:g>)"</string>
+    <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ಡೌನ್‌ಲೋಡ್‌ಗಳು"</string>
     <!-- no translation found for deletion_helper_downloads_category_summary (8545989355108311347) -->
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
@@ -39,23 +40,24 @@
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸಂಗ್ರಹಣೆಯನ್ನು ನಿರ್ವಹಿಸುವುದೇ?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> ಇದೀಗ ಮುಕ್ತವಾಗಿದೆ. ನಿಮ್ಮ ಸಾಧನದಿಂದ ಬ್ಯಾಕಪ್ ಮಾಡಲಾದ ವಿಷಯವನ್ನು ತೆಗೆದುಹಾಕುವ ಮೂಲಕ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ಸಂಗ್ರಹಣೆ ನಿರ್ವಾಹಕಕ್ಕೆ ಅವಕಾಶ ನೀಡುವುದೇ?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"ಧನ್ಯವಾದಗಳು"</string>
-    <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"ಆನ್ ಮಾಡು"</string>
-    <!-- no translation found for deletion_helper_apps_group_title (2578309121350341258) -->
-    <skip />
+    <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"ಆನ್‌ ಮಾಡಿ"</string>
+    <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"ಅಪರೂಪವಾಗಿ ಬಳಸುವ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
     <skip />
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"ಸ್ವಯಂಚಾಲಿತ"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"ಹಸ್ತಚಾಲಿತ"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"ಇದೀಗ ಸ್ಥಳವನ್ನು ಮುಕ್ತಗೊಳಿಸಿ"</string>
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"ಸ್ವಯಂಚಾಲಿತ ಸಂಗ್ರಹಣೆ ನಿರ್ವಹಣೆ ಸೇವೆ"</string>
-    <string name="automatic_storage_manager_notification_title" msgid="8480483265300964701">"ನಿಮ್ಮ ಫೋನ್ ಸ್ಥಳಾವಕಾಶ ಕಡಿಮೆ ಇದೆ"</string>
+    <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"ನಿಮ್ಮ ಫೋನ್ ಸ್ಥಳಾವಕಾಶ ಕಡಿಮೆ ಇದೆ"</string>
+    <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"ನಿಮ್ಮ ಟ್ಯಾಬ್ಲೆಟ್ ಸ್ಥಳಾವಕಾಶ ಕಡಿಮೆ ಇದೆ"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ನಿಮ್ಮ ಫೋನ್ ಮತ್ತೊಮ್ಮೆ ಭರ್ತಿಯಾಗಲು ಪ್ರಾರಂಭವಾದಾಗ ನಿಮ್ಮ ಫೋನ್‌ನಿಂದ ಹಳೆಯ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೋಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತೆಗೆದುಹಾಕುವ ಮೂಲಕ ಸ್ಥಳಾವಕಾಶವನ್ನು ಮುಕ್ತಗೊಳಿಸಲು ಸಂಗ್ರಹಣೆ ನಿರ್ವಾಹಕಕ್ಕೆ ಅವಕಾಶ ನೀಡಿ."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"ಧನ್ಯವಾದಗಳು"</string>
-    <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ಆನ್ ಮಾಡು"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="5411813715495227745">"ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳು"</string>
+    <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ಆನ್‌ ಮಾಡಿ"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"ಬ್ಯಾಕ್‌ಅಪ್ ಮಾಡಿರುವ ಫೋಟೋಗಳು ಹಾಗೂ ವೀಡಿಯೊಗಳು"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"ಐಟಂಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ…"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ಅನ್ನು ನಿಮ್ಮ ಸಾಧನದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"ನಿಮ್ಮ ಸಂಗ್ರಹಣೆಯು ಈಗ ಸಂಗ್ರಹಣೆ ನಿರ್ವಾಹಕರಿಂದ ನಿರ್ವಹಿಸಿಲಾಗುತ್ತಿದೆ"</string>
-    <!-- no translation found for empty_state_summary (7595746370472885011) -->
-    <skip />
+    <string name="empty_state_title" msgid="4033285438176545309">"ತೆಗೆದುಹಾಕಲು ಏನೂ ಇಲ್ಲ"</string>
+    <string name="empty_state_review_items_link" msgid="8411186441239304545">"ಇತ್ತೀಚಿನ ಐಟಂಗಳನ್ನು ಪರಿಶೀಲಿಸಿ"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"ತೆಗೆದುಹಾಕುವುದಕ್ಕಾಗಿ, ಯಾವುದೇ ಹಳೆಯ ಫೈಲ್‌ಗಳಿಲ್ಲ. ಸ್ಥಳಾವಕಾಶ ಮುಕ್ತಗೊಳಿಸಲು, ಇತ್ತೀಚಿನ ಫೋಟೋಗಳು, ವೀಡಿಯೊಗಳು ಹಾಗೂ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ತೆಗೆದುಹಾಕಿ."</string>
 </resources>
