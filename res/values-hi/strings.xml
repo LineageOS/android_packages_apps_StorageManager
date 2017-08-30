@@ -17,7 +17,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name" msgid="963247385700831716">"जगह प्रबंधक"</string>
-    <string name="cancel" msgid="7021218262867558825">"अभी नहीं"</string>
+    <string name="cancel" msgid="7021218262867558825">"रद्द करें"</string>
     <string name="storage_menu_free" msgid="1878247401436882778">"स्थान खाली करें"</string>
     <string name="deletion_helper_title" msgid="7928959984891140427">"निकालने के आइटम चुनें"</string>
     <string name="deletion_helper_app_summary" msgid="4904590040180275237">"<xliff:g id="DAYS">%1$d</xliff:g> दिन पहले"</string>

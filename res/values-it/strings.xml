@@ -27,7 +27,7 @@
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Data ultimo utilizzo sconosciuta"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Libera fino a <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
     <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Backup di foto e video"</string>
-    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Oltre 30 giorni"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"Più vecchie di 30 giorni"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
     <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"Download"</string>
