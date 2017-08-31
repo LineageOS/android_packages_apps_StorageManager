@@ -27,7 +27,7 @@
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"یقین سے نہیں کہہ سکتے کہ آخری بار کب استعمال ہوا"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> خالی کریں"</string>
     <string name="deletion_helper_photos_title" msgid="2602723121486729972">"بیک اپ کردہ تصاویر اور ویڈیوز"</string>
-    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 دن سے زیادہ پرانا"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 دن سے زیادہ پرانی"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
     <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ڈاؤن لوڈز"</string>

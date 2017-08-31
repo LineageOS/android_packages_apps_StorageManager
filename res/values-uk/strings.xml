@@ -61,6 +61,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Зараз пам’яттю керує диспетчер пам’яті"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Нічого видалити"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Переглянути останні елементи"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"Немає старіших файлів для вилучення. Щоб звільнити місце, вилучіть останні фото, відео й додатки."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Немає старіших файлів, які можна видалити. Щоб звільнити місце, видаліть останні фото, відео й додатки."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"Додатку <xliff:g id="APP">%1$s</xliff:g> потрібно <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> вільної пам’яті"</string>
 </resources>
