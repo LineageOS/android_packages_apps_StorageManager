@@ -50,7 +50,7 @@
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"ਸਵੈਚਲਿਤ ਸਟੋਰੇਜ ਪ੍ਰਬੰਧਨ ਸੇਵਾ"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"ਤੁਹਾਡੇ ਫ਼ੋਨ \'ਤੇ ਜਗ੍ਹਾ ਘੱਟ ਹੈ"</string>
     <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"ਤੁਹਾਡੇ ਟੈਬਲੈੱਟ ਵਿੱਚ ਜਗ੍ਹਾ ਘੱਟ ਹੈ"</string>
-    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ਜਦ ਤੁਹਾਡਾ ਫ਼ੋਨ ਦੁਬਾਰਾ ਭਰਨ ਵਾਲਾ ਹੋ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸਟੋਰੇਜ ਪ੍ਰਬੰਧਕ ਨੂੰ ਸਵੈਚਲਿਤ ਤਰੀਕੇ ਨਾਲ ਪੁਰਾਣੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹਟਾਉਣ ਦੁਆਰਾ ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਦਿਓ।"</string>
+    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"ਜਦ ਤੁਹਾਡਾ ਫ਼ੋਨ ਦੁਬਾਰਾ ਭਰਨ ਵਾਲਾ ਹੋ ਜਾਂਦਾ ਹੈ, ਤਾਂ ਸਟੋਰੇਜ ਪ੍ਰਬੰਧਕ ਨੂੰ ਸਵੈਚਲਿਤ ਤੌਰ \'ਤੇ ਪੁਰਾਣੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹਟਾਉਣ ਦੁਆਰਾ ਜਗ੍ਹਾ ਖਾਲੀ ਕਰਨ ਦਿਓ।"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"ਨਹੀਂ ਧੰਨਵਾਦ"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ਚਾਲੂ ਕਰੋ"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"ਬੈਕਅੱਪ ਲਈਆਂ ਗਈਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ"</string>
