@@ -23,7 +23,9 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
@@ -31,6 +33,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.storage.StorageManager;
+import android.support.v7.preference.PreferenceScreen;
 
 import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 import com.android.storagemanager.testing.TestingConstants;
@@ -73,5 +76,20 @@ public class DeletionHelperSettingsTest {
         intent.putExtra(StorageManager.EXTRA_REQUESTED_BYTES, 100L);
         assertThat(DeletionHelperSettings.getGaugeString(mContext, intent, PACKAGE_NAME))
                 .isNotNull();
+    }
+
+    @Test
+    public void downloadsNotDeletedInNoThresholdMode() throws Exception {
+        DeletionHelperSettings settings =
+                spy(DeletionHelperSettings.newInstance(AppsAsyncLoader.NO_THRESHOLD));
+        PreferenceScreen preferenceScreen = mock(PreferenceScreen.class);
+        doReturn(preferenceScreen).when(settings).getPreferenceScreen();
+        DownloadsDeletionType downloadsDeletionType = mock(DownloadsDeletionType.class);
+        settings.setDownloadsDeletionType(downloadsDeletionType);
+
+        settings.setupEmptyState();
+        settings.clearData();
+
+        verify(downloadsDeletionType, never()).clearFreeableData(any());
     }
 }
