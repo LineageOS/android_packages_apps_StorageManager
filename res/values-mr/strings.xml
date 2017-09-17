@@ -38,8 +38,8 @@
     <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"आपल्या डिव्हाइसमधून <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> काढले जाईल"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"काढा"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"संचय स्वयंचलितपणे व्यवस्थापित करायचे?"</string>
-    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"आता <xliff:g id="USED">%1$s</xliff:g> मोकळे आहे. स्टोरेज व्यवस्‍थापकास तुमच्या डीव्हाइस वरून बॅक अप घेतलेली आशय काढून आपोआप स्थान मोकळे करू द्यायचे?"</string>
-    <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"नाही धन्यवाद"</string>
+    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"आता <xliff:g id="USED">%1$s</xliff:g> मोकळे आहे. स्टोरेज व्यवस्‍थापकास तुमच्या डिव्हाइस वरून बॅक अप घेतलेली आशय काढून आपोआप स्थान मोकळे करू द्यायचे?"</string>
+    <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"नाही, नको"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"चालू करा"</string>
     <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"वारंवार न वापरले जाणारे अ‍ॅप्स"</string>
     <!-- no translation found for deletion_helper_apps_group_summary (360315517252452356) -->
@@ -51,7 +51,7 @@
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"आपल्या फोन वर स्थान कमी आहे"</string>
     <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"तुमच्या टॅबलेटमध्ये जागा कमी आहे"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"आपला फोन पुन्हा भरणेे प्रारंभ होतो तेव्हा जुने फोटो आणि व्हिडिओ स्वयंचलितपणेे काढून संचय व्यवस्थापकास स्थान मोकळे करू द्या."</string>
-    <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"नाही धन्यवाद"</string>
+    <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"नाही, नको"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"चालू करा"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"फोटो आणि व्हिडिओंंचा बॅकअप घेतला"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"आयटम शोधत आहे..."</string>
