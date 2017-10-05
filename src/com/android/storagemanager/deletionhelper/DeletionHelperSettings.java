@@ -67,7 +67,7 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     private List<DeletionType> mDeletableContentList;
     private AppDeletionPreferenceGroup mApps;
-    private AppDeletionType mAppBackend;
+    @VisibleForTesting AppDeletionType mAppBackend;
     private DownloadsDeletionPreferenceGroup mDownloadsPreference;
     private DownloadsDeletionType mDownloadsDeletion;
     private PhotosDeletionPreference mPhotoPreference;
@@ -246,13 +246,17 @@ public class DeletionHelperSettings extends PreferenceFragment
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
         if (numItems > 0 || bytesFreeable > 0 || allTypesEmpty()) {
-            mLoadingController.onCategoryLoad();
+            if (mLoadingController != null) {
+                mLoadingController.onCategoryLoad();
+            }
         }
 
         // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
         // there is stuff to free and we can enable it. If it is zero, though, we still need to get
         // getTotalFreeableSpace to check all deletion types.
-        mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
+        if (mFree != null) {
+            mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
+        }
         updateFreeButtonText();
 
         // Transition to empty state if all types have reported there is nothing to delete. Skip
@@ -264,7 +268,7 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     private boolean allTypesEmpty() {
         return mAppBackend.isEmpty()
-                && mDownloadsDeletion.isEmpty()
+                && (mDownloadsDeletion == null || mDownloadsDeletion.isEmpty())
                 && (mPhotoVideoDeletion == null || mPhotoVideoDeletion.isEmpty());
     }
 
