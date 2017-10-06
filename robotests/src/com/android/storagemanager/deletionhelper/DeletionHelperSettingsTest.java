@@ -92,4 +92,15 @@ public class DeletionHelperSettingsTest {
 
         verify(downloadsDeletionType, never()).clearFreeableData(any());
     }
+
+    @Test
+    public void onFreeableChangeChecksForNull() throws Exception {
+        DeletionHelperSettings settings =
+                DeletionHelperSettings.newInstance(AppsAsyncLoader.NO_THRESHOLD);
+        AppDeletionType appBackend = mock(AppDeletionType.class);
+        when(appBackend.isEmpty()).thenReturn(true);
+        settings.mAppBackend = appBackend;
+
+        settings.onFreeableChanged(0, 0L);
+    }
 }
