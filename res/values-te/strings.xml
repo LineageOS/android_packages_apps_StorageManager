@@ -61,6 +61,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"మీ నిల్వ ఇప్పుడు నిల్వ నిర్వాహికి ద్వారా నిర్వహించబడుతోంది"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"తీసివేయాల్సినవి ఏవీ లేవు"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"ఇటీవలి అంశాలను సమీక్షించండి"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"తీసివేయడానికి పాత ఫైల్‌లు ఏవీ లేవు. నిల్వను ఖాళీ చేయాలంటే, ఇటీవలి ఫోటోలు, వీడియోలు మరియు అనువర్తనాలను తీసివేయండి."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"తీసివేయడానికి పాత ఫైల్‌లు ఏవీ లేవు. నిల్వను ఖాళీ చేయాలంటే, ఇటీవలి ఫోటోలు, వీడియోలు మరియు యాప్‌లను తీసివేయండి."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g>కి <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> స్థలం అవసరం"</string>
 </resources>
