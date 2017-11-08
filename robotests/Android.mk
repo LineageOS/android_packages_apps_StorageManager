@@ -37,4 +37,4 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_TEST_PACKAGE := StorageManager
 
-include prebuilts/misc/common/robolectric/run_robotests.mk
+include prebuilts/misc/common/robolectric/3.1.1/run_robotests.mk
