@@ -13,7 +13,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_JAVA_LIBRARIES := \
     junit \
-    platform-robolectric-prebuilt
+    platform-robolectric-3.1.1-prebuilt
 
 # TODO: Remove the use of LOCAL_INSTRUMENTATION_FOR and use a different build flag.
 LOCAL_INSTRUMENTATION_FOR := StorageManager
