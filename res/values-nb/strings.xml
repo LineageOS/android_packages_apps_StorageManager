@@ -61,6 +61,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Lagringsplassen din blir nå administrert av lagringsadministratoren"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Ingenting å fjerne"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Gjennomgå nylige elementer"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"Du har ingen eldre filer du kan fjerne. For å frigjøre lagringsplass, fjern nylige bilder, videoer eller apper."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Du har ingen eldre filer du kan fjerne. For å frigjøre lagringsplass, fjern nylig brukte bilder, videoer eller apper."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g> trenger <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> med plass"</string>
 </resources>
