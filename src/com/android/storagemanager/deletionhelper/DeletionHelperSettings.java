@@ -23,6 +23,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.storage.StorageManager;
+import android.support.annotation.VisibleForTesting;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
@@ -66,7 +67,7 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     private List<DeletionType> mDeletableContentList;
     private AppDeletionPreferenceGroup mApps;
-    private AppDeletionType mAppBackend;
+    @VisibleForTesting AppDeletionType mAppBackend;
     private DownloadsDeletionPreferenceGroup mDownloadsPreference;
     private DownloadsDeletionType mDownloadsDeletion;
     private PhotosDeletionPreference mPhotoPreference;
@@ -189,11 +190,19 @@ public class DeletionHelperSettings extends PreferenceFragment
         updateFreeButtonText();
     }
 
-    private void setupEmptyState() {
-        mDownloadsPreference.setChecked(false);
+    @VisibleForTesting
+    void setupEmptyState() {
         final PreferenceScreen screen = getPreferenceScreen();
-        screen.removePreference(mDownloadsPreference);
+        if (mDownloadsPreference != null) {
+            mDownloadsPreference.setChecked(false);
+            screen.removePreference(mDownloadsPreference);
+        }
         screen.removePreference(mApps);
+
+        // Nulling out the downloads preferences means we won't accidentally delete what isn't
+        // visible.
+        mDownloadsDeletion = null;
+        mDownloadsPreference = null;
     }
 
     private boolean isEmptyState() {
@@ -237,13 +246,17 @@ public class DeletionHelperSettings extends PreferenceFragment
     @Override
     public void onFreeableChanged(int numItems, long bytesFreeable) {
         if (numItems > 0 || bytesFreeable > 0 || allTypesEmpty()) {
-            mLoadingController.onCategoryLoad();
+            if (mLoadingController != null) {
+                mLoadingController.onCategoryLoad();
+            }
         }
 
         // bytesFreeable is the number of bytes freed by a single deletion type. If it is non-zero,
         // there is stuff to free and we can enable it. If it is zero, though, we still need to get
         // getTotalFreeableSpace to check all deletion types.
-        mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
+        if (mFree != null) {
+            mFree.setEnabled(bytesFreeable != 0 || getTotalFreeableSpace(COUNT_CHECKED_ONLY) != 0);
+        }
         updateFreeButtonText();
 
         // Transition to empty state if all types have reported there is nothing to delete. Skip
@@ -255,7 +268,7 @@ public class DeletionHelperSettings extends PreferenceFragment
 
     private boolean allTypesEmpty() {
         return mAppBackend.isEmpty()
-                && mDownloadsDeletion.isEmpty()
+                && (mDownloadsDeletion == null || mDownloadsDeletion.isEmpty())
                 && (mPhotoVideoDeletion == null || mPhotoVideoDeletion.isEmpty());
     }
 
@@ -277,7 +290,9 @@ public class DeletionHelperSettings extends PreferenceFragment
         if (mDownloadsPreference != null) {
             mDownloadsDeletion.clearFreeableData(getActivity());
         }
-        mAppBackend.clearFreeableData(getActivity());
+        if (mAppBackend != null) {
+            mAppBackend.clearFreeableData(getActivity());
+        }
     }
 
     @Override
@@ -321,6 +336,11 @@ public class DeletionHelperSettings extends PreferenceFragment
             LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = super.onCreateView(inflater, container, savedInstanceState);
         return view;
+    }
+
+    @VisibleForTesting
+    void setDownloadsDeletionType(DownloadsDeletionType downloadsDeletion) {
+        mDownloadsDeletion = downloadsDeletion;
     }
 
     private void initializeButtons() {
