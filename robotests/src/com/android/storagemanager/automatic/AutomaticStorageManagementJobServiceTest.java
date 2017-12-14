@@ -73,7 +73,7 @@ import static org.mockito.Mockito.when;
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private NotificationManager mNotificationManager;
-    @Mock private Object mVolumeInfo; // VolumeInfo is @hide and thus excluded from android stubs
+    @Mock private VolumeInfo mVolumeInfo;
     @Mock private File mFile;
     @Mock private JobParameters mJobParameters;
     @Mock private StorageManagementJobProvider mStorageManagementJobProvider;
@@ -96,23 +96,21 @@ public class AutomaticStorageManagementJobServiceTest {
         // 3. ASM is disabled.
         when(mBatteryManager.isCharging()).thenReturn(true);
 
-        VolumeInfo volumeInfo = mock(VolumeInfo.class);
-        when(volumeInfo.getPath()).thenReturn(mFile);
-        when(volumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
-        when(volumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIMARY_PHYSICAL);
-        when(volumeInfo.isMountedReadable()).thenReturn(true);
+        when(mVolumeInfo.getPath()).thenReturn(mFile);
+        when(mVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
+        when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIMARY_PHYSICAL);
+        when(mVolumeInfo.isMountedReadable()).thenReturn(true);
 
         mVolumes = new ArrayList<>();
-        mVolumes.add(volumeInfo);
-        mVolumeInfo = volumeInfo;
+        mVolumes.add(mVolumeInfo);
 
         when(mStorageVolumeProvider.getPrimaryStorageSize()).thenReturn(100L);
         when(mStorageVolumeProvider.getVolumes()).thenReturn(mVolumes);
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq(volumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(0L);
         when(mStorageVolumeProvider.getTotalBytes(
-                        nullable(StorageStatsManager.class), eq(volumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(100L);
 
         mApplication = ShadowApplication.getInstance();
@@ -185,7 +183,7 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testJobDoesntRunIfStorageNotFull() throws Exception {
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq((VolumeInfo) mVolumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(100L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
@@ -195,13 +193,13 @@ public class AutomaticStorageManagementJobServiceTest {
     public void testJobOnlyRunsIfFreeStorageIsUnder15Percent() throws Exception {
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq((VolumeInfo) mVolumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(15L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobDidNotRun();
 
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq((VolumeInfo) mVolumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(14L);
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
@@ -232,7 +230,7 @@ public class AutomaticStorageManagementJobServiceTest {
                 .thenReturn(100L);
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq((VolumeInfo) mVolumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(15L);
 
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
@@ -256,7 +254,7 @@ public class AutomaticStorageManagementJobServiceTest {
         mVolumes.add(privateVolumeInfo);
         activateASM();
         when(mStorageVolumeProvider.getFreeBytes(
-                        nullable(StorageStatsManager.class), eq((VolumeInfo) mVolumeInfo)))
+                        nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(15L);
 
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
