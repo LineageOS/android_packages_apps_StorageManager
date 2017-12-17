@@ -1,21 +1,21 @@
 #############################################
 # Add app-specific Robolectric test target. #
 #############################################
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
 # Include the testing libraries (JUnit4 + Robolectric libs).
 LOCAL_STATIC_JAVA_LIBRARIES := \
+    platform-robolectric-android-all-stubs \
     mockito-robolectric-prebuilt \
     truth-prebuilt
 
 LOCAL_JAVA_LIBRARIES := \
     junit \
-    platform-robolectric-3.1.1-prebuilt
+    platform-robolectric-3.5.1-prebuilt
 
-# TODO: Remove the use of LOCAL_INSTRUMENTATION_FOR and use a different build flag.
 LOCAL_INSTRUMENTATION_FOR := StorageManager
 LOCAL_MODULE := StorageManagerRoboTests
 
@@ -37,4 +37,4 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_TEST_PACKAGE := StorageManager
 
-include prebuilts/misc/common/robolectric/3.1.1/run_robotests.mk
+include prebuilts/misc/common/robolectric/3.5.1/run_robotests.mk

@@ -95,12 +95,15 @@ public class AutomaticStorageManagementJobServiceTest {
         // 2. We have a completely full device.
         // 3. ASM is disabled.
         when(mBatteryManager.isCharging()).thenReturn(true);
-        mVolumes = new ArrayList<>();
+
         when(mVolumeInfo.getPath()).thenReturn(mFile);
         when(mVolumeInfo.getType()).thenReturn(VolumeInfo.TYPE_PRIVATE);
         when(mVolumeInfo.getFsUuid()).thenReturn(StorageManager.UUID_PRIMARY_PHYSICAL);
         when(mVolumeInfo.isMountedReadable()).thenReturn(true);
+
+        mVolumes = new ArrayList<>();
         mVolumes.add(mVolumeInfo);
+
         when(mStorageVolumeProvider.getPrimaryStorageSize()).thenReturn(100L);
         when(mStorageVolumeProvider.getVolumes()).thenReturn(mVolumes);
         when(mStorageVolumeProvider.getFreeBytes(
