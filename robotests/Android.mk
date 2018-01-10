@@ -14,7 +14,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_JAVA_LIBRARIES := \
     junit \
-    platform-robolectric-3.5.1-prebuilt
+    platform-robolectric-3.6.1-prebuilt
 
 LOCAL_INSTRUMENTATION_FOR := StorageManager
 LOCAL_MODULE := StorageManagerRoboTests
@@ -37,4 +37,4 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_TEST_PACKAGE := StorageManager
 
-include prebuilts/misc/common/robolectric/3.5.1/run_robotests.mk
+include prebuilts/misc/common/robolectric/3.6.1/run_robotests.mk
