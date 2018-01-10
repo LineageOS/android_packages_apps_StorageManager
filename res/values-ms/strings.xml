@@ -35,8 +35,9 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> akan dialih keluar daripada peranti anda"</string>
-    <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Alih keluar"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"Kosongkan ruang"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kandungan akan dialih keluar daripada peranti anda"</string>
+    <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"Kosongkan ruang"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Urus storan secara automatik?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> kini kosong. Benarkan Pengurus storan mengosongkan ruang secara automatik dengan mengalih keluar kandungan yang disandarkan daripada peranti anda?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Tidak, terima kasih"</string>
@@ -57,7 +58,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Mencari item…"</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"Tunjukkan semua item"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"Sembunyikan item terbaharu"</string>
-    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> akan dialih keluar daripada peranti anda"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> kandungan akan dialih keluar daripada peranti anda"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Storan anda kini diurus oleh pengurus storan"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Tiada apa untuk dialih keluar"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Semak item terbaharu"</string>

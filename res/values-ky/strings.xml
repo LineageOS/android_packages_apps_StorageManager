@@ -35,8 +35,9 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"Түзмөгүңүздөн <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> алынып салынат"</string>
-    <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"Алып салуу"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"Орун бошотуу"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"Түзмөгүңүздөн <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> мазмун алынып салынат"</string>
+    <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"Орун бошотуу"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Сактагыч автоматтык түрдө башкарылсынбы?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"Азыр <xliff:g id="USED">%1$s</xliff:g> бош. Сактагычты көзөмөлдөгүчкө түзмөгүңүздөн камдык көчүрмөсү сакталган мазмунду автоматтык түрдө өчүрүшүнө уруксат бересизби?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Жок, рахмат"</string>
@@ -57,7 +58,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"Бир нерсе изделүүдө…"</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"Бардык элементтерди көрсөтүү"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"Акыркы элементтерди жашыруу"</string>
-    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"Түзмөгүңүздөн <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> алынып салынат"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"Түзмөгүңүздөн <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> мазмун алынып салынат"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Учурда сактагычыңыз сактагычты көзөмөлдөгүч тарабынан башкарылууда"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Алып сала турган эч нерсе жок"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Акыркы объекттерди карап көрүү"</string>
