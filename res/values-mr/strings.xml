@@ -35,8 +35,9 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"आपल्या डिव्हाइसमधून <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> काढले जाईल"</string>
-    <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"काढा"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"जागा मोकळी करा"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"तुमच्या डिव्हाइसवरील <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> आशय काढून टाकला जाईल"</string>
+    <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"जागा मोकळी करा"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"संचय स्वयंचलितपणे व्यवस्थापित करायचे?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"आता <xliff:g id="USED">%1$s</xliff:g> मोकळे आहे. स्टोरेज व्यवस्‍थापकास तुमच्या डिव्हाइस वरून बॅक अप घेतलेली आशय काढून आपोआप स्थान मोकळे करू द्यायचे?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"नाही, नको"</string>
@@ -57,8 +58,8 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"आयटम शोधत आहे..."</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"सर्व आयटम दाखवा"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"अलीकडचे आयटम लपवा"</string>
-    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"आपल्या डिव्हाइसमधून <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> काढले जाईल"</string>
-    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"आपला संचय आता संचय व्यवस्थापक व्यवस्थापित करीत आहे"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"तुमच्या डिव्हाइसवरील <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> आशय काढून टाकला जाईल"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"आपला संचय आता संचय व्यवस्थापक व्यवस्थापित करत आहे"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"काढण्यासाठी काहीही नाही"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"अलीकडील आयटमचे पुनरावलोकन करा"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"काढण्यासाठी कोणत्याही जुन्या फायली नाहीत. जागा मोकळी करण्यासाठी, अलीकडील फोटो, व्हिडिओ आणि अ‍ॅप्स काढा."</string>

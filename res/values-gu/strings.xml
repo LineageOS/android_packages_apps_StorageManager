@@ -35,8 +35,9 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"તમારા ઉપકરણમાંથી <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> દૂર કરવામાં આવશે"</string>
-    <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"દૂર કરો"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"સ્પેસ ખાલી કરો"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"તમારા ઉપકરણમાંથી <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>નું કન્ટેન્ટ કાઢી નાખવામાં આવશે"</string>
+    <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"સ્પેસ ખાલી કરો"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"સ્ટોરેજ આપમેળે સંચાલિત કરીએ?"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> હવે ખાલી. તમારા ઉપકરણમાંથી બેક અપ લીધેલ સામગ્રીને દૂર કરીને સ્ટોરેજ સંચાલકને આપમેળે સ્થાન ખાલી કરવા દઈએ?"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"ના, આભાર"</string>
@@ -57,7 +58,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"આઇટમ્સ શોધી રહ્યાં છે…"</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"બધી આઇટમ બતાવો"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"તાજેતરની આઇટમ છુપાવો"</string>
-    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"તમારા ઉપકરણમાંથી <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> દૂર કરવામાં આવશે"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"તમારા ઉપકરણમાંથી <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g>નું કન્ટેન્ટ કાઢી નાખવામાં આવશે"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"તમારું સ્ટોરેજ, હવે સ્ટોરેજ સંચાલક દ્વારા સંચાલિત કરવામાં આવી રહ્યું છે"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"દૂર કરવા માટે કંઈ નથી"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"તાજેતરની આઇટમની સમીક્ષા કરો"</string>
