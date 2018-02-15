@@ -72,10 +72,7 @@ public class AutomaticStorageManagementJobService extends JobService {
             return false;
         }
 
-        boolean isEnabled =
-                Settings.Secure.getInt(getContentResolver(),
-                        Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 0) != 0;
-        if (!isEnabled) {
+        if (!Utils.isStorageManagerEnabled(getApplicationContext())) {
             Intent maybeShowNotificationIntent =
                     new Intent(NotificationController.INTENT_ACTION_SHOW_NOTIFICATION);
             maybeShowNotificationIntent.setClass(getApplicationContext(),

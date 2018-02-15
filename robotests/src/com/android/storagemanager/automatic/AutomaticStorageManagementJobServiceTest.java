@@ -42,8 +42,10 @@ import android.provider.Settings;
 import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
+import com.android.storagemanager.testing.StorageManagerShadowSystemProperties;
 import com.android.storagemanager.testing.TestingConstants;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,7 +71,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
+@Config(
+    manifest = TestingConstants.MANIFEST,
+    sdk = TestingConstants.SDK_VERSION,
+    shadows = {StorageManagerShadowSystemProperties.class}
+)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private NotificationManager mNotificationManager;
@@ -142,6 +148,11 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mJobService.getResources()).thenReturn(fakeResources);
     }
 
+    @After
+    public void tearDown() {
+        StorageManagerShadowSystemProperties.clear();
+    }
+
     @Test
     public void testJobRequiresCharging() {
         when(mBatteryManager.isCharging()).thenReturn(false);
@@ -175,6 +186,13 @@ public class AutomaticStorageManagementJobServiceTest {
     @Test
     public void testASMJobRunsWithValidConditions() {
         activateASM();
+        assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
+        assertStorageManagerJobRan();
+    }
+
+    @Test
+    public void testASMJobRunsWithValidConditionsIfOptInNotShownButUnactivated() {
+        StorageManagerShadowSystemProperties.put("ro.storage_manager.show_opt_in", "false");
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }
