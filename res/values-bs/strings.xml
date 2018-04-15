@@ -62,6 +62,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Vašom pohranom sada upravlja upravitelj pohrane"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"Nema stavki za uklanjanje"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Pregled nedavnih stavki"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"Nema starijih fajlova za ukloniti. Da oslobodite prostor, uklonite nedavne fotografije, videozapise i aplikacije."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"Nema starijih fajlova za uklanjanje. Da oslobodite prostor, uklonite nedavne fotografije, videozapise i aplikacije."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"Aplikaciji <xliff:g id="APP">%1$s</xliff:g> treba <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> prostora"</string>
 </resources>

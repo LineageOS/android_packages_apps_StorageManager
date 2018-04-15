@@ -60,7 +60,7 @@
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"Nascondi elementi recenti"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"Verranno rimossi <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> di contenuti dal dispositivo"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"Il tuo spazio di archiviazione è ora gestito da Gestione archiviazione"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"Nulla da rimuovere"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"Niente da rimuovere"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Esamina elementi recenti"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Non ci sono file vecchi da rimuovere. Per fare spazio, rimuovi le foto, i video e le app recenti."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"L\'app <xliff:g id="APP">%1$s</xliff:g> richiede <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> di spazio"</string>
