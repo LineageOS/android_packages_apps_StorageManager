@@ -15,13 +15,16 @@
  */
 package com.android.storagemanager.testing;
 
-import java.util.List;
 import org.junit.runners.model.InitializationError;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.manifest.AndroidManifest;
 import org.robolectric.res.Fs;
 import org.robolectric.res.ResourcePath;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * Custom test runner for Robolectric UI testing. This adds additional resources needed to run.
@@ -42,33 +45,48 @@ public class StorageManagerRobolectricTestRunner extends RobolectricTestRunner {
      */
     @Override
     protected AndroidManifest getAppManifest(Config config) {
-        // Using the manifest file's relative path, we can figure out the application directory.
-        final String appRoot = "packages/apps/StorageManager";
-        final String manifestPath = appRoot + "/AndroidManifest.xml";
-        final String resDir = appRoot + "/res";
-        final String assetsDir = appRoot + "/assets";
+        try {
+            // Using the manifest file's relative path, we can figure out the application directory.
+            final URL appRoot = new URL("file:packages/apps/StorageManager/");
+            final URL manifestPath = new URL(appRoot, "AndroidManifest.xml");
+            final URL resDir = new URL(appRoot, "res");
+            final URL assetsDir = new URL(appRoot, "assets");
 
-        // By adding any resources from libraries we need to the AndroidManifest, we can access
-        // them from within the parallel universe's resource loader.
-        return new AndroidManifest(Fs.fileFromPath(manifestPath), Fs.fileFromPath(resDir),
-            Fs.fileFromPath(assetsDir), "com.android.storagemanager") {
-            @Override
-            public List<ResourcePath> getIncludedResourcePaths() {
-                List<ResourcePath> paths = super.getIncludedResourcePaths();
-                paths.add(new ResourcePath(
-                    null,
-                    Fs.fileFromPath("./packages/apps/StorageManager/res"),
-                    null));
-                paths.add(new ResourcePath(
-                    null,
-                    Fs.fileFromPath("./frameworks/base/packages/SettingsLib/res"),
-                    null));
-                paths.add(new ResourcePath(
-                    null,
-                    Fs.fileFromPath("./frameworks/base/core/res/res"),
-                    null));
-                return paths;
-            }
-        };
+            return new AndroidManifest(
+                    Fs.fromURL(manifestPath),
+                    Fs.fromURL(resDir),
+                    Fs.fromURL(assetsDir),
+                    "com.android.storagemanager") {
+                @Override
+                public List<ResourcePath> getIncludedResourcePaths() {
+                    final List<ResourcePath> paths = super.getIncludedResourcePaths();
+                    addIncludedResourcePaths(paths);
+                    return paths;
+                }
+            };
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("StorageManagerRobolectricTestRunner failure", e);
+        }
+    }
+
+    private void addIncludedResourcePaths(List<ResourcePath> paths) {
+        try {
+            paths.add(
+                    new ResourcePath(
+                            null,
+                            Fs.fromURL(new URL("file:packages/apps/StorageManager/res")),
+                            null));
+            paths.add(
+                    new ResourcePath(
+                            null,
+                            Fs.fromURL(new URL("file:frameworks/base/packages/SettingsLib/res")),
+                            null));
+            paths.add(
+                    new ResourcePath(
+                            null, Fs.fromURL(new URL("file:frameworks/base/core/res/res")), null));
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("StorageManagerRobolectricTestRunner failure", e);
+        }
     }
 }

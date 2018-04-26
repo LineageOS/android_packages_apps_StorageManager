@@ -17,12 +17,12 @@
 package com.android.storagemanager.automatic;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.nullable;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -35,6 +35,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.BatteryManager;
+import android.os.SystemProperties;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
 import android.provider.Settings;
@@ -42,18 +43,14 @@ import android.provider.Settings;
 import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
-import com.android.storagemanager.testing.StorageManagerShadowSystemProperties;
-import com.android.storagemanager.testing.TestingConstants;
+import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
 
@@ -61,21 +58,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.anyInt;
-import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.nullable;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-@RunWith(RobolectricTestRunner.class)
-@Config(
-    manifest = TestingConstants.MANIFEST,
-    sdk = TestingConstants.SDK_VERSION,
-    shadows = {StorageManagerShadowSystemProperties.class}
-)
+@RunWith(StorageManagerRobolectricTestRunner.class)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private NotificationManager mNotificationManager;
@@ -137,6 +120,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
         // And we can't forget to initialize the actual job service.
         mJobService = spy(Robolectric.setupService(AutomaticStorageManagementJobService.class));
+        mJobService.onBind(null);
         mJobService.setStorageVolumeProvider(mStorageVolumeProvider);
         mJobService.setClock(mClock);
 
@@ -146,11 +130,6 @@ public class AutomaticStorageManagementJobServiceTest {
                 .thenReturn(90);
 
         when(mJobService.getResources()).thenReturn(fakeResources);
-    }
-
-    @After
-    public void tearDown() {
-        StorageManagerShadowSystemProperties.clear();
     }
 
     @Test
@@ -192,7 +171,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void testASMJobRunsWithValidConditionsIfOptInNotShownButUnactivated() {
-        StorageManagerShadowSystemProperties.put("ro.storage_manager.show_opt_in", "false");
+        SystemProperties.set("ro.storage_manager.show_opt_in", "false");
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }

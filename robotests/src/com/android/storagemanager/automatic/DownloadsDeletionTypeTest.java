@@ -16,32 +16,31 @@
 
 package com.android.storagemanager.automatic;
 
-import android.os.Bundle;
-import android.os.Environment;
-import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
-import com.android.storagemanager.deletionhelper.DeletionType;
-import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
-import com.android.storagemanager.deletionhelper.DownloadsDeletionType;
-import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
-import com.android.storagemanager.testing.TestingConstants;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.util.Set;
-
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(manifest= TestingConstants.MANIFEST, sdk=23)
+import android.os.Bundle;
+import android.os.Environment;
+
+import com.android.storagemanager.deletionhelper.DeletionHelperSettings;
+import com.android.storagemanager.deletionhelper.DeletionType;
+import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
+import com.android.storagemanager.deletionhelper.DownloadsDeletionType;
+import com.android.storagemanager.deletionhelper.FetchDownloadsLoader.DownloadsResult;
+import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RuntimeEnvironment;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Set;
+
+@RunWith(StorageManagerRobolectricTestRunner.class)
 public class DownloadsDeletionTypeTest {
     private DownloadsDeletionType mDeletion;
     private File mDownloadsDirectory;
