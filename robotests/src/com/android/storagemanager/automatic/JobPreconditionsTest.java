@@ -16,12 +16,20 @@
 
 package com.android.storagemanager.automatic;
 
+import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
+import static org.robolectric.Shadows.shadowOf;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.BatteryManager;
-import com.android.storagemanager.testing.TestingConstants;
+
+import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,21 +37,12 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.when;
-import static org.robolectric.Shadows.shadowOf;
-
-@RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=23)
+@RunWith(StorageManagerRobolectricTestRunner.class)
 public class JobPreconditionsTest {
     // TODO: Instead of mocking, use ShadowConnectivityManager. Right now, using it causes a crash.
     //       Use the shadow once we get it working.
