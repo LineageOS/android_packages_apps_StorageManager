@@ -21,7 +21,7 @@
     <!-- Storage setting. Menu option for using the deletion helper. [CHAR LIMIT=30] -->
     <string name="storage_menu_free">Free up space</string>
     <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
-    <string name="deletion_helper_title">Choose items to remove</string>
+    <string name="deletion_helper_title">Remove items</string>
     <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary"><xliff:g id="days" example="67">%1$d</xliff:g> days ago</string>
     <!-- Value indicating how much space this item takes up on disk -->
