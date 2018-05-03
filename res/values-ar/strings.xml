@@ -26,7 +26,7 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"لم يتم استخدام سعة التخزين في العام الماضي"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"وقت آخر استخدام لسعة التخزين غير مؤكَّد"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"إخلاء <xliff:g id="FREEABLE">%1$s</xliff:g>"</string>
-    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"الصور ومقاطع الفيديو المحفوظة احتياطيًا"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"الصور والفيديوهات التي تم الاحتفاظ بنسخة احتياطية منها"</string>
     <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"أقدم من 30 يومًا"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
@@ -54,7 +54,7 @@
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"السماح لمدير سعة التخزين بالتفريغ التلقائي للمساحة بإزالة الصور ومقاطع الفيديو القديمة عندما توشك مساحة التخزين في هاتفك على الامتلاء مرة أخرى."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"لا، شكرًا"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"تشغيل"</string>
-    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"الصور ومقاطع الفيديو التي تم الاحتفاظ بنسخة احتياطية منها"</string>
+    <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"الصور والفيديوهات التي تم الاحتفاظ بنسخة احتياطية منها"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"جارٍ البحث عن…"</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"عرض كل العناصر"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"إخفاء العناصر المستخدَمة حديثًا"</string>
