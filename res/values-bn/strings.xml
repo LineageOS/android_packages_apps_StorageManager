@@ -51,7 +51,7 @@
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"স্বয়ংক্রিয় স্টোরেজ পরিচালনা পরিষেবা"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"আপনার ফোনে জায়গা কম রয়েছে"</string>
     <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"আপনার ট্যাবলেটে জায়গা কম রয়েছে"</string>
-    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"আপনার ফোনের স্টোরেজ আবার ভরে যেতে শুরু করলে স্বয়ংক্রিয়ভাবে পুরোনো ছবি ও ভিডিওগুলি সরিয়ে স্টোরেজ ম্যানেজারকে স্থান খালি করতে দিন।"</string>
+    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"আপনার ফোনের স্টোরেজ আবার ভরে যেতে শুরু করলে অটোমেটিক পুরোনো ছবি ও ভিডিওগুলি সরিয়ে স্টোরেজ ম্যানেজারকে স্থান খালি করতে দিন।"</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"না থাক"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"চালু করুন"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"ব্যাকআপ নেওয়া ফটো এবং ভিডিওগুলি"</string>
