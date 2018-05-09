@@ -52,7 +52,7 @@
     <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"خدمة إدارة سعة التخزين تلقائيًا"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"مساحة الفارغة في هاتفك منخفضة"</string>
     <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"أوشكت المساحة على النفاد في جهازك اللوحي"</string>
-    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"السماح لمدير سعة التخزين بالتفريغ التلقائي للمساحة بإزالة الصور ومقاطع الفيديو القديمة عندما توشك مساحة التخزين في هاتفك على الامتلاء مرة أخرى."</string>
+    <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"السماح لمدير سعة التخزين بالتفريغ التلقائي للمساحة بإزالة الصور والفيديوهات القديمة عندما توشك مساحة التخزين في هاتفك على الامتلاء مرة أخرى."</string>
     <string name="automatic_storage_manager_cancel_button" msgid="1826365037494962803">"لا، شكرًا"</string>
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"تشغيل"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"الصور والفيديوهات التي تم الاحتفاظ بنسخة احتياطية منها"</string>
@@ -63,6 +63,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"تتم إدارة السعة التخزينية لجهازك الآن عن طريق مدير السعة التخزينية"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"ما من عناصر للإزالة"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"مراجعة العناصر المستخدَمة حديثًا"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"ليست هناك أي ملفات قديمة لإزالتها. يمكنك إزالة الصور ومقاطع الفيديو والتطبيقات المستخدمة حديثًا من أجل إخلاء مساحة."</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"ليست هناك أي ملفات قديمة لإزالتها. يمكنك إزالة الصور والفيديوهات والتطبيقات المستخدمة حديثًا من أجل إخلاء مساحة."</string>
     <string name="app_requesting_space" msgid="857425181289960167">"يحتاج <xliff:g id="APP">%1$s</xliff:g> إلى مساحة قدْرَها <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g>"</string>
 </resources>
