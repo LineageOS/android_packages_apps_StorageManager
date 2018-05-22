@@ -48,7 +48,7 @@
     <string name="deletion_helper_automatic_title" msgid="4610119358490679299">"Modo automático"</string>
     <string name="deletion_helper_manual_title" msgid="3905192395039688529">"Modo manual"</string>
     <string name="deletion_helper_preference_title" msgid="803484286872745892">"Espaço livre no momento"</string>
-    <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Serviço automático de gerenciamento de armazenamento"</string>
+    <string name="automatic_storage_manager_service_label" msgid="648592272375278978">"Serviço automático de gestão de armazenamento"</string>
     <string name="automatic_storage_manager_notification_title" product="default" msgid="8480483265300964701">"Seu smartphone está com pouco espaço"</string>
     <string name="automatic_storage_manager_notification_title" product="tablet" msgid="3150907918531844467">"Seu tablet está com pouco espaço"</string>
     <string name="automatic_storage_manager_notification_summary" msgid="2267399886362245822">"Permita que o gerenciador de armazenamento libere espaço removendo automaticamente fotos e vídeos antigos quando seu smartphone começar a ficar cheio novamente."</string>
