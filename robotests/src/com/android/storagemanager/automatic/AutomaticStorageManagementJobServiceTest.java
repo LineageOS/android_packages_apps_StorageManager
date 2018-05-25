@@ -266,10 +266,10 @@ public class AutomaticStorageManagementJobServiceTest {
         AutomaticStorageManagementJobService.Clock fakeClock =
                 mock(AutomaticStorageManagementJobService.Clock.class);
         when(fakeClock.currentTimeMillis()).thenReturn(1001L);
-        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(ContentResolver.class)))
+        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, resolver, fakeClock);
+                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -287,10 +287,10 @@ public class AutomaticStorageManagementJobServiceTest {
         AutomaticStorageManagementJobService.Clock fakeClock =
                 mock(AutomaticStorageManagementJobService.Clock.class);
         when(fakeClock.currentTimeMillis()).thenReturn(1001L);
-        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(ContentResolver.class)))
+        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, resolver, fakeClock);
+                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -306,10 +306,10 @@ public class AutomaticStorageManagementJobServiceTest {
         AutomaticStorageManagementJobService.Clock fakeClock =
                 mock(AutomaticStorageManagementJobService.Clock.class);
         when(fakeClock.currentTimeMillis()).thenReturn(1001L);
-        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(ContentResolver.class)))
+        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, resolver, fakeClock);
+                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -326,10 +326,10 @@ public class AutomaticStorageManagementJobServiceTest {
         AutomaticStorageManagementJobService.Clock fakeClock =
                 mock(AutomaticStorageManagementJobService.Clock.class);
         when(fakeClock.currentTimeMillis()).thenReturn(999L);
-        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(ContentResolver.class)))
+        when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, resolver, fakeClock);
+                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
