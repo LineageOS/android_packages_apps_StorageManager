@@ -12,8 +12,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     espresso-core \
     espresso-contrib-nodep \
     espresso-intents-nodep \
-    truth-prebuilt \
-    legacy-android-test
+    truth-prebuilt
 
 # Include all test java files.
 LOCAL_SRC_FILES := $(call all-java-files-under, src)

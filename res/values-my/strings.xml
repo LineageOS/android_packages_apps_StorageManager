@@ -35,8 +35,9 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_message" msgid="4896104662649947320">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ကို သင့်စက်ပစ္စည်းမှ ဖယ်ရှားပါမည်"</string>
-    <string name="deletion_helper_clear_dialog_remove" msgid="3386502418767917932">"ဖယ်ရှားရန်"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"နေရာလွတ် ပြုလုပ်ခြင်း"</string>
+    <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"အကြောင်းအရာ၏ <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ကို သင့်စက်ပစ္စည်းထဲမှနေ၍ ဖယ်ရှားလိုက်ပါမည်"</string>
+    <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"နေရာလွတ် ပြုလုပ်ရန်"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"သိုလှောင်ခန်းကို အလိုအလျောက်စီမံခန့်ခွဲမလား။"</string>
     <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"ယခု <xliff:g id="USED">%1$s</xliff:g> နေရာလွတ်သွားပါပြီ။ သင့်စက်ပစ္စည်းထဲရှိ မိတ္တူကူးထားသည့်အရာများအား ဖယ်ရှားခြင်းဖြင့် နေရာလွတ်များ အလိုအလျောက်ပြုလုပ်ရန် သိုလှောင်ခန်းစီမံခန့်ခွဲမှုစနစ်ကို အသုံးပြုပါ။"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"မလိုပါ"</string>
@@ -57,7 +58,7 @@
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"အကြောင်းအရာများကို ရှာနေသည်…"</string>
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"အကြောင်းအရာများ အားလုံးကို ပြရန်"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"ပြီးခဲ့သည်များကို ဝှက်ရန်"</string>
-    <string name="deletion_helper_clear_dialog_message_first_time" msgid="386144597646356521">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ကို သင့်စက်ပစ္စည်းမှ ဖယ်ရှားပါမည်"</string>
+    <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"အကြောင်းအရာ၏ <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ကို သင့်စက်ပစ္စည်းထဲမှနေ၍ ဖယ်ရှားလိုက်ပါမည်"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"သင့်သိုလှောင်မှုကို သိုလှောင်မှုမန်နေဂျာက လက်ရှိစီမံခန့်ခွဲနေပါသည်"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"ဖယ်ရှားစရာ မရှိပါ"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"မကြာသေးမီက ဖွင့်ခဲ့သည့် အရာများကို ပြန်လည်သုံးသပ်ပါ"</string>
