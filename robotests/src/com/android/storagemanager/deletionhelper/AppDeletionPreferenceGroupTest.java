@@ -18,8 +18,8 @@ package com.android.storagemanager.deletionhelper;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceScreen;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 import com.android.storagemanager.testing.TestingConstants;
 import java.util.ArrayList;
 import java.util.List;
