@@ -16,14 +16,17 @@
 
 package com.android.storagemanager.deletionhelper;
 
+import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.when;
+
 import android.content.Context;
-import android.support.v7.preference.PreferenceViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import androidx.preference.PreferenceViewHolder;
+import com.android.storagemanager.R;
 import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
 import com.android.storagemanager.testing.TestingConstants;
-import com.android.storagemanager.R;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,9 +36,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)

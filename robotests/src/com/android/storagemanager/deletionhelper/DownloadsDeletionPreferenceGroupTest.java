@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 import com.android.storagemanager.testing.TestingConstants;

@@ -33,7 +33,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.storage.StorageManager;
-import android.support.v7.preference.PreferenceScreen;
+import androidx.preference.PreferenceScreen;
 
 import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 import com.android.storagemanager.testing.TestingConstants;

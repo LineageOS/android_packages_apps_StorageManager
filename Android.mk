@@ -24,10 +24,10 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.cfg
 LOCAL_PRIVILEGED_MODULE := true
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-    android-support-v14-preference \
-    android-support-v7-appcompat \
-    android-support-v7-preference \
-    android-support-v7-recyclerview
+      androidx.legacy_legacy-preference-v14 \
+      androidx.appcompat_appcompat \
+      androidx.preference_preference \
+      androidx.recyclerview_recyclerview
 
 LOCAL_USE_AAPT2 := true
 
