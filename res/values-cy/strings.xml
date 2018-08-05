@@ -21,6 +21,7 @@
   <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
   <!-- Value indicating how much space this item takes up on disk -->
   <!-- Summary of how much storage an app is using when it has not been used in the last year. [CHAR LIMIT=NONE]-->
+  <string name="deletion_helper_app_summary_never_used">Heb ei ddefnyddio yn y flwyddyn ddiwethaf</string>
   <!-- Summary of how much storage an app is using when its last use is unknown. [CHAR LIMIT=NONE]-->
   <!-- Button which clears out storage in the deletion helper. [CHAR LIMIT=60]-->
   <!-- Preference group title for the photos and videos deletion service. [CHAR LIMIT=40]-->
