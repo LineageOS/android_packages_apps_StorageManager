@@ -26,7 +26,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.SystemProperties;
 import android.os.UserHandle;
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 import android.text.format.DateUtils;
 import android.util.ArrayMap;
 import android.util.ArraySet;

@@ -27,8 +27,8 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.SystemProperties;
 import android.provider.Settings;
-import android.support.annotation.VisibleForTesting;
-import android.support.v4.os.BuildCompat;
+import androidx.annotation.VisibleForTesting;
+import androidx.core.os.BuildCompat;
 
 import com.android.storagemanager.R;
 
