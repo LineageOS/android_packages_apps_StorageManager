@@ -16,6 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Button label for generic cancel action [CHAR LIMIT=20] -->
+  <string name="cancel">Diddymu</string>
   <!-- Storage setting. Menu option for using the deletion helper. [CHAR LIMIT=30] -->
   <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
   <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
@@ -36,9 +37,11 @@
   <!-- Summary for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
   <!-- Button to delay turning on the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
   <!-- Button to activate the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
+  <string name="deletion_helper_upsell_activate">Troi ymlaen</string>
   <!-- Title for the apps category in the deletion helper. [CHAR LIMIT=40]-->
   <!-- Summary for the apps category in the deletion helper, showing how many space to clear. [CHAR LIMIT=NONE]-->
   <!-- Category title for the automatic settings in the storage manager settings. [CHAR LIMIT=40] -->
+  <string name="deletion_helper_automatic_title">Awtomatig</string>
   <!-- Category title for the manual settings in the storage manager settings. [CHAR LIMIT=40] -->
   <!-- Preference menu title for accessing the deletion helper from the storage manager settings. [CHAR LIMIT=30]-->
   <!-- Automatic storage management service label. [CHAR LIMIT=40]-->
@@ -47,6 +50,7 @@
   <!-- Notification body for the low storage notification. [CHAR LIMIT=NONE] -->
   <!-- Action to dismiss the low storage notification. [CHAR LIMIT=40]-->
   <!-- Action to turn on ASM in the low storage notification. [CHAR LIMIT=40]-->
+  <string name="automatic_storage_manager_activate_button">Troi ymlaen</string>
   <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
   <!-- String to allow users to select no threshold for deletion helper -->
   <!-- String to allow users to select default threshold for deletion helper -->
