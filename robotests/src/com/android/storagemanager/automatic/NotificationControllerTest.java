@@ -39,6 +39,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
 
 import java.util.concurrent.TimeUnit;
@@ -59,7 +60,7 @@ public class NotificationControllerTest {
         mController = new NotificationController();
         mClock = new FakeClock();
         mController.setClock(mClock);
-        mContext = application.getApplicationContext();
+        mContext = RuntimeEnvironment.application;
     }
 
     @Test
