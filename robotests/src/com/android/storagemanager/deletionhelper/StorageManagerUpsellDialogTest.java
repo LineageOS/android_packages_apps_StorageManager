@@ -23,9 +23,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowApplication;
-
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,7 +42,7 @@ public class StorageManagerUpsellDialogTest {
     @Test
     public void testNoThanksMaximumShownTimes() {
         MockitoAnnotations.initMocks(this);
-        final Context context = ShadowApplication.getInstance().getApplicationContext();
+        final Context context = RuntimeEnvironment.application;
         StorageManagerUpsellDialog fragment = StorageManagerUpsellDialog.newInstance(0);
         fragment.setClock(mClock);
 

@@ -51,6 +51,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
 
@@ -70,6 +71,7 @@ public class AutomaticStorageManagementJobServiceTest {
     @Mock private StorageVolumeProvider mStorageVolumeProvider;
     @Mock private AutomaticStorageManagementJobService.Clock mClock;
     private AutomaticStorageManagementJobService mJobService;
+    private Context mContext;
     private ShadowApplication mApplication;
     private List<VolumeInfo> mVolumes;
 
@@ -102,6 +104,7 @@ public class AutomaticStorageManagementJobServiceTest {
                         nullable(StorageStatsManager.class), eq(mVolumeInfo)))
                 .thenReturn(100L);
 
+        mContext = RuntimeEnvironment.application;
         mApplication = ShadowApplication.getInstance();
         mApplication.setSystemService(Context.BATTERY_SERVICE, mBatteryManager);
         mApplication.setSystemService(Context.NOTIFICATION_SERVICE, mNotificationManager);
@@ -204,7 +207,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void testNonDefaultDaysToRetain() {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         Settings.Secure.putInt(resolver, Settings.Secure.AUTOMATIC_STORAGE_MANAGER_DAYS_TO_RETAIN,
                 30);
         activateASM();
@@ -260,7 +263,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void disableSmartStorageIfPastThreshold() throws Exception {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         activateASM();
 
         AutomaticStorageManagementJobService.Clock fakeClock =
@@ -269,7 +272,7 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
+                mStorageManagementJobProvider, mContext, fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -279,7 +282,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void dontDisableSmartStorageIfPastThresholdAndDisabledInThePast() throws Exception {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         activateASM();
         Settings.Secure.putInt(
                 resolver, Settings.Secure.AUTOMATIC_STORAGE_MANAGER_TURNED_OFF_BY_POLICY, 1);
@@ -290,7 +293,7 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
+                mStorageManagementJobProvider, mContext, fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -300,7 +303,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void logDisabledByPolicyIfPastThreshold() throws Exception {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         activateASM();
 
         AutomaticStorageManagementJobService.Clock fakeClock =
@@ -309,7 +312,7 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
+                mStorageManagementJobProvider, mContext, fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -320,7 +323,7 @@ public class AutomaticStorageManagementJobServiceTest {
 
     @Test
     public void dontDisableSmartStorageIfNotPastThreshold() throws Exception {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         activateASM();
 
         AutomaticStorageManagementJobService.Clock fakeClock =
@@ -329,7 +332,7 @@ public class AutomaticStorageManagementJobServiceTest {
         when(mStorageManagementJobProvider.getDisableThresholdMillis(any(Context.class)))
                 .thenReturn(1000L);
         AutomaticStorageManagementJobService.maybeDisableDueToPolicy(
-                mStorageManagementJobProvider, mApplication.getApplicationContext(), fakeClock);
+                mStorageManagementJobProvider, mContext, fakeClock);
 
         assertThat(
                         Settings.Secure.getInt(
@@ -357,7 +360,7 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     private void activateASM() {
-        ContentResolver resolver = mApplication.getApplicationContext().getContentResolver();
+        ContentResolver resolver = mContext.getContentResolver();
         Settings.Secure.putInt(resolver, Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED, 1);
     }
 }
