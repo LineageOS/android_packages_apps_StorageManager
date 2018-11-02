@@ -43,7 +43,6 @@ import android.provider.Settings;
 import com.android.settingslib.deviceinfo.StorageVolumeProvider;
 import com.android.storagemanager.overlay.FeatureFactory;
 import com.android.storagemanager.overlay.StorageManagementJobProvider;
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,6 +50,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.util.ReflectionHelpers;
@@ -59,7 +59,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class AutomaticStorageManagementJobServiceTest {
     @Mock private BatteryManager mBatteryManager;
     @Mock private NotificationManager mNotificationManager;

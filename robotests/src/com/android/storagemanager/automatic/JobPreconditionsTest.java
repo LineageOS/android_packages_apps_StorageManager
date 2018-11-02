@@ -17,7 +17,7 @@
 package com.android.storagemanager.automatic;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Matchers.any;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.robolectric.Shadows.shadowOf;
@@ -28,8 +28,6 @@ import android.net.Network;
 import android.net.NetworkInfo;
 import android.os.BatteryManager;
 
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,19 +35,20 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class JobPreconditionsTest {
     // TODO: Instead of mocking, use ShadowConnectivityManager. Right now, using it causes a crash.
     //       Use the shadow once we get it working.
-    @Mock ConnectivityManager mConnectivityManager;
-    @Mock BatteryManager mBatteryManager;
-    @Mock Network mWifiNetwork;
-    @Mock NetworkInfo mWifiNetworkInfo;
+    @Mock private ConnectivityManager mConnectivityManager;
+    @Mock private BatteryManager mBatteryManager;
+    @Mock private Network mWifiNetwork;
+    @Mock private NetworkInfo mWifiNetworkInfo;
     private Context mContext;
     private ArrayList<Network> mNetworkList;
     private HashMap<Network, NetworkInfo> mNetworkMap;

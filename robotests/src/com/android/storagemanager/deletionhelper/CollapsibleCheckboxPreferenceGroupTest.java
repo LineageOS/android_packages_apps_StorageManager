@@ -26,7 +26,6 @@ import android.widget.LinearLayout;
 import androidx.preference.PreferenceViewHolder;
 import com.android.storagemanager.R;
 import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,7 +37,9 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
+// Setting SDK to 27 because CollapsibleCheckboxPreferenceGroup uses layouts that triggers
+// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
+@Config(sdk = 27)
 public class CollapsibleCheckboxPreferenceGroupTest {
 
     private Context mContext;

@@ -27,8 +27,6 @@ import android.app.job.JobScheduler;
 import android.content.Context;
 import android.content.Intent;
 
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,8 +35,9 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.List;
+import org.robolectric.RobolectricTestRunner;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class AutomaticStorageBroadcastReceiverTest {
     @Mock private Context mMockContext;
     @Mock private JobScheduler mJobScheduler;

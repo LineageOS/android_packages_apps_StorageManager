@@ -18,9 +18,9 @@ package com.android.storagemanager.deletionhelper;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyString;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -35,25 +35,20 @@ import android.content.pm.PackageManager;
 import android.os.storage.StorageManager;
 import androidx.preference.PreferenceScreen;
 
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
-import com.android.storagemanager.testing.TestingConstants;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
-@Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
+@RunWith(RobolectricTestRunner.class)
 public class DeletionHelperSettingsTest {
-    private static final String URI_APP_SCHEME = "android-app";
     private static final String PACKAGE_NAME = "com.package";
     private Context mContext;
     private PackageManager mPackageManager;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         mContext = spy(RuntimeEnvironment.application);
         mPackageManager = spy(mContext.getPackageManager());
     }
@@ -79,7 +74,7 @@ public class DeletionHelperSettingsTest {
     }
 
     @Test
-    public void downloadsNotDeletedInNoThresholdMode() throws Exception {
+    public void downloadsNotDeletedInNoThresholdMode() {
         DeletionHelperSettings settings =
                 spy(DeletionHelperSettings.newInstance(AppsAsyncLoader.NO_THRESHOLD));
         PreferenceScreen preferenceScreen = mock(PreferenceScreen.class);
@@ -94,7 +89,7 @@ public class DeletionHelperSettingsTest {
     }
 
     @Test
-    public void onFreeableChangeChecksForNull() throws Exception {
+    public void onFreeableChangeChecksForNull() {
         DeletionHelperSettings settings =
                 DeletionHelperSettings.newInstance(AppsAsyncLoader.NO_THRESHOLD);
         AppDeletionType appBackend = mock(AppDeletionType.class);

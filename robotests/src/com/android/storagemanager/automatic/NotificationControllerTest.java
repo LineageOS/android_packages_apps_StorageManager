@@ -17,8 +17,8 @@
 package com.android.storagemanager.automatic;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -31,20 +31,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
 
 import java.util.concurrent.TimeUnit;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class NotificationControllerTest {
     @Mock
     private NotificationManager mNotificationManager;

@@ -22,7 +22,6 @@ import android.R;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
@@ -31,16 +30,18 @@ import org.robolectric.annotation.Config;
 import static org.robolectric.util.FragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
+// Setting SDK to 27 because ConfirmDeletionDialog uses layouts that triggers
+// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
+@Config(sdk = 27)
 public class ConfirmDeletionDialogTest {
     @Test
     public void testOnCreateDialog_saysCorrectStrings() {
         final ConfirmDeletionDialog alertDialog = ConfirmDeletionDialog.newInstance(100L);
         startFragment(alertDialog);
 
-        TextView message = (TextView) alertDialog.getDialog().findViewById(R.id.message);
-        Button button1 = (Button) alertDialog.getDialog().findViewById(android.R.id.button1);
-        Button button2 = (Button) alertDialog.getDialog().findViewById(android.R.id.button2);
+        TextView message = alertDialog.getDialog().findViewById(R.id.message);
+        Button button1 = alertDialog.getDialog().findViewById(android.R.id.button1);
+        Button button2 = alertDialog.getDialog().findViewById(android.R.id.button2);
         assertThat(message.getText().toString())
                 .isEqualTo("100 B of content will be removed from your device");
         assertThat(button1.getText().toString()).isEqualTo("Free up space");
