@@ -18,7 +18,6 @@ package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
 import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,15 +29,17 @@ import org.robolectric.annotation.Config;
 import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
+// Setting SDK to 27 because AppDeletionPreference uses layouts that triggers
+// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
+@Config(sdk = 27)
 public class AppDeletionPreferenceTest {
 
     private static final String TEST_PACKAGE_LABEL = "App";
     private static final String TEST_PACKAGE_NAME = "com.package.mcpackageface";
-    public static final long KILOBYTE = 1024L;
-    public static final long HUNDRED_BYTES = 100L;
-    public static final String KB_STRING = "1.00 KB";
-    public static final String HUNDRED_BYTE_STRING = "100 B";
+    private static final long KILOBYTE = 1000L;
+    private static final long HUNDRED_BYTES = 100L;
+    private static final String KB_STRING = "1.00 kB";
+    private static final String HUNDRED_BYTE_STRING = "100 B";
     private Context mContext;
 
     @Before

@@ -17,27 +17,27 @@
 package com.android.storagemanager.deletionhelper;
 
 import android.content.Context;
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import java.util.concurrent.TimeUnit;
+import org.robolectric.annotation.Config;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 import static org.robolectric.util.FragmentTestUtil.startFragment;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
-@Config(manifest= TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
+@RunWith(RobolectricTestRunner.class)
+// Setting SDK to 27 because StorageManagerUpsellDialog uses layouts that triggers
+// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
+@Config(sdk = 27)
 public class StorageManagerUpsellDialogTest {
-    @Mock
-    StorageManagerUpsellDialog.Clock mClock;
+    @Mock private StorageManagerUpsellDialog.Clock mClock;
 
     @Test
     public void testNoThanksMaximumShownTimes() {

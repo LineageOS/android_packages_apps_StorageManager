@@ -29,13 +29,13 @@ import android.text.TextUtils;
 import com.android.settingslib.applications.StorageStatsSource;
 import com.android.settingslib.applications.StorageStatsSource.AppStorageStats;
 import com.android.storagemanager.deletionhelper.AppsAsyncLoader.PackageInfo;
-import com.android.storagemanager.testing.StorageManagerRobolectricTestRunner;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowApplication;
@@ -45,22 +45,22 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(StorageManagerRobolectricTestRunner.class)
+@RunWith(RobolectricTestRunner.class)
 public class AppsAsyncLoaderTest {
 
-    public static final String PACKAGE_SYSTEM = "package.system";
+    private static final String PACKAGE_SYSTEM = "package.system";
     private static final long STARTING_TIME = TimeUnit.DAYS.toMillis(1000);
     private static final String PACKAGE_NAME = "package.mcpackageface";
-    public static final String PACKAGE_CLEARABLE = "package.clearable";
-    public static final String PACKAGE_TOO_NEW_TO_DELETE = "package.tooNewToDelete";
-    public static final String PACKAGE_DEFAULT_LAUNCHER = "package.launcherface";
+    private static final String PACKAGE_CLEARABLE = "package.clearable";
+    private static final String PACKAGE_TOO_NEW_TO_DELETE = "package.tooNewToDelete";
+    private static final String PACKAGE_DEFAULT_LAUNCHER = "package.launcherface";
 
     @Mock private UsageStatsManager mUsageStatsManager;
     @Mock private StorageStatsSource mStorageStatsSource;

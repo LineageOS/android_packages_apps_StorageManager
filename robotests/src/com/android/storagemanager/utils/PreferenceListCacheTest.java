@@ -19,28 +19,24 @@ package com.android.storagemanager.utils;
 import android.content.Context;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.eq;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=TestingConstants.MANIFEST, sdk=TestingConstants.SDK_VERSION)
 public class PreferenceListCacheTest {
     @Mock private PreferenceScreen mGroup;
     private PreferenceListCache mCache;
@@ -145,12 +141,12 @@ public class PreferenceListCacheTest {
 
     private void setupMockPreferenceGroup(Preference[] preferences) {
         when(mGroup.getPreferenceCount()).thenReturn(preferences.length);
-        when(mGroup.getPreference(anyInt())).thenAnswer(new Answer<Preference>() {
-            @Override
-            public Preference answer(InvocationOnMock invocation) throws Throwable {
-                int index = (int) invocation.getArguments()[0];
-                return preferences[index];
-            }
-        });
+        when(mGroup.getPreference(anyInt()))
+                .thenAnswer(
+                        (Answer<Preference>)
+                                invocation -> {
+                                    int index = (int) invocation.getArguments()[0];
+                                    return preferences[index];
+                                });
     }
 }
