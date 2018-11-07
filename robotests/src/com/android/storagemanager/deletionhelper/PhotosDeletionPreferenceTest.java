@@ -30,15 +30,11 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-// Setting SDK to 27 because PhotosDeletionPreference uses layouts that triggers
-// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
-@Config(sdk = 27)
 public class PhotosDeletionPreferenceTest {
     private PreferenceViewHolder mHolder;
     private PhotosDeletionPreference mPreference;
