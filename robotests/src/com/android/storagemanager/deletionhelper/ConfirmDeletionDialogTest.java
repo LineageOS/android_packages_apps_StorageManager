@@ -25,14 +25,10 @@ import android.widget.TextView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
 
 import static org.robolectric.util.FragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
-// Setting SDK to 27 because ConfirmDeletionDialog uses layouts that triggers
-// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
-@Config(sdk = 27)
 public class ConfirmDeletionDialogTest {
     @Test
     public void testOnCreateDialog_saysCorrectStrings() {

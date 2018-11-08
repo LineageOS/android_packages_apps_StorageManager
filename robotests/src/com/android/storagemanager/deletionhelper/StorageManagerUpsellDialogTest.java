@@ -25,7 +25,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import java.util.concurrent.TimeUnit;
-import org.robolectric.annotation.Config;
 
 import static android.content.DialogInterface.BUTTON_NEGATIVE;
 import static com.google.common.truth.Truth.assertThat;
@@ -33,9 +32,6 @@ import static org.mockito.Mockito.when;
 import static org.robolectric.util.FragmentTestUtil.startFragment;
 
 @RunWith(RobolectricTestRunner.class)
-// Setting SDK to 27 because StorageManagerUpsellDialog uses layouts that triggers
-// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
-@Config(sdk = 27)
 public class StorageManagerUpsellDialogTest {
     @Mock private StorageManagerUpsellDialog.Clock mClock;
 

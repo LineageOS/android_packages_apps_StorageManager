@@ -25,6 +25,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 import static org.mockito.Mockito.verifyZeroInteractions;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -37,6 +38,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
@@ -159,10 +161,14 @@ public class NotificationControllerTest {
 
     @Test
     public void testActivateStorageManagerIntent() throws Exception {
-        mController.onReceive(mContext,
-                new Intent(NotificationController.INTENT_ACTION_ACTIVATE_ASM));
-        assertThat(Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED)).isEqualTo(1);
+        final Context activity = Robolectric.buildActivity(Activity.class).get();
+        final Intent intent = new Intent(NotificationController.INTENT_ACTION_ACTIVATE_ASM);
+        mController.onReceive(activity, intent);
+        assertThat(
+                        Settings.Secure.getInt(
+                                activity.getContentResolver(),
+                                Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED))
+                .isEqualTo(1);
     }
 
     @Test

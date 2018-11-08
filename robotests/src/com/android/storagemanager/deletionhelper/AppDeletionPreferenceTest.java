@@ -24,14 +24,10 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import static com.google.common.truth.Truth.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-// Setting SDK to 27 because AppDeletionPreference uses layouts that triggers
-// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
-@Config(sdk = 27)
 public class AppDeletionPreferenceTest {
 
     private static final String TEST_PACKAGE_LABEL = "App";

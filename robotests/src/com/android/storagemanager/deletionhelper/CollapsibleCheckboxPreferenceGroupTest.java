@@ -34,12 +34,8 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
-// Setting SDK to 27 because CollapsibleCheckboxPreferenceGroup uses layouts that triggers
-// "java.lang.NumberFormatException: For input string: ".0"" (b/115639282)
-@Config(sdk = 27)
 public class CollapsibleCheckboxPreferenceGroupTest {
 
     private Context mContext;

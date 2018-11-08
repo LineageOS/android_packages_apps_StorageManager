@@ -1,10 +1,11 @@
-#############################################
-# Add app-specific Robolectric test target. #
-#############################################
+#############################################################
+# StorageManager Robolectric test target.                   #
+#############################################################
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := StorageManagerRoboTests
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
 
@@ -20,10 +21,13 @@ LOCAL_INSTRUMENTATION_FOR := StorageManager
 
 LOCAL_MODULE_TAGS := optional
 
+# Generate test_config.properties
+include external/robolectric-shadows/gen_test_config.mk
+
 include $(BUILD_STATIC_JAVA_LIBRARY)
 
 #############################################################
-# Add Robolectric runner target to run the previous target. #
+# StorageManager runner target to run the previous target.  #
 #############################################################
 include $(CLEAR_VARS)
 
