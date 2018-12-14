@@ -7,11 +7,11 @@ LOCAL_MODULE_TAGS := tests
 LOCAL_JAVA_LIBRARIES := android.test.runner
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    android-support-test \
+    androidx.test.rules \
     mockito-target \
-    espresso-core \
-    espresso-contrib-nodep \
-    espresso-intents-nodep \
+    androidx.test.espresso.core \
+   androidx.test.espresso.contrib-nodeps \
+   androidx.test.espresso.intents-nodeps \
     truth-prebuilt
 
 # Include all test java files.
