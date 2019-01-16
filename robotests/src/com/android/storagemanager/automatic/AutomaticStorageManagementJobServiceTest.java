@@ -173,8 +173,8 @@ public class AutomaticStorageManagementJobServiceTest {
     }
 
     @Test
-    public void testASMJobRunsWithValidConditionsIfOptInNotShownButUnactivated() {
-        SystemProperties.set("ro.storage_manager.show_opt_in", "false");
+    public void testASMJobRunsWithValidConditionsIfEnabledByDefaultAndUnset() {
+        SystemProperties.set("ro.storage_manager.enabled", "true");
         assertThat(mJobService.onStartJob(mJobParameters)).isFalse();
         assertStorageManagerJobRan();
     }
