@@ -98,12 +98,14 @@ public class NotificationController extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         switch (intent.getAction()) {
             case INTENT_ACTION_ACTIVATE_ASM:
-                Settings.Secure.putInt(context.getContentResolver(),
+                Settings.Secure.putInt(
+                        context.getContentResolver(),
                         Settings.Secure.AUTOMATIC_STORAGE_MANAGER_ENABLED,
                         1);
                 // Provide a warning if storage manager is not defaulted on.
                 if (!SystemProperties.getBoolean(STORAGE_MANAGER_PROPERTY, false)) {
                     Intent warningIntent = new Intent(context, WarningDialogActivity.class);
+                    warningIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(warningIntent);
                 }
                 break;
