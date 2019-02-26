@@ -19,6 +19,7 @@
     <!-- Button label for generic cancel action [CHAR LIMIT=20] -->
     <!-- Storage setting. Menu option for using the deletion helper. [CHAR LIMIT=30] -->
     <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
+    <string name="deletion_helper_title">Desaniciu d\'actividaes</string>
     <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
     <!-- Value indicating how much space this item takes up on disk -->
     <!-- Summary of how much storage an app is using when it has not been used in the last year. [CHAR LIMIT=NONE]-->
@@ -33,6 +34,7 @@
     <!-- Summary for when when there is nothing in the downloads folder to clear. [CHAR LIMIT=NONE]-->
     <!-- Title of dialog warn the user before clearing space in the deletion helper. [CHAR LIMIT=NONE] -->
     <!-- Message to warn the user before clearing space in the deletion helper. [CHAR LIMIT=NONE] -->
+    <string name="deletion_helper_clear_dialog_message"><xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> de conteníu va desaniciase del preséu</string>
     <!-- Button label for the dialog prompt for clearing data in deletion helper. [CHAR LIMIT=40] -->
     <!-- Title for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_upsell_title">¿Remanar l\'almacenamientu automáticamente?</string>
@@ -60,6 +62,7 @@
     <!-- String to allow users to select no threshold for deletion helper -->
     <!-- String to allow users to select default threshold for deletion helper -->
     <!-- Message to warn the user before clearing space in the deletion helper for the first time. [CHAR LIMIT=NONE] -->
+    <string name="deletion_helper_clear_dialog_message_first_time"><xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> de conteníu va desaniciase del preséu</string>
     <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <!-- Title to show in the ActionBar when there are no items to remove [CHAR LIMIT=30] -->
     <!-- String which is clickable that removes the time threshold on items allowing the user to delete more things [CHAR LIMIT=NONE] -->
