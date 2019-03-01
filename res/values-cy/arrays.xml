@@ -15,8 +15,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- Automatic storage management settings. The amount of days for the automatic storage manager
-     to retain. These are shown in a list dialog. [CHAR LIMIT=70] -->
     <string-array name="automatic_storage_management_days">
         <item>Dros 30 diwrnod o oed</item>
         <item>Dros 60 diwrnod o oed</item>
