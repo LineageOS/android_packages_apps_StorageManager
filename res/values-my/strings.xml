@@ -26,7 +26,7 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"ယခင်နှစ်အတွင်း အသုံးမပြုခဲ့ပါ"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"နောက်ဆုံးအသုံးပြုခဲ့ချိန် မသေချာပါ"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> နေရာလွတ် ပြုလုပ်ပါ"</string>
-    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"မိတ္တူကူးထားသော ဓာတ်ပုံနှင့် ဗီဒီယိုများ"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"အရန်သိမ်းထားသော ဓာတ်ပုံနှင့် ဗီဒီယိုများ"</string>
     <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"ရက်ပေါင်း ၃၀ ထက် ကျော်နေပါပြီ"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
