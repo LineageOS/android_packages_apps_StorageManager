@@ -28,6 +28,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -97,5 +98,60 @@ public class DeletionHelperSettingsTest {
         settings.mAppBackend = appBackend;
 
         settings.onFreeableChanged(0, 0L);
+    }
+
+    @Test
+    public void requestingSpecificBytesToClearSetsOkResultCodeOnSufficientClear() {
+        DeletionHelperSettings settings =
+                spy(DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD));
+        settings.mBytesToFree = 1000L;
+        PreferenceScreen preferenceScreen = mock(PreferenceScreen.class);
+        doReturn(preferenceScreen).when(settings).getPreferenceScreen();
+        // The deletion helper will not delete items which aren't viewable on the UI -- this
+        // will trick it into thinking there's an UI.
+        settings.mDownloadsPreference = mock(DownloadsDeletionPreferenceGroup.class);
+        DownloadsDeletionType downloadsDeletionType = mock(DownloadsDeletionType.class);
+        settings.setDownloadsDeletionType(downloadsDeletionType);
+        when(downloadsDeletionType.getFreeableBytes(any(Boolean.class))).thenReturn(1001L);
+
+        settings.clearData();
+
+        assertThat(settings.getResultCode()).isEqualTo(Activity.RESULT_OK);
+    }
+
+    @Test
+    public void requestingSpecificBytesToClearSetsNegativeResultCodeOnSufficientClear() {
+        DeletionHelperSettings settings =
+                spy(DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD));
+        settings.mBytesToFree = 1000L;
+        PreferenceScreen preferenceScreen = mock(PreferenceScreen.class);
+        doReturn(preferenceScreen).when(settings).getPreferenceScreen();
+        // The deletion helper will not delete items which aren't viewable on the UI -- this
+        // will trick it into thinking there's an UI
+        settings.mDownloadsPreference = mock(DownloadsDeletionPreferenceGroup.class);
+        DownloadsDeletionType downloadsDeletionType = mock(DownloadsDeletionType.class);
+        settings.setDownloadsDeletionType(downloadsDeletionType);
+        when(downloadsDeletionType.getFreeableBytes(any(Boolean.class))).thenReturn(999L);
+
+        settings.clearData();
+
+        assertThat(settings.getResultCode()).isEqualTo(Activity.RESULT_CANCELED);
+    }
+
+    @Test
+    public void requestingSpecificBytesToClearSetsNegativeResultCodeOnNoClear() {
+        DeletionHelperSettings settings =
+                spy(DeletionHelperSettings.newInstance(AppsAsyncLoader.NORMAL_THRESHOLD));
+        settings.mBytesToFree = 1000L;
+        PreferenceScreen preferenceScreen = mock(PreferenceScreen.class);
+        doReturn(preferenceScreen).when(settings).getPreferenceScreen();
+        // The deletion helper will not delete items which aren't viewable on the UI -- this
+        // will trick it into thinking there's an UI.
+        settings.mDownloadsPreference = mock(DownloadsDeletionPreferenceGroup.class);
+        DownloadsDeletionType downloadsDeletionType = mock(DownloadsDeletionType.class);
+        settings.setDownloadsDeletionType(downloadsDeletionType);
+        when(downloadsDeletionType.getFreeableBytes(any(Boolean.class))).thenReturn(999L);
+
+        assertThat(settings.getResultCode()).isEqualTo(Activity.RESULT_CANCELED);
     }
 }
