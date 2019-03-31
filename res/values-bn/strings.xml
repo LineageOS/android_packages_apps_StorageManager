@@ -26,7 +26,7 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"গত বছরে ব্যবহার করা হয়নি"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"শেষ কবে ব্যবহার হয়েছে বলা যাচ্ছে না"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> খালি করুন"</string>
-    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ব্যাকআপ নেওয়া ফটো এবং ভিডিওগুলি"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ব্যাক-আপ নেওয়া ফটো এবং ভিডিও"</string>
     <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"৩০ দিনের বেশি পুরানো"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
