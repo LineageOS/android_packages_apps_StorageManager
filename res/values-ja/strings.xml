@@ -60,7 +60,7 @@
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"最近のアイテムを非表示"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"デバイスから <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> 削除します"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"お使いのストレージの管理はストレージ マネージャが行うようになりました"</string>
-    <string name="empty_state_title" msgid="4033285438176545309">"削除できるものがない"</string>
+    <string name="empty_state_title" msgid="4033285438176545309">"削除できるアイテムなし"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"最近のアイテムを確認"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"削除できる古いファイルはありません。最近の写真、動画、アプリを削除して、空き容量を確保してください。"</string>
     <string name="app_requesting_space" msgid="857425181289960167">"「<xliff:g id="APP">%1$s</xliff:g>」に必要な容量: <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g>"</string>
