@@ -39,7 +39,7 @@
     <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"Ձեր սարքից կհեռացվի <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> ծավալով բովանդակություն"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"Ազատել տարածք"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"Կառավարե՞լ հիշողությունն ավտոմատ կերպով:"</string>
-    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> այժմ ազատ է: Թույլ տա՞լ Հիշողության կառավարիչին տարածք ազատել՝ հեռացնելով սարքից պահուստավորված բովանդակությունը:"</string>
+    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"<xliff:g id="USED">%1$s</xliff:g> այժմ ազատ է: Թույլատրե՞լ Հիշողության կառավարիչին տարածք ազատել՝ հեռացնելով սարքից պահուստավորված բովանդակությունը:"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"Ոչ"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"Միացնել"</string>
     <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"Հազվադեպ օգտագործվող հավելվածներ"</string>
