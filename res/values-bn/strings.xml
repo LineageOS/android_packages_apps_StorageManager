@@ -27,7 +27,7 @@
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"শেষ কবে ব্যবহার হয়েছে বলা যাচ্ছে না"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"<xliff:g id="FREEABLE">%1$s</xliff:g> খালি করুন"</string>
     <string name="deletion_helper_photos_title" msgid="2602723121486729972">"ব্যাক-আপ নেওয়া ফটো এবং ভিডিও"</string>
-    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"৩০ দিনের বেশি পুরানো"</string>
+    <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"৩০ দিনের বেশি পুরনো"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
     <string name="deletion_helper_downloads_title" msgid="8002058095019254694">"ডাউনলোডগুলি"</string>
@@ -62,6 +62,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"আপনার স্টোরেজ এখন স্টোরেজ ম্যানেজারের দ্বারা পরিচালিত হচ্ছে"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"সরানোর জন্য কিছু নেই"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"সাম্প্রতিক আইটেমগুলি দেখুন"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"মুছে ফেলার জন্য কোনো পুরনো ফাইল নেই। জায়গা তৈরি করতে সাম্প্রতিক ফটো, ভিডিও এবং অ্যাপগুলি মুছুন।"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"মুছে ফেলার জন্য কোনও পুরনো ফাইল নেই। জায়গা খালি করতে সাম্প্রতিক ফটো, ভিডিও এবং অ্যাপগুলি মুছুন।"</string>
     <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g> অ্যাপটির জন্য <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> জায়গা লাগবে"</string>
 </resources>
