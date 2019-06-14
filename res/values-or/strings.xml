@@ -62,6 +62,6 @@
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"ଆପଣଙ୍କ ଷ୍ଟୋରେଜ୍‌ ଏବେ, ଷ୍ଟୋରେଜ୍‌ ମ୍ୟାନେଜର୍‌ ଦ୍ୱାରା ପରିଚାଳିତ ହେଉଛି"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"କାଢ଼ିବା ପାଇଁ କିଛି ନାହିଁ"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"ଏବେର ଆଇଟମ୍‌ଗୁଡ଼ିକୁ ରିଭ୍ୟୁ କରନ୍ତୁ"</string>
-    <string name="empty_state_summary" msgid="8439893007424243790">"ଡିଲିଟ୍‌ କରିବା ପାଇଁ କୌଣସି ପୁରୁଣା ଫାଇଲ୍‌ ନାହିଁ। ଜାଗା ତିଆରି କରିବା ପାଇଁ ସାମ୍ପ୍ରତିକ ଫଟୋ, ଭିଡିଓ ଏବଂ ଆପ୍‌ ଡିଲିଟ୍‌ କରନ୍ତୁ।"</string>
+    <string name="empty_state_summary" msgid="8439893007424243790">"ଡିଲିଟ୍‌ କରିବା ପାଇଁ କୌଣସି ପୁରୁଣା ଫାଇଲ୍‌ ନାହିଁ। ଜାଗା ତିଆରି କରିବା ପାଇଁ ବର୍ତ୍ତମାନର ଫଟୋ, ଭିଡିଓ ଏବଂ ଆପ୍‌ ଡିଲିଟ୍‌ କରନ୍ତୁ।"</string>
     <string name="app_requesting_space" msgid="857425181289960167">"<xliff:g id="APP">%1$s</xliff:g>କୁ <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> ଜାଗା ଆବଶ୍ୟକ"</string>
 </resources>
