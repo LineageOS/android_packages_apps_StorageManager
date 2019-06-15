@@ -56,7 +56,7 @@
     <string name="automatic_storage_manager_activate_button" msgid="6257070263061898041">"ఆన్ చేయి"</string>
     <string name="deletion_helper_photos_loading_title" msgid="2768067991066779772">"బ్యాకప్ చేసిన ఫోటోలు &amp; వీడియోలు"</string>
     <string name="deletion_helper_photos_loading_summary" msgid="8203033249458245854">"అంశాలను కనుగొంటోంది…"</string>
-    <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"అన్ని అంశాలను దాచండి"</string>
+    <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"అన్ని అంశాల‌ను చూపండి"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"ఇటీవల అంశాలను దాచండి"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> కంటెంట్ మీ పరికరం నుండి తీసివేయబడుతుంది"</string>
     <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"మీ నిల్వ ఇప్పుడు నిల్వ నిర్వాహికి ద్వారా నిర్వహించబడుతోంది"</string>
