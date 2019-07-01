@@ -26,7 +26,6 @@ import android.widget.LinearLayout;
 import androidx.preference.PreferenceViewHolder;
 import com.android.storagemanager.R;
 import com.android.storagemanager.deletionhelper.DeletionType.LoadingStatus;
-import com.android.storagemanager.testing.TestingConstants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,10 +34,8 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest = TestingConstants.MANIFEST, sdk = TestingConstants.SDK_VERSION)
 public class CollapsibleCheckboxPreferenceGroupTest {
 
     private Context mContext;
