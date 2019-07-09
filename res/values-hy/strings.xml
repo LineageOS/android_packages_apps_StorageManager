@@ -26,7 +26,7 @@
     <string name="deletion_helper_app_summary_never_used" msgid="2695210890063792461">"Այս տարի չի օգտագործվել"</string>
     <string name="deletion_helper_app_summary_unknown_used" msgid="8576377054665785558">"Հայտնի չէ, թե վերջին անգամ երբ է օգտագործվել"</string>
     <string name="deletion_helper_free_button" msgid="1760529213407548661">"Ազատել <xliff:g id="FREEABLE">%1$s</xliff:g> տարածք"</string>
-    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Պահուստավորված լուսանկարներ և տեսանյութեր"</string>
+    <string name="deletion_helper_photos_title" msgid="2602723121486729972">"Պահուստավորված նկարներ և վիդեո"</string>
     <string name="deletion_helper_photos_age_summary" msgid="1820871709448371984">"30 օրից հին"</string>
     <!-- no translation found for deletion_helper_photos_summary (3194825464552700889) -->
     <skip />
