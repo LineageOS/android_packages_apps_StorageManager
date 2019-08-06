@@ -16,9 +16,19 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Xestor d\'almacenamientos</string>
+    <string name="deletion_helper_app_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • <xliff:g id="days" example="67">%2$d</xliff:g> fai díes</string>
+    <string name="deletion_helper_app_summary_never_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Nun s\'usó nel caberu añu</string>
+    <string name="deletion_helper_app_summary_unknown_used"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Nun tamos seguros de cuando s\'usó por última vez</string>
+    <string name="deletion_helper_photos_title">Semeyes &amp; vídeos (<xliff:g id="num_items">%1$d</xliff:g>)</string>
+    <string name="deletion_helper_photos_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Más vieyu de <xliff:g id="days">%2$d</xliff:g> días</string>
+    <string name="deletion_helper_downloads_title">Descargues (<xliff:g id="numItems" example="67">%1$d</xliff:g>)</string>
+    <string name="deletion_helper_downloads_file_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • <xliff:g id="days">%2$s</xliff:g></string>
     <string name="deletion_helper_upsell_title">¿Remanar l\'almacenamientu automáticamente?</string>
     <string name="deletion_helper_upsell_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> agora gratis. 
 ¿Permitir que Storage Manager llibere espaciu automáticamente al desaniciar el conteníu de la copia de seguridá del to preséu?</string>
+    <string name="deletion_helper_apps_group_title">Aplicaciones (<xliff:g id="num_items">%1$d</xliff:g>)</string>
+    <string name="deletion_helper_apps_group_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> • Caberu usu fai <xliff:g id="days">%2$d</xliff:g> díes</string>
     <string name="deletion_helper_automatic_title">Automáticu</string>
     <string name="automatic_storage_manager_notification_summary">Dexar que Storage Manager llibere espaciu desaniciando automáticamente semeyes y vídeos antiguos cuando\'l to teléfonu entame a llenase otra vuelta.</string>
+    <string name="deletion_helper_photos_loading_title">Semeyes &amp; vídeos</string>
 </resources>
