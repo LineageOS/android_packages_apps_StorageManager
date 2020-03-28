@@ -14,9 +14,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="automatic_storage_management_days">
-        <item>Más de 30 díes</item>
-        <item>Más de 60 díes</item>
-        <item>Más de 90 díes</item>
-    </string-array>
+    <string name="deletion_helper_title">Thoir na nithean air falbh</string>
+    <string name="deletion_helper_clear_dialog_message">Thèid <xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> a shusbaint a thoirt air falbh on uidheam agad</string>
+    <string name="deletion_helper_clear_dialog_message_first_time">Thèid <xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> a shusbaint a thoirt air falbh on uidheam agad</string>
 </resources>
