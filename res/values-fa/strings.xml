@@ -39,7 +39,7 @@
     <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> محتوا از دستگاهتان حذف خواهد شد"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"فضا آزاد کنید"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"حافظه به‌طور خودکار مدیریت شود؟"</string>
-    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"اکنون <xliff:g id="USED">%1$s</xliff:g> آزاد است. به «مدیر حافظه» امکان می‌دهید با حذف محتوای پشتیبان‌گیری‌شده از دستگاهتان، به‌طور خودکار فضا آزاد کند؟"</string>
+    <string name="deletion_helper_upsell_summary" msgid="2301597713694474407">"اکنون <xliff:g id="USED">%1$s</xliff:g> آزاد است. به «مدیر فضای ذخیره‌سازی» امکان می‌دهید با حذف محتوای پشتیبان‌گیری‌شده از دستگاهتان، به‌طور خودکار فضا آزاد کند؟"</string>
     <string name="deletion_helper_upsell_cancel" msgid="7084167642850053889">"نه سپاسگزارم"</string>
     <string name="deletion_helper_upsell_activate" msgid="7157360257760895976">"روشن کردن"</string>
     <string name="deletion_helper_apps_group_title" msgid="2578309121350341258">"برنامه‌های کم‌استفاده"</string>
@@ -59,7 +59,7 @@
     <string name="deletion_helper_no_threshold" msgid="6943179204098250444">"نمایش همه موارد"</string>
     <string name="deletion_helper_default_threshold" msgid="8410389370069021113">"پنهان کردن موارد اخیر"</string>
     <string name="deletion_helper_clear_dialog_message_first_time" msgid="686530413183529901">"<xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> محتوا از دستگاهتان حذف خواهد شد"</string>
-    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"حافظه شما اکنون توسط مدیر حافظه مدیریت می‌شود"</string>
+    <string name="automatic_storage_manager_activation_warning" msgid="7657017408180001078">"مدیر فضای ذخیره‌سازی اکنون فضای ذخیره‌سازی شما را مدیریت می‌کند"</string>
     <string name="empty_state_title" msgid="4033285438176545309">"موردی برای پاک کردن موجود نیست"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"مرور موارد اخیر"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"فایل قدیمی‌تری برای پاک کردن موجود نیست. برای ایجاد فضای خالی، عکس‌ها، ویدیوها و برنامه‌های اخیر را پاک کنید."</string>
