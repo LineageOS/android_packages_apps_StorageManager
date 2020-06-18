@@ -63,5 +63,5 @@
     <string name="empty_state_title" msgid="4033285438176545309">"Nada a remover"</string>
     <string name="empty_state_review_items_link" msgid="8411186441239304545">"Rever itens recentes"</string>
     <string name="empty_state_summary" msgid="8439893007424243790">"Não existem ficheiros mais antigos para remover. Para libertar espaço, remova fotos, vídeos e aplicações recentes."</string>
-    <string name="app_requesting_space" msgid="857425181289960167">"A aplicação <xliff:g id="APP">%1$s</xliff:g> necessita de <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> de espaço"</string>
+    <string name="app_requesting_space" msgid="857425181289960167">"A app <xliff:g id="APP">%1$s</xliff:g> necessita de <xliff:g id="CLEARABLE_BYTES">%2$s</xliff:g> de espaço"</string>
 </resources>
