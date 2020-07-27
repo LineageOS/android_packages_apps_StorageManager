@@ -35,7 +35,7 @@
     <skip />
     <!-- no translation found for deletion_helper_downloads_summary_empty (3988054032360371887) -->
     <skip />
-    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"Libera espacio"</string>
+    <string name="deletion_helper_clear_dialog_title" msgid="9169670752655850967">"Liberar espacio"</string>
     <string name="deletion_helper_clear_dialog_message" msgid="5196490478187120700">"Se eliminarán <xliff:g id="CLEARABLE_BYTES">%1$s</xliff:g> de contenido de tu dispositivo"</string>
     <string name="deletion_helper_clear_dialog_remove" msgid="863575755467985516">"Liberar espacio"</string>
     <string name="deletion_helper_upsell_title" msgid="8512037674466762017">"¿Deseas administrar el almacenamiento de manera automática?"</string>
