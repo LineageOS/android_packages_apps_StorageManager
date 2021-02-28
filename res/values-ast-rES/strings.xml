@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Xestor d\'almacenamientos</string>
+    <string name="deletion_helper_title">Desaniciu d\'actividaes</string>
+    <string name="deletion_helper_photos_age_summary">Más de 30 díes</string>
+    <string name="deletion_helper_clear_dialog_message"><xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> de conteníu va desaniciase del preséu</string>
+    <string name="deletion_helper_upsell_title">¿Remanar l\'almacenamientu automáticamente?</string>
+    <string name="deletion_helper_upsell_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g> agora gratis. 
+¿Permitir que Storage Manager llibere espaciu automáticamente al desaniciar el conteníu de la copia de seguridá del to preséu?</string>
+    <string name="deletion_helper_apps_group_title">Apps que casi nun s\'usen</string>
+    <string name="deletion_helper_automatic_title">Automáticu</string>
+    <string name="automatic_storage_manager_notification_summary">Dexar que Storage Manager llibere espaciu desaniciando automáticamente semeyes y vídeos antiguos cuando\'l to teléfonu entame a llenase otra vuelta.</string>
+    <string name="deletion_helper_photos_loading_title">Semeyes y vídeos &amp; respaldaos</string>
+    <string name="deletion_helper_clear_dialog_message_first_time"><xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> de conteníu va desaniciase del preséu</string>
+    <string name="empty_state_summary">Nun hai ficheros vieyos pa desaniciar. Pa facer espaciu, desanicia semeyes, vídeos y aplicaciones de recién.</string>
+</resources>
