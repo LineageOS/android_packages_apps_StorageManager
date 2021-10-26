@@ -17,7 +17,7 @@
     <string name="app_name">Manaidsear an stòrais</string>
     <string name="cancel">Sguir dheth</string>
     <string name="storage_menu_free">Saor àite</string>
-    <string name="deletion_helper_title">Thoir na nithean air falbh</string>
+    <string name="deletion_helper_title">Thoir nithean air falbh</string>
     <string name="deletion_helper_app_summary"><xliff:g id="days" example="67">%1$d</xliff:g> là(ithean) air ais</string>
     <string name="deletion_helper_app_summary_item_size"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
     <string name="deletion_helper_app_summary_never_used">Gun chleachdadh fad bliadhna</string>
@@ -53,7 +53,7 @@
     <string name="deletion_helper_default_threshold">Falaich nithean o chionn goirid</string>
     <string name="deletion_helper_clear_dialog_message_first_time">Thèid <xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> a shusbaint a thoirt air falbh on uidheam agad</string>
     <string name="automatic_storage_manager_activation_warning">Tha an stòras agad fo stiùireadh manaidsear an stòrais a-nis</string>
-    <string name="empty_state_title">Chan eil dad ri toirt air falbh ann</string>
+    <string name="empty_state_title">Gun dad ri thoirt air falbh</string>
     <string name="empty_state_review_items_link">Sgrùd nithean o chionn goirid</string>
     <string name="empty_state_summary">Chan eil seann-fhaidhlichean ri an toirt air falbh ann. Airson àite a shaoradh, thoir air falbh dealbhan, videothan is aplacaidean o chionn goirid.</string>
     <string name="app_requesting_space">Feumaidh <xliff:g id="app" example="Dialer">%1$s</xliff:g> <xliff:g id="clearable_bytes" example="1.2GB">%2$s</xliff:g> a dh’àite</string>
