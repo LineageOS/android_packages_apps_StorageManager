@@ -15,46 +15,87 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Manaidsear an stòrais</string>
+    <!-- Button label for generic cancel action [CHAR LIMIT=20] -->
     <string name="cancel">Sguir dheth</string>
+    <!-- Storage setting. Menu option for using the deletion helper. [CHAR LIMIT=30] -->
     <string name="storage_menu_free">Saor àite</string>
+    <!-- Activity title for deletion helper. [CHAR LIMIT=25] -->
     <string name="deletion_helper_title">Thoir nithean air falbh</string>
+    <!-- Summary of how much storage an app is using and the number of days since last use. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary"><xliff:g id="days" example="67">%1$d</xliff:g> là(ithean) air ais</string>
+    <!-- Value indicating how much space this item takes up on disk -->
     <string name="deletion_helper_app_summary_item_size"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Summary of how much storage an app is using when it has not been used in the last year. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary_never_used">Gun chleachdadh fad bliadhna</string>
+    <!-- Summary of how much storage an app is using when its last use is unknown. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_app_summary_unknown_used">Gun chinnt cuin a chaidh a chleachdadh an turas mu dheireadh</string>
+    <!-- Button which clears out storage in the deletion helper. [CHAR LIMIT=60]-->
     <string name="deletion_helper_free_button">Saor <xliff:g id="freeable" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Preference group title for the photos and videos deletion service. [CHAR LIMIT=40]-->
     <string name="deletion_helper_photos_title">Lethbhreacan-glèidhidh de dhealbhan ⁊ videothan</string>
+    <!-- Summary string describing at least how old the photos must be in order to show in deletion helper [CHAR LIMIT=40]-->
     <string name="deletion_helper_photos_age_summary">Nas sine na 30 latha</string>
+    <!-- Summary of how much backed up storage that photos and videos service can clear from the local device. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_photos_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Preference title for the downloads deletion service. [CHAR LIMIT=40]-->
     <string name="deletion_helper_downloads_title">Luchdaidhean a-nuas</string>
+    <!-- Summary of how much stale data can be cleared from the local download folder. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_downloads_category_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Summary for when when there is nothing in the downloads folder to clear. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_downloads_summary_empty"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Title of dialog warn the user before clearing space in the deletion helper. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_clear_dialog_title">Saor àite</string>
+    <!-- Message to warn the user before clearing space in the deletion helper. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_clear_dialog_message">Thèid <xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> a shusbaint a thoirt air falbh on uidheam agad</string>
+    <!-- Button label for the dialog prompt for clearing data in deletion helper. [CHAR LIMIT=40] -->
     <string name="deletion_helper_clear_dialog_remove">Saor àite</string>
+    <!-- Title for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_upsell_title">An dèid an an stòras a stiùireadh gu fèin-obrachail?</string>
+    <!-- Summary for the dialog to up sell the storage manager. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_upsell_summary">Tha <xliff:g id="used" example="1.2GB">%1$s</xliff:g> saor a-nis. An leig thu le manaidsear an stòrais àite a shaoradh gu fèin-obrachail agus e a’ toirt air falbh lethbhreacan-glèidhidh de shusbaint on uidheam agad?</string>
+    <!-- Button to delay turning on the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
     <string name="deletion_helper_upsell_cancel">Na dèan seo</string>
+    <!-- Button to activate the storage manager on the storage manager upsell. [CHAR LIMIT=20]-->
     <string name="deletion_helper_upsell_activate">Cuir air</string>
+    <!-- Title for the apps category in the deletion helper. [CHAR LIMIT=40]-->
     <string name="deletion_helper_apps_group_title">Aplacaidean ’gan cleachdadh gu h-ainneamh</string>
+    <!-- Summary for the apps category in the deletion helper, showing how many space to clear. [CHAR LIMIT=NONE]-->
     <string name="deletion_helper_apps_group_summary"><xliff:g id="used" example="1.2GB">%1$s</xliff:g></string>
+    <!-- Category title for the automatic settings in the storage manager settings. [CHAR LIMIT=40] -->
     <string name="deletion_helper_automatic_title">Fèin-obrachail</string>
+    <!-- Category title for the manual settings in the storage manager settings. [CHAR LIMIT=40] -->
     <string name="deletion_helper_manual_title">A làimh</string>
+    <!-- Preference menu title for accessing the deletion helper from the storage manager settings. [CHAR LIMIT=30]-->
     <string name="deletion_helper_preference_title">Saor àite an-dràsta</string>
+    <!-- Automatic storage management service label. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_service_label">Seirbheis stiùireadh fèin-obrachail an stòrais</string>
+    <!-- Notification title for the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_notification_title" product="default">Tha an t-àite a’ fàs gann air an fhòn agad</string>
+    <!-- Notification title for the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_notification_title" product="tablet">Tha an t-àite a’ fàs gann air an tablaid agad</string>
+    <!-- Notification body for the low storage notification. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_notification_summary">Leig le manaidsear an stòrais àite a shaoradh gu fèin-obrachail le toirt air falbh seann-dealbhan is videothan nuair a bhios am fòn agad gu bhith làn a-rithist.</string>
+    <!-- Action to dismiss the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_cancel_button">Na dèan seo</string>
+    <!-- Action to turn on ASM in the low storage notification. [CHAR LIMIT=40]-->
     <string name="automatic_storage_manager_activate_button">Cuir air</string>
     <string name="deletion_helper_photos_loading_title">Lethbhreacan-glèidhidh de dhealbhan ⁊ videothan</string>
     <string name="deletion_helper_photos_loading_summary">A’ lorg nithean…</string>
+    <!-- Help URI, Deletion Helper [DO NOT TRANSLATE] -->
+    <!-- String to allow users to select no threshold for deletion helper -->
     <string name="deletion_helper_no_threshold">Show all items</string>
+    <!-- String to allow users to select default threshold for deletion helper -->
     <string name="deletion_helper_default_threshold">Falaich nithean o chionn goirid</string>
+    <!-- Message to warn the user before clearing space in the deletion helper for the first time. [CHAR LIMIT=NONE] -->
     <string name="deletion_helper_clear_dialog_message_first_time">Thèid <xliff:g id="clearable_bytes" example="1.2GB">%1$s</xliff:g> a shusbaint a thoirt air falbh on uidheam agad</string>
+    <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_activation_warning">Tha an stòras agad fo stiùireadh manaidsear an stòrais a-nis</string>
+    <!-- Title to show in the ActionBar when there are no items to remove [CHAR LIMIT=30] -->
     <string name="empty_state_title">Gun dad ri thoirt air falbh</string>
+    <!-- String which is clickable that removes the time threshold on items allowing the user to delete more things [CHAR LIMIT=NONE] -->
     <string name="empty_state_review_items_link">Sgrùd nithean o chionn goirid</string>
+    <!-- Empty state summary for the Deletion Helper [CHAR LIMIT=NONE]-->
     <string name="empty_state_summary">Chan eil seann-fhaidhlichean ri an toirt air falbh ann. Airson àite a shaoradh, thoir air falbh dealbhan, videothan is aplacaidean o chionn goirid.</string>
+    <!-- Prompt for describing what space a particular app is requesting from the Storage Manager. [CHAR LIMIT=NONE] -->
     <string name="app_requesting_space">Feumaidh <xliff:g id="app" example="Dialer">%1$s</xliff:g> <xliff:g id="clearable_bytes" example="1.2GB">%2$s</xliff:g> a dh’àite</string>
 </resources>
