@@ -15,8 +15,8 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string-array name="automatic_storage_management_days">
-        <item>Más de 30 díes</item>
-        <item>Más de 60 díes</item>
-        <item>Más de 90 díes</item>
+        <item>Nas sine na 30 latha</item>
+        <item>Nas sine na 60 latha</item>
+        <item>Nas sine na 90 latha</item>
     </string-array>
 </resources>
